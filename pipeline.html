@@ -380,6 +380,8 @@
                 <span class="project-tag active" onclick="switchProject('kite')">🪁 纸鸢归</span>
                 <span class="project-tag" onclick="switchProject('mooncake')">🥮 外婆的月饼模</span>
                 <span class="project-tag" onclick="switchProject('parking')">🚗 平行停车</span>
+                <span class="project-tag" onclick="switchProject('shiba')">🐕 柴犬物语</span>
+                <span class="project-tag" onclick="switchProject('pythagoras')">📐 勾股定理</span>
             </div>
         </div>
         
@@ -684,6 +686,142 @@
             </div>
         </div>
         
+        <!-- Project: Shiba Story -->
+        <div class="project-content" id="project-shiba" style="display: none;">
+            
+            <!-- Stage 1: Story -->
+            <div class="stage" id="shiba-stage-1">
+                <div class="stage-header">
+                    <div class="stage-number">1</div>
+                    <div>
+                        <div class="stage-title">故事构思</div>
+                        <div class="stage-desc">从想法到剧本，确定核心创意</div>
+                    </div>
+                </div>
+                
+                <div class="stage-content">
+                    <div class="column input">
+                        <div class="column-header">📥 设计输入</div>
+                        <div class="column-content">
+                            <p><strong>原始想法：</strong></p>
+                            <p>探索AI图像生成能力，验证即梦API的可用性，同时创作一个关于宠物与自然的温馨小故事。</p>
+                            <p><strong>参考元素：</strong></p>
+                            <p>• 日本柴犬的治愈形象<br>• 樱花季的浪漫氛围<br>• 阳光与自然的和谐</p>
+                        </div>
+                    </div>
+                    
+                    <div class="column decision">
+                        <div class="column-header">🤔 决策记录</div>
+                        <div class="column-content">
+                            <span class="decision-badge">柴犬主角</span>
+                            <span class="decision-badge">樱花场景</span>
+                            <span class="decision-badge">写实风格</span>
+                            <p style="margin-top: 15px;"><strong>决策理由：</strong></p>
+                            <p>1. 柴犬具有高辨识度和亲和力</p>
+                            <p>2. 樱花+阳光组合视觉效果强</p>
+                            <p>3. 写实风格适合展示AI生成能力</p>
+                        </div>
+                    </div>
+                    
+                    <div class="column output">
+                        <div class="column-header">✅ 成果输出</div>
+                        <div class="column-content">
+                            <p><strong>《柴犬物语》故事核心：</strong></p>
+                            <p>一只可爱的柴犬在春日樱花树下享受阳光，展现宠物与自然和谐共处的美好画面。</p>
+                            <p><strong>项目目标：</strong></p>
+                            <p>验证即梦AI API集成，产出高质量角色设计素材</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stage 2: Character -->
+            <div class="stage" id="shiba-stage-2">
+                <div class="stage-header">
+                    <div class="stage-number">2</div>
+                    <div>
+                        <div class="stage-title">角色设计</div>
+                        <div class="stage-desc">确定视觉风格，生成角色概念图</div>
+                    </div>
+                </div>
+                
+                <div class="stage-content">
+                    <div class="column input">
+                        <div class="column-header">📥 设计输入</div>
+                        <div class="column-content">
+                            <p><strong>角色需求：</strong></p>
+                            <p>• 主角：纯种日本柴犬，表情可爱治愈<br>• 场景：樱花树下，阳光斑驳<br>• 氛围：温馨、自然、高清写实</p>
+                            <p><strong>技术约束：</strong></p>
+                            <p>使用火山引擎即梦AI API，模型：jimeng_high_aes_general_v21_L</p>
+                        </div>
+                    </div>
+                    
+                    <div class="column decision">
+                        <div class="column-header">🤔 决策记录</div>
+                        <div class="column-content">
+                            <span class="decision-badge">写实渲染</span>
+                            <span class="decision-badge">8K画质</span>
+                            <span class="decision-badge">1024x1024</span>
+                            <p style="margin-top: 15px;"><strong>API调试历程：</strong></p>
+                            <p>尝试 jimeng_t2i_v40 → Access Denied ❌<br>切换 jimeng_high_aes_general_v21_L → 成功 ✅</p>
+                        </div>
+                    </div>
+                    
+                    <div class="column output">
+                        <div class="column-header">✅ 成果输出</div>
+                        <div class="column-content">
+                            <p><strong>最终提示词：</strong></p>
+                            <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
+                                一只可爱的柴犬在樱花树下，阳光明媚，高清写实风格，8k画质
+                            </div>
+                            <p style="margin-top: 15px;"><strong>生成结果：</strong></p>
+                            <div style="margin-top: 10px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-primary);">
+                                <img src="./assets/shiba-inu-sakura.jpg" alt="柴犬角色设计" style="width: 100%; display: block;">
+                            </div>
+                            <p style="margin-top: 10px; font-size: 12px; color: var(--text-muted);">
+                                模型：jimeng_high_aes_general_v21_L | 尺寸：2048x2048 | 生成时间：~5秒
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stage 3-7 Placeholders -->
+            <div class="stage" id="shiba-stage-3">
+                <div class="stage-header">
+                    <div class="stage-number">3</div>
+                    <div>
+                        <div class="stage-title">后续制作</div>
+                        <div class="stage-desc">分镜、生成、剪辑、发布、复盘</div>
+                    </div>
+                </div>
+                
+                <div class="stage-content">
+                    <div class="column input">
+                        <div class="column-header">📥 设计输入</div>
+                        <div class="column-content">
+                            <div class="placeholder">[等待补充]</div>
+                        </div>
+                    </div>
+                    
+                    <div class="column decision">
+                        <div class="column-header">🤔 决策记录</div>
+                        <div class="column-content">
+                            <div class="placeholder">[等待补充]</div>
+                        </div>
+                    </div>
+                    
+                    <div class="column output">
+                        <div class="column-header">✅ 成果输出</div>
+                        <div class="column-content">
+                            <div class="placeholder">[等待补充]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
         <!-- Footer -->
         <footer>
             <p>© 2026 HIYAMAX · AI Shortfilm Lab</p>
@@ -695,7 +833,7 @@
         </footer>
     </div>
     
-    <script>
+        <script>
         // Theme toggle functionality
         function toggleTheme() {
             const html = document.documentElement;
@@ -735,9 +873,44 @@
             });
             event.target.classList.add('active');
             
-            // In the future, this would load different project data
-            console.log('Switching to project:', project);
+            // Hide all project content
+            document.querySelectorAll('.project-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected project
+            const selectedProject = document.getElementById('project-' + project);
+            if (selectedProject) {
+                selectedProject.style.display = 'block';
+            }
+            
+            // Special case for default projects (kite, mooncake, parking)
+            // They don't have project-content wrappers yet, so we show default content
+            if (['kite', 'mooncake', 'parking'].includes(project)) {
+                document.querySelectorAll('.stage:not([id^="shiba-"])').forEach(stage => {
+                    if (!stage.closest('.project-content')) {
+                        stage.style.display = 'block';
+                    }
+                });
+            } else {
+                // Hide default stages when showing other projects
+                document.querySelectorAll('.stage:not([id^="shiba-"])').forEach(stage => {
+                    if (!stage.closest('.project-content')) {
+                        stage.style.display = 'none';
+                    }
+                });
+            }
+            
+            console.log('Switched to project:', project);
         }
-    </script>
+        
+        // Initialize: show default stages, hide project-specific ones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all project-content sections initially
+            document.querySelectorAll('.project-content').forEach(content => {
+                content.style.display = 'none';
+            });
+        });
+        </script>
 </body>
 </html>
