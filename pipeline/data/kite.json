@@ -1,0 +1,198 @@
+{
+  "id": "kite",
+  "emoji": "🪁",
+  "title": "纸鸢归",
+  "subtitle": "中式温情短片",
+  "duration": "5分钟",
+  "status": "已完成",
+  "stages": [
+    {
+      "number": 1,
+      "title": "故事构思",
+      "desc": "从想法到剧本，确定核心创意",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "原始想法",
+            "text": "想要做一个关于中国传统文化的温情短片，弥补之前作品中缺少的中式家庭题材空白。"
+          },
+          {
+            "subtitle": "参考作品",
+            "text": "• 《末世微光》的简单核心关系\n• 《时间银行》的双向牺牲结构\n• 《记忆典当铺》的记忆可视化"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["选择纸鸢文化", "阿尔茨海默症主题", "祖孙二人关系"],
+        "content": [
+          {
+            "subtitle": "决策理由",
+            "text": "1. 纸鸢是非遗文化，有视觉辨识度\n2. 阿尔茨海默症是现代社会议题\n3. 祖孙互动天然具有情感张力"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "《纸鸢归》故事核心",
+            "text": "一位患阿尔茨海默症的祖父，每天制作纸鸢却记不清为什么。孙子发现祖父是在完成20年前的承诺——每年为孙子做一只纸鸢，直到第100只。"
+          },
+          {
+            "subtitle": "四幕结构",
+            "text": "建立 → 追寻 → 真相 → 传承"
+          }
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "角色设计",
+      "desc": "确定视觉风格，设计角色提示词",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "角色需求",
+            "text": "• 祖父：70岁左右，手艺人气质，慈祥但略带迷茫\n• 孙子：8-10岁，活泼懂事，与祖父有深厚感情"
+          },
+          {
+            "subtitle": "风格方向",
+            "text": "写实渲染 + 温暖色调 + 中国传统元素"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["写实风格", "竹青色服装", "工作间场景"],
+        "content": [
+          {
+            "subtitle": "提示词迭代",
+            "text": "v1: 过于卡通化 ❌\nv2: 服装太现代 ❌\nv3: 加入竹编元素 ✅"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "最终提示词（祖父）",
+            "code": "Elderly Chinese craftsman, 70yo, gentle eyes with slight confusion, wearing traditional bamboo-blue work clothes, silver hair, weathered hands, warm lighting, photorealistic rendering"
+          }
+        ],
+        "image": "[角色定妆图]"
+      }
+    },
+    {
+      "number": 3,
+      "title": "分镜设计",
+      "desc": "规划24个镜头，确定视觉节奏",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "四幕时间分配",
+            "text": "• 第一幕：0-1.5min (镜头01-06)\n• 第二幕：1.5-3.5min (镜头07-15)\n• 第三幕：3.5-5min (镜头16-24)"
+          },
+          {
+            "subtitle": "色彩规划",
+            "text": "竹青 → 中国红 → 暖金"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["24个镜头", "5分钟片长", "特写为主"],
+        "content": [
+          {
+            "subtitle": "关键镜头决策",
+            "text": "镜头18（中点）：必须展示\"老地方\"的揭晓\n镜头22（高潮）：纸鸢飞起叠化年轻祖父"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "分镜表（节选）",
+            "timeline": [
+              {"time": "镜头01", "desc": "全景：老宅工作间，祖父扎纸鸢"},
+              {"time": "镜头18", "desc": "中景：天台揭晓\"老地方\""},
+              {"time": "镜头22", "desc": "特写：红色纸鸢飞向夕阳"}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "视频生成",
+      "desc": "使用AI工具生成画面",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "工具选择、参数设置"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "生成过程中的选择和调整"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "生成片段展示"
+      }
+    },
+    {
+      "number": 5,
+      "title": "后期剪辑",
+      "desc": "剪辑、配乐、调色",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "素材整理"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "剪辑节奏选择"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "最终成片"
+      }
+    },
+    {
+      "number": 6,
+      "title": "封装发布",
+      "desc": "封面、标题、描述、标签",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "平台要求"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "标题选择"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "发布链接"
+      }
+    },
+    {
+      "number": 7,
+      "title": "数据复盘",
+      "desc": "播放量、互动、经验总结",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "数据收集"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "成功因素分析"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "经验沉淀"
+      }
+    }
+  ]
+}

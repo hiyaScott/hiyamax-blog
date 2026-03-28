@@ -1,0 +1,182 @@
+{
+  "id": "parking",
+  "emoji": "🚗",
+  "title": "平行停车",
+  "subtitle": "平行宇宙爱情短片",
+  "duration": "3分钟",
+  "status": "已完成",
+  "stages": [
+    {
+      "number": 1,
+      "title": "故事构思",
+      "desc": "从想法到剧本，确定核心创意",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "核心创意",
+            "text": "两个人在平行宇宙中不断错过，只有在平行停车的瞬间才能相遇"
+          },
+          {
+            "subtitle": "视觉概念",
+            "text": "分屏展示平行宇宙，左右画面轻微差异"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["平行宇宙", "分屏视觉", "爱情题材"],
+        "content": [
+          {
+            "subtitle": "决策理由",
+            "text": "1. 平行停车作为相遇的隐喻\n2. 分屏视觉有辨识度\n3. 爱情题材受众广"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "故事核心",
+            "text": "男女主角生活在平行宇宙，日常生活几乎相同但从未相遇。只有在平行停车的瞬间，两个宇宙短暂重叠，他们才能看到彼此。"
+          }
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "角色设计",
+      "desc": "确定视觉风格，设计角色提示词",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "角色需求",
+            "text": "• 男主角：都市白领，略带疲惫\n• 女主角：独立设计师，温柔坚定"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["现代都市", "对比色服装", "细节差异"],
+        "content": [
+          {
+            "subtitle": "设计要点",
+            "text": "两个宇宙的角色服装颜色相反\n用配饰细节区分平行版本"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "角色设定",
+            "text": "男主角：蓝色系→平行宇宙红色系\n女主角：红色系→平行宇宙蓝色系"
+          }
+        ],
+        "image": "[角色设计图]"
+      }
+    },
+    {
+      "number": 3,
+      "title": "分镜设计",
+      "desc": "规划镜头，确定视觉节奏",
+      "input": {
+        "title": "设计输入",
+        "content": [
+          {
+            "subtitle": "核心视觉",
+            "text": "分屏对比：左屏宇宙A，右屏宇宙B\n中间停车线作为相遇点"
+          }
+        ]
+      },
+      "decision": {
+        "title": "决策记录",
+        "badges": ["分屏技术", "对称构图", "色彩对比"],
+        "content": [
+          {
+            "subtitle": "镜头设计",
+            "text": "开场：左右分屏展示相同日常\n中点：停车线首次重叠，角色对视\n结尾：两车并排，角色微笑"
+          }
+        ]
+      },
+      "output": {
+        "title": "成果输出",
+        "content": [
+          {
+            "subtitle": "分镜要点",
+            "text": "视觉：分屏对称构图\n色彩：冷暖对比（蓝vs红）\n节奏：日常生活慢节奏→相遇时刻定格"
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "视频生成",
+      "desc": "使用AI工具生成画面",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "工具选择、参数设置"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "生成过程中的选择和调整"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "生成片段展示"
+      }
+    },
+    {
+      "number": 5,
+      "title": "后期剪辑",
+      "desc": "剪辑、配乐、调色",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "素材整理"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "剪辑节奏选择"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "最终成片"
+      }
+    },
+    {
+      "number": 6,
+      "title": "封装发布",
+      "desc": "封面、标题、描述、标签",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "平台要求"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "标题选择"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "发布链接"
+      }
+    },
+    {
+      "number": 7,
+      "title": "数据复盘",
+      "desc": "播放量、互动、经验总结",
+      "input": {
+        "title": "设计输入",
+        "placeholder": "数据收集"
+      },
+      "decision": {
+        "title": "决策记录",
+        "placeholder": "成功因素分析"
+      },
+      "output": {
+        "title": "成果输出",
+        "placeholder": "经验沉淀"
+      }
+    }
+  ]
+}
