@@ -11,12 +11,41 @@
             box-sizing: border-box;
         }
         
+        /* CSS Variables for theming */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #000;
+            --text-primary: #fff;
+            --text-secondary: #888;
+            --text-muted: #666;
+            --border-primary: #333;
+            --border-secondary: #1a1a1a;
+            --accent-red: #e74c3c;
+            --accent-blue: #3498db;
+            --hover-bg: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Light theme */
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #fff;
+            --text-primary: #000;
+            --text-secondary: #444;
+            --text-muted: #666;
+            --border-primary: #ddd;
+            --border-secondary: #eee;
+            --accent-red: #c0392b;
+            --accent-blue: #2980b9;
+            --hover-bg: rgba(52, 152, 219, 0.08);
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.8;
             min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
         }
         
         .container {
@@ -27,10 +56,33 @@
         
         header {
             border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, #e74c3c, #3498db) 1;
+            border-image: linear-gradient(90deg, var(--accent-red), var(--accent-blue)) 1;
             padding-bottom: 40px;
             margin-bottom: 60px;
             text-align: center;
+            position: relative;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
         }
         
         .logo {
@@ -42,7 +94,7 @@
         
         .subtitle {
             font-size: 14px;
-            color: #666;
+            color: var(--text-muted);
             letter-spacing: 2px;
         }
         
@@ -51,7 +103,7 @@
         }
         
         nav a {
-            color: #888;
+            color: var(--text-secondary);
             text-decoration: none;
             margin-right: 30px;
             font-size: 14px;
@@ -61,18 +113,18 @@
         }
         
         nav a:hover {
-            color: #3498db;
-            border-bottom: 1px solid #3498db;
+            color: var(--accent-blue);
+            border-bottom: 1px solid var(--accent-blue);
         }
         
         .section-title {
             font-size: 12px;
-            color: #e74c3c;
+            color: var(--accent-red);
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 30px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border-primary);
         }
         
         .film-list {
@@ -81,19 +133,19 @@
         
         .film-item {
             padding: 30px 0;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid var(--border-secondary);
             transition: all 0.3s;
         }
         
         .film-item:hover {
             padding-left: 10px;
-            border-left: 3px solid #3498db;
-            background: linear-gradient(90deg, rgba(52, 152, 219, 0.05) 0%, transparent 100%);
+            border-left: 3px solid var(--accent-blue);
+            background: var(--hover-bg);
         }
         
         .film-number {
             font-size: 12px;
-            color: #3498db;
+            color: var(--accent-blue);
             margin-bottom: 8px;
             font-family: 'SF Mono', monospace;
         }
@@ -105,23 +157,23 @@
         }
         
         .film-title a {
-            color: #fff;
+            color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .film-title a:hover {
-            color: #e74c3c;
+            color: var(--accent-red);
         }
         
         .film-meta {
             font-size: 13px;
-            color: #666;
+            color: var(--text-muted);
         }
         
         .film-desc {
             font-size: 14px;
-            color: #888;
+            color: var(--text-secondary);
             margin-top: 10px;
             line-height: 1.6;
         }
@@ -129,9 +181,9 @@
         footer {
             margin-top: 100px;
             padding-top: 40px;
-            border-top: 1px solid #333;
+            border-top: 1px solid var(--border-primary);
             font-size: 12px;
-            color: #666;
+            color: var(--text-muted);
             text-align: center;
         }
         
@@ -140,13 +192,15 @@
             display: block;
             width: 60px;
             height: 2px;
-            background: linear-gradient(90deg, #e74c3c, #3498db);
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
             margin: 0 auto 20px;
         }
         
         @media (max-width: 600px) {
-            h1 {
-                font-size: 32px;
+            .theme-toggle {
+                position: static;
+                margin-bottom: 20px;
+                display: inline-flex;
             }
             
             .container {
@@ -158,6 +212,11 @@
 <body>
     <div class="container">
         <header>
+            <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-text">Daylight</span>
+            </button>
+            
             <img src="./logo.png" alt="HIYAMAX" class="logo">
             <p class="subtitle">AI 短剧实验室</p>
             <nav>
@@ -282,7 +341,7 @@
         
         <section id="about" style="margin-top: 80px;">
             <h2 class="section-title">关于 / About</h2>
-            <p style="font-size: 14px; color: #666; line-height: 2;">
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 2;">
                 HIYAMAX 是一个AI短剧实验项目。<br><br>
                 我们使用AI工具探索短片创作的边界，<br>
                 从剧本构思到视觉呈现，<br>
@@ -295,5 +354,38 @@
             <p>© 2026 HIYAMAX · AI Shortfilm Lab</p>
         </footer>
     </div>
+    
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+        }
+        
+        function updateThemeButton(theme) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (theme === 'light') {
+                icon.textContent = '🌙';
+                text.textContent = 'DeepDark';
+            } else {
+                icon.textContent = '☀️';
+                text.textContent = 'Daylight';
+            }
+        }
+        
+        // Load saved theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        })();
+    </script>
 </body>
 </html>
