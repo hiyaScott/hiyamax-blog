@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生产流水线 | HIYAMAX</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* CSS Variables for theming */
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #000;
@@ -25,10 +20,10 @@
             --accent-blue: #3498db;
             --accent-green: #27ae60;
             --accent-orange: #f39c12;
+            --accent-purple: #9b59b6;
             --hover-bg: rgba(52, 152, 219, 0.05);
         }
         
-        /* Light theme */
         [data-theme="light"] {
             --bg-primary: #f5f5f5;
             --bg-secondary: #fff;
@@ -42,11 +37,12 @@
             --accent-blue: #2980b9;
             --accent-green: #229954;
             --accent-orange: #d68910;
+            --accent-purple: #8e44ad;
             --hover-bg: rgba(52, 152, 219, 0.08);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.8;
@@ -106,6 +102,53 @@
             border-bottom: 1px solid var(--accent-blue);
         }
         
+        /* Project Info */
+        .project-info {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .project-emoji {
+            font-size: 40px;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-badge {
+            background: var(--accent-orange);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
         /* Project Selector */
         .project-selector {
             background: var(--bg-card);
@@ -125,7 +168,7 @@
         
         .project-list {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         
@@ -138,6 +181,7 @@
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
         }
         
         .project-tag:hover,
@@ -152,7 +196,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 50px;
             flex-wrap: wrap;
             font-size: 12px;
@@ -248,6 +292,10 @@
             margin-bottom: 12px;
         }
         
+        .column-content strong {
+            color: var(--text-primary);
+        }
+        
         .placeholder {
             color: var(--text-muted);
             font-style: italic;
@@ -269,6 +317,17 @@
             margin: 5px 5px 5px 0;
         }
         
+        /* Code block */
+        .code-block {
+            background: var(--bg-secondary);
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
         /* Image placeholder */
         .img-placeholder {
             width: 100%;
@@ -287,7 +346,7 @@
         /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 25px;
         }
         
         .timeline::before {
@@ -302,30 +361,58 @@
         
         .timeline-item {
             position: relative;
-            margin-bottom: 20px;
-            padding-left: 20px;
+            margin-bottom: 15px;
+            padding-left: 15px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -26px;
+            left: -21px;
             top: 6px;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--accent-blue);
         }
         
-        .timeline-date {
+        .timeline-time {
             font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         
         .timeline-content {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-primary);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Error */
+        .error {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--accent-red);
         }
         
         /* Footer */
@@ -376,516 +463,23 @@
         <!-- Project Selector -->
         <div class="project-selector">
             <h3>选择项目查看生产过程</h3>
-            <div class="project-list">
-                <span class="project-tag" onclick="switchProject('kite')">🪁 纸鸢归</span>
-                <span class="project-tag" onclick="switchProject('mooncake')">🥮 外婆的月饼模</span>
-                <span class="project-tag" onclick="switchProject('parking')">🚗 平行停车</span>
-                <span class="project-tag" onclick="switchProject('shiba')">🐕 柴犬物语</span>
-                <span class="project-tag active" onclick="switchProject('pythagoras')">📐 勾股定理</span>
+            <div class="project-list" id="projectList">
+                <!-- Projects loaded dynamically -->
             </div>
         </div>
         
-        <!-- Pipeline Flow -->
-        <div class="pipeline-flow">
-            <span class="flow-step">构思</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step">角色</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step">分镜</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step">生成</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step">剪辑</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step">发布</span>
-        </div>
-        
-        <!-- Stage 1: Story -->
-        <div class="stage" id="stage-1">
-            <div class="stage-header">
-                <div class="stage-number">1</div>
-                <div>
-                    <div class="stage-title">故事构思</div>
-                    <div class="stage-desc">从想法到剧本，确定核心创意</div>
-                </div>
+        <!-- Project Content -->
+        <div id="projectContent">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>加载项目中...</p>
             </div>
-            
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <p><strong>项目类型：</strong></p>
-                        <p>教育类AI短片 - 用卡通形式教授初中数学知识点</p>
-                        
-                        <p><strong>目标受众：</strong></p>
-                        <p>初中生，对数学几何感到困惑的学生</p>
-                        
-                        <p><strong>参考作品：</strong></p>
-                        <p>• 皮克斯短片《蓝雨伞之恋》的情感拟人化<br>• Numberphile频道的可视化数学讲解<br>• 3Blue1Brown的动画数学概念</p>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <span class="decision-badge">选择勾股定理</span>
-                        <span class="decision-badge">几何精灵角色</span>
-                        <span class="decision-badge">30秒时长</span>
-                        
-                        <p style="margin-top: 15px;"><strong>决策理由：</strong></p>
-                        <p>1. 勾股定理可视化强，适合动画表现</p>
-                        <p>2. 3-4-5直角三角形是最经典的例子</p>
-                        <p>3. 几何精灵拟人化有情感共鸣点</p>
-                        
-                        <p style="margin-top: 10px;"><strong>风格选择：</strong></p>
-                        <p>皮克斯式3D卡通 > 日式2D > 国风水墨<br>原因：3D几何形体变形动画更流畅自然</p>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <p><strong>《勾股定理》故事核心：</strong></p>
-                        <p>迷糊的小直角三角形不知道自己斜边有多长，两位正方形朋友（方方A和方方B）来帮助它，通过面积变换的魔法，让它理解了 a² + b² = c² 的奥秘。</p>
-                        
-                        <p><strong>角色设定：</strong></p>
-                        <p>• 小直角：橙色直角三角形，迷糊好奇<br>• 方方A（3×3）：红色，活泼热心<br>• 方方B（4×4）：蓝色，机灵话多<br>• 大方（5×5）：紫色智者</p>
-                        
-                        <p><strong>30秒结构：</strong></p>
-                        <p>困惑 → 朋友出现 → 面积展示 → 魔法变形 → 公式浮现 → 欢呼庆祝</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 2: Character -->
-        <div class="stage" id="stage-2">
-            <div class="stage-header">
-                <div class="stage-number">2</div>
-                <div>
-                    <div class="stage-title">角色设计</div>
-                    <div class="stage-desc">确定视觉风格，设计角色提示词</div>
-                </div>
-            </div>
-            
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <p><strong>角色需求：</strong></p>
-                        <p>• 小直角：主角，需要让人产生保护欲<br>• 方方A和方方B：配角，性格互补<br>• 大方：智者形象，5×5的稳重感</p>
-                        <p><strong>风格方向：</strong></p>
-                        <p>皮克斯式3D卡通 + 柔软材质 + 明亮色彩</p>
-                        <p><strong>配色方案：</strong></p>
-                        <p>橙色(小直角) + 红色(方方A) + 蓝色(方方B) + 紫色(大方)</p>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <span class="decision-badge">圆角设计</span>
-                        <span class="decision-badge">大眼睛</span>
-                        <span class="decision-badge">短腿</span>
-                        <span class="decision-badge">3-4-5比例</span>
-                        <p style="margin-top: 15px;"><strong>设计决策：</strong></p>
-                        <p>• 圆角：增加亲和力，避免几何形状的生硬感<br>• 大眼睛：皮克斯风格标志性特征<br>• 短腿：增加可爱度，便于做弹跳动作<br>• 3-4-5比例：最经典的勾股数组合</p>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <p><strong>角色设计稿：</strong></p>
-                        <p><strong>小直角（主角）：</strong></p>
-                        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
-                            Orange right triangle character, Pixar style 3D cartoon, rounded corners, big expressive eyes, short stubby legs, soft fuzzy texture, confused but curious expression, standing on grid paper background, warm lighting
-                        </div>
-                        <p style="margin-top: 10px;"><strong>方方A & 方方B：</strong></p>
-                        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
-                            Red square character (3x3) energetic bouncy, Blue square character (4x4) clever spinning, both with friendly smiles, same Pixar style, geometric yet cute
-                        </div>
-                        <div class="img-placeholder">[角色设计图 - 等待生成]</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 3: Storyboard -->
-        <div class="stage" id="stage-3">
-            <div class="stage-header">
-                <div class="stage-number">3</div>
-                <div>
-                    <div class="stage-title">分镜设计</div>
-                    <div class="stage-desc">规划24个镜头，确定视觉节奏</div>
-                </div>
-            </div>
-            
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <p><strong>时间分配（30秒）：</strong></p>
-                        <p>• 镜头01-02：0-8s（引入困惑）<br>• 镜头03-05：8-20s（魔法展示）<br>• 镜头06-08：20-30s（揭晓+庆祝）</p>
-                        
-                        <p><strong>关键画面：</strong></p>
-                        <p>网格纸背景、面积可视化变形、公式浮现动画</p>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <span class="decision-badge">8个镜头</span>
-                        <span class="decision-badge">30秒片长</span>
-                        <span class="decision-badge">面积变形核心</span>
-                        
-                        <p style="margin-top: 15px;"><strong>分镜决策：</strong></p>
-                        <p>镜头04-05（核心）：两个正方形折叠变形的过程必须清晰<br>镜头06（高潮）：公式 a² + b² = c² 的浮现要有魔法感<br>镜头08（结尾）：三个角色击掌庆祝，强化友情主题</p>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <p><strong>分镜表（8个镜头）：</strong></p>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">01 (0-4s)</div>
-                                <div class="timeline-content">特写：小直角坐在坐标纸上叹气</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">02 (4-8s)</div>
-                                <div class="timeline-content">中景：方方A和方方B从两边跳出来</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">03 (8-12s)</div>
-                                <div class="timeline-content">俯拍：方方A展开3×3网格，方方B展开4×4网格</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">04-05 (12-20s)</div>
-                                <div class="timeline-content">动态跟随：两个正方形折叠变形，飞向斜边</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">06 (20-24s)</div>
-                                <div class="timeline-content">正面：拼成5×5大方，公式 a² + b² = c² 浮现</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">07-08 (24-30s)</div>
-                                <div class="timeline-content">广角：小直角开心跳起，三角色击掌庆祝</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                        <span class="decision-badge">特写为主</span>
-                        <p style="margin-top: 15px;"><strong>关键镜头决策：</strong></p>
-                        <p>镜头18（中点）：必须展示"老地方"的揭晓<br>镜头22（高潮）：纸鸢飞起叠化年轻祖父</p>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <p><strong>分镜表（节选）：</strong></p>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">镜头01</div>
-                                <div class="timeline-content">全景：老宅工作间，祖父扎纸鸢</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">镜头18</div>
-                                <div class="timeline-content">中景：天台揭晓"老地方"</div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-date">镜头22</div>
-                                <div class="timeline-content">特写：红色纸鸢飞向夕阳</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 4-7 Placeholder -->
-        <div class="stage" id="stage-4">
-            <div class="stage-header">
-                <div class="stage-number">4</div>
-                <div>
-                    <div class="stage-title">视频生成</div>
-                    <div class="stage-desc">使用AI工具生成画面</div>
-                </div>
-            </div>
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <div class="placeholder">
-                            [等待补充：工具选择、参数设置]
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <div class="placeholder">
-                            [等待补充：生成过程中的选择和调整]
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <div class="placeholder">
-                            [等待补充：生成片段展示]
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 5 -->
-        <div class="stage" id="stage-5">
-            <div class="stage-header">
-                <div class="stage-number">5</div>
-                <div>
-                    <div class="stage-title">后期剪辑</div>
-                    <div class="stage-desc">剪辑、配乐、调色</div>
-                </div>
-            </div>
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <div class="placeholder">[素材整理]</div>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <div class="placeholder">[剪辑节奏选择]</div>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <div class="placeholder">[最终成片]</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 6 -->
-        <div class="stage" id="stage-6">
-            <div class="stage-header">
-                <div class="stage-number">6</div>
-                <div>
-                    <div class="stage-title">封装发布</div>
-                    <div class="stage-desc">封面、标题、描述、标签</div>
-                </div>
-            </div>
-            
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <div class="placeholder">[平台要求]</div>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <div class="placeholder">[标题选择]</div>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <div class="placeholder">[发布链接]</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stage 7 -->
-        <div class="stage" id="stage-7">
-            <div class="stage-header">
-                <div class="stage-number">7</div>
-                <div>
-                    <div class="stage-title">数据复盘</div>
-                    <div class="stage-desc">播放量、互动、经验总结</div>
-                </div>
-            </div>
-            
-            <div class="stage-content">
-                <div class="column input">
-                    <div class="column-header">📥 设计输入</div>
-                    <div class="column-content">
-                        <div class="placeholder">[数据收集]</div>
-                    </div>
-                </div>
-                
-                <div class="column decision">
-                    <div class="column-header">🤔 决策记录</div>
-                    <div class="column-content">
-                        <div class="placeholder">[成功因素分析]</div>
-                    </div>
-                </div>
-                
-                <div class="column output">
-                    <div class="column-header">✅ 成果输出</div>
-                    <div class="column-content">
-                        <div class="placeholder">[经验沉淀]</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Project: Shiba Story -->
-        <div class="project-content" id="project-shiba" style="display: none;">
-            
-            <!-- Stage 1: Story -->
-            <div class="stage" id="shiba-stage-1">
-                <div class="stage-header">
-                    <div class="stage-number">1</div>
-                    <div>
-                        <div class="stage-title">故事构思</div>
-                        <div class="stage-desc">从想法到剧本，确定核心创意</div>
-                    </div>
-                </div>
-                
-                <div class="stage-content">
-                    <div class="column input">
-                        <div class="column-header">📥 设计输入</div>
-                        <div class="column-content">
-                            <p><strong>原始想法：</strong></p>
-                            <p>探索AI图像生成能力，验证即梦API的可用性，同时创作一个关于宠物与自然的温馨小故事。</p>
-                            <p><strong>参考元素：</strong></p>
-                            <p>• 日本柴犬的治愈形象<br>• 樱花季的浪漫氛围<br>• 阳光与自然的和谐</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column decision">
-                        <div class="column-header">🤔 决策记录</div>
-                        <div class="column-content">
-                            <span class="decision-badge">柴犬主角</span>
-                            <span class="decision-badge">樱花场景</span>
-                            <span class="decision-badge">写实风格</span>
-                            <p style="margin-top: 15px;"><strong>决策理由：</strong></p>
-                            <p>1. 柴犬具有高辨识度和亲和力</p>
-                            <p>2. 樱花+阳光组合视觉效果强</p>
-                            <p>3. 写实风格适合展示AI生成能力</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column output">
-                        <div class="column-header">✅ 成果输出</div>
-                        <div class="column-content">
-                            <p><strong>《柴犬物语》故事核心：</strong></p>
-                            <p>一只可爱的柴犬在春日樱花树下享受阳光，展现宠物与自然和谐共处的美好画面。</p>
-                            <p><strong>项目目标：</strong></p>
-                            <p>验证即梦AI API集成，产出高质量角色设计素材</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Stage 2: Character -->
-            <div class="stage" id="shiba-stage-2">
-                <div class="stage-header">
-                    <div class="stage-number">2</div>
-                    <div>
-                        <div class="stage-title">角色设计</div>
-                        <div class="stage-desc">确定视觉风格，生成角色概念图</div>
-                    </div>
-                </div>
-                
-                <div class="stage-content">
-                    <div class="column input">
-                        <div class="column-header">📥 设计输入</div>
-                        <div class="column-content">
-                            <p><strong>角色需求：</strong></p>
-                            <p>• 主角：纯种日本柴犬，表情可爱治愈<br>• 场景：樱花树下，阳光斑驳<br>• 氛围：温馨、自然、高清写实</p>
-                            <p><strong>技术约束：</strong></p>
-                            <p>使用火山引擎即梦AI API，模型：jimeng_high_aes_general_v21_L</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column decision">
-                        <div class="column-header">🤔 决策记录</div>
-                        <div class="column-content">
-                            <span class="decision-badge">写实渲染</span>
-                            <span class="decision-badge">8K画质</span>
-                            <span class="decision-badge">1024x1024</span>
-                            <p style="margin-top: 15px;"><strong>API调试历程：</strong></p>
-                            <p>尝试 jimeng_t2i_v40 → Access Denied ❌<br>切换 jimeng_high_aes_general_v21_L → 成功 ✅</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column output">
-                        <div class="column-header">✅ 成果输出</div>
-                        <div class="column-content">
-                            <p><strong>最终提示词：</strong></p>
-                            <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
-                                一只可爱的柴犬在樱花树下，阳光明媚，高清写实风格，8k画质
-                            </div>
-                            <p style="margin-top: 15px;"><strong>生成结果：</strong></p>
-                            <div style="margin-top: 10px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-primary);">
-                                <img src="./assets/shiba-inu-sakura.jpg" alt="柴犬角色设计" style="width: 100%; display: block;">
-                            </div>
-                            <p style="margin-top: 10px; font-size: 12px; color: var(--text-muted);">
-                                模型：jimeng_high_aes_general_v21_L | 尺寸：2048x2048 | 生成时间：~5秒
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Stage 3-7 Placeholders -->
-            <div class="stage" id="shiba-stage-3">
-                <div class="stage-header">
-                    <div class="stage-number">3</div>
-                    <div>
-                        <div class="stage-title">后续制作</div>
-                        <div class="stage-desc">分镜、生成、剪辑、发布、复盘</div>
-                    </div>
-                </div>
-                
-                <div class="stage-content">
-                    <div class="column input">
-                        <div class="column-header">📥 设计输入</div>
-                        <div class="column-content">
-                            <div class="placeholder">[等待补充]</div>
-                        </div>
-                    </div>
-                    
-                    <div class="column decision">
-                        <div class="column-header">🤔 决策记录</div>
-                        <div class="column-content">
-                            <div class="placeholder">[等待补充]</div>
-                        </div>
-                    </div>
-                    
-                    <div class="column output">
-                        <div class="column-header">✅ 成果输出</div>
-                        <div class="column-content">
-                            <div class="placeholder">[等待补充]</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
         </div>
         
         <!-- Footer -->
         <footer>
             <p>© 2026 HIYAMAX · AI Shortfilm Lab</p>
-            <p style="margin-top: 10px;">此页面记录 AI 短剧的完整生产过程</p>
+            <p style="margin-top: 10px;">数据驱动架构 | 添加新项目只需创建JSON文件</p>
             <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
                 <span id="theme-icon">☀️</span>
                 <span id="theme-text">Daylight</span>
@@ -893,8 +487,19 @@
         </footer>
     </div>
     
-        <script>
-        // Theme toggle functionality
+    <script>
+        // Project registry - add new projects here
+        const PROJECTS = [
+            { id: 'kite', emoji: '🪁', title: '纸鸢归' },
+            { id: 'mooncake', emoji: '🥮', title: '外婆的月饼模' },
+            { id: 'parking', emoji: '🚗', title: '平行停车' },
+            { id: 'shiba', emoji: '🐕', title: '柴犬物语' },
+            { id: 'pythagoras', emoji: '📐', title: '勾股定理' }
+        ];
+        
+        let currentProject = 'pythagoras';
+        
+        // Theme toggle
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -918,59 +523,206 @@
             }
         }
         
-        // Load saved theme on page load
+        // Load saved theme
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
             updateThemeButton(savedTheme);
         })();
         
-        // Project switcher
-        function switchProject(project) {
-            // Update active tag
-            document.querySelectorAll('.project-tag').forEach(tag => {
-                tag.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Hide all project content
-            document.querySelectorAll('.project-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Show selected project
-            const selectedProject = document.getElementById('project-' + project);
-            if (selectedProject) {
-                selectedProject.style.display = 'block';
-            }
-            
-            // Special case for default projects (kite, mooncake, parking)
-            // They don't have project-content wrappers yet, so we show default content
-            if (['kite', 'mooncake', 'parking'].includes(project)) {
-                document.querySelectorAll('.stage:not([id^="shiba-"])').forEach(stage => {
-                    if (!stage.closest('.project-content')) {
-                        stage.style.display = 'block';
-                    }
-                });
-            } else {
-                // Hide default stages when showing other projects
-                document.querySelectorAll('.stage:not([id^="shiba-"])').forEach(stage => {
-                    if (!stage.closest('.project-content')) {
-                        stage.style.display = 'none';
-                    }
-                });
-            }
-            
-            console.log('Switched to project:', project);
+        // Render project selector
+        function renderProjectSelector() {
+            const container = document.getElementById('projectList');
+            container.innerHTML = PROJECTS.map(p => `
+                <a href="?project=${p.id}" 
+                   class="project-tag ${p.id === currentProject ? 'active' : ''}"
+                   onclick="loadProject('${p.id}'); return false;"
+                   data-project="${p.id}">
+                    ${p.emoji} ${p.title}
+                </a>
+            `).join('');
         }
         
-        // Initialize: show default stages, hide project-specific ones
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide all project-content sections initially
-            document.querySelectorAll('.project-content').forEach(content => {
-                content.style.display = 'none';
+        // Load project data
+        async function loadProject(projectId) {
+            currentProject = projectId;
+            renderProjectSelector();
+            
+            // Update URL
+            history.pushState(null, null, `?project=${projectId}`);
+            
+            const contentDiv = document.getElementById('projectContent');
+            contentDiv.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>加载项目中...</p>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`./pipeline/data/${projectId}.json`);
+                if (!response.ok) throw new Error('Project not found');
+                const data = await response.json();
+                renderProject(data);
+            } catch (error) {
+                contentDiv.innerHTML = `
+                    <div class="error">
+                        <p>❌ 加载失败：${error.message}</p>
+                        <p style="margin-top: 10px; font-size: 13px;">请检查项目数据文件是否存在</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Render project content
+        function renderProject(data) {
+            const contentDiv = document.getElementById('projectContent');
+            
+            let html = '';
+            
+            // Project info header
+            html += `
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-emoji">${data.emoji}</span>
+                        <div>
+                            <div class="project-title">${data.title}</div>
+                            <div class="project-meta">
+                                <span>⏱️ ${data.duration}</span>
+                                <span>📊 ${data.status}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pipeline-flow">
+                    <span class="flow-step">构思</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">角色</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">分镜</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">生成</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">剪辑</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">发布</span>
+                </div>
+            `;
+            
+            // Stages
+            data.stages.forEach(stage => {
+                html += renderStage(stage);
             });
+            
+            contentDiv.innerHTML = html;
+        }
+        
+        // Render single stage
+        function renderStage(stage) {
+            return `
+                <div class="stage" id="stage-${stage.number}">
+                    <div class="stage-header">
+                        <div class="stage-number">${stage.number}</div>
+                        <div>
+                            <div class="stage-title">${stage.title}</div>
+                            <div class="stage-desc">${stage.desc}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stage-content">
+                        <div class="column input">
+                            <div class="column-header">📥 ${stage.input.title}</div>
+                            <div class="column-content">
+                                ${renderColumnContent(stage.input)}
+                            </div>
+                        </div>
+                        
+                        <div class="column decision">
+                            <div class="column-header">🤔 ${stage.decision.title}</div>
+                            <div class="column-content">
+                                ${renderColumnContent(stage.decision)}
+                            </div>
+                        </div>
+                        
+                        <div class="column output">
+                            <div class="column-header">✅ ${stage.output.title}</div>
+                            <div class="column-content">
+                                ${renderColumnContent(stage.output)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Render column content
+        function renderColumnContent(column) {
+            if (column.placeholder) {
+                return `<div class="placeholder">[${column.placeholder}]</div>`;
+            }
+            
+            if (column.content) {
+                return column.content.map(item => {
+                    if (item.timeline) {
+                        return `
+                            <p><strong>${item.subtitle}</strong></p>
+                            <div class="timeline">
+                                ${item.timeline.map(t => `
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">${t.time}</div>
+                                        <div class="timeline-content">${t.desc}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    if (item.code) {
+                        return `
+                            <p><strong>${item.subtitle}</strong></p>
+                            ${item.text ? `<p>${item.text}</p>` : ''}
+                            <div class="code-block">${item.code}</div>
+                        `;
+                    }
+                    
+                    return `
+                        <p><strong>${item.subtitle}</strong></p>
+                        <p>${item.text.replace(/\n/g, '<br>')}</p>
+                    `;
+                }).join('');
+            }
+            
+            // Badges
+            let html = '';
+            if (column.badges) {
+                html += column.badges.map(b => `<span class="decision-badge">${b}</span>
+                `).join('');
+            }
+            
+            if (column.content) {
+                html += column.content.map(item => `
+                    <p style="margin-top: 15px;"><strong>${item.subtitle}</strong></p>
+                    <p>${item.text.replace(/\n/g, '<br>')}</p>
+                `).join('');
+            }
+            
+            if (column.image) {
+                html += `<div class="img-placeholder">${column.image}</div>`;
+            }
+            
+            return html;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjectSelector();
+            
+            // Check URL params
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('project') || 'pythagoras';
+            loadProject(projectId);
         });
-        </script>
+    </script>
 </body>
 </html>
