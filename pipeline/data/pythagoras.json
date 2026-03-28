@@ -3,58 +3,97 @@
   "emoji": "📐",
   "title": "勾股定理",
   "subtitle": "30秒教育卡通短片",
+  "type": "教育类AI短片",
   "duration": "30秒",
   "status": "进行中",
-  "stages": [
+  "currentStep": 1,
+  "createdAt": "2026-03-28",
+  "updatedAt": "2026-03-28",
+  "steps": [
     {
       "number": 1,
-      "title": "故事构思",
-      "desc": "从想法到剧本，确定核心创意",
-      "input": {
-        "title": "设计输入",
-        "content": [
+      "title": "剧本创作",
+      "status": "讨论中",
+      "desc": "从想法到完整剧本，确定故事结构和台词",
+      "content": {
+        "currentVersion": "v2",
+        "versions": [
           {
-            "subtitle": "项目类型",
-            "text": "教育类AI短片 - 用卡通形式教授初中数学知识点"
+            "version": "v1",
+            "date": "2026-03-28 17:00",
+            "author": "Scott + Jetton",
+            "status": "已废弃",
+            "changes": "初始版本",
+            "data": {
+              "concept": "教育类AI短片 - 用卡通形式教授初中数学知识点",
+              "target": "初中生，对数学几何感到困惑的学生",
+              "story": "迷糊的小直角三角形不知道自己斜边有多长...",
+              "structure": "困惑 → 朋友出现 → 面积展示 → 魔法变形 → 公式浮现 → 欢呼庆祝"
+            }
           },
           {
-            "subtitle": "目标受众",
-            "text": "初中生，对数学几何感到困惑的学生"
-          },
-          {
-            "subtitle": "参考作品",
-            "text": "• 皮克斯短片《蓝雨伞之恋》的情感拟人化\n• Numberphile频道的可视化数学讲解\n• 3Blue1Brown的动画数学概念"
+            "version": "v2",
+            "date": "2026-03-28 18:00",
+            "author": "Scott + Jetton",
+            "status": "当前版本",
+            "changes": "细化角色设定和故事结构",
+            "data": {
+              "concept": "教育类AI短片 - 用卡通形式教授初中数学知识点",
+              "target": "初中生，对数学几何感到困惑的学生",
+              "references": [
+                "皮克斯短片《蓝雨伞之恋》的情感拟人化",
+                "Numberphile频道的可视化数学讲解",
+                "3Blue1Brown的动画数学概念"
+              ],
+              "decisions": [
+                "选择勾股定理：可视化强，适合动画表现",
+                "3-4-5直角三角形：最经典的例子",
+                "几何精灵拟人化：有情感共鸣点",
+                "皮克斯式3D卡通：形体变形动画更流畅"
+              ],
+              "story": {
+                "core": "迷糊的小直角三角形不知道自己斜边有多长，两位正方形朋友（方方A和方方B）来帮助它，通过面积变换的魔法，让它理解了 a² + b² = c² 的奥秘。",
+                "characters": [
+                  { "name": "小直角", "type": "主角", "desc": "橙色直角三角形，迷糊好奇" },
+                  { "name": "方方A", "type": "配角", "desc": "红色3×3正方形，活泼热心" },
+                  { "name": "方方B", "type": "配角", "desc": "蓝色4×4正方形，机灵话多" },
+                  { "name": "大方", "type": "智者", "desc": "紫色5×5正方形，沉稳智慧" }
+                ],
+                "structure": [
+                  { "phase": "开场", "time": "0-4s", "content": "小直角坐在坐标纸上叹气，不知道自己斜边多长" },
+                  { "phase": "引入", "time": "4-8s", "content": "方方A和方方B跳出来，说要帮忙" },
+                  { "phase": "展示", "time": "8-12s", "content": "展示3×3和4×4的面积" },
+                  { "phase": "魔法", "time": "12-20s", "content": "两个正方形变形，拼成5×5" },
+                  { "phase": "揭晓", "time": "20-24s", "content": "公式 a² + b² = c² 浮现" },
+                  { "phase": "结尾", "time": "24-30s", "content": "小直角开心，三角色击掌" }
+                ]
+              },
+              "keyMoments": [
+                "视觉：两个正方形折叠变形的过程",
+                "金句：\"原来斜边就是你们合起来的力量！\"",
+                "公式展示：a² + b² = c² 动态浮现"
+              ]
+            }
           }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["选择勾股定理", "几何精灵角色", "30秒时长"],
-        "content": [
+        ],
+        "discussions": [
           {
-            "subtitle": "决策理由",
-            "text": "1. 勾股定理可视化强，适合动画表现\n2. 3-4-5直角三角形是最经典的例子\n3. 几何精灵拟人化有情感共鸣点"
+            "date": "2026-03-28 17:00",
+            "platform": "飞书",
+            "summary": "确定做教育类短片，选择勾股定理作为切入点",
+            "decisions": ["教育+卡通", "勾股定理", "30秒时长"]
           },
           {
-            "subtitle": "风格选择",
-            "text": "皮克斯式3D卡通 > 日式2D > 国风水墨\n原因：3D几何形体变形动画更流畅自然"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "《勾股定理》故事核心",
-            "text": "迷糊的小直角三角形不知道自己斜边有多长，两位正方形朋友（方方A和方方B）来帮助它，通过面积变换的魔法，让它理解了 a² + b² = c² 的奥秘。"
+            "date": "2026-03-28 17:30",
+            "platform": "飞书",
+            "summary": "确定几何精灵角色设定，皮克斯风格",
+            "decisions": ["几何精灵", "皮克斯风格", "3-4-5比例"]
           },
           {
-            "subtitle": "角色设定",
-            "text": "• 小直角：橙色直角三角形，迷糊好奇\n• 方方A（3×3）：红色，活泼热心\n• 方方B（4×4）：蓝色，机灵话多\n• 大方（5×5）：紫色智者"
-          },
-          {
-            "subtitle": "30秒结构",
-            "text": "困惑 → 朋友出现 → 面积展示 → 魔法变形 → 公式浮现 → 欢呼庆祝"
+            "date": "2026-03-28 18:00",
+            "platform": "飞书",
+            "summary": "细化6幕结构，每幕4-6秒",
+            "decisions": ["6幕结构", "面积变形核心", "击掌结尾"]
           }
         ]
       }
@@ -62,160 +101,58 @@
     {
       "number": 2,
       "title": "角色设计",
-      "desc": "确定视觉风格，设计角色提示词",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "角色需求",
-            "text": "• 小直角：主角，需要让人产生保护欲\n• 方方A和方方B：配角，性格互补\n• 大方：智者形象，5×5的稳重感"
-          },
-          {
-            "subtitle": "风格方向",
-            "text": "皮克斯式3D卡通 + 柔软材质 + 明亮色彩"
-          },
-          {
-            "subtitle": "配色方案",
-            "text": "橙色(小直角) + 红色(方方A) + 蓝色(方方B) + 紫色(大方)"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["圆角设计", "大眼睛", "短腿", "3-4-5比例"],
-        "content": [
-          {
-            "subtitle": "设计决策",
-            "text": "• 圆角：增加亲和力，避免几何形状的生硬感\n• 大眼睛：皮克斯风格标志性特征\n• 短腿：增加可爱度，便于做弹跳动作\n• 3-4-5比例：最经典的勾股数组合"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "角色设计稿",
-            "text": "小直角（主角）：",
-            "code": "Orange right triangle character, Pixar style 3D cartoon, rounded corners, big expressive eyes, short stubby legs, soft fuzzy texture, confused but curious expression, standing on grid paper background, warm lighting"
-          },
-          {
-            "subtitle": "方方A & 方方B",
-            "code": "Red square character (3x3) energetic bouncy, Blue square character (4x4) clever spinning, both with friendly smiles, same Pixar style, geometric yet cute"
-          }
-        ],
-        "image": "[角色设计图 - 等待生成]"
+      "status": "待开始",
+      "desc": "设计角色外观，生成参考图，确定提示词",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
       }
     },
     {
       "number": 3,
-      "title": "分镜设计",
-      "desc": "规划8个镜头，确定30秒视觉节奏",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "时间分配（30秒）",
-            "text": "• 镜头01-02：0-8s（引入困惑）\n• 镜头03-05：8-20s（魔法展示）\n• 镜头06-08：20-30s（揭晓+庆祝）"
-          },
-          {
-            "subtitle": "关键画面",
-            "text": "网格纸背景、面积可视化变形、公式浮现动画"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["8个镜头", "30秒片长", "面积变形核心"],
-        "content": [
-          {
-            "subtitle": "分镜决策",
-            "text": "镜头04-05（核心）：两个正方形折叠变形的过程必须清晰\n镜头06（高潮）：公式 a² + b² = c² 的浮现要有魔法感\n镜头08（结尾）：三个角色击掌庆祝，强化友情主题"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "分镜表（8个镜头）",
-            "timeline": [
-              {"time": "01 (0-4s)", "desc": "特写：小直角坐在坐标纸上叹气"},
-              {"time": "02 (4-8s)", "desc": "中景：方方A和方方B从两边跳出来"},
-              {"time": "03 (8-12s)", "desc": "俯拍：方方A展开3×3网格，方方B展开4×4网格"},
-              {"time": "04-05 (12-20s)", "desc": "动态跟随：两个正方形折叠变形，飞向斜边"},
-              {"time": "06 (20-24s)", "desc": "正面：拼成5×5大方，公式 a² + b² = c² 浮现"},
-              {"time": "07-08 (24-30s)", "desc": "广角：小直角开心跳起，三角色击掌庆祝"}
-            ]
-          }
-        ]
+      "title": "场景设计",
+      "status": "待开始",
+      "desc": "设计所有场景，生成场景图片",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "scenes": [],
+        "discussions": []
       }
     },
     {
       "number": 4,
       "title": "视频生成",
-      "desc": "使用AI工具生成画面",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "工具选择、参数设置"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "生成过程中的选择和调整"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "生成片段展示"
+      "status": "待开始",
+      "desc": "使用AI工具生成动画视频片段",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "clips": [],
+        "discussions": []
       }
     },
     {
       "number": 5,
       "title": "后期剪辑",
-      "desc": "剪辑、配乐、调色",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "素材整理"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "剪辑节奏选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "最终成片"
+      "status": "待开始",
+      "desc": "剪辑、配乐、调色、合成",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
       }
     },
     {
       "number": 6,
-      "title": "封装发布",
-      "desc": "封面、标题、描述、标签",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "平台要求"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "标题选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "发布链接"
-      }
-    },
-    {
-      "number": 7,
-      "title": "数据复盘",
-      "desc": "播放量、互动、经验总结",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "数据收集"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "成功因素分析"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "经验沉淀"
+      "title": "发布",
+      "status": "待开始",
+      "desc": "封面、标题、描述、多平台发布",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
       }
     }
   ]
