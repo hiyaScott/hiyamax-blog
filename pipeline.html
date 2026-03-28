@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生产流水线 | HIYAMAX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* CSS Variables for theming */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #000;
+            --bg-card: #111;
+            --text-primary: #fff;
+            --text-secondary: #888;
+            --text-muted: #666;
+            --border-primary: #333;
+            --border-secondary: #1a1a1a;
+            --accent-red: #e74c3c;
+            --accent-blue: #3498db;
+            --accent-green: #27ae60;
+            --accent-orange: #f39c12;
+            --hover-bg: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Light theme */
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #fff;
+            --bg-card: #fafafa;
+            --text-primary: #000;
+            --text-secondary: #444;
+            --text-muted: #666;
+            --border-primary: #ddd;
+            --border-secondary: #eee;
+            --accent-red: #c0392b;
+            --accent-blue: #2980b9;
+            --accent-green: #229954;
+            --accent-orange: #d68910;
+            --hover-bg: rgba(52, 152, 219, 0.08);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--accent-red), var(--accent-blue)) 1;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        nav {
+            margin-top: 25px;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding: 5px 0;
+            border-bottom: 1px solid transparent;
+        }
+        
+        nav a:hover {
+            color: var(--accent-blue);
+            border-bottom: 1px solid var(--accent-blue);
+        }
+        
+        /* Project Selector */
+        .project-selector {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .project-selector h3 {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .project-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .project-tag {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .project-tag:hover,
+        .project-tag.active {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: var(--hover-bg);
+        }
+        
+        /* Pipeline Flow */
+        .pipeline-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .flow-step {
+            padding: 6px 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 4px;
+        }
+        
+        .flow-arrow {
+            color: var(--accent-blue);
+        }
+        
+        /* Stage Cards */
+        .stage {
+            margin-bottom: 50px;
+        }
+        
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+        }
+        
+        .stage-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .stage-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        /* Three Column Layout */
+        .stage-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .stage-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .column {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .column-header {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+        
+        .column.input .column-header { color: var(--accent-orange); }
+        .column.decision .column-header { color: var(--accent-blue); }
+        .column.output .column-header { color: var(--accent-green); }
+        
+        .column-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .column-content p {
+            margin-bottom: 12px;
+        }
+        
+        .placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+            border: 2px dashed var(--border-primary);
+            border-radius: 8px;
+        }
+        
+        /* Decision Badge */
+        .decision-badge {
+            display: inline-block;
+            background: var(--hover-bg);
+            border: 1px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 12px;
+            color: var(--accent-blue);
+            margin: 5px 5px 5px 0;
+        }
+        
+        /* Image placeholder */
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-red), var(--accent-blue));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+        
+        .timeline-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-primary);
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="./logo.png" alt="HIYAMAX" class="logo">
+            <h1 class="page-title">AI短剧生产流水线</h1>
+            <p class="page-subtitle">Design → Decision → Deliver 全链路记录</p>
+            <nav>
+                <a href="./">首页</a>
+                <a href="./#films">实验短片</a>
+                <a href="./pipeline.html">生产流水线</a>
+            </nav>
+        </header>
+        
+        <!-- Project Selector -->
+        <div class="project-selector">
+            <h3>选择项目查看生产过程</h3>
+            <div class="project-list">
+                <span class="project-tag active" onclick="switchProject('kite')">🪁 纸鸢归</span>
+                <span class="project-tag" onclick="switchProject('mooncake')">🥮 外婆的月饼模</span>
+                <span class="project-tag" onclick="switchProject('parking')">🚗 平行停车</span>
+            </div>
+        </div>
+        
+        <!-- Pipeline Flow -->
+        <div class="pipeline-flow">
+            <span class="flow-step">构思</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">角色</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">分镜</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">生成</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">剪辑</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">发布</span>
+        </div>
+        
+        <!-- Stage 1: Story -->
+        <div class="stage" id="stage-1">
+            <div class="stage-header">
+                <div class="stage-number">1</div>
+                <div>
+                    <div class="stage-title">故事构思</div>
+                    <div class="stage-desc">从想法到剧本，确定核心创意</div>
+                </div>
+            </div>
+            
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <p><strong>原始想法：</strong></p>
+                        <p>想要做一个关于中国传统文化的温情短片，弥补之前作品中缺少的中式家庭题材空白。</p>
+                        <p><strong>参考作品：</strong></p>
+                        <p>• 《末世微光》的简单核心关系<br>• 《时间银行》的双向牺牲结构<br>• 《记忆典当铺》的记忆可视化</p>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <span class="decision-badge">选择纸鸢文化</span>
+                        <span class="decision-badge">阿尔茨海默症主题</span>
+                        <span class="decision-badge">祖孙二人关系</span>
+                        <p style="margin-top: 15px;"><strong>决策理由：</strong></p>
+                        <p>1. 纸鸢是非遗文化，有视觉辨识度</p>
+                        <p>2. 阿尔茨海默症是现代社会议题</p>
+                        <p>3. 祖孙互动天然具有情感张力</p>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <p><strong>《纸鸢归》故事核心：</strong></p>
+                        <p>一位患阿尔茨海默症的祖父，每天制作纸鸢却记不清为什么。孙子发现祖父是在完成20年前的承诺——每年为孙子做一只纸鸢，直到第100只。</p>
+                        <p><strong>四幕结构：</strong></p>
+                        <p>建立 → 追寻 → 真相 → 传承</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 2: Character -->
+        <div class="stage" id="stage-2">
+            <div class="stage-header">
+                <div class="stage-number">2</div>
+                <div>
+                    <div class="stage-title">角色设计</div>
+                    <div class="stage-desc">确定视觉风格，设计角色提示词</div>
+                </div>
+            </div>
+            
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <p><strong>角色需求：</strong></p>
+                        <p>• 祖父：70岁左右，手艺人气质，慈祥但略带迷茫<br>• 孙子：8-10岁，活泼懂事，与祖父有深厚感情</p>
+                        <p><strong>风格方向：</strong></p>
+                        <p>写实渲染 + 温暖色调 + 中国传统元素</p>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <span class="decision-badge">写实风格</span>
+                        <span class="decision-badge">竹青色服装</span>
+                        <span class="decision-badge">工作间场景</span>
+                        <p style="margin-top: 15px;"><strong>提示词迭代：</strong></p>
+                        <p>v1: 过于卡通化 ❌<br>v2: 服装太现代 ❌<br>v3: 加入竹编元素 ✅</p>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <p><strong>最终提示词（祖父）：</strong></p>
+                        <div style="background: var(--bg-secondary); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
+                            Elderly Chinese craftsman, 70yo, gentle eyes with slight confusion, wearing traditional bamboo-blue work clothes, silver hair, weathered hands, warm lighting, photorealistic rendering
+                        </div>
+                        <div class="img-placeholder">[角色定妆图]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 3: Storyboard -->
+        <div class="stage" id="stage-3">
+            <div class="stage-header">
+                <div class="stage-number">3</div>
+                <div>
+                    <div class="stage-title">分镜设计</div>
+                    <div class="stage-desc">规划24个镜头，确定视觉节奏</div>
+                </div>
+            </div>
+            
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <p><strong>四幕时间分配：</strong></p>
+                        <p>• 第一幕：0-1.5min (镜头01-06)<br>• 第二幕：1.5-3.5min (镜头07-15)<br>• 第三幕：3.5-5min (镜头16-24)</p>
+                        <p><strong>色彩规划：</strong></p>
+                        <p>竹青 → 中国红 → 暖金</p>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <span class="decision-badge">24个镜头</span>
+                        <span class="decision-badge">5分钟片长</span>
+                        <span class="decision-badge">特写为主</span>
+                        <p style="margin-top: 15px;"><strong>关键镜头决策：</strong></p>
+                        <p>镜头18（中点）：必须展示"老地方"的揭晓<br>镜头22（高潮）：纸鸢飞起叠化年轻祖父</p>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <p><strong>分镜表（节选）：</strong></p>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">镜头01</div>
+                                <div class="timeline-content">全景：老宅工作间，祖父扎纸鸢</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">镜头18</div>
+                                <div class="timeline-content">中景：天台揭晓"老地方"</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">镜头22</div>
+                                <div class="timeline-content">特写：红色纸鸢飞向夕阳</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 4-7 Placeholder -->
+        <div class="stage" id="stage-4">
+            <div class="stage-header">
+                <div class="stage-number">4</div>
+                <div>
+                    <div class="stage-title">视频生成</div>
+                    <div class="stage-desc">使用AI工具生成画面</div>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <div class="placeholder">
+                            [等待补充：工具选择、参数设置]
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <div class="placeholder">
+                            [等待补充：生成过程中的选择和调整]
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <div class="placeholder">
+                            [等待补充：生成片段展示]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 5 -->
+        <div class="stage" id="stage-5">
+            <div class="stage-header">
+                <div class="stage-number">5</div>
+                <div>
+                    <div class="stage-title">后期剪辑</div>
+                    <div class="stage-desc">剪辑、配乐、调色</div>
+                </div>
+            </div>
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <div class="placeholder">[素材整理]</div>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <div class="placeholder">[剪辑节奏选择]</div>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <div class="placeholder">[最终成片]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 6 -->
+        <div class="stage" id="stage-6">
+            <div class="stage-header">
+                <div class="stage-number">6</div>
+                <div>
+                    <div class="stage-title">封装发布</div>
+                    <div class="stage-desc">封面、标题、描述、标签</div>
+                </div>
+            </div>
+            
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <div class="placeholder">[平台要求]</div>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <div class="placeholder">[标题选择]</div>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <div class="placeholder">[发布链接]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stage 7 -->
+        <div class="stage" id="stage-7">
+            <div class="stage-header">
+                <div class="stage-number">7</div>
+                <div>
+                    <div class="stage-title">数据复盘</div>
+                    <div class="stage-desc">播放量、互动、经验总结</div>
+                </div>
+            </div>
+            
+            <div class="stage-content">
+                <div class="column input">
+                    <div class="column-header">📥 设计输入</div>
+                    <div class="column-content">
+                        <div class="placeholder">[数据收集]</div>
+                    </div>
+                </div>
+                
+                <div class="column decision">
+                    <div class="column-header">🤔 决策记录</div>
+                    <div class="column-content">
+                        <div class="placeholder">[成功因素分析]</div>
+                    </div>
+                </div>
+                
+                <div class="column output">
+                    <div class="column-header">✅ 成果输出</div>
+                    <div class="column-content">
+                        <div class="placeholder">[经验沉淀]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 HIYAMAX · AI Shortfilm Lab</p>
+            <p style="margin-top: 10px;">此页面记录 AI 短剧的完整生产过程</p>
+            <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-text">Daylight</span>
+            </button>
+        </footer>
+    </div>
+    
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+        }
+        
+        function updateThemeButton(theme) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (theme === 'light') {
+                icon.textContent = '🌙';
+                text.textContent = 'DeepDark';
+            } else {
+                icon.textContent = '☀️';
+                text.textContent = 'Daylight';
+            }
+        }
+        
+        // Load saved theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        })();
+        
+        // Project switcher
+        function switchProject(project) {
+            // Update active tag
+            document.querySelectorAll('.project-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // In the future, this would load different project data
+            console.log('Switching to project:', project);
+        }
+    </script>
+</body>
+</html>
