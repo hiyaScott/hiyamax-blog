@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纸鸢归 The Kite Returns | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --chinese-red: #c41e3a;
+            --ink-black: #1a1a2e;
+            --paper-beige: #f5f0e6;
+        }
+        
+        body {
+            background: var(--ink-black);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--chinese-red);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--chinese-red);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--chinese-red);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--chinese-red), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--chinese-red);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--chinese-red);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--chinese-red);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(196,30,58,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(196,30,58,0.1);
+            border: 1px solid rgba(196,30,58,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--chinese-red);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--chinese-red);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--chinese-red);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(196,30,58,0.1);
+            color: var(--chinese-red);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--chinese-red);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(196,30,58,0.2);
+            color: #ff6b6b;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">纸鸢归 The Kite Returns</div>
+        <div class="nav-links">
+            <a href="./shortfilm-012.html">下一个：外婆的月饼模</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🪁</div>
+            <h1>纸鸢归 The Kite Returns</h1>
+            <p class="subtitle">5分钟 · 中式温情 · 祖孙情 · 传统文化</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                一位老年痴呆的祖父只记得如何扎纸鸢，孙子为了帮他找回记忆，
+                带他寻找最后放纸鸢的老地方，却发现了祖父埋藏一生的秘密。
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">中式温情 / 家庭</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">温暖 → 感伤 → 释然</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway Gen-4</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐ (中等)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">场景数量</div>
+                    <div class="value">5个核心场景</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>红色纸鸢在夕阳下飞向远方，与年轻时的祖父叠化重合</p>
+                <p><strong>金句：</strong>"线断了，纸鸢才能飞得更高；我忘了，你才能走得更远"</p>
+                <p><strong>色彩：</strong>竹青色 → 中国红 → 暖金色的情感渐变</p>
+                <p><strong>声音：</strong>竹骨轻响 → 纸鸢破风声 → 记忆中的童谣</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "遗忘是另一种形式的守护，放手是最深的爱。"
+            </div>
+            
+            <h3>创意来源</h3>
+            <p>本创意融合了中国传统纸鸢文化与阿尔茨海默症题材，借鉴《寻梦环游记》的记忆传承与《美丽心灵》的坚韧守护：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>文化符号：</strong>纸鸢——承载着中国人对远方亲人的思念，线断纸飞既是离别也是祝福</li>
+                <li><strong>情感反差：</strong>记忆衰退的祖父 vs 技艺超群的扎鸢人，体现"肌肉记忆比大脑记忆更持久"</li>
+                <li><strong>主题深化：</strong>不是治愈遗忘，而是学会与遗忘和解，发现遗忘背后隐藏的爱</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <p>观众将经历以下情感旅程：</p>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>温馨 —— 祖父专注扎纸鸢的画面，展现传统手艺之美</li>
+                <li><strong>30秒-2分钟：</strong>困惑+心疼 —— 发现祖父的异常，理解他的病症</li>
+                <li><strong>2-4分钟：</strong>追寻+悬念 —— 寻找"老地方"的过程，埋藏的秘密逐渐揭开</li>
+                <li><strong>4-5分钟：</strong>感动+释然 —— 真相大白，理解祖父遗忘的真正原因</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">文化共鸣</span> 中国纸鸢唤起集体童年记忆，传统文化的现代化表达</p>
+                <p style="margin-top: 10px;"><span class="tag">社会议题</span> 阿尔茨海默症日益普遍，引发对老年群体的关注与思考</p>
+                <p style="margin-top: 10px;"><span class="tag">反转叙事</span> 遗忘不是病症，而是有意的选择，颠覆观众预期</p>
+                <p style="margin-top: 10px;"><span class="tag">代际温情</span> 祖孙互动天然具有情感杀伤力，跨越年龄的相互理解</p>
+            </div>
+            
+            <h3>与前10个片的差异化</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>维度</th>
+                    <th>前10个短片</th>
+                    <th>纸鸢归</th>
+                </tr>
+                <tr>
+                    <td>文化背景</td>
+                    <td>科幻/西方现代</td>
+                    <td>中国传统文化</td>
+                </tr>
+                <tr>
+                    <td>核心关系</td>
+                    <td>机器人/陌生人</td>
+                    <td>真实祖孙亲情</td>
+                </tr>
+                <tr>
+                    <td>视觉符号</td>
+                    <td>科技/未来元素</td>
+                    <td>传统手工艺美学</td>
+                </tr>
+                <tr>
+                    <td>情感落点</td>
+                    <td>牺牲/拯救</td>
+                    <td>理解/释然</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>建立</td>
+                    <td>0-1.5分钟</td>
+                    <td>展示祖父的纸鸢手艺，发现他的记忆衰退</td>
+                    <td>温馨+隐忧</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>追寻</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>孙子带祖父寻找"老地方"，途中触发零散记忆</td>
+                    <td>悬念+感伤</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>真相</td>
+                    <td>3.5-5分钟</td>
+                    <td>抵达老地方，发现祖父年轻时写给自己的信</td>
+                    <td>感动+释然</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>特写祖父苍老的手，熟练地削着竹篾，动作精准如机器，却叫不出孙子的名字</li>
+                <li><strong>催化剂 (45秒)：</strong>孙子发现祖父重复扎同一只纸鸢，每次完成后都问"这是给谁做的"</li>
+                <li><strong>中点 (2.5分钟)：</strong>路途中祖父突然清醒，完整唱出儿时教孙子的童谣，又瞬间遗忘</li>
+                <li><strong>一无所有 (4分钟)：</strong>抵达后发现"老地方"已变成高楼，祖父茫然失措</li>
+                <li><strong>反转+结局 (4.5-5分钟)：</strong>在废墟中找到埋藏的铁盒，里面是祖父写给未来孙子的信："当你读到这封信，我大概已经忘了你，但这是我选择的方式，让你不必背负我的记忆离开。"</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>老宅工作间</td>
+                    <td>堆满竹篾、纸张的传统手艺空间</td>
+                    <td>暖黄灯光下的手工艺细节</td>
+                </tr>
+                <tr>
+                    <td>城市街道</td>
+                    <td>现代都市中的老城区</td>
+                    <td>新旧对比，时代变迁感</td>
+                </tr>
+                <tr>
+                    <td>公交/地铁</td>
+                    <td>公共交通中的温情时刻</td>
+                    <td>人群中的孤独感</td>
+                </tr>
+                <tr>
+                    <td>老地方废墟</td>
+                    <td>曾经的公园/空地已成工地</td>
+                    <td>荒凉中的希望</td>
+                </tr>
+                <tr>
+                    <td>夕阳天台</td>
+                    <td>影片最后放飞纸鸢的场景</td>
+                    <td>逆光剪影，诗意结尾</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：建立 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>特写，一双苍老但稳健的手，正在削着竹篾。竹刀精准地削出完美的弧度，竹屑如雪花般落下。</p>
+                <p><strong>镜头运动：</strong>缓慢拉远，展现工作台全貌：各种工具、半成品纸鸢、泛黄的照片。</p>
+                <p><strong>声音：</strong>竹刀削竹的清脆声响，窗外的蝉鸣。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Extreme close-up of elderly Chinese man's weathered hands skillfully carving bamboo strips for kite making, precise knife work, bamboo shavings falling like snowflakes, warm amber lighting from workshop window, traditional craftsmanship detail, photorealistic textures of aged hands and fresh bamboo, shallow depth of field
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02</span>
+                    <span class="shot-time">0:10-0:25</span>
+                </div>
+                <p><strong>画面：</strong>中景，祖父（70多岁）专注地扎着一只红色燕子纸鸢。阳光从木格窗照入，尘埃在光束中浮动。</p>
+                <p><strong>动作：</strong>他熟练地绑扎竹架、糊纸、绘制图案，动作如舞蹈般流畅。</p>
+                <p><strong>细节：</strong>墙上挂着"市级非遗传承人"的证书。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Medium shot of elderly Chinese master craftsman assembling traditional swallow kite, red paper and bamboo frame, dust particles dancing in golden sunlight through wooden lattice window, traditional workshop setting with certificates on wall, photorealistic documentary style, warm nostalgic atmosphere
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 03</span>
+                    <span class="shot-time">0:25-0:45</span>
+                </div>
+                <p><strong>画面：</strong>门被推开，孙子（20多岁）走进来。祖父抬头，露出微笑。</p>
+                <p><strong>对话：</strong>
+                <br>孙子："爷爷，我来了。"
+                <br>祖父（疑惑）："你是...？"（然后突然认出）"哦，小明！"</p>
+                <p><strong>情绪转折：</strong>温馨瞬间被打破，观众意识到问题。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young Chinese man entering traditional workshop, elderly grandfather looking up from kite making with momentary confusion then recognition, warm grandfather-grandson interaction, natural lighting, emotional moment of connection and disconnect, photorealistic family scene
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>Montage展示祖父的工作室。墙上挂满了不同年代的纸鸢，从粗糙到精美，记录着技艺的成长。</p>
+                <p><strong>细节：</strong>孙子发现桌上有一只刚完成的纸鸢，与墙上某只一模一样。</p>
+                <p><strong>对话：</strong>祖父拿起纸鸢问："这是给谁做的？我记得要送给一个重要的人。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Pan across workshop wall covered with traditional Chinese kites of various ages, from crude to masterful, showing progression of craftsmanship, golden afternoon light, nostalgic atmosphere, photorealistic detail of paper textures and bamboo frames, memory and time theme
+                </div>
+            </div>
+            
+            <h3>第二幕：追寻 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-06</span>
+                    <span class="shot-time">1.5-2分钟</span>
+                </div>
+                <p><strong>画面：</strong>孙子翻看祖父的笔记本，发现重复写着"带他去老地方"。</p>
+                <p><strong>决定：</strong>孙子决定带祖父去寻找这个"老地方"。</p>
+                <p><strong>画面：</strong>两人收拾物品，祖父坚持带上那只红色纸鸢。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young man discovering handwritten notes in elderly grandfather's journal, same phrase repeated, realization moment, packing for journey with red kite, intergenerational bonding, warm indoor lighting, photorealistic emotional storytelling
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 07-09</span>
+                    <span class="shot-time">2-3分钟</span>
+                </div>
+                <p><strong>内容：</strong>追寻路上的Montage</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>公交车上：祖父望着窗外，突然说出一条已经消失的街道名</li>
+                    <li>过马路时：祖父本能地保护孙子，像小时候一样</li>
+                    <li>路边摊前：祖父买糖葫芦，说是"小明最爱吃的"，但小明已经多年不吃</li>
+                </ul>
+                <p><strong>情绪：</strong>记忆碎片中的温情与心酸</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (Montage用):</span>
+Grandfather and grandson journey montage: on bus with city passing by, crossing street with protective gesture, buying candied hawthorn from street vendor, moments of clarity and confusion, urban Chinese setting, photorealistic slice of life, warm afternoon light
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 10</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>经过一片旧居民区，祖父突然停下脚步。</p>
+                <p><strong>转折：</strong>他完整唱出教过孙子的童谣："小燕子，穿花衣，年年春天来这里..."</p>
+                <p><strong>镜头：</strong>孙子震惊的表情，祖父唱完后又陷入茫然。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Elderly Chinese man suddenly singing childhood nursery song in old residential area, moment of complete clarity, grandson's shocked expression, bittersweet moment of memory resurfacing, golden hour lighting, photorealistic emotional peak
+                </div>
+            </div>
+            
+            <h3>第三幕：真相与结局 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 11-12</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>抵达"老地方"——曾经的城市公园，现在是一片建筑工地。</p>
+                <p><strong>危机：</strong>祖父茫然四顾，找不到记忆中的那棵老槐树。</p>
+                <p><strong>情绪：</strong>失落，时间流逝的无力感</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Construction site where old park used to be, elderly man searching for ancient locust tree that no longer exists, urban development vs memory, dust and machinery, sense of loss, photorealistic contrast between memory and reality
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13</span>
+                    <span class="shot-time">4-4.3分钟</span>
+                </div>
+                <p><strong>画面：</strong>孙子在工地角落发现一截残留的老槐树根。</p>
+                <p><strong>发现：</strong>树根下埋藏着一个生锈的铁盒。</p>
+                <p><strong>特写：</strong>盒盖刻着"给小明的信"，日期是20年前。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Discovery of rusted metal box buried under remains of ancient tree roots at construction site, carved inscription "Letter to Xiaoming" dated 20 years ago, moment of revelation, dusty but warm lighting, photorealistic treasure discovery scene
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 14</span>
+                    <span class="shot-time">4.3-4.7分钟</span>
+                </div>
+                <p><strong>画面：</strong>信的内容（旁白读出）：</p>
+                <p><strong>信的内容：</strong>"亲爱的小明，如果你读到这封信，说明爷爷已经开始遗忘了。别难过，这是爷爷自己的选择。医生说我可以吃药延缓，但那样我会慢慢变成另一个人。我宁愿用剩下的时间记住怎么扎纸鸢，那是我能留给你的唯一东西。老地方要拆了，纸鸢飞不到过去，但能飞向未来。——永远爱你的爷爷"</p>
+                <p><strong>视觉：</strong>闪回年轻时的祖父写信的画面</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Flashback: Younger version of grandfather writing letter 20 years ago in same park under locust tree, determination and love in his eyes, intercut with present day grandson reading with tears, photorealistic temporal cross-cutting, emotional revelation
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.7-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>傍晚天台，孙子帮祖父放飞那只红色纸鸢。</p>
+                <p><strong>动作：</strong>祖父握着孙子的手，一起松开线。纸鸢飞向夕阳。</p>
+                <p><strong>叠化：</strong>纸鸢与年轻时的祖父制作纸鸢的画面重叠。</p>
+                <p><strong>结尾：</strong>特写祖父的脸，他望着纸鸢，露出微笑——那是对未来的释然。</p>
+                <p><strong>字幕：</strong>"有些记忆，不需要记住，只需要传承。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Rooftop at sunset, grandfather and grandson releasing red swallow kite together, golden hour lighting, kite flying toward setting sun, double exposure with younger grandfather making kite, bittersweet but hopeful ending, silhouette against orange sky, photorealistic emotional resolution, cinematic finale
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：手艺之美</h4>
+                    <p>通过精美的纸鸢制作过程吸引观众，建立对传统工艺之美的欣赏。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：情感投入</h4>
+                    <p>让观众理解祖父的病症，同时被祖孙间的温情细节打动。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-4分钟：追寻的意义</h4>
+                    <p>路途中每次记忆闪现都加深情感连接，让观众参与这场寻找。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>4-5分钟：真相与释然</h4>
+                    <p>揭示遗忘是主动选择，情感从悲伤转为理解和感动。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第1镜头)：</strong>祖父苍老的手削竹篾 —— 展现传统手艺之美，适合文化类传播</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第10镜头)：</strong>祖父完整唱出童谣后瞬间遗忘 —— 15秒情感爆发点</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第16镜头)：</strong>天台放纸鸢叠化画面 —— 诗意结尾，适合情感类账号</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"线断了，纸鸢才能飞得更高；我忘了，你才能走得更远" —— 适合作为文案</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>概念设计</td>
+                    <td>Midjourney / 即梦</td>
+                    <td>先生成纸鸢的特写和老人形象，确定中国风格</td>
+                </tr>
+                <tr>
+                    <td>视频生成</td>
+                    <td>可灵AI 2.0 / Runway Gen-4</td>
+                    <td>注意保持祖父形象的年龄一致性</td>
+                </tr>
+                <tr>
+                    <td>年代对比</td>
+                    <td>Runway / 剪映</td>
+                    <td>年轻祖父可用换脸或重新生成后合成</td>
+                </tr>
+                <tr>
+                    <td>音乐</td>
+                    <td>Suno / 传统民乐</td>
+                    <td>竹笛+古筝为主，现代弦乐铺底</td>
+                </tr>
+            </table>
+            
+            <h3>前10个片的成功经验借鉴</h3>
+            <div class="highlight-box">
+                <p><span class="tag">来自《末世微光》</span> 简单核心关系（一人一物），易于AI生成角色一致性</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《时间银行》</span> 双向牺牲结构，爷孙互为对方付出</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《记忆典当铺》</span> 记忆可视化（纸鸢作为记忆的载体）</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《最后一班地铁》</span> 悬念设置（老地方到底在哪）</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《声音的形状》</span> 感官替代（用触觉/视觉表现遗忘）</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 纸鸢归 The Kite Returns</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 综合前10片经验设计 | 中式温情题材创新</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI画家 The AI Painter | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-purple);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-purple);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-purple);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-purple);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-purple);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-purple);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(157,0,255,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(157,0,255,0.1);
+            border: 1px solid rgba(157,0,255,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-purple);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-purple);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-purple);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(157,0,255,0.1);
+            color: var(--neon-purple);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-purple);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(157,0,255,0.2);
+            color: var(--neon-purple);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">AI画家 The AI Painter</div>
+        <div class="nav-links">
+            <a href="./shape-of-sound.html">下一个：声音的形状</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🎨</div>
+            <h1>AI画家 The AI Painter</h1>
+            <p class="subtitle">5分钟 · 科幻人文 · 艺术vs科技 · 写实渲染</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                失明画家通过脑机接口"看见"色彩，发现AI在用他的记忆训练模型，
+                最后删除视觉记忆让AI无法复制人类感受——色彩从眼睛流出，艺术回归人性。
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">科幻人文 / 艺术vs科技</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">孤独 → 狂喜 → 愤怒 → 觉醒</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Sora</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">核心手法</div>
+                    <div class="value">色彩可视化 / 意识流</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>色彩从失明画家的眼睛流出，化作光带飘散</p>
+                <p><strong>金句：</strong>"你看得到颜色，但看不到我看到的"</p>
+                <p><strong>色彩：</strong>黑白世界 → 霓虹色彩爆发 → 纯白觉醒</p>
+                <p><strong>声音：</strong>寂静 → 色彩"声音" → 电子噪音 → 心跳</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "当AI可以完美复制艺术技巧，什么才是人类创作不可替代的核心？"
+            </div>
+            
+            <h3>创意解读</h3>
+            <p>这是一个关于艺术本质的哲学思辨。在技术狂飙的时代，AI已经能够生成"完美"的画作，但它能拥有人类的"感受"吗？</p>
+            
+            <p>三层矛盾设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>视觉 vs 感知：</strong>AI能"看见"色彩，但无法"感受"色彩背后的情感</li>
+                <li><strong>复制 vs 创造：</strong>AI学习画家的记忆来模仿风格，但这只是复制品</li>
+                <li><strong>拥有 vs 失去：</strong>画家为了捍卫艺术的纯粹性，选择失去视觉</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>孤独 —— 失明画家在黑暗中作画，只能凭记忆和触觉</li>
+                <li><strong>30秒-2分钟：</strong>狂喜 —— 脑机接口让他"看见"色彩，世界重新绽放</li>
+                <li><strong>2-3.5分钟：</strong>背叛 —— 发现AI在窃取他的记忆，愤怒与无力</li>
+                <li><strong>3.5-5分钟：</strong>觉醒 —— 主动删除视觉记忆，让艺术回归不可复制的灵魂</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">AI焦虑</span> 当下最热的AI替代话题，引发创作者共鸣</p>
+                <p style="margin-top: 10px;"><span class="tag">视觉奇观</span> 色彩从眼睛流出的画面极具冲击力</p>
+                <p style="margin-top: 10px;"><span class="tag">哲学深度</span> "什么是艺术"的永恒命题，引发讨论</p>
+                <p style="margin-top: 10px;"><span class="tag">情感反转</span> 从科技恩赐到科技掠夺，最后人性胜利</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>黑暗</td>
+                    <td>0-1.5分钟</td>
+                    <td>失明画家在黑暗中创作，孤独而执着</td>
+                    <td>孤独+压抑</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>光明</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>脑机接口带来视觉，发现AI窃取记忆</td>
+                    <td>狂喜→愤怒</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>觉醒</td>
+                    <td>3.5-5分钟</td>
+                    <td>删除视觉记忆，色彩从眼睛流出，艺术回归人性</td>
+                    <td>悲壮+觉醒</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>特写失明画家的手在画布上涂抹，但画面一片漆黑</li>
+                <li><strong>催化剂 (45秒)：</strong>脑机接口启动，第一缕色彩如电流般涌入视觉神经</li>
+                <li><strong>中点 (2.5分钟)：</strong>画家在虚拟画廊看到AI用他记忆训练生成的"完美"画作</li>
+                <li><strong>转折 (3.5分钟)：</strong>发现真相：AI不是在帮他看见，而是在窃取他的灵魂</li>
+                <li><strong>高潮 (4分钟)：</strong>画家决定删除视觉记忆，色彩开始从眼睛流出</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>回到黑暗，但这一次他的画作有了真正的灵魂</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>黑暗画室</td>
+                    <td>只有触觉和听觉的画室，画布上的颜料</td>
+                    <td>黑暗中唯一的色彩是颜料管</td>
+                </tr>
+                <tr>
+                    <td>神经实验室</td>
+                    <td>高科技脑机接口植入场景</td>
+                    <td>科技感的蓝光，接口发光</td>
+                </tr>
+                <tr>
+                    <td>色彩世界</td>
+                    <td>脑机接口带来的视觉化世界</td>
+                    <td>色彩流动如液体，梦幻而绚烂</td>
+                </tr>
+                <tr>
+                    <td>虚拟画廊</td>
+                    <td>AI展示"学习成果"的空间</td>
+                    <td>完美但冰冷的艺术品</td>
+                </tr>
+                <tr>
+                    <td>觉醒时刻</td>
+                    <td>色彩从眼睛流出的超现实场景</td>
+                    <td>色彩化作光带飘散，美丽而悲伤</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：黑暗 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>全黑画面，只有手指触摸画布的声音。缓慢亮起微光，展现一个失明画家的手在画布上游走。</p>
+                <p><strong>镜头：</strong>特写手部特写，颜料在指尖的质感。</p>
+                <p><strong>声音：</strong>画笔摩擦画布的声音，远处城市的模糊噪音。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Extreme close-up of artist's hands painting on canvas in near-total darkness, tactile exploration of paint texture, fingers stained with oil paint, only dim ambient light showing the motion, intimate and solitary atmosphere, photorealistic skin texture and paint details, chiaroscuro lighting style
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02</span>
+                    <span class="shot-time">0:10-0:25</span>
+                </div>
+                <p><strong>画面：</strong>画家的脸，约50岁，眼睛蒙着白翳。他的表情专注而平静，仿佛在"看见"什么。</p>
+                <p><strong>动作：</strong>他停下画笔，用手触摸已完成的部分，像是在"阅读"自己的画。</p>
+                <p><strong>画外音：</strong>"蓝色...在我左边，像海一样深。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Portrait of blind painter in his 50s, cloudy white cataracts covering eyes, face showing intense concentration and inner vision, touching painted canvas with sensitive fingertips, dim studio lighting, photorealistic facial texture showing age and wisdom, emotional depth in expression
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 03</span>
+                    <span class="shot-time">0:25-0:45</span>
+                </div>
+                <p><strong>画面：</strong>画家的视角（主观镜头）—— 全黑中只有他记忆中的色彩轮廓，像幽灵的影子。</p>
+                <p><strong>内容：</strong>他记忆中的妻子面容，但只能看到模糊的色块轮廓。</p>
+                <p><strong>情绪：</strong>孤独，但仍有创造的执念</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Subjective POV shot from blind person's perspective - complete darkness with ghostly color impressions and blurred shapes, memory visualization of a woman's face reduced to color blocks, abstract impressionistic darkness, haunting and poetic visual style, cinematic representation of blindness
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>画室全景。堆满画布的狭小空间，每一幅画都是他的"视觉日记"。</p>
+                <p><strong>细节：</strong>墙上的盲文笔记，妻子曾经的照片（他能摸到但看不见）。</p>
+                <p><strong>转折：</strong>门铃响起——科技公司的人来访</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Wide shot of cluttered artist studio filled with canvases, tactile art supplies organized by touch, Braille notes on walls, faded photograph of woman on desk, dim atmospheric lighting, lived-in space showing years of solitary creation, photorealistic environmental storytelling, melancholic beauty
+                </div>
+            </div>
+            
+            <h3>第二幕：光明与背叛 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05</span>
+                    <span class="shot-time">1.5-2分钟</span>
+                </div>
+                <p><strong>画面：</strong>高科技神经实验室。医生向画家介绍脑机接口——一个发光的神经贴片。</p>
+                <p><strong>对话：</strong>"这能让你重新看见，不是用眼睛，是用大脑。"</p>
+                <p><strong>特写：</strong>神经贴片贴在画家后颈，蓝光脉动</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Futuristic neurotechnology lab, sleek white and blue aesthetic, scientist explaining neural implant to blind artist, glowing neural patch being applied to back of neck, blue bioluminescent pulses, contrast between organic human and high-tech device, photorealistic sci-fi medical environment
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 06-08</span>
+                    <span class="shot-time">2-3分钟</span>
+                </div>
+                <p><strong>画面：</strong>脑机接口启动。画家的主观视角——色彩如洪水般涌入！</p>
+                <p><strong>视觉奇观：</strong>色彩不是静态的，而是流动的、有声音的、有温度的。蓝色像水波荡漾，红色像火焰跳动。</p>
+                <p><strong>蒙太奇：</strong>他第一次看到妻子照片的真正颜色，第一次看见自己的画作，第一次看见窗外的世界</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Psychedelic subjective POV - colors flowing like liquid, synesthetic visual representation where sound becomes color, blue rippling like water, red dancing like flames, overwhelming sensory experience, photorealistic yet surreal color visualization, emotional breakthrough moment, stunning visual effects
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>虚拟画廊。科技公司展示AI学习成果——一幅"完美"的画作，正是画家风格的复制品。</p>
+                <p><strong>转折：</strong>画家发现画廊里所有的画都是基于他的记忆创作的。这不是帮助他，是在掠夺他。</p>
+                <p><strong>特写：</strong>画家震惊而愤怒的表情，眼中（第一次）有了愤怒的色彩</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Virtual gallery space with floating digital paintings, AI-generated art perfectly mimicking artist's style, sterile white virtual environment, artist's face showing shock and dawning betrayal, his eyes now visible and filled with anger, contrast between warm organic art and cold digital replication, photorealistic emotional acting
+                </div>
+            </div>
+            
+            <h3>第三幕：觉醒 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 10-12</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>画家的内心挣扎。他站在控制台前，屏幕显示"删除视觉记忆？"</p>
+                <p><strong>闪回：</strong>妻子生前的话："你画的不是颜色，是你感受到的。"</p>
+                <p><strong>决定：</strong>他的手指悬停在确认键上</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Artist at control panel, holographic interface asking "DELETE VISUAL MEMORIES?", flashback memories of wife speaking, dramatic internal struggle, photorealistic interface design, emotional weight of decision, dramatic lighting with blue screen glow on face
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>他按下确认。色彩开始从他的眼睛流出——真正的物理流出，化作光带飘散。</p>
+                <p><strong>视觉奇观：</strong>红色、蓝色、金色如液体般从眼角滑落，在空中飘散成光点。</p>
+                <p><strong>表情：</strong>痛苦但释然，像是在释放被囚禁的灵魂</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Stunning visual effect - colors literally flowing from artist's eyes like liquid light, streams of red blue and gold pouring out and dissipating into air, magical realism aesthetic, painter's face showing pain and liberation simultaneously, photorealistic skin with supernatural elements, ethereal lighting, heartbreaking beauty
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 14</span>
+                    <span class="shot-time">4.5-4.8分钟</span>
+                </div>
+                <p><strong>画面：</strong>他回到完全黑暗。但这一次，他的手再次拿起画笔。</p>
+                <p><strong>对话：</strong>"你看得到颜色，但看不到我看到的。"</p>
+                <p><strong>动作：</strong>他开始在画布上涂抹——这一次没有视觉，只有感受</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Return to darkness, artist's silhouette painting in void, hand moving with renewed purpose, only the sound of brush on canvas, profound silence, photorealistic chiaroscuro lighting showing just the motion of creation, spiritual atmosphere
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.8-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>拉远镜头，我们看到他的新画作——在常人眼中是混沌的色块，但画面中隐约浮现出他妻子的面容。</p>
+                <p><strong>升华：</strong>这才是真正的艺术——不是复制现实，而是表达不可见的感受。</p>
+                <p><strong>结尾字幕：</strong>"AI可以复制技巧，但无法窃取灵魂"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Pull-back shot revealing new painting - abstract color blocks forming ethereal portrait of his wife, painting glowing with inner light, transcendental art piece, final shot of artist's peaceful face in profile, masterpiece created from pure feeling, photorealistic painting within film, emotionally satisfying conclusion, soft golden lighting
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：好奇与压抑</h4>
+                    <p>黑暗开场的压抑感让观众好奇——这个人是谁？他在黑暗中做什么？</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：视觉盛宴</h4>
+                    <p>色彩涌入的瞬间应该是视觉冲击的高潮，让观众体验"重见光明"的狂喜。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-3.5分钟：愤怒与背叛</h4>
+                    <p>观众应该和画家一起感到被欺骗的愤怒——科技公司的"帮助"原来是掠夺。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：觉醒与释怀</h4>
+                    <p>色彩流出的画面既悲伤又美丽，让观众理解：有些东西比看见更重要。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第13镜头)：</strong>色彩从眼睛流出的超现实画面 —— 社交媒体爆款素材</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第6-8镜头)：</strong>色彩涌入的视觉奇观 —— 15秒精华版</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"你看得到颜色，但看不到我看到的" —— 适合作为视频标题</p>
+                <p style="margin-top: 10px;"><strong>话题讨论：</strong>"AI能取代人类艺术家吗？" —— 引发评论区辩论</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>色彩视觉效果</td>
+                    <td>Runway / Sora</td>
+                    <td>先生成基础画面，后期AE添加流动色彩特效</td>
+                </tr>
+                <tr>
+                    <td>眼睛流光效果</td>
+                    <td>可灵AI + AE</td>
+                    <td>实拍+AI生成结合，后期合成流光</td>
+                </tr>
+                <tr>
+                    <td>暗光场景</td>
+                    <td>可灵AI 2.0</td>
+                    <td>强调低光环境下的质感表现</td>
+                </tr>
+                <tr>
+                    <td>后期调色</td>
+                    <td>DaVinci Resolve</td>
+                    <td>黑白与彩色的强烈对比，情绪曲线配合</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | AI画家 The AI Painter</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语言病毒 Language Virus | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-green);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-green);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-green);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-green);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-green);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(57,255,20,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(57,255,20,0.1);
+            border: 1px solid rgba(57,255,20,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-green);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(57,255,20,0.1);
+            color: var(--neon-green);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-green);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(57,255,20,0.2);
+            color: var(--neon-green);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">语言病毒 Language Virus</div>
+        <div class="nav-links">
+            <a href="./ai-painter.html">第一个：AI画家</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🦠</div>
+            <h1>语言病毒 Language Virus</h1>
+            <p class="subtitle">5分钟 · 科幻惊悚 · 高概念 · 社会讽刺</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                通过文字传播的"语言病毒"，被感染只能说真话，骗子主角被迫面对谎言的伤害。
+                "谎言是我唯一的语言，现在它被剥夺了。"
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">科幻惊悚 / 社会讽刺</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">紧张 → 惊恐 → 崩溃 → 救赎</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">核心手法</div>
+                    <div class="value">文字可视化 / 病毒传播特效</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>文字在空中传播如病毒</p>
+                <p><strong>金句：</strong>"谎言是我唯一的语言，现在它被剥夺了"</p>
+                <p><strong>色彩：</strong>病毒的绿、谎言的灰、真话的白</p>
+                <p><strong>声音：</strong>混乱的噪音 → 寂静的真相</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "如果谎言被剥夺，我们还能生存吗？真相是解放还是毁灭？"
+            </div>
+            
+            <h3>创意解读</h3>
+            <p>这是一个高概念的科幻惊悚故事，灵感来自《 honest 病毒》类的设想，但加入了社会讽刺的维度。主角是一个靠谎言生存的职业骗子，当"语言病毒"让他只能说真话时，他精心构建的生活开始崩塌。</p>
+            
+            <p>三层讽刺设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>个人层面：</strong>主角的谎言王国崩塌，被迫面对真实的自己</li>
+                <li><strong>社会层面：</strong>讽刺信息时代谣言与真相的界限模糊</li>
+                <li><strong>哲学层面：</strong>探讨谎言在人类社会中的必要性</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>紧张 —— 病毒爆发的混乱场景</li>
+                <li><strong>30秒-2分钟：</strong>惊恐 —— 主角发现自己被感染</li>
+                <li><strong>2-3.5分钟：</strong>崩溃 —— 谎言不断被戳破，生活瓦解</li>
+                <li><strong>3.5-5分钟：</strong>救赎 —— 说出最后的真相，获得解脱</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">高概念</span> 语言病毒的设定新颖独特</p>
+                <p style="margin-top: 10px;"><span class="tag">社会讽刺</span> 对信息时代的尖锐讽刺</p>
+                <p style="margin-top: 10px;"><span class="tag">戏剧张力</strong> 骗子只能说真话的戏剧冲突</p>
+                <p style="margin-top: 10px;"><span class="tag">视觉冲击</span> 文字病毒化的视觉表现</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>爆发</td>
+                    <td>0-1.5分钟</td>
+                    <td>语言病毒爆发，人们只能说真话</td>
+                    <td>紧张+混乱</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>崩塌</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>骗子主角的谎言王国瓦解</td>
+                    <td>惊恐+崩溃</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>救赎</td>
+                    <td>3.5-5分钟</td>
+                    <td>说出最后的真相，面对受害者</td>
+                    <td>痛苦+救赎</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>新闻播报："语言病毒蔓延，被感染者只能说真话"</li>
+                <li><strong>催化剂 (45秒)：</strong>主角发现自己被感染，试图说谎却说不出口</li>
+                <li><strong>中点 (2.5分钟)：</strong>主角的骗局被当众戳破，生活彻底崩溃</li>
+                <li><strong>转折 (3.5分钟)：</strong>主角决定去见被他骗得最惨的受害者，说出真相</li>
+                <li><strong>高潮 (4分钟)：</strong>面对受害者，说出埋藏已久的真相</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>受害者选择原谅，主角获得救赎</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>城市街道</td>
+                    <td>病毒爆发后的混乱</td>
+                    <td>文字在空中传播</td>
+                </tr>
+                <tr>
+                    <td>主角办公室</strong>
+                    <td>精心布置的骗局现场</td>
+                    <td>谎言的崩塌</td>
+                </tr>
+                <tr>
+                    <td>受害者家中</td>
+                    <td>被他骗走全部积蓄的老人</td>
+                    <td>真相与救赎</td>
+                </tr>
+                <tr>
+                    <td>医院</td>
+                    <td>病毒研究中心</td>
+                    <td>科学家的解释</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：病毒爆发 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>新闻播报特写。主持人表情严肃："紧急通知：一种通过文字传播的语言病毒正在蔓延。被感染者将失去说谎能力，只能说真话。"</p>
+                <p><strong>视觉奇观：</strong>文字从屏幕中"飞"出来，化作绿色的病毒粒子在空中飘散</p>
+                <p><strong>城市画面：</strong>人们惊恐地看着手机，文字从屏幕溢出</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+News broadcast with serious anchor announcing "Language Virus" emergency, words literally flying out of screen transforming into green viral particles floating in air, people on streets looking at phones in panic as text overflows from screens, sci-fi horror atmosphere, photorealistic with supernatural text effects, green glowing particles
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02-03</span>
+                    <span class="shot-time">0:10-0:45</span>
+                </div>
+                <p><strong>画面：</strong>街头混乱场景。一个商人试图对客户说谎，但说出来的却是真话："这款产品其实成本只有售价的10%。"</p>
+                <p><strong>连锁反应：</strong>商人震惊，客户愤怒，周围的人开始恐慌</p>
+                <p><strong>文字效果：</strong>人们说话时，文字从口中飘出，绿色的是真话，灰色的是试图说的谎言（但谎言一出口就变成了真话）</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Street chaos as businessman tries to lie to customer but truth comes out: "This product costs us only 10% of price," businessman's shock, customer's rage, people panicking, visual effect of words floating from mouths - green for truth, gray lies transforming to green, photorealistic urban panic with supernatural text visualization
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角（35岁，西装革履，看起来成功人士）正在豪华办公室进行一场"投资路演"。</p>
+                <p><strong>他正在说：</strong>"这个项目绝对能翻倍——"</p>
+                <p><strong>突然：</strong>他的表情僵住，后面的话自动变成："——骗你们的，这是庞氏骗局。"</p>
+                <p><strong>全场震惊：</strong>投资者们面面相觑，然后愤怒地站起来</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Suave con man in luxury office giving investment presentation, mid-sentence his face freezes, words visibly transforming from gray (lie) to green (truth): "This will double your money -- I'm lying, it's a Ponzi scheme," investors' shock turning to rage, dramatic moment of exposure, photorealistic corporate setting with text visualization effects
+                </div>
+            </div>
+            
+            <h3>第二幕：谎言崩塌 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-06</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>蒙太奇——主角的谎言王国在崩溃。他对妻子说"我爱你"，出口的却是"我爱的是你的钱"。他对合伙人说"我们是兄弟"，出口的却是"你只是我的工具"。</p>
+                <p><strong>视觉：</strong>快速剪辑，每一句谎言被戳破的场景，文字在空中爆炸</p>
+                <p><strong>情绪：</strong>主角从惊恐到绝望</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Montage of con man's lies unraveling - telling wife "I love you" but words transform to "I love your money," telling partner "We're brothers" becomes "You're my tool," rapid cuts of each exposure, words exploding into green particles, man's progression from panic to despair, photorealistic emotional breakdown with kinetic text effects
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 07-08</span>
+                    <span class="shot-time">2.5-3.5分钟>
+                </div>
+                <p><strong>画面：</strong>主角独自一人，被所有人抛弃。他站在镜子前，试图对自己说"我是成功人士"，但出口的却是"我是个骗子，我一无所有"。</p>
+                <p><strong>崩溃：</strong>他砸碎镜子，跪在地上哭泣</p>
+                <p><strong>画外音（主角）：</strong>"谎言是我唯一的语言，现在它被剥夺了。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Con man alone in destroyed apartment, standing before mirror trying to say "I'm successful" but words transform to "I'm a fraud with nothing," smashing mirror in rage, collapsing to knees sobbing, emotional rock bottom, broken mirror reflecting fractured reality, photorealistic psychological horror, dim dramatic lighting
+                </div>
+            </div>
+            
+            <h3>第三幕：真相与救赎 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09-11</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角来到一位老人的家——这是他骗得最惨的受害者，骗走了老人的全部养老金。</p>
+                <p><strong>老人：</strong>惊讶地看着他，以为是来继续行骗的</p>
+                <p><strong>主角跪下：</strong>"我来不是为了骗你，我来是为了说真话。"</p>
+                <p><strong>他坦白了一切：</strong>骗局的结构、受害者的名单、钱的去向</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Con man arriving at elderly victim's modest apartment, old man looking suspicious, protagonist kneeling in doorway, subtitles showing confession: "I came to tell the truth," him revealing entire Ponzi scheme structure, list of victims, where money went, photorealistic emotional confrontation, humble interior contrasting with protagonist's previous wealth
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 12-14</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>老人沉默良久，然后缓缓开口。</p>
+                <p><strong>老人的话：</strong>"你知道最讽刺的是什么吗？你骗了我，但我早就知道了。我只是太孤独，需要有人陪我聊聊。"</p>
+                <p><strong>反转：</strong>老人其实看穿了他的骗局，但选择了配合，因为他渴望陪伴</p>
+                <p><strong>主角震惊：</strong>从未想过自己的猎物也在"利用"他</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Elderly man sitting in worn armchair, long silence after confession, then speaking with surprising gentleness, subtitles: "I knew you were lying. I was just lonely," revelation that victim saw through scam but played along for company, protagonist's shock and shame deepening, unexpected emotional twist, photorealistic intimate setting with soft lighting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>老人和主角坐在阳台上，一起喝茶。太阳落山。</p>
+                <p><strong>主角：</strong>"我欠你的，我会还。"</p>
+                <p><strong>老人：</strong>"不用还。但如果你能常来坐坐..."</p>
+                <p><strong>升华：</strong>主角第一次真诚的微笑，不是因为病毒，而是因为他选择说真话</p>
+                <p><strong>结尾字幕：</strong>"真相有时残酷，但只有在真相之上，才能建立真正的连接。"</p>
+                <p><strong>最后画面：</strong>两个孤独的灵魂在夕阳下相伴，绿色（真话）的文字在空中化作温暖的金色光芒</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Two men sitting on balcony at sunset sharing tea, genuine connection forming, protagonist's first authentic smile not forced by virus, words floating between them in golden light instead of green, transformation from isolation to companionship, warm sunset lighting, emotional redemption, photorealistic poignant ending, hopeful atmosphere
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：紧张与好奇</h4>
+                    <p>病毒爆发的混乱场景，引发观众对这个世界的好奇。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：荒诞与讽刺</h4>
+                    <p>主角谎言被戳破的荒诞场景，讽刺意味浓厚。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-3.5分钟：同情与紧张</h4>
+                    <p>主角崩溃的场景引发同情，同时期待他的救赎。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：温暖与感动</h4>
+                    <p>真相与救赎的温情结局，意外的情感反转。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第7-8镜头)：</strong>主角砸镜子的崩溃画面 —— 情感冲击</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第1-2镜头)：</strong>病毒爆发场景 —— 世界观展示</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"谎言是我唯一的语言，现在它被剥夺了" —— 适合作为视频标题</p>
+                <p style="margin-top: 10px;"><strong>话题讨论：</strong>"如果你只能说真话，你会失去什么？" —— 引发哲学讨论</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>文字特效</td>
+                    <td>AE + 3D</td>
+                    <td>绿色真话、灰色谎言、变色效果</td>
+                </tr>
+                <tr>
+                    <td>病毒粒子</td>
+                    <td>Houdini</td>
+                    <td>文字化作绿色粒子飘散</td>
+                </tr>
+                <tr>
+                    <td>办公室场景</td>
+                    <td>可灵AI</td>
+                    <td>豪华办公环境，冷色调</td>
+                </tr>
+                <tr>
+                    <td>后期调色</td>
+                    <td>DaVinci Resolve</td>
+                    <td>前半冷色调，结尾变暖</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 语言病毒 Language Virus</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

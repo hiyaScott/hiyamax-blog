@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外婆的月饼模 Grandma's Mooncake Mold | 中式温情短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&family=Ma+Shan+Zheng&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --jade: #00a86b;
+            --cinnabar: #e34234;
+            --gold: #d4af37;
+            --moon: #f5f5dc;
+            --ink: #1a1a1a;
+            --paper: #f9f5e7;
+            --warm: #c9a86c;
+        }
+        
+        body {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'Noto Sans SC', sans-serif;
+            min-height: 100vh;
+            line-height: 1.9;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 168, 107, 0.05) 0%, transparent 50%);
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            border-bottom: 1px solid var(--gold);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+        
+        .nav-links a {
+            color: var(--paper);
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .main {
+            padding-top: 90px;
+            max-width: 950px;
+            margin: 0 auto;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '🥮';
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+        }
+        
+        .hero h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--warm) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.1em;
+        }
+        
+        .hero .subtitle {
+            color: var(--gold);
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .hero .desc {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .section {
+            background: rgba(249, 245, 231, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .section h2 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .section h3 {
+            color: var(--jade);
+            font-size: 1.2rem;
+            margin: 25px 0 12px;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .info-item {
+            background: rgba(249, 245, 231, 0.05);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 6px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .concept-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--cinnabar);
+            padding: 25px;
+            margin: 25px 0;
+            font-size: 1.15rem;
+            line-height: 2;
+            font-family: 'Ma Shan Zheng', cursive;
+            letter-spacing: 0.05em;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 18px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(249, 245, 231, 0.08);
+        }
+        
+        .framework-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(249, 245, 231, 0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(249, 245, 231, 0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        
+        .shot-number {
+            background: linear-gradient(135deg, var(--cinnabar), #c41e3a);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .shot-time {
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .prompt-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 18px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #ccc;
+        }
+        
+        .prompt-box .label {
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            display: block;
+            font-weight: 600;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(0, 168, 107, 0.2);
+            color: var(--jade);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .ux-card {
+            background: rgba(249, 245, 231, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 12px;
+            padding: 22px;
+        }
+        
+        .ux-card h4 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            margin-top: 70px;
+            opacity: 0.7;
+        }
+        
+        .cultural-note {
+            background: rgba(0, 168, 107, 0.08);
+            border: 1px solid rgba(0, 168, 107, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .cultural-note h4 {
+            color: var(--jade);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">外婆的月饼模</div>
+        <div class="nav-links">
+            <a href="./shortfilm-011.html">上一个：纸鸢归</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <h1>外婆的月饼模</h1>
+            <p class="subtitle">Grandma's Mooncake Mold</p>
+            <p class="desc">
+                中秋前夕，外孙女收到外婆留下的神秘包裹——一套12格老月饼模具。
+                每格刻着不同年份的"时间胶囊"，第12格却是空白。
+                在制作月饼的过程中，她发现了外婆埋藏12年的秘密，
+                也读懂了中国式亲情最深沉的告白。
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">中式家庭 / 非遗文化</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">好奇 → 感伤 → 温暖</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway Gen-4</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐ (中等)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">场景数量</div>
+                    <div class="value">4个核心场景</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>面粉扬起时，阳光透过窗棂形成光柱，照亮模具上的刻字</p>
+                <p><strong>金句：</strong>"传承不是复制，而是带着她的温度继续生活"</p>
+                <p><strong>色彩：</strong>暖黄灯光 → 月白清辉 → 炉火橙红的情感渐变</p>
+                <p><strong>声音：</strong>木槌敲打声 → 面粉沙沙声 → 烤箱嗡鸣 → 老式收音机里的中秋戏曲</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "中国式亲情，往往藏在你看不见的地方，等你有一天，终于懂得去看见。"
+            </div>
+            
+            <h3>创意来源</h3>
+            <p>本创意融合了中国传统中秋文化与非遗木雕技艺，以月饼模具为载体，讲述跨越12年的隔代温情：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>文化符号：</strong>月饼模具——不仅是工具，更是记录时光的时光胶囊，每一道刻痕都是爱的密码</li>
+                <li><strong>情感结构：</strong>12个模具对应12年的记忆，第12个空白制造情感落差与悬念</li>
+                <li><strong>主题升华：</strong>传承不是复制过去，而是带着先辈的温度创造新的记忆</li>
+            </ul>
+            
+            <div class="cultural-note">
+                <h4>🎭 文化背景</h4>
+                <p>月饼模具（月饼印）是中国传统木雕工艺的重要组成部分，通常由梨木或枣木雕刻而成，图案多为吉祥纹样。
+                一套模具往往传承数代，承载着家族的记忆与祝福。本剧本将这一非遗元素转化为情感载体，
+                让冰冷的木器成为连接两代人的时光桥梁。</p>
+            </div>
+            
+            <h3>情绪弧线设计</h3>
+            <p>观众将经历以下情感旅程：</p>
+            <div class="framework-list">
+                <li><strong>0-40秒：</strong>好奇 —— 神秘包裹引发悬念，外婆的遗物有什么秘密？</li>
+                <li><strong>40秒-2.5分钟：</strong>温情+感伤 —— 逐格发现模具中的刻字记忆，回忆童年</li>
+                <li><strong>2.5-3.5分钟：</strong>困惑 —— 第12格为何空白？外婆最后想说什么？</li>
+                <li><strong>3.5-5分钟：>3.5-5分钟：</strong>感动+释然 —— 发现隐藏信件，理解空白背后的深意</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">节日共鸣</span> 中秋节是华人最重视的传统节日之一，团圆主题天然引发情感共鸣</p>
+                <p style="margin-top: 10px;"><span class="tag">非遗传承</span> 月饼模具制作技艺展示，符合传统文化复兴的社会热点</p>
+                <p style="margin-top: 10px;"><span class="tag">悬念设计</span> 12格模具+1个空白的结构，制造持续的情感期待与反转</p>
+                <p style="margin-top: 10px;"><span class="tag">女性视角</span> 外婆-外孙女的双女性传承，弥补前11片中男性视角偏多的情况</p>
+            </div>
+            
+            <h3>与前11个片的差异化</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>维度</th>
+                    <th>前11个短片</th>
+                    <th>外婆的月饼模</th>
+                </tr>
+                <tr>
+                    <td>核心关系</td>
+                    <td>祖孙（爷孙为主）</td>
+                    <td>外婆-外孙女（女性传承）</td>
+                </tr>
+                <tr>
+                    <td>情感表达</td>
+                    <td>直接对话/行动</td>
+                    <td>含蓄内敛（文字+物品）</td>
+                </tr>
+                <tr>
+                    <td>叙事结构</td>
+                    <td>线性追寻</td>
+                    <td>拼图式发现（12格解锁）</td>
+                </tr>
+                <tr>
+                    <td>时间跨度</td>
+                    <td>单一时点/短期</td>
+                    <td>12年时间胶囊</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>发现</td>
+                    <td>0-1.5分钟</td>
+                    <td>收到包裹，发现12格模具，开始探索</td>
+                    <td>好奇+温馨</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>回忆</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>逐格发现刻字记忆，第12格空白引发困惑</td>
+                    <td>感伤+悬念</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>传承</td>
+                    <td>3.5-5分钟</td>
+                    <td>发现隐藏信件，理解空白深意，完成传承</td>
+                    <td>感动+释然</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-15秒)：</strong>快递员敲门，神秘包裹送达，寄件人一栏写着已故外婆的名字</li>
+                <li><strong>催化剂 (1分钟)：</strong>打开包裹，发现12格木雕月饼模具，古朴精美，每格图案不同</li>
+                <li><strong>中点 (2.5分钟)：</strong>发现第12格是空白的，与其他11格形成强烈对比，悬念达到顶点</li>
+                <li><strong>一无所有 (3.5分钟)：</strong>用模具做月饼，第12个无法成型，象征着某种缺失</li>
+                <li><strong>反转+结局 (4-5分钟)：</strong>在模具底部暗格发现外婆的信：第12格是留给你的，你的人生不该被我的刻字定义</li>
+            </div>
+            
+            <h3>12格模具刻字内容</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>格数</th>
+                    <th>刻字</th>
+                    <th>对应年份/记忆</th>
+                </tr>
+                <tr><td>第1格</td><td>"小萱第一次叫外婆"</td><td>外孙女1岁</td></tr>
+                <tr><td>第2格</td><td>"会把面粉弄得到处都是"</td><td>3岁学做月饼</td></tr>
+                <tr><td>第3格</td><td>"说长大要当糕点师"</td><td>5岁童言</td></tr>
+                <tr><td>第4格</td><td>"收到第一朵教师节的花"</td><td>小学入学</td></tr>
+                <tr><td>第5格</td><td>"偷偷把月饼分给流浪狗"</td><td>7岁善良</td></tr>
+                <tr><td>第6格</td><td>"考试失利，躲在厨房哭"</td><td>12岁挫折</td></tr>
+                <tr><td>第7格</td><td>"说外婆做的月饼最好吃"</td><td>初中住校回家</td></tr>
+                <tr><td>第8格</td><td>"第一次帮我染白发"</td><td>15岁懂事</td></tr>
+                <tr><td>第9格</td><td>"拿到大学录取通知书"</td><td>18岁成长</td></tr>
+                <tr><td>第10格</td><td>"说以后每年中秋都回家"</td><td>离家承诺</td></tr>
+                <tr><td>第11格</td><td>"最后一次一起做月饼"</td><td>去年中秋</td></tr>
+                <tr><td>第12格</td><td>【空白】</td><td>悬念/留给未来</td></tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：发现 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:15</span>
+                </div>
+                <p><strong>画面：</strong>现代公寓，门铃响起。年轻女孩（小萱，25岁）开门，快递员递来一个老式木箱。</p>
+                <p><strong>细节：</strong>木箱上贴着泛黄的封条，寄件人一栏手写着"外婆"。</p>
+                <p><strong>情绪：</strong>疑惑，外婆已故一年，这是什么时候寄出的？</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Young Chinese woman opening door to receive vintage wooden crate delivery, surprised expression, old-fashioned packaging with handwritten label "Grandma", modern apartment interior, natural daylight, photorealistic, shallow depth of field, mysterious atmosphere
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02</span>
+                    <span class="shot-time">0:15-0:40</span>
+                </div>
+                <p><strong>画面：</strong>小萱小心拆开木箱，里面是一套精美的月饼模具——12格圆形木雕，每格雕刻不同图案。</p>
+                <p><strong>镜头：</strong>特写模具细节：桂花香、兔子、牡丹、寿桃等传统纹样，雕工精湛。</p>
+                <p><strong>光线：</strong>阳光从窗户照入，在模具上形成温暖的光斑。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Close-up of hands unwrapping traditional Chinese mooncake mold set, 12-carved wooden pieces with intricate patterns of osmanthus, rabbit, peony, longevity peach, master craftsmanship, warm sunlight creating golden highlights on aged wood, photorealistic product photography style
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 03-04</span>
+                    <span class="shot-time">0:40-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>Montage：小萱拿起第一格模具，发现底部刻着一行小字。</p>
+                <p><strong>特写：</strong>刻字："小萱第一次叫外婆"——镜头叠化到婴儿小萱的模糊记忆/照片。</p>
+                <p><strong>音乐：</strong>老式收音机传来轻柔的中秋戏曲。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Close-up of carved inscription on mooncake mold bottom "First time Xiaoxuan called me Grandma", shallow depth of field, double exposure with old family photo of baby and grandmother, warm nostalgic lighting, dust particles in sunbeam, photorealistic emotional moment
+                </div>
+            </div>
+            
+            <h3>第二幕：回忆 (1.5-3.5分钟)</h3e>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-10</span>
+                    <span class="shot-time">1.5-3分钟</span>
+                </div>
+                <p><strong>内容：</strong>逐格解锁记忆 Montage</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>第2格："会把面粉弄得到处都是" → 闪回童年小萱满脸面粉的笑脸</li>
+                    <li>第5格："偷偷把月饼分给流浪狗" → 闪回善良的小萱</li>
+                    <li>第7格："说外婆做的月饼最好吃" → 闪回初中回家第一口月饼的满足</li>
+                    <li>第9格："拿到大学录取通知书" → 外婆比自己还激动的泪水</li>
+                    <li>第11格："最后一次一起做月饼" → 去年中秋，外婆已显虚弱</li>
+                </ul>
+                <p><strong>节奏：</strong>快速剪辑，每个记忆3-5秒，情绪逐渐累积</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (Montage用):</span>
+Memory montage series: child covered in flour laughing, feeding stray dog mooncake, teenager tasting mooncake with satisfied expression, college acceptance celebration with grandmother, last mooncake making session, intercut with present day woman holding molds, warm nostalgic color grading, photorealistic family memories
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 11</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>小萱拿起第12格模具，翻转检查——什么都没有，空白。</p>
+                <p><strong>情绪转折：</strong>困惑，不解，甚至有些失落。为什么最后一格是空的？</p>
+                <p><strong>镜头：</strong>小萱反复检查，手指抚摸光滑的木头，与前面11格的刻字形成强烈对比。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young woman's confused expression holding the 12th mooncake mold, smooth empty surface contrasting with inscribed ones, natural lighting from window, moment of mystery and disappointment, photorealistic emotional close-up
+                </div>
+            </div>
+            
+            <h3>第三幕：传承 (3.5-5分钟)</h3e>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 12-13</span>
+                    <span class="shot-time">3.5-4.2分钟</span>
+                </div>
+                <p><strong>画面：</strong>小萱决定用这套模具做月饼。厨房场景，面粉、馅料、烤箱。</p>
+                <p><strong>动作：</strong>她学着外婆的样子，和面、包馅、压模。</p>
+                <p><strong>关键画面：</strong>面粉扬起，阳光透过窗棂形成光柱，照亮空气中的面粉颗粒——外婆曾经教她的场景重现。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young woman making mooncakes in kitchen, flour dust illuminated by sunlight through window lattice, dust particles floating in golden light beams, nostalgic recreation of grandmother's teaching, photorealistic food preparation, warm domestic atmosphere
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 14</span>
+                    <span class="shot-time">4.2-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>小萱不小心碰到模具底部，发现暗格弹出——里面藏着一封信。</p>
+                <p><strong>特写：</strong>泛黄的信纸，外婆熟悉的字迹。</p>
+                <p><strong>旁白（外婆的声音）：</strong>"小萱，如果你找到这封信，说明你已经看完所有模具。前11格记录了你的成长，第12格是留给你的。你的人生不该被我的刻字定义，该由你自己书写。这个空白的模具，是外婆最后的礼物——自由。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Discovery of hidden letter in mooncake mold secret compartment, elderly woman's handwritten note, emotional revelation moment, soft warm lighting, photorealistic detail of aged paper and ink, intimate kitchen setting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>中秋夜，小萱端着自制的月饼站在窗前。月光洒在她脸上。</p>
+                <p><strong>动作：</strong>她咬了一口月饼，眼眶湿润但微笑。</p>
+                <p><strong>叠化：</strong>外婆的形象在月光中若隐若现，两人隔着时空对视。</p>
+                <p><strong>特写：</strong>小萱拿起刻刀，在第12格模具上刻下第一个字："我"。</p>
+                <p><strong>字幕：</strong>"传承不是复制，而是带着她的温度继续生活。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Mid-Autumn night, young woman holding homemade mooncake by window, moonlight illuminating her face with tears and smile, double exposure with grandmother's gentle image, taking carving knife to write first character on empty mold, poetic bittersweet ending, cinematic moonlight, photorealistic emotional resolution
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-40秒：悬念建立</h4>
+                    <p>神秘包裹+已故寄件人，引发观众好奇心，想知道盒子里有什么。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>40秒-2.5分钟：情感积累</h4>
+                    <p>逐格解锁记忆，观众跟随主角重走成长路，产生强烈的代入感。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2.5-3.5分钟：悬念升级</h4>
+                    <p>第12格空白打破预期，制造紧张感——是不是遗漏了什么重要信息？</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：情感释放</h4>
+                    <p>空白背后的深意揭晓，从困惑转为感动，理解传承的真正含义。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第12镜头)：</strong>面粉光柱画面 —— 唯美诗意的视觉瞬间</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第5-10镜头)：</strong>12格记忆蒙太奇 —— 30秒浓缩12年</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第16镜头)：</strong>中秋夜刻字结尾 —— 情感高潮</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"传承不是复制，而是带着她的温度继续生活" —— 适合中秋传播</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>概念设计</td>
+                    <td>Midjourney / 即梦</td>
+                    <td>先生成月饼模具的精美特写，确定传统美学风格</td>
+                </tr>
+                <tr>
+                    <td>年代闪回</td>
+                    <td>Runway / 可灵AI</td>
+                    <td>使用同一演员不同年龄妆造，或AI换脸技术</td>
+                </tr>
+                <tr>
+                    <td>光柱效果</td>
+                    <td>Sora / Runway</td>
+                    <td>面粉+阳光的光柱是情感高潮，需要高质量生成</td>
+                </tr>
+                <tr>
+                    <td>音乐</td>
+                    <td>Suno / 传统民乐</td>
+                    <td>古筝+琵琶为主，融入现代弦乐，中秋戏曲采样</td>
+                </tr>
+            </table>
+            
+            <h3>前11个片的成功经验借鉴</h3>
+            <div class="highlight-box">
+                <p><span class="tag">来自《记忆典当铺》</span> 物品承载记忆，通过月饼模具记录时光</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《末世微光》</span> 沉默的陪伴比言语更有力量</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《时间银行》</span> 代际情感的双向流动与传承</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《最后一班地铁》</span> 悬念设置（空白模具的秘密）</p>
+                <p style="margin-top: 10px;"><span class="tag">来自《纸鸢归》</span> 中式家庭温情的含蓄表达</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🥮 Shrimp Jetton 制作 | 外婆的月饼模 Grandma's Mooncake Mold</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 中秋温情题材 | 女性视角传承故事</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒数100天 Countdown 100 | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-pink);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-pink);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-pink);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-pink);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,0,255,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(255,0,255,0.1);
+            border: 1px solid rgba(255,0,255,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-pink);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-pink);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(255,0,255,0.1);
+            color: var(--neon-pink);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-pink);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(255,0,255,0.2);
+            color: var(--neon-pink);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">倒数100天 Countdown 100</div>
+        <div class="nav-links">
+            <a href="./language-virus.html">下一个：语言病毒</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">⏱️</div>
+            <h1>倒数100天 Countdown 100</h1>
+            <p class="subtitle">5分钟 · 存在主义 · 身份反转 · 命运寓言</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                每个人头顶有死亡倒计时，主角是唯一看不见的，最后揭示他是死神本身。
+                "我不是看不见，我是不能看见。"
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">存在主义 / 身份反转</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">压抑 → 希望 → 震惊 → 释然</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">核心手法</div>
+                    <div class="value">倒计时光效 / 身份反转叙事</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>人们头顶的倒计时数字光效</p>
+                <p><strong>金句：</strong>"我不是看不见，我是不能看见"</p>
+                <p><strong>色彩：</strong>倒计时的红橙渐变，主角周围的灰白色</p>
+                <p><strong>声音：</strong>倒计时的滴答声，最后时刻的心跳</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "如果你知道死亡的确切时间，你会如何生活？如果你是唯一不知道的人，你又是谁？"
+            </div>
+            
+            <h3>创意解读</h3>
+            <p>这是一个关于命运、自由意志和身份认同的哲学寓言。设定借鉴了《死亡倒计时》应用的概念，但加入了存在主义的思考——如果人人都能看到死亡的期限，生活会变成什么样？</p>
+            
+            <p>三层反转设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>表面设定：</strong>每个人头顶都有死亡倒计时，除了主角</li>
+                <li><strong>身份困惑：</strong>主角以为自己是"被诅咒的人"，四处寻找答案</li>
+                <li><strong>真相揭露：</strong>他是死神本身，看不见倒计时是因为他是设定倒计时的那个人</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>压抑 —— 世界被倒计时支配，人人活在恐惧中</li>
+                <li><strong>30秒-2分钟：</strong>困惑 —— 主角是唯一看不见的"异类"</li>
+                <li><strong>2-3.5分钟：</strong>追寻 —— 主角寻找自己看不见的原因</li>
+                <li><strong>3.5-5分钟：</strong>震惊与释然 —— 身份揭露，接受自己的使命</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">高概念</span> 死亡倒计时的设定引人入胜</p>
+                <p style="margin-top: 10px;"><span class="tag">神反转</span> 身份揭露的反转令人震惊</p>
+                <p style="margin-top: 10px;"><span class="tag">哲学思考</span> 关于命运与自由意志的探讨</p>
+                <p style="margin-top: 10px;"><span class="tag">视觉冲击</span> 倒计时数字的光效极具辨识度</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>世界</td>
+                    <td>0-1.5分钟</td>
+                    <td>人人头顶倒计时，生活在恐惧中</td>
+                    <td>压抑+恐惧</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>异类</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>主角是唯一看不见的，寻找答案</td>
+                    <td>困惑+追寻</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>真相</td>
+                    <td>3.5-5分钟</td>
+                    <td>揭示他是死神，接受使命</td>
+                    <td>震惊+释然</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>城市全景，每个人头顶都有发光的倒计时数字</li>
+                <li><strong>催化剂 (45秒)：</strong>主角发现自己是唯一没有倒计时的人</li>
+                <li><strong>中点 (2.5分钟)：</strong>主角遇到一个倒计时即将归零的人，试图拯救他</li>
+                <li><strong>转折 (3.5分钟)：</strong>当那人死去时，主角的手发光了——他才是带走生命的人</li>
+                <li><strong>高潮 (4分钟)：</strong>主角的记忆碎片浮现，他看到了自己的真实身份</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>接受使命，第一次主动"工作"，倒计时在他眼中显现</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>倒计时的城市</td>
+                    <td>人人头顶数字光效</td>
+                    <td>红橙渐变的倒计时</td>
+                </tr>
+                <tr>
+                    <td>主角的公寓</td>
+                    <td>简单的房间，镜子中没有倒计时</td>
+                    <td>主角的困惑与孤独</td>
+                </tr>
+                <tr>
+                    <td>医院</td>
+                    <td>倒计时归零的高发地</td>
+                    <td>死亡与倒计时的关联</td>
+                </tr>
+                <tr>
+                    <td>记忆空间</td>
+                    <td>身份揭露时的内心世界</td>
+                    <td>抽象的光影与记忆碎片</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：倒计时世界 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>城市全景，从高处俯瞰。每个人头顶都有发光的数字倒计时——"47:23:15:09"——显示着剩余的天、时、分、秒。</p>
+                <p><strong>颜色：</strong>数字呈红橙渐变，时间越少颜色越红</p>
+                <p><strong>声音：</strong>低沉的倒计时滴答声，像是整个城市的心跳</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Aerial view of city where every person has glowing holographic countdown numbers floating above heads, format "DD:HH:MM:SS", red-orange gradient colors, dystopian yet photorealistic urban environment, ominous atmosphere, cinematic wide establishing shot
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02-03</span>
+                    <span class="shot-time">0:10-0:45</span>
+                </div>
+                <p><strong>画面：</strong>街头场景。一个年轻人看着头顶的倒计时"00:00:05:23"，表情惊恐。周围人避之不及，像是在躲避瘟疫。</p>
+                <p><strong>动作：</strong>倒计时归零的瞬间，他倒地不起。周围人习以为常地绕过他。</p>
+                <p><strong>画外音：</strong>"在这个世界，死亡不再是意外，而是预约。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Street scene with young man panicking as his countdown shows "00:00:05:23", people avoiding him like plague, countdown hits zero and he collapses, bystanders walking around body unfazed, dystopian acceptance of death, photorealistic with digital countdown overlay, dramatic lighting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角（30岁左右）走过街道。镜头扫过路人，每个人的头顶都有倒计时，除了他——他的头顶空空如也。</p>
+                <p><strong>细节：</strong>有人注意到他，露出惊恐的表情，然后快步走开</p>
+                <p><strong>主角困惑：</strong>他看着玻璃橱窗的倒影——仍然没有倒计时</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man walking through city street, camera panning across pedestrians all with countdowns above heads, protagonist's head has NO numbers, passersby noticing him with fear and quickly moving away, man's confused expression looking at shop window reflection confirming absence of countdown, photorealistic urban setting with selective digital effects
+                </div>
+            </div>
+            
+            <h3>第二幕：异类的追寻 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-06</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角来到医院——这里聚集着倒计时即将归零的人。他试图帮助他们，但毫无办法。</p>
+                <p><strong>对话：</strong>一个老人问："你能看见我的时间吗？" 主角摇头。老人惊恐："你是'无影者'！"</p>
+                <p><strong>传说：</strong>民间传说"无影者"是死神的化身</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Hospital waiting room filled with people whose countdowns show less than 24 hours, protagonist trying to comfort them, elderly patient asking if he can see her time, her face showing horror as she realizes he has no countdown, whispering "The Shadowless", photorealistic medical environment with pervasive countdown displays
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 07-08</span>
+                    <span class="shot-time">2.5-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角遇到一个倒计时"00:00:00:10"的小女孩。她平静地看着他："大哥哥，你也是来带我走的吗？"</p>
+                <p><strong>情绪：</strong>主角心痛，试图阻止倒计时归零，但无能为力</p>
+                <p><strong>倒计时归零：</strong>小女孩倒下，但主角的手突然发出白光</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young girl with countdown showing "00:00:00:10" calmly looking at protagonist, asking if he's here to take her, protagonist's desperate attempt to stop countdown, girl collapsing as timer hits zero, protagonist's hand suddenly glowing with white light, heartbreaking moment of revelation, photorealistic emotional acting with special effects
+                </div>
+            </div>
+            
+            <h3>第三幕：身份揭露 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09-11</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角看着发光的手，记忆碎片如潮水般涌来。</p>
+                <p><strong>闪回：</strong>他看到自己不是人类，而是死神的化身。他设定每个人的倒计时，但他自己"不能"看见——因为看见就意味着干预，而他必须保持中立。</p>
+                <p><strong>真相：</strong>他不是看不见，他是不能看见</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Protagonist looking at glowing hand, memory fragments flooding in as flashbacks, revealing he's not human but embodiment of Death, setting countdowns for every person, his inability to see them is by design - he cannot intervene, abstract memory visualization with ethereal lighting, photorealistic face showing dawning realization
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 12-14</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角完全觉醒。他的眼睛开始能看到倒计时——不是为了改变，而是为了陪伴。</p>
+                <p><strong>金句：</strong>"我不是看不见，我是不能看见。但现在，我选择看见——为了陪伴你们走完最后一程。"</p>
+                <p><strong>转变：</strong>他不再逃避，而是走向那些倒计时即将归零的人</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Protagonist's full awakening, eyes now able to see countdowns appearing in his vision, no longer trying to change fate but accepting role as companion, subtitles showing his realization, him walking toward dying people with compassion, transformation from confused human to accepting Death, ethereal lighting with countdowns now visible to him
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角坐在小女孩身边，握着她的手。倒计时归零，但这一次——女孩是在微笑中离开的。</p>
+                <p><strong>升华：</strong>死亡不再可怕，因为有他陪伴。他不是带来死亡的死神，而是见证死亡的守护者。</p>
+                <p><strong>结尾字幕：</strong>"死亡不是终点，被遗忘才是。"</p>
+                <p><strong>最后画面：</strong>主角消失在人群中，继续他的使命</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Protagonist sitting beside young girl holding her hand as countdown reaches zero, girl smiling peacefully, death transformed into gentle passing, protagonist as compassionate companion rather than feared reaper, emotional transcendence, soft lighting, photorealistic poignant moment, protagonist blending back into crowd as guardian of transitions
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：压抑与好奇</h4>
+                    <p>倒计时世界观的建立，引发观众对这个世界的好奇。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：困惑与同情</h4>
+                    <p>主角作为"异类"的孤独，引发观众同情。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-3.5分钟：紧张与悲伤</h4>
+                    <p>小女孩的情节引发情感共鸣，主角的无能为力令人揪心。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：震惊与释然</h4>
+                    <p>身份揭露的反转，以及最终对死亡的重新定义。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第12-14镜头)：</strong>主角觉醒画面 —— 社交媒体金句素材</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第1镜头)：</strong>倒计时世界观 —— 15秒世界观展示</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"我不是看不见，我是不能看见" —— 适合作为视频标题</p>
+                <p style="margin-top: 10px;"><strong>话题讨论：</strong>"如果你能看见死亡倒计时，你会怎么做？" —— 引发哲学讨论</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>倒计时特效</td>
+                    <td>AE + 3D</td>
+                    <td>红橙渐变数字，发光效果</td>
+                </tr>
+                <tr>
+                    <td>城市场景</td>
+                    <td>可灵AI</td>
+                    <td>现代都市，冷色调</td>
+                </tr>
+                <tr>
+                    <td>记忆闪回</td>
+                    <td>Runway</td>
+                    <td>抽象光影，梦境风格</td>
+                </tr>
+                <tr>
+                    <td>后期调色</td>
+                    <td>DaVinci Resolve</td>
+                    <td>冷色调为主，觉醒时变暖</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 倒数100天 Countdown 100</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

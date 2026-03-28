@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最后一班地铁 The Last Train | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-orange);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-orange);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-orange);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-orange);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-orange);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-orange);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,102,0,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(255,102,0,0.1);
+            border: 1px solid rgba(255,102,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-orange);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-orange);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-orange);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(255,102,0,0.1);
+            color: var(--neon-orange);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-orange);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(255,102,0,0.2);
+            color: var(--neon-orange);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">最后一班地铁 The Last Train</div>
+        <div class="nav-links">
+            <a href="./ai-painter.html">下一个：AI画家</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🚇</div>
+            <h1>最后一班地铁 The Last Train</h1>
+            <p class="subtitle">5分钟 · 悬疑惊悚 · 时间循环 · 反转</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                深夜末班地铁，主角发现车厢里的乘客都是"重复的人"——
+                他们每天做着同样的动作。最后揭示：主角才是那个被困在时间循环里的"鬼"。
+            </p>
+        </section>
+        
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">悬疑 / 惊悚 / 反转</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">好奇 → 不安 → 恐惧 → 释然</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">Runway / Sora</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">场景数量</div>
+                    <div class="value">3个核心场景</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>满车厢乘客同时转头看向主角</p>
+                <p><strong>金句：</strong>"你以为在观察，其实你被观察"</p>
+                <p><strong>反转：</strong>主角发现自己是"鬼"，其他人是真实乘客</p>
+                <p><strong>色调：</strong>冷绿荧光 → 暖黄回忆 → 纯白超现实</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "当我们觉得自己在观察世界时，是否想过自己也是被观察的对象？<br>
+                那些我们认为'重复'的他人，或许才是真正的'活人'。"
+            </div>
+            
+            <h3>创意来源</h3>
+            <p>融合《恐怖游轮》的时间循环设定与《灵异第六感》的身份反转，创造一个"观察者反被观察"的悬疑故事。</p>
+            
+            <p>核心反转设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>第一层误导：</strong>让观众以为主角发现了什么秘密</li>
+                <li><strong>第二层反转：</strong>主角发现自己才是"异常存在"</li>
+                <li><strong>第三层温情：</strong>这不是恐怖故事，而是关于接纳和告别</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-1分钟：</strong>日常感 —— 深夜加班回家，疲惫但正常的都市生活</li>
+                <li><strong>1-3分钟：</strong>诡异感 —— 发现乘客重复同样动作，不安感逐渐升级</li>
+                <li><strong>3-4分钟：</strong>恐惧 —— 乘客同时转头，揭示真相的恐怖瞬间</li>
+                <li><strong>4-5分钟：</strong>释然 —— 接受自己已死的事实，完成告别</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">强反转</span> 最后30秒的揭秘极具传播性</p>
+                <p style="margin-top: 10px;"><span class="tag">都市传说</span> 地铁题材自带恐怖氛围和代入感</p>
+                <p style="margin-top: 10px;"><span class="tag">细思极恐</strong> 二刷时会发现大量伏笔，增加讨论度</p>
+                <p style="margin-top: 10px;"><span class="tag">情感收尾</span> 不是纯恐怖，结尾的温情让故事更完整</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>建置</td>
+                    <td>0-1.5分钟</td>
+                    <td>深夜末班车，疲惫的主角上车，发现车厢异常安静</td>
+                    <td>压抑+好奇</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>发展</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>发现乘客重复动作，试图打破循环，失败</td>
+                    <td>不安+恐惧</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>高潮</td>
+                    <td>3.5-5分钟</td>
+                    <td>真相揭露，主角是"鬼"，完成告别</td>
+                    <td>震惊+释然</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>地铁隧道里的灯一盏盏熄灭，最后一班车的冰冷感</li>
+                <li><strong>催化剂 (45秒)：</strong>主角注意到对面的乘客在做重复动作——整点看表</li>
+                <li><strong>中点 (2.5分钟)：</strong>主角试图与乘客对话，但对方完全无视他，诡异感达到顶点</li>
+                <li><strong>高潮 (4分钟)：</strong>所有乘客同时转头看向他，眼神空洞</li>
+                <li><strong>真相 (4.5分钟)：</strong>车窗倒影中没有主角，揭示他是"鬼"</li>
+                <li><strong>结局 (5分钟)：</strong>主角接受现实，在晨光中消散，其他乘客继续他们的旅程</li>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：深夜末班车 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>深夜地铁站台，空旷无人。主角（30岁男性，西装革履但疲惫）独自等待。</p>
+                <p><strong>环境：</strong>站台广播"末班车即将进站"，回声在空旷的站台回荡。</p>
+                <p><strong>色调：</strong>冷色调，荧光灯的惨白。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Empty subway platform at night, fluorescent lighting, single tired businessman in suit waiting alone, "last train approaching" announcement echoing, cold sterile atmosphere, wide shot showing isolation, photorealistic urban night scene, cinematic film noir lighting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02-03</span>
+                    <span class="shot-time">0:10-0:30</span>
+                </div>
+                <p><strong>画面：</strong>列车进站，车厢内灯光昏暗。主角上车，发现车厢里已经有十几个乘客。</p>
+                <p><strong>异常：</strong>乘客们坐得很整齐，但没有任何人说话、看手机或做其他动作，只是静静地坐着。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Subway train arriving at platform, dim interior lighting, tired businessman boarding, noticing passengers sitting in perfect rows, complete silence, no one looking at phones, eerie stillness, photorealistic documentary style, unsettling atmosphere
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04-05</span>
+                    <span class="shot-time">0:30-1分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角坐下，环顾四周。对面坐着一个穿红裙的女人，低头看表。</p>
+                <p><strong>细节：</strong>车厢广告、安全提示、路线图——一切都正常，但就是太安静了。</p>
+                <p><strong>声音：</strong>只有列车行驶的轰鸣声和空调的低鸣。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Interior subway car, businessman sitting across from woman in red dress looking at watch, other passengers sitting motionless, advertisements and safety signs visible, only sound of train movement and air conditioning, photorealistic claustrophobic atmosphere, tense silence
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 06</span>
+                    <span class="shot-time">1-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>列车经过一个隧道，灯光闪烁。在明暗交替中，主角似乎看到对面的女人抬了一下头。</p>
+                <p><strong>诡异：</strong>灯亮后，女人还是那个姿势——低头看表。</p>
+                <p><strong>主角反应：</strong>揉了揉眼睛，以为自己太累看错了。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Subway passing through tunnel, lights flickering, in the darkness passenger seems to move, lights return and she's in same position, man's confused reaction, strobing light effect, photorealistic suspense building, subtle horror atmosphere
+                </div>
+            </div>
+            
+            <h3>第二幕：发现异常 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 07-08</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角开始仔细观察。他发现：</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>红裙女人每隔30秒就看一次表，动作完全一致</li>
+                    <li>旁边的大叔每隔1分钟整理一次领带，角度都一样</li>
+                    <li>远处的学生每隔20秒推一次眼镜</li>
+                </ul>
+                <p><strong>主角表情：</strong>从困惑到不安。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man observing passengers realizing they're in loops, woman checking watch every 30 seconds, man adjusting tie every minute, student pushing glasses every 20 seconds, repetitive synchronized movements, growing unease on protagonist's face, photorealistic uncanny valley effect
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09-10</span>
+                    <span class="shot-time">2.5-3分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角试图打破这种诡异。他站起来，走到红裙女人面前。</p>
+                <p><strong>尝试：</strong>"您好？请问..."</p>
+                <p><strong>反应：</strong>女人完全无视他，继续她的"看表-低头"循环。</p>
+                <p><strong>尝试2：</strong>主角挥手在她眼前，甚至轻轻触碰她的肩膀——没有任何反应。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man standing in front of woman trying to interact, waving hand in her face, touching her shoulder, she completely ignores him continuing her repetitive motion, invisible barrier between them, photorealistic disturbing atmosphere, feeling of being ghost
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 11-12</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角恐慌起来，试图让列车停下。他拉紧急制动——没有任何反应。</p>
+                <p><strong>绝望：</strong>他大喊，但声音仿佛被吞噬，连回声都没有。</p>
+                <p><strong>镜头：</strong>广角，主角一个人站在车厢中央，周围是"重复"的乘客，画面极其诡异。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:>
+Man panicking in center of subway car, pulling emergency brake with no effect, screaming but no sound, wide shot showing him alone among repetitive passengers, extreme isolation, photorealistic horror atmosphere, one vs many composition
+                </div>
+            </div>
+            
+            <h3>第三幕：真相揭露 (3.5-5分钟)</h3e>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>突然，车厢内的所有乘客——同时转头，看向主角。</p>
+                <p><strong>特写：</strong>十几双眼睛，空洞但平静，没有敌意，只是"注视"。</p>
+                <p><strong>主角反应：</strong>僵住，无法理解发生了什么。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+All passengers simultaneously turning heads to look at protagonist, close-up of dozen empty but calm eyes staring, no aggression just observation, man's frozen reaction, photorealistic synchronized movement, deeply unsettling moment, horror climax
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 14</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角看到车窗上的倒影——车厢内只有乘客，没有他自己。</p>
+                <p><strong>回忆闪现：</strong>快速蒙太奇——</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>三个月前的地铁事故新闻</li>
+                    <li>家人的哭泣</li>
+                    <li>自己的身体被抬走</li>
+                </ul>
+                <p><strong>真相：</strong>他已经死了，这三个月来他一直在重复这班末班车。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Reflection in subway window showing passengers but no protagonist, quick flashback montage of subway accident three months ago, family crying, body being carried away, realization of death, photorealistic with dreamlike flashback transitions, emotional revelation
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角接受了现实。他向乘客们鞠躬——像是在为"打扰"道歉。</p>
+                <p><strong>乘客反应：</strong>红裙女人第一次露出微笑，对他点点头。</p>
+                <p><strong>结局：</strong>列车到站，晨光透过车窗照进来。主角的身体开始变得透明，化作光点消散。</p>
+                <p><strong>最后画面：</strong>其他乘客正常下车，开始新的一天。就像什么都没发生过。</p>
+                <p><strong>字幕：</strong>"那些我们以为的重复，其实是他人的日常"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Protagonist accepting reality bowing to passengers, woman in red dress smiling and nodding, train arriving at station, morning sunlight streaming through windows, protagonist becoming transparent dissolving into light particles, other passengers exiting normally, bittersweet supernatural ending, photorealistic with ethereal dissolving effect
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-1分钟：代入</h4>
+                    <p>深夜加班场景让都市观众产生共鸣，以为是普通的通勤故事。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>1-3分钟：不安</strong></h4>
+                    <p>重复动作的发现让观众和主角一起感到诡异，产生强烈好奇心。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3-4分钟：恐惧</h4>
+                    <p>同时转头的画面是恐怖高潮，为最后的反转做铺垫。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>4-5分钟：释然</h4>
+                    <p>不是恐怖结局而是温情告别，让观众有情感释放的出口。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (镜头13)：</strong>所有乘客同时转头 —— 最具视觉冲击力的画面</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (镜头14-15)：</strong>真相揭露+消散瞬间 —— 反转精华版</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"你以为在观察，其实你被观察" —— 细思极恐话题</p>
+                <p style="margin-top: 10px;"><strong>二刷彩蛋：</strong>开头就暗示主角是鬼（倒影、声音等），引发观众回看寻找</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>地铁场景</td>
+                    <td>可灵AI / Runway</td>
+                    <td>可利用素材库地铁场景，加后期调色</td>
+                </tr>
+                <tr>
+                    <td>重复动作</td>
+                    <td>同一镜头循环</td>
+                    <td>生成一次动作，后期循环播放</td>
+                </tr>
+                <tr>
+                    <td>同时转头</td>
+                    <td>分屏合成</td>
+                    <td>分别生成不同乘客转头，后期合成</td>
+                </tr>
+                <tr>
+                    <td>消散特效</td>
+                    <td>AE粒子特效</td>
+                    <td>主角画面叠加粒子消散效果</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 最后一班地铁 The Last Train</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

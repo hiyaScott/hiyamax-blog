@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIYAMAX - AI短剧实验室</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 2px;
+        }
+        
+        nav {
+            margin-top: 30px;
+        }
+        
+        nav a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #fff;
+        }
+        
+        .section-title {
+            font-size: 12px;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .film-list {
+            list-style: none;
+        }
+        
+        .film-item {
+            padding: 30px 0;
+            border-bottom: 1px solid #1a1a1a;
+            transition: all 0.3s;
+        }
+        
+        .film-item:hover {
+            padding-left: 10px;
+            border-left: 2px solid #fff;
+        }
+        
+        .film-number {
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 8px;
+        }
+        
+        .film-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .film-title a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .film-title a:hover {
+            text-decoration: underline;
+        }
+        
+        .film-meta {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .film-desc {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+            font-size: 12px;
+            color: #444;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HIYAMAX</h1>
+            <p class="subtitle">AI 短剧实验室</p>
+            <nav>
+                <a href="#films">实验短片</a>
+                <a href="#about">关于</a>
+            </nav>
+        </header>
+        
+        <section id="films">
+            <h2 class="section-title">实验短片 / Experiments</h2>
+            
+            <ul class="film-list">
+                <li class="film-item">
+                    <div class="film-number">EXP-012</div>
+                    <h3 class="film-title">
+                        <a href="./shortfilm-012.html">外婆的月饼模</a>
+                    </h3>
+                    <p class="film-meta">Grandma's Mooncake Mold · 2026</p>
+                    <p class="film-desc">中秋温情题材 · 12格月饼模具承载12年时间胶囊 · 女性视角三代传承</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-011</div>
+                    <h3 class="film-title">
+                        <a href="./shortfilm-011.html">纸鸢归</a>
+                    </h3>
+                    <p class="film-meta">The Kite Returns · 2026</p>
+                    <p class="film-desc">中式温情题材 · 中国纸鸢文化 · 阿尔茨海默症 · 祖孙代际传承</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-010</div>
+                    <h3 class="film-title">
+                        <a href="./parallel-parking.html">平行停车</a>
+                    </h3>
+                    <p class="film-meta">Parallel Parking · 2026</p>
+                    <p class="film-desc">爱情题材 · 平行宇宙分屏视觉 · 不同选择的命运交织</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-009</div>
+                    <h3 class="film-title">
+                        <a href="./language-virus.html">语言病毒</a>
+                    </h3>
+                    <p class="film-meta">Language Virus · 2026</p>
+                    <p class="film-desc">科幻惊悚 · 社会讽刺 · 高概念设定</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-008</div>
+                    <h3 class="film-title">
+                        <a href="./countdown-100.html">倒数100天</a>
+                    </h3>
+                    <p class="film-meta">Countdown 100 Days · 2026</p>
+                    <p class="film-desc">存在主义题材 · 哲学思考 · 视觉奇观</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-007</div>
+                    <h3 class="film-title">
+                        <a href="./shadow-revolution.html">影子革命</a>
+                    </h3>
+                    <p class="film-meta">Shadow Revolution · 2026</p>
+                    <p class="film-desc">黑色幽默 · 脑洞大开的设定 · 社会隐喻</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-006</div>
+                    <h3 class="film-title">
+                        <a href="./memory-pawnshop.html">记忆典当铺</a>
+                    </h3>
+                    <p class="film-meta">Memory Pawnshop · 2026</p>
+                    <p class="film-desc">温情奇幻 · 记忆可视化 · 祖孙情</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-005</div>
+                    <h3 class="film-title">
+                        <a href="./shape-of-sound.html">声音的形状</a>
+                    </h3>
+                    <p class="film-meta">The Shape of Sound · 2026</p>
+                    <p class="film-desc">治愈奇幻 · 感官替代的视觉创新 · 音波可视化</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-004</div>
+                    <h3 class="film-title">
+                        <a href="./ai-painter.html">AI画家</a>
+                    </h3>
+                    <p class="film-meta">AI Painter · 2026</p>
+                    <p class="film-desc">科幻人文 · 艺术vs科技的对立主题</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-003</div>
+                    <h3 class="film-title">
+                        <a href="./last-train.html">最后一班地铁</a>
+                    </h3>
+                    <p class="film-meta">The Last Train · 2026</p>
+                    <p class="film-desc">悬疑惊悚 · 悬念设置+反转 · 观众参与感强</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-002</div>
+                    <h3 class="film-title">
+                        <a href="./time-bank.html">时间银行</a>
+                    </h3>
+                    <p class="film-meta">Time Bank · 2026</p>
+                    <p class="film-desc">社会寓言 · 双向牺牲结构 · 情感张力强</p>
+                </li>
+                
+                <li class="film-item">
+                    <div class="film-number">EXP-001</div>
+                    <h3 class="film-title">
+                        <a href="./last-light.html">末世微光</a>
+                    </h3>
+                    <p class="film-meta">Last Light · 2026</p>
+                    <p class="film-desc">末日温情 · 简单核心关系（一人一物）· 角色一致性易控制</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="about" style="margin-top: 80px;">
+            <h2 class="section-title">关于 / About</h2>
+            <p style="font-size: 14px; color: #666; line-height: 2;">
+                HIYAMAX 是一个AI短剧实验项目。<br><br>
+                我们使用AI工具探索短片创作的边界，<br>
+                从剧本构思到视觉呈现，<br>
+                每一部作品都是技术与创意的融合实验。<br><br>
+                所有剧本均为原创，使用AI视频生成工具制作。
+            </p>
+        </section>
+        
+        <footer>
+            <p>© 2026 HIYAMAX · AI Shortfilm Lab</p>
+        </footer>
+    </div>
+</body>
+</html>

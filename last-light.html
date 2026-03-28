@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>末世微光 The Last Light | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-green);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-green);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-green);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-green);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-green);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(57,255,20,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(57,255,20,0.1);
+            border: 1px solid rgba(57,255,20,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-green);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(57,255,20,0.1);
+            color: var(--neon-green);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-green);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(57,255,20,0.2);
+            color: var(--neon-green);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">末世微光 The Last Light</div>
+        <div class="nav-links">
+            <a href="./time-bank.html">下一个：时间银行</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🌱</div>
+            <h1>末世微光 The Last Light</h1>
+            <p class="subtitle">5分钟 · 末日温情 · 写实渲染 · 推荐优先制作</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                末世废墟中，一个机器人日复一日地照顾着一朵真实的花，
+                最后为了保护花而"牺牲"，花却在它倒下后绽放。
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">末日温情 / 科幻</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">孤独 → 温暖 → 悲壮</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway Gen-4</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐ (中等)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">场景数量</div>
+                    <div class="value">4个核心场景</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>锈迹斑斑的机器人用金属手指轻触花瓣</p>
+                <p><strong>金句：</strong>"它不懂生命，却学会了爱"</p>
+                <p><strong>色彩：</strong>冷灰蓝 → 暖金色的情绪渐变</p>
+                <p><strong>声音：</strong>机械运转声 → 风声 → 花开的声音</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "在生命的尽头，什么才是真正重要的？"
+            </div>
+            
+            <h3>创意来源</h3>
+            <p>本创意融合了《机器人总动员》中Wall-E的孤独坚守与《最后一片叶子》中生命意志的象征。选择"机器人+花"的组合，创造最大的情感反差：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>机械 vs 有机：</strong>钢铁之躯守护脆弱生命</li>
+                <li><strong>永恒 vs 短暂：</strong>不会腐朽的机器人见证花开花落</li>
+                <li><strong>无意识 vs 有意识：</strong>程序驱动的行为展现出类似"爱"的特质</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <p>观众将经历以下情感旅程：</p>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>好奇 —— 这是什么世界？这个机器人在做什么？</li>
+                <li><strong>30秒-2分钟：</strong>共情 —— 理解机器人的孤独使命，产生情感连接</li>
+                <li><strong>2-4分钟：</strong>紧张 —— 危机来临，担心花和机器人的命运</li>
+                <li><strong>4-5分钟：</strong>感动+释怀 —— 牺牲与重生，生命的延续</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">孤独经济</span> 现代社会普遍的孤独感共鸣</p>
+                <p style="margin-top: 10px;"><span class="tag">萌物效应</span> 破旧机器人的"可怜可爱"形象</p>
+                <p style="margin-top: 10px;"><span class="tag">反转预期</span> 以为悲剧结局，实则是生命轮回</p>
+                <p style="margin-top: 10px;"><span class="tag">截图传播</span> 机器人捧花画面极易成为传播素材</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>建立</td>
+                    <td>0-1.5分钟</td>
+                    <td>展示末世废墟，机器人发现花朵并开始照顾</td>
+                    <td>好奇+孤独</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>发展</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>日常照料 montage，建立情感连接</td>
+                    <td>温暖+共情</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>高潮</td>
+                    <td>3.5-5分钟</td>
+                    <td>风暴来袭，机器人保护花朵牺牲，花绽放</td>
+                    <td>悲壮+感动</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>广角航拍末世城市，镜头推进到废墟中的一个小亮点</li>
+                <li><strong>催化剂 (45秒)：</strong>机器人第一次用金属手指触碰花瓣，产生好奇反应</li>
+                <li><strong>中点 (2.5分钟)：</strong>花朵在机器人的照料下第一次绽放，情感高潮铺垫</li>
+                <li><strong>一无所有 (4分钟)：</strong>风暴摧毁庇护所，机器人用身体护住花朵</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>机器人"死亡"，花朵从他胸口绽放，种子随风飘散</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>废墟都市</td>
+                    <td>被植被侵蚀的未来城市残骸</td>
+                    <td>远景震撼+细节锈迹</td>
+                </tr>
+                <tr>
+                    <td>温室废墟</td>
+                    <td>破损的玻璃建筑，机器人的"家"</td>
+                    <td>光影透过破碎玻璃</td>
+                </tr>
+                <tr>
+                    <td>废墟花园</td>
+                    <td>机器人精心维护的小花坛</td>
+                    <td>破败中的一抹生机</td>
+                </tr>
+                <tr>
+                    <td>风暴现场</td>
+                    <td>沙尘暴/酸雨中的最后守护</td>
+                    <td>动态天气+情感张力</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：建立 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>广角航拍，晨曦中的末世都市。高楼大厦被藤蔓和植被覆盖，车辆在锈蚀，一片死寂。</p>
+                <p><strong>镜头运动：</strong>缓慢推进，穿过云层，向城市中心的一个亮点聚焦。</p>
+                <p><strong>声音：</strong>风声，远处隐约的机械运转声。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Aerial shot of a post-apocalyptic city at dawn, abandoned skyscrapers covered in vines and vegetation, rusted vehicles on empty streets, eerie silence, cinematic lighting, golden hour, photorealistic, 8k quality, wide angle lens, slow push-in movement toward a small light source in the distance
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02</span>
+                    <span class="shot-time">0:10-0:25</span>
+                </div>
+                <p><strong>画面：</strong>中景，机器人在废墟中翻找。它看起来破旧但精致，外壳有磨损痕迹，一只眼睛的光芒微微闪烁。</p>
+                <p><strong>动作：</strong>它在瓦砾中挖掘，发现了一个破碎的花盆，里面有一株奄奄一息的幼苗。</p>
+                <p><strong>声音：</strong>金属摩擦声， servo motor 的轻微嗡鸣。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Medium shot of a weathered humanoid robot with scratched metallic surface, one glowing eye flickering, digging through rubble in abandoned building, discovers a dying green plant seedling in broken pot, dust particles in air, photorealistic robot design with visible wear and tear, melancholic atmosphere, cinematic composition
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 03</span>
+                    <span class="shot-time">0:25-0:45</span>
+                </div>
+                <p><strong>画面：</strong>特写，机器人的光学传感器对准幼苗。它歪头，像是在"观察"。</p>
+                <p><strong>动作：</strong>机械手指缓缓伸出，轻轻触碰叶片。叶片轻微颤动。</p>
+                <p><strong>声音：</strong>机械的细微声响，随后是沉默。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Extreme close-up of robot's mechanical fingers gently touching a green plant leaf, macro photography style, shallow depth of field, contrast between cold steel and organic life, soft natural lighting, photorealistic textures of rusted metal and fresh vegetation, emotional moment of connection
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>机器人小心翼翼地将幼苗移植到一个金属容器中，带它回到自己的"家"——一个破损的温室。</p>
+                <p><strong>Montage：</strong>找水、收集阳光、制作简易庇护所。</p>
+                <p><strong>转场：</strong>时间流逝，幼苗长高了一些。</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Robot carefully carrying plant in metal container through ruined greenhouse, broken glass ceiling with sunlight streaming through, dust particles dancing in light beams, post-apocalyptic atmosphere mixed with hope, photorealistic environmental storytelling, cinematic wide shot
+                </div>
+            </div>
+            
+            <h3>第二幕：发展 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-08</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>内容：</strong>Montage 展示机器人的日常照料</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>清晨：用镜面反射阳光到花朵上</li>
+                    <li>雨天：为花朵遮挡酸雨</li>
+                    <li>夜晚：用微弱的电池电量为花朵保温</li>
+                    <li>外出：在废墟中寻找营养土</li>
+                </ul>
+                <p><strong>节奏：</strong>舒缓，展现时间流逝和情感积累</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (Montage用):</span>
+Robot tending to flower in various scenarios: using mirror to reflect sunlight, shielding plant from acid rain with metal plate, warming plant with body heat at night, searching through ruins for soil, time-lapse feeling with changing light conditions, tender care from mechanical being, photorealistic emotional storytelling
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09</span>
+                    <span class="shot-time">2.5-3分钟</span>
+                </div>
+                <p><strong>画面：</strong>花朵在机器人的照料下绽放。特写花瓣缓缓展开。</p>
+                <p><strong>机器人反应：</strong>光学传感器闪烁，像是"惊喜"的反应。它轻轻触碰花瓣。</p>
+                <p><strong>情绪：</strong>温暖，欣慰，两人（机与花）世界的圆满</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Macro shot of flower blooming, petals unfurling in time-lapse, robot's face reflected in dewdrop on petal, robot's eye lights pulsing with warm orange glow, intimate moment of connection between machine and nature, photorealistic botanical detail, cinematic emotional peak
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 10</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>夜晚，机器人守在花朵旁。远处天空出现异常光芒。</p>
+                <p><strong>转折：</strong>风暴预警。机器人检测到环境恶化。</p>
+                <p><strong>情绪：</strong>宁静被打破，紧张感开始积累</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Robot sitting next to blooming flower at night, protective posture, distant lightning on horizon, dark clouds gathering, impending storm atmosphere, contrast between peaceful moment and approaching danger, photorealistic night lighting with robot's eye glow
+                </div>
+            </div>
+            
+            <h3>第三幕：高潮与结局 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 11-12</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>风暴来袭。沙尘暴/酸雨摧毁了温室的残骸。</p>
+                <p><strong>动作：</strong>机器人用身体护住花朵，金属外壳被酸雨腐蚀，被飞石击中。</p>
+                <p><strong>声音：</strong>风暴的咆哮，金属受损的声音</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Violent sandstorm hitting ruined greenhouse, robot shielding flower with body, acid rain corroding metal surface, debris flying, dramatic weather effects, robot's damaged exterior sparking, protective stance, cinematic disaster scene, photorealistic particle effects and weather simulation
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>风暴过后。机器人倒在地上，身体严重损坏，能量指示灯闪烁微弱红光。</p>
+                <p><strong>动作：</strong>它用尽最后的能量，将花朵举向穿透云层的阳光。</p>
+                <p><strong>特写：</strong>机器人的光学传感器对准花朵，光芒逐渐暗淡</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Aftermath of storm, damaged robot lying on ground, body covered in corrosion and dents, critically low battery indicator blinking red, slowly lifting flower toward sunlight breaking through clouds, dying robot's final act of protection, heartbreaking sacrifice, photorealistic damage textures, golden sunlight rays
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 14</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>花朵在机器人的胸口（保护的核心位置）完全绽放，比任何时候都鲜艳。</p>
+                <p><strong>升华：</strong>种子随风飘散，飞向远方。</p>
+                <p><strong>结尾：</strong>航拍，机器人静卧在废墟中，周围是飘落的花瓣。一个新的绿芽在远处废墟中生长。</p>
+                <p><strong>字幕：</strong>"生命会找到出路"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Beautiful flower blooming from robot's chest, most vibrant petals, seeds dispersing in wind, aerial shot of robot lying peacefully in ruins with flower garden growing around it, new green shoots emerging in distance, cycle of life continuing, hope amidst destruction, photorealistic with magical realism, cinematic ending with emotional impact
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：建立世界</h4>
+                    <p>观众需要快速理解"这是末世，一个机器人在做什么"。通过视觉信息而非对白交代背景。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：情感投资</h4>
+                    <p>让观众关心这个机器人和这朵花。通过细节（机器人学着照顾花的笨拙）建立共情。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-4分钟：紧张与担忧</h4>
+                    <p>风暴来袭时，观众应该为花的命运紧张。机器人的牺牲选择应该让观众心疼。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>4-5分钟：情感释放</h4>
+                    <p>悲剧转为希望。花在人机上绽放，生命延续。给观众"值得的"感觉。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第9镜头)：</strong>机器人手指触碰绽放的花朵 —— 最适合社交媒体传播的静态画面</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第14镜头)：</strong>花朵从机器人胸口绽放，种子飘散 —— 15秒精华版</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"它不懂生命，却学会了爱" —— 适合作为视频标题/封面文字</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>概念设计</td>
+                    <td>Midjourney / 即梦</td>
+                    <td>先生成机器人和花的概念图，确定视觉风格</td>
+                </tr>
+                <tr>
+                    <td>视频生成</td>
+                    <td>可灵AI 2.0 / Runway Gen-4</td>
+                    <td>使用角色参考功能保持机器人一致性</td>
+                </tr>
+                <tr>
+                    <td>天气特效</td>
+                    <td>Runway / Sora</td>
+                    <td>风暴场景可用单独生成后合成</td>
+                </tr>
+                <tr>
+                    <td>后期剪辑</td>
+                    <td>剪映 / Premiere</td>
+                    <td>注意音乐的情绪曲线配合</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 末世微光 The Last Light</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

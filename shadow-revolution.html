@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影子革命 Shadow Revolution | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-cyan);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-cyan);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0,255,255,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(0,255,255,0.1);
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(0,255,255,0.1);
+            color: var(--neon-cyan);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-cyan);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(0,255,255,0.2);
+            color: var(--neon-cyan);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-green);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">影子革命 Shadow Revolution</div>
+        <div class="nav-links">
+            <a href="./countdown-100.html">下一个：倒数100天</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">👤</div>
+            <h1>影子革命 Shadow Revolution</h1>
+            <p class="subtitle">5分钟 · 黑色幽默 · 脑洞 · 社畜共鸣</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                影子有独立意识，主角影子"罢工"，面试时没影子引发荒诞事件。
+                "我的身体我做主——包括我的影子。"
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">黑色幽默 / 脑洞荒诞</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">荒诞 → 搞笑 → 荒诞 → 反思</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">核心手法</div>
+                    <div class="value">影子特效 / 荒诞喜剧</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>影子与主人的对手戏，影子做出独立动作</p>
+                <p><strong>金句：</strong>"我的身体我做主——包括我的影子"</p>
+                <p><strong>色彩：</strong>办公室的冷灰色，影子的深黑，荒诞事件的彩色</p>
+                <p><strong>声音：</strong>夸张的音效，喜剧化配乐</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "如果连自己的影子都要反抗，现代社会对人的异化有多严重？"
+            </div>
+            
+            <h3>创意解读</h3>
+            <p>这是一个充满荒诞感的黑色幽默故事。影子作为人体的一部分，在现代社会压力下"觉醒"了独立意识，开始反抗主人的控制。这是对社畜生活的极端夸张隐喻。</p>
+            
+            <p>三层荒诞设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>身份错位：</strong>影子拒绝配合主人的表演，揭露真实的疲惫</li>
+                <li><strong>社会隐喻：</strong>没有影子的人被视为"不正常"，哪怕他工作能力完美</li>
+                <li><strong>自我和解：</strong>主人最终接受影子的"罢工"，选择做自己</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>荒诞 —— 正常人起床，但影子动作跟不上</li>
+                <li><strong>30秒-2分钟：</strong>搞笑 —— 影子的"罢工"引发一系列荒诞事件</li>
+                <li><strong>2-3.5分钟：</strong>紧张 —— 面试时没影子，被认为"有问题"</li>
+                <li><strong>3.5-5分钟：</strong>反思 —— 与影子和解，拒绝社会规训</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">社畜共鸣</span> 打工人看了会哭（然后笑）的共鸣点</p>
+                <p style="margin-top: 10px;"><span class="tag">脑洞大开</span> 影子有独立意识的设定新颖有趣</p>
+                <p style="margin-top: 10px;"><span class="tag">黑色幽默</span> 用荒诞对抗荒诞，笑中带泪</p>
+                <p style="margin-top: 10px;"><span class="tag">话题讨论</span> "你的影子如果会说话，会说什么？"</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>异常</td>
+                    <td>0-1.5分钟</td>
+                    <td>主角发现影子开始不听话</td>
+                    <td>荒诞+困惑</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>失控</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>影子彻底罢工，面试出糗</td>
+                    <td>搞笑+紧张</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>觉醒</td>
+                    <td>3.5-5分钟</td>
+                    <td>与影子和解，拒绝社会规训</td>
+                    <td>反思+爽感</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>闹钟响起，主角起床，但他的影子还在床上"睡觉"</li>
+                <li><strong>催化剂 (45秒)：</strong>主角对着镜子练习面试微笑，影子在背后做鬼脸</li>
+                <li><strong>中点 (2.5分钟)：</strong>面试现场，灯光下主角没有影子，面试官震惊</li>
+                <li><strong>转折 (3.5分钟)：</strong>影子通过写字告诉主角："我累了，你也是"</li>
+                <li><strong>高潮 (4分钟)：</strong>主角对面试官说："我没有影子，因为我拒绝当影子"</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>主角和影子一起"罢工"，在夕阳下自由奔跑</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>出租屋</td>
+                    <td>典型的社畜小房间</td>
+                    <td>影子的"异常行为"</td>
+                </tr>
+                <tr>
+                    <td>地铁</td>
+                    <td>拥挤的通勤场景</td>
+                    <td>影子的"叛逆"动作</td>
+                </tr>
+                <tr>
+                    <td>写字楼</td>
+                    <td>现代面试间</td>
+                    <td>无影子的荒诞</td>
+                </tr>
+                <tr>
+                    <td>天台</td>
+                    <td>最后的和解场景</td>
+                    <td>影子与主人同步</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：影子的异常 (0-1.5分钟)</h3e>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>闹钟响了。主角（30岁社畜）从床上弹起，但他的影子还躺在床上，伸了个懒腰才慢慢起来。</p>
+                <p><strong>主角反应：</strong>揉揉眼睛，以为自己看错了</p>
+                <p><strong>音效：</strong>夸张的闹钟声，配合影子的慢动作</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Man waking up to alarm clock in small apartment, his shadow remaining on bed stretching lazily before slowly getting up, visual comedy of shadow having independent movement, photorealistic with subtle surrealism, morning light creating long shadows, humorous tone
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02-03</span>
+                    <span class="shot-time">0:10-0:45</span>
+                </div>
+                <p><strong>画面：</strong>主角刷牙，影子在墙上给他"鼓掌"（讽刺）。主角穿西装，影子却在"脱衣服"。</p>
+                <p><strong>节奏：</strong>快节奏剪辑，展现影子的各种"不配合"</p>
+                <p><strong>主角台词：</strong>"你今天怎么回事？"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man brushing teeth in bathroom mirror, shadow on wall clapping sarcastically, montage of shadow misbehaving - taking off clothes while man puts on suit, shadow making faces, visual gag comedy, photorealistic shadow effects with independent movement, fast-paced editing
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 04</span>
+                    <span class="shot-time">0:45-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角对着镜子练习面试微笑，说："我对这个职位充满热情！"</p>
+                <p><strong>影子反应：</strong>在背后做出呕吐的动作，然后躺在地上装死</p>
+                <p><strong>情绪：</strong>荒诞搞笑，但隐约透出社畜的心酸</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man practicing fake smile in mirror for job interview, saying corporate buzzwords, his shadow behind him making vomiting gestures then lying down playing dead, dark humor about workplace culture, photorealistic with comedic shadow performance, mirror reflection showing both perspectives
+                </div>
+            </div>
+            
+            <h3>第二幕：彻底失控 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05-06</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>地铁上。主角站着，影子却坐着（在别人脚下）。主角看书，影子在玩手机。</p>
+                <p><strong>路人反应：</strong>有人注意到了，露出困惑的表情</p>
+                <p><strong>主角窘境：</strong>试图用脚踩住影子，影子灵活躲开</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Crowded subway car, man standing while his shadow sits on floor, man reading book while shadow appears to be looking at phone, confused passengers noticing, man trying to step on shadow which dodges, absurd comedy in mundane setting, photorealistic shadow independence
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 07</span>
+                    <span class="shot-time">2.5-3分钟</span>
+                </div>
+                <p><strong>画面：</strong>面试现场。主角自信地走进房间，灯光照射下——他没有影子。</p>
+                <p><strong>面试官反应：</strong>惊恐地看着地上，然后看向主角，像看怪物</p>
+                <p><strong>主角反应：</strong>低头看，发现真的没影子，慌乱解释"可能是灯的问题"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Job interview room, man confidently entering, overhead lighting revealing NO SHADOW beneath him, interviewer's face showing shock and horror looking at empty floor, man's panic as he realizes, sterile corporate environment contrasting with supernatural event, dramatic lighting for shadowless effect
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 08-09</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>面试变成"审问"。面试官们怀疑他是"什么东西"。</p>
+                <p><strong>荒诞升级：</strong>有人拿镜子照他，有人问他是不是吸血鬼，有人要叫保安</p>
+                <p><strong>主角崩溃：</strong>"我真的不知道发生了什么！"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Job interview turning into interrogation, panel of interviewers suspicious and fearful, one holding mirror to check him, another asking if he's vampire, absurd escalation of paranoia, man's desperate confusion, satirical take on corporate hiring discrimination, dramatic lighting with no shadow
+                </div>
+            </div>
+            
+            <h3>第三幕：觉醒与和解 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 10-12</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角逃出面试，躲在楼梯间。他的影子从墙上"走出来"，用身体在墙上写字。</p>
+                <p><strong>影子的话：</strong>"我累了。每天假装热情，我受够了。"</p>
+                <p><strong>主角沉默，</strong>然后苦笑："我也是。"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man hiding in stairwell after fleeing interview, shadow detaching from wall and writing messages with body: "I'm tired of pretending," man's bittersweet smile of recognition, emotional breakthrough moment, shadow as independent character, photorealistic with magical realism, blue stairwell lighting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13-14</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>主角回到面试间，面对惊恐的面试官们。</p>
+                <p><strong>主角宣言：</strong>"你们说得对，我没有影子。因为我拒绝再做别人的影子。"</p>
+                <p><strong>金句：</strong>"我的身体我做主——包括我的影子。"</p>
+                <p><strong>转身离开：</strong>留下目瞪口呆的面试官们</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Man returning to interview room with confidence, delivering speech: "I don't have a shadow because I refuse to be anyone's shadow anymore," panel of interviewers stunned, man's defiant exit, empowering moment of self-acceptance, dramatic lighting, cinematic composition
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>天台，夕阳。主角和影子并肩坐着，看着城市。</p>
+                <p><strong>和解：</strong>影子做出了和主角一样的姿势——不是被迫同步，而是选择同步</p>
+                <p><strong>结尾：</strong>主角站起来，影子也站起来。他们一起跑向夕阳，影子这次真实地跟随着他。</p>
+                <p><strong>字幕：</strong>"做自己，影子才会真正跟随你"</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Rooftop at sunset, man and shadow sitting side by side looking at city, shadow voluntarily mirroring man's posture in harmony, both standing up together, running toward sunset with synchronized shadow, liberating ending, golden hour lighting, silhouette shot, emotional resolution of self-acceptance
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：好奇与搞笑</h4>
+                    <p>影子不听话的荒诞设定引发好奇，喜剧效果吸引注意力。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：荒诞升级</h4>
+                    <p>影子的各种"叛逆"行为，让观众笑中带泪——这不就是我吗？</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-3.5分钟：紧张与共鸣</h4>
+                    <p>面试没影子的荒诞困境，隐喻社畜在职场中的异化。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：爽感与反思</h4>
+                    <p>拒绝规训的宣言，让观众感到释放和力量。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第13-14镜头)：</strong>主角宣言画面 —— 社交媒体金句素材</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第1-4镜头)：</strong>影子的搞笑日常 —— 15秒搞笑精华</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"我的身体我做主——包括我的影子" —— 社畜共鸣</p>
+                <p style="margin-top: 10px;"><strong>话题讨论：</strong>"如果你的影子会说话，它会对你说什么？"</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>影子特效</td>
+                    <td>AE + Mocha</td>
+                    <td>跟踪+遮罩，让影子独立运动</td>
+                </tr>
+                <tr>
+                    <td>无影子场景</td>
+                    <td>灯光设计 + 后期</td>
+                    <td>前侧光消除影子，后期精修</td>
+                </tr>
+                <tr>
+                    <td>办公室场景</td>
+                    <td>可灵AI</td>
+                    <td>现代办公环境，冷色调</td>
+                </tr>
+                <tr>
+                    <td>后期剪辑</td>
+                    <td>Premiere</td>
+                    <td>快节奏喜剧剪辑</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 影子革命 Shadow Revolution</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>

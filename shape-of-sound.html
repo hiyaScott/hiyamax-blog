@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声音的形状 Shape of Sound | 写实渲染短片剧本</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ffff00;
+            --neon-orange: #ff6600;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0f;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Noto Sans SC', 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--neon-pink);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--neon-pink);
+        }
+        
+        .main {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero .subtitle {
+            color: var(--neon-pink);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--neon-pink);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .section h2 {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,0,255,0.3);
+        }
+        
+        .section h3 {
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        
+        .highlight-box {
+            background: rgba(255,0,255,0.1);
+            border: 1px solid rgba(255,0,255,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-pink);
+        }
+        
+        .concept-box {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--neon-pink);
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .framework-list {
+            list-style: none;
+        }
+        
+        .framework-list li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .framework-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+        
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .beat-table th,
+        .beat-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .beat-table th {
+            background: rgba(255,0,255,0.1);
+            color: var(--neon-pink);
+        }
+        
+        .beat-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .shot-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .shot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .shot-number {
+            background: var(--neon-pink);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .shot-time {
+            color: var(--neon-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .prompt-box {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .prompt-box .label {
+            color: var(--neon-yellow);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(255,0,255,0.2);
+            color: var(--neon-pink);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .ux-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .ux-card h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .shot-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">声音的形状 Shape of Sound</div>
+        <div class="nav-links">
+            <a href="./memory-pawnshop.html">下一个：记忆典当铺</a>
+        </div>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="hero">
+            <div class="hero-icon">🌸</div>
+            <h1>声音的形状 Shape of Sound</h1>
+            <p class="subtitle">5分钟 · 治愈奇幻 · 可视化浪漫 · 写实渲染</p>
+            <p style="opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                失聪女孩能"看见"声音形状——音乐是流动光，噪音是尖锐刺，陌生人心跳是绽放的花。
+                当她遇见另一个孤独的灵魂，两颗心通过声音的"形状"找到彼此。
+            </p>
+        </section>
+        
+        <!-- 基础信息 -->
+        <div class="section">
+            <h2>📋 项目概览</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">时长</div>
+                    <div class="value">5分钟</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">类型</div>
+                    <div class="value">治愈奇幻 / 可视化浪漫</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">情绪基调</div>
+                    <div class="value">孤独 → 奇妙 → 温暖 → 浪漫</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">推荐工具</div>
+                    <div class="value">可灵AI / Runway</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">制作难度</div>
+                    <div class="value">⭐⭐⭐⭐ (较难)</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">核心手法</div>
+                    <div class="value">声音可视化 / 联觉美学</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 核心记忆点</h3>
+                <p><strong>视觉：</strong>心跳化作花朵在两人之间绽放</p>
+                <p><strong>金句：</strong>"我听不见世界，但我能看见你的声音"</p>
+                <p><strong>色彩：</strong>音乐的流动光河，噪音的尖锐黑刺，心跳的温暖粉色花朵</p>
+                <p><strong>声音：</strong>环境音 → 心跳声 → 无声的"看见"</p>
+            </div>
+        </div>
+        
+        <!-- Concept -->
+        <div class="section">
+            <h2>💡 Concept 创意概念</h2>
+            
+            <h3>核心命题</h3>
+            <div class="concept-box">
+                "当一种感官缺失，其他感官会如何补偿？失聪者'看见'的声音，可能比听觉更动人。"
+            </div>
+            
+            <h3>创意解读</h3>
+            <p>灵感来自联觉（Synesthesia）现象——一种感官刺激会触发另一种感官体验。本故事将联觉浪漫化，创造一个失聪女孩独有的"声音宇宙"。</p>
+            
+            <p>声音视觉化的设计：</p>
+            <ul style="margin: 15px 0; padding-left: 25px;">
+                <li><strong>音乐：</strong>流动的光带，颜色随音调变化，爵士乐是金色波浪，古典乐是蓝紫色绸缎</li>
+                <li><strong>噪音：</strong>尖锐的黑色刺状物体，令人不适的视觉冲击</li>
+                <li><strong>人声：</strong>不同形状的光晕，温柔的声音是圆形光晕，愤怒的声音是锯齿状</li>
+                <li><strong>心跳：</strong>最特殊的——从胸口绽放的花朵，频率对应花开速度</li>
+            </ul>
+            
+            <h3>情绪弧线设计</h3>
+            <div class="framework-list">
+                <li><strong>0-30秒：</strong>孤独 —— 女孩在喧嚣世界中独自安静</li>
+                <li><strong>30秒-2分钟：</strong>奇妙 —— 展示她独特的"声音视界"</li>
+                <li><strong>2-3.5分钟：</strong>温暖 —— 遇见他，第一次"看见"心跳</li>
+                <li><strong>3.5-5分钟：</strong>浪漫 —— 两颗心的声音相遇，绽放最美的花</li>
+            </div>
+            
+            <h3>爆款潜力分析</h3>
+            <div class="highlight-box">
+                <p><span class="tag">视觉奇观</span> 声音可视化的独特美学，前所未见的视觉体验</p>
+                <p style="margin-top: 10px;"><span class="tag">治愈系</span> 温暖治愈的故事，适合放松时刻观看</p>
+                <p style="margin-top: 10px;"><span class="tag">浪漫元素</span> 心跳化花的浪漫设定，情侣必看</p>
+                <p style="margin-top: 10px;"><span class="tag">共情话题</span> 关注听障群体，引发温暖讨论</p>
+            </div>
+        </div>
+        
+        <!-- Framework -->
+        <div class="section">
+            <h2>🏗️ Framework 结构框架</h2>
+            
+            <h3>三幕结构</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>幕</th>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>情绪</th>
+                </tr>
+                <tr>
+                    <td>第一幕<br>孤独</td>
+                    <td>0-1.5分钟</td>
+                    <td>失聪女孩的日常，她"看见"的声音世界</td>
+                    <td>孤独+奇妙</td>
+                </tr>
+                <tr>
+                    <td>第二幕<br>相遇</td>
+                    <td>1.5-3.5分钟</td>
+                    <td>在公园遇见拉琴的男孩，第一次"看见"心跳</td>
+                    <td>好奇+温暖</td>
+                </tr>
+                <tr>
+                    <td>第三幕<br>共鸣</td>
+                    <td>3.5-5分钟</td>
+                    <td>两颗心的声音相遇，花朵绽放，无声胜有声</td>
+                    <td>浪漫+感动</td>
+                </tr>
+            </table>
+            
+            <h3>关键节拍设计</h3>
+            <div class="framework-list">
+                <li><strong>钩子 (0-10秒)：</strong>女孩坐在嘈杂咖啡厅，周围是尖锐的黑色噪音刺，但她表情平静</li>
+                <li><strong>催化剂 (45秒)：</strong>手机震动（她设置的闹钟），震动在她眼中化作温暖的橙色圆环</li>
+                <li><strong>中点 (2.5分钟)：</strong>公园遇见拉琴男孩，音乐在她眼中是流动的金色光河</li>
+                <li><strong>转折 (3.5分钟)：</strong>男孩注意到她，他的心跳在她眼中第一次"绽放"成花</li>
+                <li><strong>高潮 (4分钟)：</strong>两人的心跳同步，花朵在两人之间盛开连接</li>
+                <li><strong>结局 (4.5-5分钟)：</strong>无声的对视，比任何语言都深刻的理解</li>
+            </div>
+            
+            <h3>场景设计</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>场景</th>
+                    <th>描述</th>
+                    <th>视觉重点</th>
+                </tr>
+                <tr>
+                    <td>喧嚣城市</td>
+                    <td>车水马龙的街道，各种声音的冲击</td>
+                    <td>噪音的黑色尖刺vs音乐的流光</td>
+                </tr>
+                <tr>
+                    <td>安静画室</td>
+                    <td>女孩的私人空间，她画下"看见"的声音</td>
+                    <td>画纸上的声音视觉化图案</td>
+                </tr>
+                <tr>
+                    <td>城市公园</td>
+                    <td>绿意盎然的公园，男孩拉小提琴</td>
+                    <td>金色音乐光流在绿色背景中</td>
+                </tr>
+                <tr>
+                    <td>日落天台</td>
+                    <td>两人相遇的最终场景，夕阳背景</td>
+                    <td>心跳花朵在夕阳中绽放</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Detail -->
+        <div class="section">
+            <h2>📝 Detail 详细剧本</h2>
+            
+            <h3>第一幕：孤独的声音世界 (0-1.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 01</span>
+                    <span class="shot-time">0:00-0:10</span>
+                </div>
+                <p><strong>画面：</strong>繁忙的城市街道，从失聪女孩的视角。汽车的轰鸣化作尖锐的黑色刺状物从地面窜出，人声的嘈杂是灰色的混乱漩涡。</p>
+                <p><strong>中心焦点：</strong>女孩（约20岁）安静地站在街角，周围是令人窒息的声音视觉，但她表情平静，像是习惯了这一切。</p>
+                <p><strong>声音：</strong>低沉的环境底噪（观众视角），然后突然切到真正的寂静（女孩视角）</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词 (可灵/Runway):</span>
+Subjective POV of deaf girl in busy city street, visualized sound as sharp black spikes rising from ground for traffic noise, gray chaotic swirls for human voices, young woman standing calmly in center, surreal synesthetic vision, contrast between violent sound-shapes and peaceful human figure, photorealistic with magical elements, cinematic wide shot
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 02</span>
+                    <span class="shot-time">0:10-0:30</span>
+                </div>
+                <p><strong>画面：</strong>女孩走进一家咖啡厅。这里的音乐是柔和的蓝紫色光带在空中飘动，顾客的谈话是大小不一的彩色气泡。</p>
+                <p><strong>对比：</strong>与前一场景的刺耳噪音形成对比，展现声音也可以是美的</p>
+                <p><strong>动作：</strong>她点单，看着咖啡机运作的声音——是温暖的橙色蒸汽形状</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Interior of cozy cafe from synesthetic perspective, background music visualized as flowing blue-purple ribbons floating in air, conversations as colorful bubbles of various sizes, espresso machine creating warm orange steam shapes, deaf girl ordering coffee, barista's friendly voice as soft pink halo, magical realism aesthetic, photorealistic textures with supernatural elements
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 03-04</span>
+                    <span class="shot-time">0:30-1分钟</span>
+                </div>
+                <p><strong>画面：</strong>女孩的画室。墙上贴满了她的"声音日记"——她画下的各种声音形状。</p>
+                <p><strong>细节：</strong>雨声是斜线，雷声是爆炸状的黑色，母亲的声音（回忆）是温暖的黄色圆形</p>
+                <p><strong>动作：</strong>她坐在画架前，画下今天听到的声音</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Art studio walls covered with synesthetic sound paintings, rain as diagonal lines, thunder as explosive black shapes, mother's voice memory as warm yellow circles, deaf girl painting at easel, capturing today's sounds in abstract shapes, soft natural lighting through window, artistic and introspective atmosphere, photorealistic documentary style
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 05</span>
+                    <span class="shot-time">1-1.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>手机震动（闹钟），在她眼中化作温暖的橙色同心圆波纹扩散。</p>
+                <p><strong>动作：</strong>她拿起画具包，准备出门。一只猫叫（她通过震动感知），猫叫是柔软的白色云朵形状。</p>
+                <p><strong>情绪：</strong>孤独但自得其乐的生活节奏</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Phone vibration visualized as warm orange concentric circles rippling outward, deaf girl feeling the vibration and understanding, cat meow represented as soft fluffy white cloud floating nearby, intimate domestic moment, magical representation of sensory substitution, photorealistic with gentle fantasy elements
+                </div>
+            </div>
+            
+            <h3>第二幕：金色旋律 (1.5-3.5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 06-07</span>
+                    <span class="shot-time">1.5-2.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>公园场景。女孩坐在长椅上写生。突然，一道金色的光流从不远处飘来。</p>
+                <p><strong>视觉奇观：</strong>小提琴音乐是流动的金色光河，音符化作光点在空中跳跃，像萤火虫又像流星。</p>
+                <p><strong>反应：</strong>女孩抬起头，被这从未见过的美丽声音吸引</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Park scene from synesthetic perspective, violin music visualized as flowing river of golden light, musical notes transforming into dancing golden particles like fireflies and shooting stars, deaf girl looking up in wonder from her sketchbook, green park background contrasting with magical golden sound-stream, ethereal and beautiful atmosphere, photorealistic with fantasy lighting
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 08</span>
+                    <span class="shot-time">2.5-3分钟</span>
+                </div>
+                <p><strong>画面：</strong>镜头跟随金色光流，找到源头——一个年轻男孩在拉小提琴。</p>
+                <p><strong>双重视角：</strong>切换到普通视角（观众看到真实场景），再切回女孩的视角（男孩周围环绕金色光环）</p>
+                <p><strong>细节：</strong>男孩闭上眼睛沉浸在音乐中，完全没注意到女孩</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Young man playing violin in park, eyes closed in musical concentration, dual perspective showing normal reality and girl's synesthetic view with golden aura surrounding him, golden light emanating from violin, romantic and artistic atmosphere, golden hour lighting, photorealistic portrait with magical overlay
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 09</span>
+                    <span class="shot-time">3-3.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>男孩注意到女孩，停止拉琴。音乐的金色光流渐渐消散。</p>
+                <p><strong>转折：</strong>男孩对女孩微笑，那一刻——他的心跳在她眼中第一次"绽放"成一朵粉色的花。</p>
+                <p><strong>特写：</strong>女孩惊讶而温柔的表情，第一次"看见"人的心跳</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Boy noticing girl and stopping violin playing, golden music stream fading away, his heartbeat visualized for first time as pink flower blooming from his chest, girl's face showing surprise and tenderness, magical moment of connection, soft focus background, photorealistic emotional moment with fantasy element
+                </div>
+            </div>
+            
+            <h3>第三幕：心的共鸣 (3.5-5分钟)</h3>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 10-12</span>
+                    <span class="shot-time">3.5-4分钟</span>
+                </div>
+                <p><strong>画面：</strong>男孩用手语问："你在画什么？"（字幕显示）</p>
+                <p><strong>女孩视角：</strong>他的手语动作带着柔和的光晕轨迹</p>
+                <p><strong>她回答：</strong>展示画本——上面是金色光流的素描</p>
+                <p><strong>男孩反应：</strong>惊喜，他从未想过有人这样"看"他的音乐</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Close-up of sign language conversation, boy's hand movements leaving trails of soft glowing light from girl's perspective, her sketchbook showing golden stream drawing, boy's face showing delighted surprise, warm connection forming, soft natural park lighting, photorealistic emotional intimacy
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 13-14</span>
+                    <span class="shot-time">4-4.5分钟</span>
+                </div>
+                <p><strong>画面：</strong>天台日落场景。两人并肩坐着，男孩轻轻拉着小提琴。</p>
+                <p><strong>视觉奇观：</strong>这次女孩的心跳也开始绽放花朵。两颗心跳的花朵在空中相遇，藤蔓相连，开出更大的花。</p>
+                <p><strong>颜色：</strong>心跳花是温暖的粉色，在夕阳金光的映衬下格外美丽</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Rooftop sunset scene, two people sitting together, both hearts visualized as blooming pink flowers, flowers growing toward each other and connecting with vines, creating larger shared bloom, golden sunset backlighting, romantic and transcendent atmosphere, stunning visual metaphor for connection, photorealistic with magical botanical elements
+                </div>
+            </div>
+            
+            <div class="shot-card">
+                <div class="shot-header">
+                    <span class="shot-number">镜头 15-16</span>
+                    <span class="shot-time">4.5-5分钟</span>
+                </div>
+                <p><strong>画面：</strong>两人对视，无声胜有声。周围的声音世界依然存在——城市的噪音、远处的音乐，但都不重要了。</p>
+                <p><strong>焦点：</strong>只有彼此眼中的心跳花朵在缓缓绽放</p>
+                <p><strong>字幕：</strong>"我听不见世界，但我能看见你的声音"</p>
+                <p><strong>结尾：</strong>镜头拉远，两人的心跳花朵成为城市夜景中最温暖的光点</p>
+                <div class="prompt-box">
+<span class="label">AI生成提示词:</span>
+Intimate eye contact between two people, surrounding city sounds visualized but out of focus, only their connected heart-flowers in sharp focus, words appearing on screen, pull-back to show them as warm light point in city night, romantic and poetic ending, cinematic wide shot, emotional resolution
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户体验 -->
+        <div class="section">
+            <h2>🎭 用户体验设计</h2>
+            
+            <h3>观众心理预期管理</h3>
+            <div class="ux-grid">
+                <div class="ux-card">
+                    <h4>0-30秒：好奇</h4>
+                    <p>为什么女孩周围的视觉这么奇怪？那些黑色尖刺是什么？</p>
+                </div>
+                <div class="ux-card">
+                    <h4>30秒-2分钟：理解与共情</h4>
+                    <p>理解这是失聪者的"声音视界"，开始欣赏这种独特的美。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>2-3.5分钟：温暖</h4>
+                    <p>金色音乐的视觉奇观，第一次看见心跳的感动。</p>
+                </div>
+                <div class="ux-card">
+                    <h4>3.5-5分钟：浪漫升华</h4>
+                    <p>两颗心相连的视觉诗意，无声的爱情表达。</p>
+                </div>
+            </div>
+            
+            <h3>传播设计</h3>
+            <div class="highlight-box">
+                <p><strong>截图时刻 (第13-14镜头)：</strong>心跳花朵相连的画面 —— 社交媒体必火素材</p>
+                <p style="margin-top: 10px;"><strong>视频片段 (第6-7镜头)：</strong>金色音乐光流 —— 15秒精华版</p>
+                <p style="margin-top: 10px;"><strong>金句传播：</strong>"我听不见世界，但我能看见你的声音" —— 适合作为视频标题</p>
+                <p style="margin-top: 10px;"><strong>话题讨论：</strong>"如果你能看见声音，会是什么样子？" —— 引发创意评论</p>
+            </div>
+            
+            <h3>技术实现建议</h3>
+            <table class="beat-table">
+                <tr>
+                    <th>环节</th>
+                    <th>工具推荐</th>
+                    <th>关键技巧</th>
+                </tr>
+                <tr>
+                    <td>声音可视化</td>
+                    <td>Runway / Sora</td>
+                    <td>先用AI生成基础画面，后期AE添加发光特效</td>
+                </tr>
+                <tr>
+                    <td>花朵特效</td>
+                    <td>可灵AI + Houdini</td>
+                    <td>程序化生成花朵绽放动画</td>
+                </tr>
+                <tr>
+                    <td>色彩设计</td>
+                    <td>DaVinci Resolve</td>
+                    <td>建立联觉色彩LUT，统一视觉风格</td>
+                </tr>
+                <tr>
+                    <td>后期合成</td>
+                    <td>After Effects</td>
+                    <td>添加光晕、粒子等视觉特效</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>❤️ Shrimp Jetton 制作 | 声音的形状 Shape of Sound</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">剧本版本: v1.0 | 推荐制作指数: ⭐⭐⭐⭐⭐</p>
+        </div>
+    </main>
+</body>
+</html>
