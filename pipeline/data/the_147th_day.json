@@ -98,17 +98,26 @@
         "title": "成果输出",
         "content": [
           {
-            "subtitle": "参考图生成",
-            "text": "使用即梦AI生成 Robo No.5 角色参考图：",
-            "code": "A lonely old robot \"Robo No.5\" with a square head and grid eyes, standing in a quiet post-apocalyptic wasteland at golden hour sunset, one red warning light blinking gently on its head, warm orange glow from its eyes, illustration style, watercolor texture, melancholic but warm atmosphere, cinematic composition"
+            "subtitle": "手绘原稿",
+            "text": "用户手绘的 Robo No.5 原始设计："
           },
           {
-            "subtitle": "角色设计图",
-            "text": "参考图已保存，用于后续视频生成的角色一致性控制"
+            "subtitle": "写实3D版本",
+            "text": "使用即梦AI生成的3D写实版本，作为视频生成参考图：\n• 方头设计保留\n• 胸前数字'5'\n• 青灰色金属质感\n• 手捧花朵\n• 履带式底座（与手绘略有不同）"
           }
         ],
-        "image": "./assets/the_147th_day/robo_no5_character.jpg",
-        "imageCaption": "Robo No.5 角色设计图（即梦AI生成）"
+        "images": [
+          {
+            "src": "./assets/the_147th_day/robo_no5_character.jpg",
+            "title": "手绘原稿",
+            "desc": "用户手绘插画风格"
+          },
+          {
+            "src": "./assets/the_147th_day/robo_no5_realistic_front.jpg", 
+            "title": "写实3D版",
+            "desc": "即梦AI生成，用于可灵视频参考"
+          }
+        ]
       }
     },
     {
