@@ -4,7 +4,7 @@
   "title": "第147天",
   "subtitle": "30秒末日温情AI短片",
   "duration": "18秒",
-  "status": "已完成",
+  "status": "视频生成完成",
   "stages": [
     {
       "number": 1,
@@ -41,7 +41,7 @@
           }
         ]
       },
- "output": {
+      "output": {
         "title": "成果输出",
         "content": [
           {
@@ -107,7 +107,8 @@
             "text": "参考图已保存，用于后续视频生成的角色一致性控制"
           }
         ],
-        "image": "[Robo No.5 角色设计图]"
+        "image": "./assets/the_147th_day/robo_no5_character.jpg",
+        "imageCaption": "Robo No.5 角色设计图（即梦AI生成）"
       }
     },
     {
@@ -205,6 +206,23 @@
             "subtitle": "视频文件",
             "text": "3个6秒视频片段已生成，总计18秒原始素材"
           }
+        ],
+        "videos": [
+          {
+            "src": "./assets/the_147th_day/shot01_opening.mp4",
+            "title": "镜头01 - 开场",
+            "desc": "Robo No.5 站在废墟中，夕阳下守护花朵"
+          },
+          {
+            "src": "./assets/the_147th_day/shot08_midpoint.mp4", 
+            "title": "镜头08 - 中点",
+            "desc": "暴雨中，机器人用身体保护花朵"
+          },
+          {
+            "src": "./assets/the_147th_day/shot16_ending.mp4",
+            "title": "镜头16 - 结局", 
+            "desc": "机器人倒下，花朵依然盛开"
+          }
         ]
       }
     },
@@ -243,7 +261,23 @@
             "text": "• 镜头拼接\n• 添加字幕\n• 配乐\n• 导出最终成片"
           }
         ],
-        "image": "[最终成片 - 待剪辑]"
+        "videos": [
+          {
+            "src": "./assets/the_147th_day/shot01_opening.mp4",
+            "title": "原始素材 - 镜头01",
+            "desc": "6秒"
+          },
+          {
+            "src": "./assets/the_147th_day/shot08_midpoint.mp4",
+            "title": "原始素材 - 镜头08", 
+            "desc": "6秒"
+          },
+          {
+            "src": "./assets/the_147th_day/shot16_ending.mp4",
+            "title": "原始素材 - 镜头16",
+            "desc": "6秒"
+          }
+        ]
       }
     },
     {

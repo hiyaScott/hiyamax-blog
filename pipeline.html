@@ -663,8 +663,16 @@
                 return `<div class="placeholder">[${column.placeholder}]</div>`;
             }
             
+            let html = '';
+            
+            // Badges
+            if (column.badges) {
+                html += column.badges.map(b => `<span class="decision-badge">${b}</span>
+                `).join('');
+            }
+            
             if (column.content) {
-                return column.content.map(item => {
+                html += column.content.map(item => {
                     if (item.timeline) {
                         return `
                             <p><strong>${item.subtitle}</strong></p>
@@ -689,30 +697,48 @@
                     
                     return `
                         <p><strong>${item.subtitle}</strong></p>
-                        <p>${item.text.replace(/\n/g, '<br>')}</p>
+                        <p>${item.text ? item.text.replace(/\n/g, '<br>') : ''}</p>
                     `;
                 }).join('');
             }
             
-            // Badges
-            let html = '';
-            if (column.badges) {
-                html += column.badges.map(b => `<span class="decision-badge">${b}</span>
-                `).join('');
-            }
-            
-            if (column.content) {
-                html += column.content.map(item => `
-                    <p style="margin-top: 15px;"><strong>${item.subtitle}</strong></p>
-                    <p>${item.text.replace(/\n/g, '<br>')}</p>
-                `).join('');
-            }
-            
+            // Image - if it's a URL/path, show actual image
             if (column.image) {
-                html += `<div class="img-placeholder">${column.image}</div>`;
+                if (column.image.startsWith('[')) {
+                    // Placeholder text like "[角色设计图]"
+                    html += `<div class="img-placeholder">${column.image}</div>`;
+                } else {
+                    // Actual image path/URL
+                    html += `
+                        <div class="resource-image" style="margin-top: 15px;">
+                            <img src="${column.image}" alt="${column.imageCaption || '图片'}" 
+                                 style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-primary);">
+                            ${column.imageCaption ? `<p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">${column.imageCaption}</p>` : ''}
+                        </div>
+                    `;
+                }
             }
             
-            return html;
+            // Videos - show video players
+            if (column.videos && column.videos.length > 0) {
+                html += `<div class="resource-videos" style="margin-top: 15px;">`;
+                column.videos.forEach(video => {
+                    html += `
+                        <div class="video-item" style="margin-bottom: 15px; padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-primary);">
+                            <p style="font-weight: 600; margin-bottom: 8px; font-size: 13px;">${video.title}</p>
+                            ${video.desc ? `<p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${video.desc}</p>` : ''}
+                            <video controls style="width: 100%; border-radius: 4px; max-height: 200px;"
+                                   poster="">
+                                <source src="${video.src}" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+            
+            return html || '<div class="placeholder">[暂无内容]</div>';
         }
         
         // Initialize
