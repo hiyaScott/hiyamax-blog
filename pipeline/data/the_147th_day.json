@@ -2,63 +2,73 @@
   "id": "the_147th_day",
   "emoji": "🤖",
   "title": "第147天",
-  "subtitle": "30秒末日温情AI短片",
+  "subtitle": "18秒末日温情AI短片",
+  "type": "末日温情AI短片",
   "duration": "18秒",
-  "status": "视频生成完成",
-  "stages": [
+  "status": "角色设计完成",
+  "currentStep": 2,
+  "createdAt": "2026-03-28",
+  "updatedAt": "2026-03-28",
+  "steps": [
     {
       "number": 1,
-      "title": "故事构思",
-      "desc": "从想法到剧本，确定核心创意",
-      "input": {
-        "title": "设计输入",
-        "content": [
+      "title": "剧本创作",
+      "status": "已完成",
+      "desc": "从想法到完整剧本，确定故事结构和情感基调",
+      "content": {
+        "currentVersion": "v1",
+        "versions": [
           {
-            "subtitle": "项目类型",
-            "text": "末日温情AI短片 - 机器人在末世守护一朵花"
-          },
-          {
-            "subtitle": "灵感来源",
-            "text": "《WALL-E》的孤独感 + 《荒野机器人》的守护主题 + 人类对生命的执着"
-          },
-          {
-            "subtitle": "核心概念",
-            "text": "在末日废墟中，一台老机器人用147天守护一盆花。当机器人最终倒下时，花朵依然盛开——生命的顽强超越机械的存在。"
+            "version": "v1",
+            "date": "2026-03-28 15:00",
+            "author": "Scott + Jetton",
+            "status": "当前版本",
+            "changes": "初始版本，确定核心创意",
+            "data": {
+              "concept": "末日温情AI短片 - 机器人在末世守护一朵花，147天后倒下但花依然盛开",
+              "target": "对温情故事有共鸣的观众，喜欢《WALL-E》《荒野机器人》的人群",
+              "references": [
+                "《WALL-E》的孤独感与执着",
+                "《荒野机器人》的守护主题",
+                "人类对生命延续的普遍情感"
+              ],
+              "decisions": [
+                "主角：老机器人 Robo No.5",
+                "时长：18秒（3个镜头×6秒）",
+                "风格：手绘→写实3D转换",
+                "核心情感：守护与希望"
+              ],
+              "story": {
+                "core": "孤独的机器人 Robo No.5 在末日废墟中守护着一盆小花。147天里，它经历了暴风雨的考验，最终在夕阳下静静倒下，而花朵依然绽放——生命的意义不在于永恒，而在于曾经守护。",
+                "characters": [
+                  { "name": "Robo No.5", "type": "主角", "desc": "方头方身的老旧机器人，橙色网格眼，头顶红色警示灯，执着守护者" }
+                ],
+                "structure": [
+                  { "phase": "第一幕-开场", "time": "0-6s", "content": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁" },
+                  { "phase": "第二幕-中点", "time": "6-12s", "content": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者" },
+                  { "phase": "第三幕-结局", "time": "12-18s", "content": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开" }
+                ]
+              },
+              "keyMoments": [
+                "视觉：夕阳下的废墟与孤独机器人剪影",
+                "金句：\"第147天。花还活着。\"",
+                "情感高潮：机器人倒下但花朵依然绽放的对比"
+              ]
+            }
           }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["Robo No.5主角", "手绘风格", "18秒时长", "海螺视频"],
-        "content": [
+        ],
+        "discussions": [
           {
-            "subtitle": "角色选择",
-            "text": "• 写实机器人 → 手绘风格 Robo No.5\n原因：手绘风格更有温度，避免末日题材的冰冷感\n• 方头网格眼 + 红色警示灯 + 机械爪\n特点：憨厚、执着、守护者气质"
+            "date": "2026-03-28 15:00",
+            "platform": "飞书",
+            "summary": "确定末日温情题材，机器人守护花朵的核心创意",
+            "decisions": ["末日温情", "机器人主角", "147天时间跨度"]
           },
           {
-            "subtitle": "技术决策",
-            "text": "• 原计划：可灵 Kling-V2.6\n问题：DMXAPI渠道分组权限问题\n• 实际使用：MiniMax-Hailuo-02\n原因：海螺视频API可正常调用，1080P画质"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "故事核心",
-            "text": "孤独的机器人 Robo No.5 在末日废墟中守护着一盆小花。147天里，它经历了暴风雨的考验，最终在夕阳下静静倒下，而花朵依然绽放——生命的意义不在于永恒，而在于曾经守护。"
-          },
-          {
-            "subtitle": "三幕结构（18秒）",
-            "timeline": [
-              {"time": "第一幕 (0-6s)", "desc": "开场：Robo No.5 站在废墟中，夕阳下守护花朵"},
-              {"time": "第二幕 (6-12s)", "desc": "中点：暴雨中，机器人用身体保护花朵"},
-              {"time": "第三幕 (12-18s)", "desc": "结局：机器人倒下，花朵依然盛开，生命继续"}
-            ]
-          },
-          {
-            "subtitle": "金句",
-            "text": "\"第147天。花还活着。\""
+            "date": "2026-03-28 15:30",
+            "platform": "飞书",
+            "summary": "确定三幕结构，18秒时长分配",
+            "decisions": ["3个镜头", "6秒/镜", "夕阳-暴雨-倒下三段式"]
           }
         ]
       }
@@ -66,266 +76,159 @@
     {
       "number": 2,
       "title": "角色设计",
-      "desc": "确定视觉风格，设计角色提示词",
-      "input": {
-        "title": "设计输入",
-        "content": [
+      "status": "已完成",
+      "desc": "设计角色外观，手绘原稿转3D写实，生成参考图",
+      "content": {
+        "currentVersion": "v2",
+        "versions": [
           {
-            "subtitle": "角色需求",
-            "text": "• 主角：老机器人，需要有故事感\n• 气质：憨厚、执着、守护者\n• 视觉特征：要让人记住"
+            "version": "v1",
+            "date": "2026-03-28 16:00",
+            "author": "Scott",
+            "status": "已归档",
+            "changes": "用户手绘Robo No.5原始设计",
+            "data": {
+              "concept": "手绘插画风格，方头方身，网格眼，机械爪，守护者气质",
+              "features": [
+                "方头：区别于圆润WALL-E，更有机械感",
+                "网格眼：橙色发光，有表情变化空间",
+                "红色警示灯：头顶闪烁",
+                "机械爪：能做出保护姿态",
+                "老旧磨损：锈迹划痕体现岁月感"
+              ],
+              "referenceImages": [
+                { "src": "./assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" }
+              ]
+            }
           },
           {
-            "subtitle": "风格探索",
-            "text": "• 写实3D：电影感强但偏冷\n• 手绘插画：温暖、有情感温度 ✓\n• 赛博朋克：与温情主题冲突"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["方头网格眼", "红色警示灯", "机械爪", "手绘风格"],
-        "content": [
-          {
-            "subtitle": "最终造型 - Robo No.5",
-            "text": "• 方头：区别于圆润的WALL-E，更有机械感\n• 网格眼：橙色发光，有表情变化空间\n• 红色警示灯：头顶闪烁，增加动态元素\n• 机械爪：能做出保护姿态的手部动作\n• 老旧磨损：锈迹、划痕体现岁月感"
-          },
-          {
-            "subtitle": "配色方案",
-            "text": "• 主体：青灰色（老旧金属）\n• 眼睛/灯：暖橙色（生命温度）\n• 花朵：鲜艳的粉红/黄色（希望象征）\n• 背景：暖黄废墟（末日氛围）"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "手绘原稿",
-            "text": "用户手绘的 Robo No.5 原始设计："
-          },
-          {
-            "subtitle": "写实3D版本",
-            "text": "使用即梦AI生成的3D写实版本，作为视频生成参考图：\n• 方头设计保留\n• 胸前数字'5'\n• 青灰色金属质感\n• 手捧花朵\n• 履带式底座（与手绘略有不同）"
+            "version": "v2",
+            "date": "2026-03-28 23:12",
+            "author": "Jetton (即梦AI)",
+            "status": "当前版本",
+            "changes": "将手绘转为3D写实风格，用于可灵视频生成",
+            "data": {
+              "concept": "3D写实渲染，皮克斯/WALL-E美学，青灰色金属质感",
+              "features": [
+                "方头方身：保留核心造型",
+                "胸前数字'5'：新增识别特征",
+                "橙色发光眼：圆形LED风格",
+                "青灰色金属：做旧锈迹质感",
+                "履带底座：略有调整但稳定",
+                "手捧花盆：剧情核心道具"
+              ],
+              "referenceImages": [
+                { "src": "./assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
+                { "src": "./assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，可灵视频参考" }
+              ],
+              "prompt": "A lonely old robot 'Robo No.5' in post-apocalyptic wasteland, boxy square metal head with orange glowing eyes, weathered teal-gray metal body with rust, hydraulic mechanical arms, holding a small potted flower, golden hour sunset, 3D realistic render, WALL-E aesthetic, Pixar style"
+            }
           }
         ],
-        "images": [
+        "discussions": [
           {
-            "src": "./assets/the_147th_day/robo_no5_character.jpg",
-            "title": "手绘原稿",
-            "desc": "用户手绘插画风格"
+            "date": "2026-03-28 16:00",
+            "platform": "飞书",
+            "summary": "用户展示手绘Robo No.5，确定方头网格眼核心特征",
+            "decisions": ["方头网格眼", "红色警示灯", "手绘风格"]
           },
           {
-            "src": "./assets/the_147th_day/robo_no5_realistic_front.jpg", 
-            "title": "写实3D版",
-            "desc": "即梦AI生成，用于可灵视频参考"
+            "date": "2026-03-28 23:00",
+            "platform": "飞书",
+            "summary": "海螺视频角色一致性失败，决定用手绘图转3D写实",
+            "decisions": ["手绘转3D", "即梦AI生成", "用于可灵参考"]
           }
         ]
       }
     },
     {
       "number": 3,
-      "title": "分镜设计",
-      "desc": "规划3个关键镜头，确定18秒视觉节奏",
-      "input": {
-        "title": "设计输入",
-        "content": [
+      "title": "视频生成",
+      "status": "进行中",
+      "desc": "使用可灵AI生成3个视频片段（修正DMXAPI调用方式后）",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "clips": [
           {
-            "subtitle": "时间分配（18秒）",
-            "text": "• 镜头01：0-6s（开场，建立氛围）\n• 镜头08：6-12s（中点，冲突高潮）\n• 镜头16：12-18s（结局，情感升华）"
+            "id": "shot01",
+            "title": "镜头01-开场",
+            "time": "0-6s",
+            "desc": "Robo No.5 站在废墟中，夕阳下守护花朵",
+            "status": "待重新生成",
+            "oldAttempt": {
+              "tool": "海螺MiniMax-Hailuo-02",
+              "taskId": "381548519256179",
+              "result": "角色不一致，废弃"
+            }
           },
           {
-            "subtitle": "关键画面",
-            "text": "夕阳废墟、暴风雨保护、倒下与盛开"
+            "id": "shot08",
+            "title": "镜头08-中点",
+            "time": "6-12s",
+            "desc": "暴雨中，机器人用身体保护花朵",
+            "status": "待重新生成",
+            "oldAttempt": {
+              "tool": "海螺MiniMax-Hailuo-02",
+              "taskId": "381549786616218",
+              "result": "角色不一致，废弃"
+            }
+          },
+          {
+            "id": "shot16",
+            "title": "镜头16-结局",
+            "time": "12-18s",
+            "desc": "机器人倒下，花朵依然盛开",
+            "status": "待重新生成",
+            "oldAttempt": {
+              "tool": "海螺MiniMax-Hailuo-02",
+              "taskId": "381547724300731",
+              "result": "角色不一致，废弃"
+            }
           }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["3个镜头", "海螺图生视频", "1080P", "6秒/镜"],
-        "content": [
+        ],
+        "discussions": [
           {
-            "subtitle": "镜头设计决策",
-            "text": "• 镜头01：远景建立场景，缓慢推近\n• 镜头08：中景动作，保护姿态\n• 镜头16：广角全景，倒下与希望对比"
+            "date": "2026-03-28 21:40",
+            "platform": "飞书",
+            "summary": "首次尝试海螺视频生成3个镜头",
+            "decisions": ["海螺MiniMax-Hailuo-02", "6秒/镜"]
           },
           {
-            "subtitle": "技术参数",
-            "text": "• 模型：MiniMax-Hailuo-02\n• 分辨率：1080P\n• 时长：6秒/镜头\n• 参考图：Robo No.5 角色图"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "分镜表（3个镜头）",
-            "timeline": [
-              {"time": "镜头01 (0-6s)", "desc": "远景：Robo No.5 独自站在废墟中，夕阳照射，警示灯微微闪烁，缓慢抬头望向天空"},
-              {"time": "镜头08 (6-12s)", "desc": "中景：暴雨中，Robo No.5 用机械臂护住花朵，身体前倾，雨中的守护者"},
-              {"time": "镜头16 (12-18s)", "desc": "广角：Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然在身旁盛开"}
-            ]
+            "date": "2026-03-28 22:30",
+            "platform": "飞书",
+            "summary": "发现三个镜头角色完全不一致，灾难级结果",
+            "decisions": ["废弃海螺结果", "切换到可灵", "需角色一致性"]
           },
           {
-            "subtitle": "提示词（用于海螺视频生成）",
-            "text": "镜头01：A lonely old robot with a boxy square head and orange grid-pattern eyes, standing in a quiet post-apocalyptic wasteland at golden hour sunset..."
+            "date": "2026-03-28 23:00",
+            "platform": "飞书",
+            "summary": "排查DMXAPI，发现可灵正确调用方式是/v1/responses而非/v1/video_generation",
+            "decisions": ["使用正确API端点", "图生视频模式", "kling-v2-6-image2video"]
           }
         ]
       }
     },
     {
       "number": 4,
-      "title": "视频生成",
-      "desc": "使用AI工具生成画面",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "工具选择",
-            "text": "• 首选：可灵 Kling-V2.6（高品质）\n• 备选：海螺 MiniMax-Hailuo-02\n• API平台：DMXAPI"
-          },
-          {
-            "subtitle": "参考图",
-            "text": "Robo No.5 角色设计图（即梦AI生成）"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["可灵失败", "切换到海螺", "API调试", "成功生成"],
-        "content": [
-          {
-            "subtitle": "遇到的问题",
-            "text": "• 错误：'所有令牌分组 default 下对于模型 kling_video 均无可用渠道'\n• 原因：DMXAPI的可灵模型需要特定分组权限\n• 解决：切换到海螺视频模型 MiniMax-Hailuo-02"
-          },
-          {
-            "subtitle": "API调试过程",
-            "text": "1. 查询可用模型列表（770个模型）\n2. 发现可灵模型名实际是 kling-v2-6-image2video\n3. 但渠道分组问题无法解决\n4. 测试海螺视频成功\n5. 3个镜头全部提交生成"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "生成结果",
-            "timeline": [
-              {"time": "镜头01", "desc": "Task ID: 381548519256179 ✓ 完成（1.2MB）"},
-              {"time": "镜头08", "desc": "Task ID: 381549786616218 ✓ 完成（4.6MB）"},
-              {"time": "镜头16", "desc": "Task ID: 381547724300731 ✓ 完成（485KB）"}
-            ]
-          },
-          {
-            "subtitle": "视频文件",
-            "text": "3个6秒视频片段已生成，总计18秒原始素材"
-          }
-        ],
-        "videos": [
-          {
-            "src": "./assets/the_147th_day/shot01_opening.mp4",
-            "title": "镜头01 - 开场",
-            "desc": "Robo No.5 站在废墟中，夕阳下守护花朵"
-          },
-          {
-            "src": "./assets/the_147th_day/shot08_midpoint.mp4", 
-            "title": "镜头08 - 中点",
-            "desc": "暴雨中，机器人用身体保护花朵"
-          },
-          {
-            "src": "./assets/the_147th_day/shot16_ending.mp4",
-            "title": "镜头16 - 结局", 
-            "desc": "机器人倒下，花朵依然盛开"
-          }
-        ]
+      "title": "后期剪辑",
+      "status": "待开始",
+      "desc": "剪辑、添加字幕\"第147天。花还活着。\"、配乐",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
       }
     },
     {
       "number": 5,
-      "title": "后期剪辑",
-      "desc": "剪辑、配乐、加字幕",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "素材",
-            "text": "• shot01_opening.mp4 (1.2MB)\n• shot08_midpoint.mp4 (4.6MB)\n• shot16_ending.mp4 (485KB)"
-          },
-          {
-            "subtitle": "剪辑需求",
-            "text": "• 拼接3个镜头\n• 添加字幕：第147天。花还活着。\n• 配BGM：温暖治愈风格"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["FFmpeg尝试", "环境限制", "手动剪辑建议"],
-        "content": [
-          {
-            "subtitle": "遇到的限制",
-            "text": "• 服务器网络受限，无法下载FFmpeg\n• Python环境无法安装moviepy/opencv\n• 建议：使用本地剪映/CapCut完成剪辑"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "待完成",
-            "text": "• 镜头拼接\n• 添加字幕\n• 配乐\n• 导出最终成片"
-          }
-        ],
-        "videos": [
-          {
-            "src": "./assets/the_147th_day/shot01_opening.mp4",
-            "title": "原始素材 - 镜头01",
-            "desc": "6秒"
-          },
-          {
-            "src": "./assets/the_147th_day/shot08_midpoint.mp4",
-            "title": "原始素材 - 镜头08", 
-            "desc": "6秒"
-          },
-          {
-            "src": "./assets/the_147th_day/shot16_ending.mp4",
-            "title": "原始素材 - 镜头16",
-            "desc": "6秒"
-          }
-        ]
-      }
-    },
-    {
-      "number": 6,
-      "title": "封装发布",
-      "desc": "封面、标题、描述、标签",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "平台要求、受众分析"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "标题选择、标签策略"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "发布链接、封面图"
-      }
-    },
-    {
-      "number": 7,
-      "title": "数据复盘",
-      "desc": "播放量、互动、经验总结",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "数据收集"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "成功因素分析"
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "技术经验",
-            "text": "• DMXAPI的可灵模型名是 kling-v2-6-image2video，不是文档写的 kling-v1-6\n• 渠道分组权限问题需要联系客服开通\n• 海螺 MiniMax-Hailuo-02 是可靠的备选方案\n• API端点：POST /v1/video_generation，查询：GET /v1/videos/{task_id}"
-          }
-        ]
+      "title": "发布",
+      "status": "待开始",
+      "desc": "封面、标题、描述、多平台发布",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
       }
     }
   ]
