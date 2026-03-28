@@ -97,7 +97,7 @@
                 "老旧磨损：锈迹划痕体现岁月感"
               ],
               "referenceImages": [
-                { "src": "./assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" }
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" }
               ]
             }
           },
@@ -118,8 +118,8 @@
                 "手捧花盆：剧情核心道具"
               ],
               "referenceImages": [
-                { "src": "./assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
-                { "src": "./assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，可灵视频参考" }
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，可灵视频参考" }
               ],
               "prompt": "A lonely old robot 'Robo No.5' in post-apocalyptic wasteland, boxy square metal head with orange glowing eyes, weathered teal-gray metal body with rust, hydraulic mechanical arms, holding a small potted flower, golden hour sunset, 3D realistic render, WALL-E aesthetic, Pixar style"
             }
