@@ -468,6 +468,44 @@
             to { transform: rotate(360deg); }
         }
         
+        /* Reference Images */
+        .reference-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .reference-image-item {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-primary);
+        }
+        
+        .reference-image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-primary);
+        }
+        
+        .reference-image-item .image-info {
+            padding: 15px;
+        }
+        
+        .reference-image-item .image-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .reference-image-item .image-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
         /* Footer */
         footer {
             text-align: center;
@@ -764,6 +802,26 @@
                     <div class="content-block">
                         <h3>🎯 关键记忆点</h3>
                         <ul>${data.keyMoments.map(m => `<li>${m}</li>`).join('')}</ul>
+                    </div>
+                `;
+            }
+            
+            // Reference Images (for character design step)
+            if (data.referenceImages && data.referenceImages.length > 0) {
+                html += `
+                    <div class="content-block">
+                        <h3>🖼️ 参考图片</h3>
+                        <div class="reference-images">
+                            ${data.referenceImages.map(img => `
+                                <div class="reference-image-item">
+                                    <img src="${img.src}" alt="${img.title}" loading="lazy">
+                                    <div class="image-info">
+                                        <div class="image-title">${img.title}</div>
+                                        ${img.desc ? `<div class="image-desc">${img.desc}</div>` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
             }
