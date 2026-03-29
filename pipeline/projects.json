@@ -21,7 +21,7 @@
     "duration": "5分钟",
     "status": "剧本完成",
     "currentStep": 1,
-    "totalSteps": 5,
+    "totalSteps": 6,
     "createdAt": "2026-03-28",
     "cover": null
   },
@@ -34,7 +34,7 @@
     "duration": "5分钟",
     "status": "剧本完成",
     "currentStep": 1,
-    "totalSteps": 5,
+    "totalSteps": 6,
     "createdAt": "2026-03-28",
     "cover": null
   },
@@ -47,7 +47,7 @@
     "duration": "待定",
     "status": "剧本完成",
     "currentStep": 1,
-    "totalSteps": 5,
+    "totalSteps": 6,
     "createdAt": "2026-03-28",
     "cover": null
   },
@@ -60,7 +60,7 @@
     "duration": "待定",
     "status": "待启动",
     "currentStep": 1,
-    "totalSteps": 5,
+    "totalSteps": 6,
     "createdAt": "2026-03-28",
     "cover": null
   },
@@ -73,7 +73,7 @@
     "duration": "待定",
     "status": "待启动",
     "currentStep": 1,
-    "totalSteps": 5,
+    "totalSteps": 6,
     "createdAt": "2026-03-29",
     "cover": null
   }

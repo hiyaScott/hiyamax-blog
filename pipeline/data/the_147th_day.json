@@ -83,7 +83,7 @@
       "status": "已完成",
       "desc": "设计角色外观，手绘原稿转3D写实，生成参考图",
       "content": {
-        "currentVersion": "v3",
+        "currentVersion": "v4",
         "versions": [
           {
             "version": "v1",
@@ -132,7 +132,7 @@
             "version": "v3",
             "date": "2026-03-29 23:00",
             "author": "Scott (即梦AI)",
-            "status": "当前版本",
+            "status": "已归档",
             "changes": "基于手绘原稿使用即梦AI参考角色特征功能生成的写实3D版",
             "data": {
               "concept": "3D写实渲染，基于手绘原稿保持角色特征，末日废墟背景",
@@ -150,6 +150,30 @@
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_v3.jpg", "title": "写实3D版 V3", "desc": "即梦AI基于手绘稿生成，保持角色特征" }
               ],
               "prompt": "参考手绘原稿的Robo No.5机器人，方头网格眼，生成3D写实版本，末日废墟背景，手捧花盆，夕阳金色光线"
+            }
+          },
+          {
+            "version": "v4",
+            "date": "2026-03-29 23:05",
+            "author": "Scott (AI生成)",
+            "status": "当前版本",
+            "changes": "文生图生成的复古机器人形象，金色锈蚀金属质感，末日废墟中守护花朵",
+            "data": {
+              "concept": "3D写实渲染，复古圆顶机器人造型，金色锈蚀金属，温馨守护氛围",
+              "features": [
+                "圆顶复古头部：经典机器人造型",
+                "金色锈蚀金属：温暖做旧质感",
+                "圆形复古眼睛：温柔守护神情",
+                "精致机械关节：工业美学细节",
+                "履带底座：稳定可爱",
+                "双手捧花盆：虔诚守护姿态",
+                "夕阳废墟背景：末世温情对比"
+              ],
+              "referenceImages": [
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "文生图生成的复古机器人，金色锈蚀金属质感" }
+              ],
+              "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition"
             }
           }
         ],
@@ -171,6 +195,12 @@
             "platform": "飞书",
             "summary": "基于正确的手绘原稿，使用即梦AI参考角色特征功能生成V3写实版本",
             "decisions": ["使用手绘原稿作为参考", "即梦AI参考角色特征", "保持核心造型特征"]
+          },
+          {
+            "date": "2026-03-29 23:05",
+            "platform": "飞书",
+            "summary": "文生图生成复古机器人V4版本，金色锈蚀金属质感，用户喜欢这个造型",
+            "decisions": ["文生图生成", "复古圆顶造型", "金色锈蚀金属", "V4当前版本"]
           }
         ]
       }
