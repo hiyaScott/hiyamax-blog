@@ -435,6 +435,207 @@
             padding: 25px;
         }
         
+        /* Version Tabs */
+        .version-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-primary);
+            padding-bottom: 15px;
+        }
+        
+        .version-tab {
+            padding: 6px 14px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .version-tab:hover {
+            border-color: var(--accent-blue);
+        }
+        
+        .version-tab.active {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: #fff;
+        }
+        
+        .version-tab.obsolete {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+        
+        /* Content Blocks */
+        .content-block {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-block h3 {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+        
+        .content-block h4 {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin: 15px 0 8px;
+        }
+        
+        .content-block p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .content-block ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .content-block li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 6px 0;
+        }
+        
+        /* Decision Tags */
+        .decision-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .decision-tag {
+            background: rgba(52, 152, 219, 0.15);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        /* Discussion Cards */
+        .discussion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .discussion-card {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid var(--accent-green);
+        }
+        
+        .discussion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .discussion-date {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .discussion-platform {
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .discussion-summary {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        /* Reference Images */
+        .reference-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .reference-image-item {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .reference-image-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .reference-image-item .image-info {
+            padding: 12px;
+        }
+        
+        .reference-image-item .image-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .reference-image-item .image-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* Video Container */
+        .video-container {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        
+        .video-container video {
+            width: 100%;
+            max-height: 400px;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-info h4 {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
@@ -624,8 +825,11 @@
             }
         }
         
-        // Render project detail (simplified version)
+        // Render project detail
         function renderProjectDetail(data, container) {
+            // Store for version switching
+            window.currentProjectData = data;
+            
             const statusClass = data.status === '已发布' ? 'completed' : 
                                data.status === '进行中' ? 'discussing' : 'pending';
             
@@ -665,13 +869,13 @@
             container.innerHTML = html;
         }
         
-        // Render step (simplified)
+        // Render step with full content
         function renderStep(step) {
             const statusClass = step.status === '已完成' ? 'completed' : 
                                step.status === '进行中' ? 'discussing' : 'pending';
             
-            return `
-                <div class="step-section" id="step-${step.number}">
+            let html = `
+                <div class="step-section" id="step-${step.number}" data-step="${step.number}">
                     <div class="step-header">
                         <div class="step-title-group">
                             <div class="step-number">${step.number}</div>
@@ -683,10 +887,215 @@
                         <span class="status-badge status-${statusClass}">${step.status}</span>
                     </div>
                     <div class="step-body">
-                        <p style="color: var(--text-muted);">详细内容加载中...</p>
-                    </div>
+            `;
+            
+            if (step.content && step.content.versions && step.content.versions.length > 0) {
+                // Version tabs
+                html += `<div class="version-tabs">`;
+                step.content.versions.forEach((v, i) => {
+                    const isActive = v.status === '当前版本';
+                    const isObsolete = v.status === '已归档';
+                    html += `<button class="version-tab ${isActive ? 'active' : ''} ${isObsolete ? 'obsolete' : ''}" onclick="switchVersion(${step.number}, ${i})">${v.version}</button>`;
+                });
+                html += `</div>`;
+                
+                // Version content
+                html += `<div class="version-content" id="step-${step.number}-content">`;
+                html += renderVersionContent(step.content.versions.find(v => v.status === '当前版本') || step.content.versions[0], step.number);
+                html += `</div>`;
+                
+                // Discussions
+                if (step.content.discussions && step.content.discussions.length > 0) {
+                    html += renderDiscussions(step.content.discussions);
+                }
+            } else {
+                html += `<p style="color: var(--text-muted);">暂无详细内容</p>`;
+            }
+            
+            html += `</div></div>`;
+            return html;
+        }
+        
+        // Render version content
+        function renderVersionContent(version, stepNum) {
+            const data = version.data || {};
+            let html = '';
+            
+            // Version info
+            html += `
+                <div class="content-block">
+                    <h3>📋 版本信息</h3>
+                    <p><strong>版本：</strong>${version.version} | <strong>状态：</strong>${version.status} | <strong>时间：</strong>${version.date} | <strong>作者：</strong>${version.author}</p>
+                    <p><strong>变更：</strong>${version.changes}</p>
                 </div>
             `;
+            
+            // Concept / Core content
+            if (data.concept || data.core) {
+                html += `
+                    <div class="content-block">
+                        <h3>💡 核心概念</h3>
+                        <p>${data.concept || data.core}</p>
+                    </div>
+                `;
+            }
+            
+            // Story structure (for script step)
+            if (data.story) {
+                html += `<div class="content-block"><h3>📝 故事结构</h3>`;
+                if (data.story.core) {
+                    html += `<p>${data.story.core}</p>`;
+                }
+                if (data.story.characters) {
+                    html += `<h4>角色</h4><ul>`;
+                    data.story.characters.forEach(c => {
+                        html += `<li><strong>${c.name}</strong> (${c.type}) - ${c.desc}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+                if (data.story.structure) {
+                    html += `<h4>结构</h4><ul>`;
+                    data.story.structure.forEach(s => {
+                        html += `<li><strong>${s.phase}</strong> (${s.time}) - ${s.content}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+                html += `</div>`;
+            }
+            
+            // Features / Decisions
+            if (data.features || data.decisions) {
+                html += `<div class="content-block"><h3>✅ 关键决策</h3><ul>`;
+                const items = data.features || data.decisions || [];
+                items.forEach(item => {
+                    if (typeof item === 'string') {
+                        html += `<li>${item}</li>`;
+                    } else if (item.name) {
+                        html += `<li><strong>${item.name}</strong> - ${item.desc || ''}</li>`;
+                    }
+                });
+                html += `</ul></div>`;
+            }
+            
+            // Key moments
+            if (data.keyMoments) {
+                html += `<div class="content-block"><h3>🎯 核心记忆点</h3><ul>`;
+                data.keyMoments.forEach(m => {
+                    html += `<li>${m}</li>`;
+                });
+                html += `</ul></div>`;
+            }
+            
+            // Reference images
+            if (data.referenceImages) {
+                html += `<div class="content-block"><h3>🖼️ 参考图</h3><div class="reference-images">`;
+                data.referenceImages.forEach(img => {
+                    html += `
+                        <div class="reference-image-item">
+                            <img src="${img.src}" alt="${img.title}" onerror="this.style.display='none'">
+                            <div class="image-info">
+                                <div class="image-title">${img.title}</div>
+                                <div class="image-desc">${img.desc}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+            }
+            
+            // Video clips
+            if (data.clips) {
+                html += `<div class="content-block"><h3>🎬 视频片段</h3>`;
+                data.clips.forEach(clip => {
+                    html += `
+                        <div class="video-container">
+                            <div class="video-info">
+                                <h4>${clip.title} (${clip.time})</h4>
+                                <p>${clip.desc}</p>
+                                <div class="video-meta">
+                                    <span>📁 ${clip.filename || clip.id}</span>
+                                    ${clip.size ? `<span>💾 ${clip.size}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+            
+            // Issues
+            if (data.issues) {
+                html += `<div class="content-block"><h3>⚠️ 遇到的问题</h3><ul>`;
+                data.issues.forEach(issue => {
+                    html += `<li>${issue}</li>`;
+                });
+                html += `</ul></div>`;
+            }
+            
+            // Cost
+            if (data.cost || data.output) {
+                html += `<div class="content-block"><h3>💰 成本与输出</h3>`;
+                if (data.cost) {
+                    html += `<p><strong>成本：</strong>${data.cost}</p>`;
+                }
+                if (data.output) {
+                    html += `<p><strong>输出：</strong>${JSON.stringify(data.output).replace(/"/g, '').replace(/,/g, ', ')}</p>`;
+                }
+                html += `</div>`;
+            }
+            
+            return html;
+        }
+        
+        // Render discussions
+        function renderDiscussions(discussions) {
+            let html = `<div class="content-block"><h3>💬 讨论记录</h3><div class="discussion-list">`;
+            
+            discussions.forEach(d => {
+                html += `
+                    <div class="discussion-card">
+                        <div class="discussion-header">
+                            <span class="discussion-date">${d.date}</span>
+                            <span class="discussion-platform">${d.platform}</span>
+                        </div>
+                        <div class="discussion-summary">${d.summary}</div>
+                `;
+                
+                if (d.decisions && d.decisions.length > 0) {
+                    html += `<div class="decision-tags">`;
+                    d.decisions.forEach(dec => {
+                        html += `<span class="decision-tag">${dec}</span>`;
+                    });
+                    html += `</div>`;
+                }
+                
+                html += `</div>`;
+            });
+            
+            html += `</div></div>`;
+            return html;
+        }
+        
+        // Switch version
+        function switchVersion(stepNum, versionIndex) {
+            const stepSection = document.querySelector(`[data-step="${stepNum}"]`);
+            if (!stepSection) return;
+            
+            const tabs = stepSection.querySelectorAll('.version-tab');
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === versionIndex);
+            });
+            
+            // Get the project data from global scope (stored when rendering)
+            if (window.currentProjectData) {
+                const step = window.currentProjectData.steps.find(s => s.number === stepNum);
+                if (step && step.content.versions[versionIndex]) {
+                    const contentDiv = document.getElementById(`step-${stepNum}-content`);
+                    if (contentDiv) {
+                        contentDiv.innerHTML = renderVersionContent(step.content.versions[versionIndex], stepNum);
+                    }
+                }
+            }
         }
         
         // Init
