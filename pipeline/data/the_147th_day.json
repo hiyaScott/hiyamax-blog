@@ -368,7 +368,7 @@
                 },
                 {
                   "id": "hailuo_shot02",
-                  "title": "镜头02 - 暴雨场景（NEW）",
+                  "title": "镜头02 - 暴雨场景（首帧模式）",
                   "time": "0-10s",
                   "desc": "镜头02：暴雨中机器人保护花朵，使用手绘风格角色图作为首帧",
                   "filename": "hailuo_shot02_10s.mp4",
@@ -380,19 +380,34 @@
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
                   "scene": "暴雨中保护花朵",
-                  "note": "镜头02：第二段分镜，暴雨场景，机器人用机械臂和身体护住花朵"
+                  "note": "镜头02首帧模式：第二段分镜，暴雨场景"
+                },
+                {
+                  "id": "hailuo_shot02_v2",
+                  "title": "镜头02 - 暴雨场景（参考图模式/NEW）",
+                  "time": "0-10s",
+                  "desc": "镜头02重制版：暴雨中机器人保护花朵，使用参考图模式(image参数)确保角色一致性",
+                  "filename": "hailuo_shot02_v2_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot02_v2_10s.mp4",
+                  "size": "2.5MB",
+                  "resolution": "1366x768",
+                  "duration": "10秒",
+                  "param": "image (参考图模式)",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "referenceImage": "robo_no5_character.jpg (手绘风格)",
+                  "scene": "暴雨中保护花朵",
+                  "note": "镜头02参考图模式：使用image参数提供参考图，输出尺寸跟随原图(1366x768)，角色一致性保障"
                 }
               ],
               "comparison": {
                 "title": "API参数与生成方式对比",
                 "description": "相同参考图、相同提示词，测试不同参数和生成方式的效果差异",
                 "table": [
-                  {"param": "image", "method": "单图生成", "standard": "否", "outputSize": "1366x768", "duration": "10秒", "source": "后台手动获取", "referenceImage": "robo_no5_realistic_front.jpg"},
-                  {"param": "first_frame_image", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_realistic_front.jpg"},
-                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg → robo_no5_realistic_front.jpg"},
-                  {"param": "first_frame_image (V5)", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)"}
+                  {"param": "image", "method": "参考图生成", "standard": "兼容", "outputSize": "1366x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)", "consistency": "角色一致性参考"},
+                  {"param": "first_frame_image", "method": "首帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)", "consistency": "首帧角色固定"},
+                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg → robo_no5_realistic_front.jpg", "consistency": "首尾角色控制"}
                 ],
-                "conclusion": "V5使用手绘风格角色图作为首帧，测试原始手绘风格的视频生成效果；首尾帧模式可以精确控制视频起止状态；first_frame_image是标准单图生成用法"
+                "conclusion": "image参数提供参考图确保角色一致性，输出尺寸跟随原图；first_frame_image固定首帧角色；首尾帧模式可控制视频起止状态"
               },
               "features": [
                 "正确使用first_frame_image参数（不是image）",
@@ -452,6 +467,12 @@
             "platform": "飞书",
             "summary": "生成镜头02：暴雨场景，机器人保护花朵，使用手绘风格首帧",
             "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "暴雨场景", "手绘风格首帧"]
+          },
+          {
+            "date": "2026-03-29 20:21",
+            "platform": "飞书",
+            "summary": "用户纠正：镜头02应使用参考图模式(image参数)而非首帧模式，以确保角色一致性",
+            "decisions": ["MiniMax-Hailuo-2.3", "image参考图模式", "10秒768P", "暴雨场景", "角色一致性保障"]
           }
         ]
       }
