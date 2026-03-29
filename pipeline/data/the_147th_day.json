@@ -218,18 +218,63 @@
             "date": "2026-03-29 22:30",
             "author": "Scott + Jetton",
             "status": "当前版本",
-            "changes": "初始化分镜首尾帧设计流程",
+            "changes": "添加三组镜头的首帧设计与生成方案",
             "data": {
-              "concept": "在即梦AI中使用'参考角色特征'功能，基于Robo No.5角色图生成各分镜的首帧/尾帧静态图",
+              "concept": "在即梦AI中使用'参考角色特征'功能，基于Robo No.5角色图生成各分镜的首帧/尾帧静态图。三组镜头首帧确保角色一致性。",
+              "referenceCharacter": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
               "workflow": [
-                "1. 在即梦AI上传角色参考图 (robo_no5_character.jpg)",
+                "1. 在即梦AI上传角色参考图 (robo_no5_v3_ai_generated.jpg)",
                 "2. 输入分镜描述prompt，保持角色特征",
                 "3. 生成符合分镜需求的静态首帧图",
-                "4. (可选) 生成尾帧图用于首尾帧模式"
+                "4. 首帧用于海螺/可灵API视频生成，确保角色一致性"
               ],
               "tool": "即梦AI (Jimeng)",
-              "inputImage": "robo_no5_character.jpg",
-              "outputFormat": "静态图片 (用于视频生成首帧)"
+              "inputImage": "robo_no5_v3_ai_generated.jpg",
+              "outputFormat": "静态图片 (用于视频生成首帧)",
+              "shots": [
+                {
+                  "number": 1,
+                  "title": "镜头01 - 夕阳守护",
+                  "time": "0-6s",
+                  "desc": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁",
+                  "status": "首帧已确认",
+                  "firstFrame": {
+                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
+                    "source": "AI生成版 V4 - 用户确认",
+                    "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition"
+                  },
+                  "mood": "孤独但温暖，守护者的宁静",
+                  "keyElements": ["夕阳金色光线", "废墟背景", "机器人手持花盆", "温柔神情"]
+                },
+                {
+                  "number": 2,
+                  "title": "镜头02 - 暴雨守护",
+                  "time": "6-12s",
+                  "desc": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者",
+                  "status": "首帧待生成",
+                  "firstFrame": {
+                    "image": null,
+                    "source": "即梦AI待生成",
+                    "prompt": "A vintage robot with round dome head and golden rusted metal body, crouching in heavy rain, using its mechanical arms and body to shield a small potted white flower. Rain pouring down, wet metal surface, dark stormy atmosphere, post-apocalyptic wasteland background. The robot's orange eyes glow warmly in the darkness, determined protective posture. 3D realistic render, cinematic lighting, dramatic composition"
+                  },
+                  "mood": "紧张而坚定，守护者的坚韧",
+                  "keyElements": ["暴雨倾盆", "机器人弯腰护花", "雨水打湿的金属", "黑暗中发光的眼"]
+                },
+                {
+                  "number": 3,
+                  "title": "镜头03 - 倒下与绽放",
+                  "time": "12-18s",
+                  "desc": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开",
+                  "status": "首帧待生成",
+                  "firstFrame": {
+                    "image": null,
+                    "source": "即梦AI待生成",
+                    "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render"
+                  },
+                  "mood": "悲伤但希望，生命延续的感动",
+                  "keyElements": ["机器人侧躺倒下", "花朵盛开", "夕阳余晖", "警示灯微弱闪烁"]
+                }
+              ]
             }
           }
         ],
@@ -239,6 +284,12 @@
             "platform": "飞书",
             "summary": "确定新流程：即梦生成首帧→海螺API生成视频",
             "decisions": ["新增'分镜首尾帧'步骤", "使用即梦参考角色特征功能", "首帧即分镜画面无需剪辑"]
+          },
+          {
+            "date": "2026-03-30 00:20",
+            "platform": "飞书",
+            "summary": "完善三组镜头首帧设计，第一帧已确认使用V4角色图",
+            "decisions": ["镜头01首帧使用robo_no5_v3_ai_generated.jpg", "镜头02/03首帧通过即梦生成", "确保三组镜头角色一致性"]
           }
         ]
       }
