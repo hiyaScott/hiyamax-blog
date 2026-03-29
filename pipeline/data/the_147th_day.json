@@ -405,13 +405,26 @@
                   "title": "镜头02 - 暴雨守护",
                   "time": "6-12s",
                   "desc": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者",
-                  "status": "首帧已生成",
+                  "status": "首帧V2已生成(SeaDream)",
                   "firstFrame": {
-                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot02_firstframe_jimeng.jpg",
-                    "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300037549814076DCD757FDC2C42-3350-0~tplv-vuqhorh59i-image-v1.image",
-                    "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
-                    "date": "2026-03-30 00:38",
-                    "prompt": "A vintage robot with round dome head and golden rusted metal body, crouching in heavy rain, using its mechanical arms and body to shield a small potted white flower. Rain pouring down, wet metal surface, dark stormy atmosphere, post-apocalyptic wasteland background. The robot's orange eyes glow warmly in the darkness, determined protective posture. 3D realistic render, cinematic lighting, dramatic composition"
+                    "currentVersion": "v2",
+                    "v1": {
+                      "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot02_firstframe_jimeng.jpg",
+                      "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300037549814076DCD757FDC2C42-3350-0~tplv-vuqhorh59i-image-v1.image",
+                      "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
+                      "date": "2026-03-30 00:38",
+                      "prompt": "A vintage robot with round dome head and golden rusted metal body, crouching in heavy rain, using its mechanical arms and body to shield a small potted white flower. Rain pouring down, wet metal surface, dark stormy atmosphere, post-apocalyptic wasteland background. The robot's orange eyes glow warmly in the darkness, determined protective posture. 3D realistic render, cinematic lighting, dramatic composition",
+                      "note": "角色一致性较差，履带变脚板"
+                    },
+                    "v2": {
+                      "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot02_firstframe_seadream.png",
+                      "source": "SeaDream 4.5 生成 (用户上传)",
+                      "date": "2026-03-30 02:48",
+                      "prompt": "参考三视图Front/Left/Back + 画面质感参考robo_no5_character。全景低角度仰拍，机器人单膝跪地庇护白色小花，乌云闪电背景，冷色调，电影级氛围",
+                      "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                      "note": "角色一致性优秀，完美匹配三视图",
+                      "model": "SeaDream 4.5"
+                    }
                   },
                   "mood": "紧张而坚定，守护者的坚韧",
                   "keyElements": ["暴雨倾盆", "机器人弯腰护花", "雨水打湿的金属", "黑暗中发光的眼"]
@@ -671,6 +684,8 @@
                   "desc": "使用robo_no5_character.jpg作为首帧，镜头01提示词重新生成的10秒视频",
                   "filename": "hailuo_shot01_v5_10s.mp4",
                   "src": "./assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "videoUrl": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "taskId": "381849978225055",
                   "size": "1.8MB",
                   "resolution": "768x768",
                   "duration": "10秒",
