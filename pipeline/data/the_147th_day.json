@@ -311,6 +311,56 @@
     },
     {
       "number": 3,
+      "title": "场景设计",
+      "status": "已完成",
+      "desc": "设计短片中的关键场景，生成场景参考图",
+      "content": {
+        "currentVersion": "v1",
+        "versions": [
+          {
+            "version": "v1",
+            "date": "2026-03-30 02:42",
+            "author": "Jetton (即梦AI)",
+            "status": "当前版本",
+            "changes": "生成暴雨废墟场景，为分镜02提供背景参考",
+            "data": {
+              "concept": "末世废墟中的暴雨场景，乌云密布、电闪雷鸣，地面积水倒映天空。场景设计为角色动作提供氛围支撑和背景参考。",
+              "scenes": [
+                {
+                  "id": "scene_storm",
+                  "title": "暴雨废墟",
+                  "shot": "镜头02 - 暴雨守护",
+                  "desc": "末世废墟在暴风雨中的场景，乌云、闪电、积水、远处废墟轮廓",
+                  "mood": "悲壮、紧张、守护",
+                  "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
+                  "image": "scene_storm_wasteland.jpg",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg"
+                }
+              ],
+              "prompt": "A post-apocalyptic wasteland during a violent thunderstorm. Dark storm clouds cover the entire sky, with multiple lightning strikes illuminating the scene. Heavy rain pouring down, creating ripples and reflections on the flooded ground. The landscape is desolate - cracked concrete ruins, scattered debris, broken metal structures in the distant background. The ground is covered with water puddles reflecting the stormy sky and lightning. Cold blue-cyan color palette, dramatic volumetric lighting through rain, cinematic atmosphere, moody and emotional. Wide shot composition with empty space in the center for character placement. 8K quality, photorealistic, film grain",
+              "tool": "即梦AI (Jimeng)",
+              "model": "jimeng_high_aes_general_v21_L",
+              "workflow": [
+                "1. 根据分镜需求确定场景氛围（暴雨、废墟、冷色调）",
+                "2. 编写详细场景提示词（不含角色，专注环境）",
+                "3. 使用即梦AI生成场景图",
+                "4. 场景图作为背景参考，与角色分层合成或作为视频生成参考"
+              ]
+            }
+          }
+        ],
+        "discussions": [
+          {
+            "date": "2026-03-30 02:36",
+            "platform": "飞书",
+            "summary": "确定场景设计流程，在角色设计之后、分镜之前添加场景设计步骤",
+            "decisions": ["添加场景设计步骤", "先生成场景再生成角色分镜", "场景与角色分层处理"]
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
       "title": "分镜首尾帧",
       "status": "进行中",
       "desc": "在即梦AI中基于角色参考图，生成各分镜的首帧/尾帧静态图",
@@ -409,7 +459,7 @@
       }
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "视频生成",
       "status": "已完成",
       "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
@@ -741,7 +791,7 @@
       }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "后期剪辑",
       "status": "已完成",
       "desc": "FFmpeg合并镜头、添加硬字幕、生成临时BGM",
@@ -804,7 +854,7 @@
       }
     },
     {
-      "number": 6,
+      "number": 7,
       "title": "发布",
       "status": "已完成",
       "desc": "部署到GitHub Pages，创建专题页面，更新合集索引",
