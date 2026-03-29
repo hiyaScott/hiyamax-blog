@@ -324,27 +324,69 @@
             "status": "当前版本",
             "changes": "生成暴雨废墟场景，为分镜02提供背景参考",
             "data": {
-              "concept": "末世废墟中的暴雨场景，乌云密布、电闪雷鸣，地面积水倒映天空。场景设计为角色动作提供氛围支撑和背景参考。",
+              "concept": "末世废墟场景设计，包含夕阳下的温暖废墟和暴雨中的紧张氛围。场景为三个分镜提供背景支撑。",
               "scenes": [
                 {
-                  "id": "scene_storm",
-                  "title": "暴雨废墟",
+                  "id": "scene_sunset_01",
+                  "title": "夕阳废墟 - 远景",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "金色夕阳下的废墟远景，温暖的逆光氛围",
+                  "mood": "孤独但温暖，宁静",
+                  "lighting": "暖色调，金色逆光，柔和阴影",
+                  "image": "scene_sunset_wasteland_01.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png"
+                },
+                {
+                  "id": "scene_sunset_02",
+                  "title": "夕阳废墟 - 中景街道",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "废墟街道，夕阳侧光，地面杂草丛生",
+                  "mood": "宁静、荒废中的生机",
+                  "lighting": "暖色调，侧光，轮廓光",
+                  "image": "scene_sunset_wasteland_02.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png"
+                },
+                {
+                  "id": "scene_sunset_03",
+                  "title": "夕阳废墟 - 建筑群",
+                  "shot": "镜头01/03 - 夕阳守护/倒下与绽放",
+                  "desc": "破碎建筑剪影，远处山脉，夕阳余晖",
+                  "mood": "壮丽、悲伤但希望",
+                  "lighting": "暖色调，逆光剪影，大气透视",
+                  "image": "scene_sunset_wasteland_03.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png"
+                },
+                {
+                  "id": "scene_storm_01",
+                  "title": "暴雨废墟 - 首版",
                   "shot": "镜头02 - 暴雨守护",
-                  "desc": "末世废墟在暴风雨中的场景，乌云、闪电、积水、远处废墟轮廓",
+                  "desc": "末世废墟在暴风雨中的场景，乌云、闪电、积水",
                   "mood": "悲壮、紧张、守护",
                   "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
                   "image": "scene_storm_wasteland.jpg",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg"
+                },
+                {
+                  "id": "scene_storm_02",
+                  "title": "暴雨废墟 - 升级版",
+                  "shot": "镜头02 - 暴雨守护",
+                  "desc": "暴风雨中的废墟，闪电照亮积水，桥梁残骸",
+                  "mood": "紧张、守护、电影感",
+                  "lighting": "冷蓝青色调，多道闪电，水面反射",
+                  "image": "scene_storm_wasteland_02.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png"
                 }
               ],
-              "prompt": "A post-apocalyptic wasteland during a violent thunderstorm. Dark storm clouds cover the entire sky, with multiple lightning strikes illuminating the scene. Heavy rain pouring down, creating ripples and reflections on the flooded ground. The landscape is desolate - cracked concrete ruins, scattered debris, broken metal structures in the distant background. The ground is covered with water puddles reflecting the stormy sky and lightning. Cold blue-cyan color palette, dramatic volumetric lighting through rain, cinematic atmosphere, moody and emotional. Wide shot composition with empty space in the center for character placement. 8K quality, photorealistic, film grain",
-              "tool": "即梦AI (Jimeng)",
-              "model": "jimeng_high_aes_general_v21_L",
+              "promptExamples": {
+                "sunset": "A post-apocalyptic wasteland at golden hour. Ruined buildings silhouetted against warm orange sunset. Dust particles in the air, cinematic atmosphere. Desolate landscape with scattered debris. 8K quality, photorealistic, film grain",
+                "storm": "A post-apocalyptic wasteland during a violent thunderstorm. Dark storm clouds, lightning strikes, heavy rain. Flooded ground with reflections. Cold blue-cyan color palette, dramatic lighting. 8K quality, photorealistic"
+              },
+              "tool": "SeaDream 4.5 / 即梦AI",
               "workflow": [
-                "1. 根据分镜需求确定场景氛围（暴雨、废墟、冷色调）",
-                "2. 编写详细场景提示词（不含角色，专注环境）",
-                "3. 使用即梦AI生成场景图",
-                "4. 场景图作为背景参考，与角色分层合成或作为视频生成参考"
+                "1. 根据分镜需求确定场景氛围（夕阳/暴雨）",
+                "2. 使用SeaDream/即梦生成场景图（不含角色）",
+                "3. 场景图作为背景参考，与角色分层合成",
+                "4. 或作为视频生成的场景参考"
               ]
             }
           }
@@ -445,7 +487,58 @@
                   "mood": "悲伤但希望，生命延续的感动",
                   "keyElements": ["机器人侧躺倒下", "花朵盛开", "夕阳余晖", "警示灯微弱闪烁"]
                 }
-              ]
+              ],
+              "shotsV2": [
+                {
+                  "number": 1,
+                  "title": "镜头01 - 夕阳守护 V2",
+                  "time": "0-6s",
+                  "desc": "Robo No.5 在夕阳废墟中守护花朵，SeaDream 4.5生成",
+                  "status": "首帧V2已生成",
+                  "firstFrame": {
+                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot01_firstframe_v2.jpg",
+                    "source": "SeaDream 4.5 生成",
+                    "date": "2026-03-30 03:40",
+                    "prompt": "参考三视图+画面质感。夕阳下，机器人手持花盆，废墟背景，暖色调，电影级光影",
+                    "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                    "model": "SeaDream 4.5",
+                    "note": "V2版本：角色一致性优秀，完美匹配三视图"
+                  },
+                  "mood": "孤独但温暖，守护者的宁静",
+                  "keyElements": ["夕阳金色光线", "废墟背景", "机器人手持花盆", "温柔神情"]
+                },
+                {
+                  "number": 2,
+                  "title": "镜头02 - 暴雨守护 V2",
+                  "time": "6-12s",
+                  "desc": "暴雨中，机器人用身体护住花朵，SeaDream 4.5生成",
+                  "status": "首帧V2已生成",
+                  "firstFrame": {
+                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot02_firstframe_v2.png",
+                    "source": "SeaDream 4.5 生成",
+                    "date": "2026-03-30 03:40",
+                    "prompt": "参考三视图+画面质感。全景低角度仰拍，机器人单膝跪地庇护白色小花，乌云闪电背景，冷色调，电影级氛围",
+                    "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                    "model": "SeaDream 4.5",
+                    "note": "V2版本：角色一致性优秀，完美匹配三视图"
+                  },
+                  "mood": "紧张而坚定，守护者的坚韧",
+                  "keyElements": ["暴雨倾盆", "机器人单膝跪地护花", "雨水打湿的金属", "闪电照亮"]
+                }
+              ],
+              "comparison": {
+                "title": "V1 vs V2 版本对比",
+                "v1": {
+                  "tool": "即梦AI API",
+                  "characterConsistency": "较差",
+                  "issues": ["履带变脚板", "造型偏差"]
+                },
+                "v2": {
+                  "tool": "SeaDream 4.5",
+                  "characterConsistency": "优秀",
+                  "advantages": ["完美匹配三视图", "生锈金属质感一致", "造型准确"]
+                }
+              }
             }
           }
         ],
