@@ -83,7 +83,7 @@
       "status": "已完成",
       "desc": "设计角色外观，手绘原稿转3D写实，生成参考图",
       "content": {
-        "currentVersion": "v2",
+        "currentVersion": "v3",
         "versions": [
           {
             "version": "v1",
@@ -109,7 +109,7 @@
             "version": "v2",
             "date": "2026-03-28 23:12",
             "author": "Jetton (即梦AI)",
-            "status": "当前版本",
+            "status": "已归档",
             "changes": "将手绘转为3D写实风格，用于视频生成参考",
             "data": {
               "concept": "3D写实渲染，皮克斯/WALL-E美学，青灰色金属质感",
@@ -127,6 +127,30 @@
               ],
               "prompt": "A lonely old robot 'Robo No.5' in post-apocalyptic wasteland, boxy square metal head with orange glowing eyes, weathered teal-gray metal body with rust, hydraulic mechanical arms, holding a small potted flower, golden hour sunset, 3D realistic render, WALL-E aesthetic, Pixar style"
             }
+          },
+          {
+            "version": "v3",
+            "date": "2026-03-29 23:00",
+            "author": "Scott (即梦AI)",
+            "status": "当前版本",
+            "changes": "基于手绘原稿使用即梦AI参考角色特征功能生成的写实3D版",
+            "data": {
+              "concept": "3D写实渲染，基于手绘原稿保持角色特征，末日废墟背景",
+              "features": [
+                "圆顶头部：保留复古机器人造型",
+                "圆形眼睛：忠实还原手绘稿",
+                "锈蚀金属：末世做旧质感",
+                "机械手臂：关节细节丰富",
+                "履带底座：稳定移动方式",
+                "手捧花盆：剧情核心道具",
+                "废墟背景：末日氛围营造"
+              ],
+              "referenceImages": [
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格 - 正确版本" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_v3.jpg", "title": "写实3D版 V3", "desc": "即梦AI基于手绘稿生成，保持角色特征" }
+              ],
+              "prompt": "参考手绘原稿的Robo No.5机器人，方头网格眼，生成3D写实版本，末日废墟背景，手捧花盆，夕阳金色光线"
+            }
           }
         ],
         "discussions": [
@@ -141,6 +165,12 @@
             "platform": "飞书",
             "summary": "使用即梦AI将手绘转为3D写实风格",
             "decisions": ["手绘转3D", "即梦AI生成", "用于视频生成参考"]
+          },
+          {
+            "date": "2026-03-29 23:00",
+            "platform": "飞书",
+            "summary": "基于正确的手绘原稿，使用即梦AI参考角色特征功能生成V3写实版本",
+            "decisions": ["使用手绘原稿作为参考", "即梦AI参考角色特征", "保持核心造型特征"]
           }
         ]
       }
