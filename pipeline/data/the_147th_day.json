@@ -1,14 +1,18 @@
 {
   "id": "the_147th_day",
   "emoji": "🤖",
-  "title": "第147天",
-  "subtitle": "18秒末日温情AI短片",
-  "type": "末日温情AI短片",
-  "duration": "18秒",
-  "status": "角色设计完成",
-  "currentStep": 2,
+  "title": "第147天 The 147th Day",
+  "subtitle": "AI实验短片 - 从剧本到成片的完整流程验证",
+  "type": "AI实验短片",
+  "duration": "17秒",
+  "status": "已发布",
+  "currentStep": 5,
   "createdAt": "2026-03-28",
-  "updatedAt": "2026-03-28",
+  "updatedAt": "2026-03-29",
+  "finalProduct": {
+    "videoUrl": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/the-147th-day.html",
+    "pageUrl": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/the-147th-day.html"
+  },
   "steps": [
     {
       "number": 1,
@@ -106,7 +110,7 @@
             "date": "2026-03-28 23:12",
             "author": "Jetton (即梦AI)",
             "status": "当前版本",
-            "changes": "将手绘转为3D写实风格，用于可灵视频生成",
+            "changes": "将手绘转为3D写实风格，用于视频生成参考",
             "data": {
               "concept": "3D写实渲染，皮克斯/WALL-E美学，青灰色金属质感",
               "features": [
@@ -119,7 +123,7 @@
               ],
               "referenceImages": [
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，可灵视频参考" }
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，视频生成参考" }
               ],
               "prompt": "A lonely old robot 'Robo No.5' in post-apocalyptic wasteland, boxy square metal head with orange glowing eyes, weathered teal-gray metal body with rust, hydraulic mechanical arms, holding a small potted flower, golden hour sunset, 3D realistic render, WALL-E aesthetic, Pixar style"
             }
@@ -135,8 +139,8 @@
           {
             "date": "2026-03-28 23:00",
             "platform": "飞书",
-            "summary": "海螺视频角色一致性失败，决定用手绘图转3D写实",
-            "decisions": ["手绘转3D", "即梦AI生成", "用于可灵参考"]
+            "summary": "使用即梦AI将手绘转为3D写实风格",
+            "decisions": ["手绘转3D", "即梦AI生成", "用于视频生成参考"]
           }
         ]
       }
@@ -144,46 +148,53 @@
     {
       "number": 3,
       "title": "视频生成",
-      "status": "进行中",
-      "desc": "使用可灵AI生成3个视频片段（修正DMXAPI调用方式后）",
+      "status": "已完成",
+      "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
       "content": {
-        "currentVersion": null,
-        "versions": [],
-        "clips": [
+        "currentVersion": "v1",
+        "versions": [
           {
-            "id": "shot01",
-            "title": "镜头01-开场",
-            "time": "0-6s",
-            "desc": "Robo No.5 站在废墟中，夕阳下守护花朵",
-            "status": "待重新生成",
-            "oldAttempt": {
-              "tool": "海螺MiniMax-Hailuo-02",
-              "taskId": "381548519256179",
-              "result": "角色不一致，废弃"
-            }
-          },
-          {
-            "id": "shot08",
-            "title": "镜头08-中点",
-            "time": "6-12s",
-            "desc": "暴雨中，机器人用身体保护花朵",
-            "status": "待重新生成",
-            "oldAttempt": {
-              "tool": "海螺MiniMax-Hailuo-02",
-              "taskId": "381549786616218",
-              "result": "角色不一致，废弃"
-            }
-          },
-          {
-            "id": "shot16",
-            "title": "镜头16-结局",
-            "time": "12-18s",
-            "desc": "机器人倒下，花朵依然盛开",
-            "status": "待重新生成",
-            "oldAttempt": {
-              "tool": "海螺MiniMax-Hailuo-02",
-              "taskId": "381547724300731",
-              "result": "角色不一致，废弃"
+            "version": "v1",
+            "date": "2026-03-29 01:00",
+            "author": "Jetton (海螺AI)",
+            "status": "当前版本",
+            "changes": "使用海螺AI图生视频生成多个镜头素材",
+            "data": {
+              "concept": "通过DMXAPI调用海螺MiniMax-Hailuo-02模型生成视频",
+              "tool": "海螺AI (MiniMax-Hailuo-02)",
+              "apiProvider": "DMXAPI",
+              "cost": "¥43.2 (27次调用，含API调用事故)",
+              "clips": [
+                {
+                  "id": "shot01",
+                  "title": "镜头01-开场",
+                  "time": "0-6s",
+                  "desc": "夕阳下机器人守护花朵",
+                  "filename": "shot01_opening.mp4",
+                  "size": "1.2MB"
+                },
+                {
+                  "id": "shot08", 
+                  "title": "镜头08-中点",
+                  "time": "6-12s",
+                  "desc": "暴雨中保护花朵",
+                  "filename": "shot08_midpoint.mp4",
+                  "size": "4.6MB"
+                },
+                {
+                  "id": "shot16",
+                  "title": "镜头16-结局",
+                  "time": "12-18s",
+                  "desc": "机器人倒下花依然盛开",
+                  "filename": "shot16_ending.mp4",
+                  "size": "485KB"
+                }
+              ],
+              "issues": [
+                "API调用失控：脚本混淆提交/查询端点，导致27次调用",
+                "字符编码：字幕使用DejaVuSans字体不支持中文，后改用Noto Serif CJK",
+                "无音频：海螺视频生成不带音频，需后期添加"
+              ]
             }
           }
         ],
@@ -195,16 +206,22 @@
             "decisions": ["海螺MiniMax-Hailuo-02", "6秒/镜"]
           },
           {
-            "date": "2026-03-28 22:30",
-            "platform": "飞书",
-            "summary": "发现三个镜头角色完全不一致，灾难级结果",
-            "decisions": ["废弃海螺结果", "切换到可灵", "需角色一致性"]
-          },
-          {
             "date": "2026-03-28 23:00",
             "platform": "飞书",
-            "summary": "排查DMXAPI，发现可灵正确调用方式是/v1/responses而非/v1/video_generation",
-            "decisions": ["使用正确API端点", "图生视频模式", "kling-v2-6-image2video"]
+            "summary": "用户要求确认第一个镜头后再继续",
+            "decisions": ["等待用户确认", "先检查输出质量"]
+          },
+          {
+            "date": "2026-03-29 00:44",
+            "platform": "飞书",
+            "summary": "发生API调用失控事故，27次调用浪费¥43.2",
+            "decisions": ["事故记录", "脚本修复", "资金保护机制"]
+          },
+          {
+            "date": "2026-03-29 09:30",
+            "platform": "飞书",
+            "summary": "用户从后台获取视频链接，成功下载成片素材",
+            "decisions": ["视频素材获取成功", "进入后期剪辑"]
           }
         ]
       }
@@ -212,23 +229,114 @@
     {
       "number": 4,
       "title": "后期剪辑",
-      "status": "待开始",
-      "desc": "剪辑、添加字幕\"第147天。花还活着。\"、配乐",
+      "status": "已完成",
+      "desc": "FFmpeg合并镜头、添加硬字幕、生成临时BGM",
       "content": {
-        "currentVersion": null,
-        "versions": [],
-        "discussions": []
+        "currentVersion": "v2",
+        "versions": [
+          {
+            "version": "v1",
+            "date": "2026-03-29 02:20",
+            "author": "Jetton (FFmpeg)",
+            "status": "已归档",
+            "changes": "初步剪辑，但字幕字体错误导致中文乱码",
+            "data": {
+              "concept": "使用FFmpeg合并3个镜头并添加字幕",
+              "issues": ["字幕使用DejaVuSans字体，中文显示为方块"]
+            }
+          },
+          {
+            "version": "v2",
+            "date": "2026-03-29 09:36",
+            "author": "Jetton (FFmpeg)",
+            "status": "当前版本",
+            "changes": "修复字幕字体，使用Noto Serif CJK，添加临时BGM",
+            "data": {
+              "concept": "FFmpeg完整后期流程：合并→字幕→BGM",
+              "tools": ["FFmpeg", "Noto Serif CJK字体"],
+              "output": {
+                "filename": "the_147th_day_final.mp4",
+                "duration": "17秒",
+                "resolution": "1920x1080",
+                "videoCodec": "H.264",
+                "audioCodec": "AAC 192kbps",
+                "subtitle": "硬字幕 - 第147天。花还活着。"
+              },
+              "process": [
+                "1. 合并3个镜头：ffmpeg concat",
+                "2. 添加硬字幕：drawtext filter (Noto Serif CJK)",
+                "3. 生成临时BGM：sine wave 220Hz + fade",
+                "4. 混音输出：video + BGM"
+              ],
+              "subtitleText": "第147天。花还活着。",
+              "bgm": "FFmpeg生成的临时氛围音乐（220Hz正弦波+淡入淡出）"
+            }
+          }
+        ],
+        "discussions": [
+          {
+            "date": "2026-03-29 09:27",
+            "platform": "飞书",
+            "summary": "用户反馈字幕乱码、无音乐",
+            "decisions": ["字幕改用Noto Serif CJK字体", "FFmpeg生成临时BGM"]
+          },
+          {
+            "date": "2026-03-29 09:36",
+            "platform": "飞书",
+            "summary": "修复版视频完成，字幕正常，带临时BGM",
+            "decisions": ["字幕字体修复完成", "临时BGM已添加"]
+          }
+        ]
       }
     },
     {
       "number": 5,
       "title": "发布",
-      "status": "待开始",
-      "desc": "封面、标题、描述、多平台发布",
+      "status": "已完成",
+      "desc": "部署到GitHub Pages，创建专题页面，更新合集索引",
       "content": {
-        "currentVersion": null,
-        "versions": [],
-        "discussions": []
+        "currentVersion": "v1",
+        "versions": [
+          {
+            "version": "v1",
+            "date": "2026-03-29 11:57",
+            "author": "Jetton",
+            "status": "当前版本",
+            "changes": "完整发布流程",
+            "data": {
+              "concept": "GitHub Pages部署，创建专题展示页面",
+              "deployments": [
+                {
+                  "platform": "GitHub Pages",
+                  "url": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/the-147th-day.html",
+                  "type": "专题页面"
+                },
+                {
+                  "platform": "GitHub Pages",
+                  "url": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/shortfilm-collection.html",
+                  "type": "合集索引"
+                }
+              ],
+              "assets": [
+                "the-147th-day.html - 专题展示页面",
+                "the_147th_day.mp4 - 成片视频文件",
+                "shortfilm-collection.html - 更新合集入口"
+              ],
+              "commits": [
+                "32edfa71 - Add The 147th Day AI shortfilm with BGM",
+                "0b6cbefa - Add The 147th Day to collection index"
+              ]
+            }
+          }
+        ],
+        "discussions": [
+          {
+            "date": "2026-03-29 11:56",
+            "platform": "飞书",
+            "summary": "用户要求部署视频，使用FFmpeg BGM",
+            "decisions": ["部署到GitHub Pages", "更新合集索引"]
+          }
+        ]
       }
     }
   ]
