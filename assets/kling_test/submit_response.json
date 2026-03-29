@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "message": "SUCCEED",
+  "request_id": "d09c6c7f-9a7e-41a6-8c1e-1987d8966546",
+  "data": {
+    "task_id": "867147274790014976",
+    "task_status": "submitted",
+    "task_status_msg": "",
+    "task_info": {},
+    "created_at": 1774772539908,
+    "updated_at": 1774772539908
+  },
+  "usage": {
+    "total_tokens": 4250,
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 4250,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  }
+}

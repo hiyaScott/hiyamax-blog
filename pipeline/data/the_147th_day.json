@@ -151,13 +151,13 @@
       "status": "已完成",
       "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
       "content": {
-        "currentVersion": "v1",
+        "currentVersion": "v3",
         "versions": [
           {
             "version": "v1",
             "date": "2026-03-29 01:00",
             "author": "Jetton (海螺AI)",
-            "status": "当前版本（成片使用）",
+            "status": "成片使用（V1）",
             "changes": "首批生成的3个镜头，最终用于成片",
             "data": {
               "concept": "通过DMXAPI调用海螺MiniMax-Hailuo-02模型生成视频",
@@ -250,6 +250,42 @@
                 "与V1相比，部分画面质量略有差异",
                 "由于API事故产生，未经仔细筛选",
                 "仅作为备用素材，未用于成片"
+              ]
+            }
+          },
+          {
+            "version": "v3",
+            "date": "2026-03-29 16:21",
+            "author": "Jetton (可灵AI)",
+            "status": "当前版本（V3测试中）",
+            "changes": "使用可灵v2.6图生视频API生成的测试镜头",
+            "data": {
+              "concept": "通过DMXAPI调用可灵v2.6图生视频API，测试新的视频生成 pipeline",
+              "tool": "可灵AI (kling-v2-6-image2video)",
+              "apiProvider": "DMXAPI",
+              "cost": "¥1.6 (5秒, pro模式)",
+              "taskId": "867147274790014976",
+              "prompt": "夕阳下的金色光芒中，机器人温柔地守护着一朵发光的蓝色小花，微风轻拂，机器人头部微微转动，眼中闪烁着温暖的光芒，背景是末世废墟，电影级光影，4K画质",
+              "clips": [
+                {
+                  "id": "kling_shot01",
+                  "title": "镜头01-开场（可灵版）",
+                  "time": "0-5s",
+                  "desc": "夕阳下机器人守护花朵 - 可灵v2.6生成",
+                  "filename": "kling_shot01_v3.mp4",
+                  "src": "./assets/the_147th_day/kling_shot01_v3.mp4",
+                  "size": "12MB"
+                }
+              ],
+              "features": [
+                "5秒时长（可灵支持5/10秒）",
+                "pro模式高品质生成",
+                "物理模拟效果更好",
+                "API调用流程已标准化（Skill已固化）"
+              ],
+              "issues": [
+                "首次调用时遇到查询接口格式问题，已解决并文档化",
+                "duration参数只能是5或10，其他值会报错"
               ]
             }
           }
