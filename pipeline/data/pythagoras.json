@@ -6,7 +6,7 @@
   "type": "AI实验短片",
   "duration": "待定",
   "status": "待启动",
-  "currentStep": 1,
+  "currentStep": 6,
   "createdAt": "2026-03-29",
   "updatedAt": "2026-03-29",
   "steps": [
@@ -34,6 +34,17 @@
     },
     {
       "number": 3,
+      "title": "分镜首尾帧",
+      "status": "待启动",
+      "desc": "在即梦AI中基于角色参考图，生成各分镜的首帧/尾帧静态图",
+      "content": {
+        "currentVersion": null,
+        "versions": [],
+        "discussions": []
+      }
+    },
+    {
+      "number": 4,
       "title": "视频生成",
       "status": "待启动",
       "desc": "使用AI生成几何动画和可视化证明过程",
@@ -44,7 +55,7 @@
       }
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "后期剪辑",
       "status": "待启动",
       "desc": "合并片段、添加数学公式字幕、生成BGM",
@@ -55,7 +66,7 @@
       }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "发布",
       "status": "待启动",
       "desc": "部署到GitHub Pages，创建专题页面",

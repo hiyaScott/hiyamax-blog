@@ -6,9 +6,9 @@
   "type": "AI实验短片",
   "duration": "5分钟",
   "status": "剧本完成",
-  "currentStep": 1,
+  "currentStep": 6,
   "createdAt": "2026-03-28",
-  "updatedAt": "2026-03-28",
+  "updatedAt": "2026-03-29",
   "finalProduct": {
     "pageUrl": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/shortfilm-012.html"
   },
@@ -81,20 +81,27 @@
     },
     {
       "number": 3,
+      "title": "分镜首尾帧",
+      "status": "待启动",
+      "desc": "在即梦AI中基于角色参考图，生成各分镜的首帧/尾帧静态图",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
+    },
+    {
+      "number": 4,
       "title": "视频生成",
       "status": "待启动",
       "desc": "使用AI生成视频片段",
       "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "后期剪辑",
       "status": "待启动",
       "desc": "FFmpeg合并、字幕、BGM",
       "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "发布",
       "status": "待启动",
       "desc": "部署到GitHub Pages",
