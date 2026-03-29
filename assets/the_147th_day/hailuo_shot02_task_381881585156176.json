@@ -1,0 +1,26 @@
+{
+  "task_id": "381881585156176",
+  "model": "MiniMax-Hailuo-2.3",
+  "mode": "first_frame_only",
+  "shot": "shot02",
+  "duration": 10,
+  "resolution": "768P",
+  "first_frame": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+  "prompt": "A lonely old robot 'Robo No.5' protecting a small potted blue flower in heavy rainstorm. The robot has a boxy square metal head with orange glowing grid eyes, weathered teal-gray metal body with rust and scratches. The robot uses its hydraulic mechanical arms and body to shield the delicate flower from pouring rain. Raindrops splashing on metal surfaces, water droplets reflecting dim light. Dark stormy sky, dramatic cinematic lighting, post-apocalyptic wasteland background. The robot's eyes glow warm orange, showing determination to protect the flower. Film grain texture, 4K quality, emotional guardian scene.",
+  "submitted_at": "2026-03-29 20:07:26",
+  "completed_at": "2026-03-29 20:09:00",
+  "status": "completed",
+  "file_id": "381864305983714",
+  "video_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-29%2F099eede9-fc84-426f-b6c1-f79f4cace60f%2Foutput_aigc.mp4",
+  "local_path": "./assets/the_147th_day/hailuo_shot02_10s.mp4",
+  "video_size": "2.2MB",
+  "video_resolution": "768x768",
+  "note": "镜头02：暴雨中保护花朵，手绘风格首帧，10秒768P",
+  "api_response": {
+    "task_id": "381881585156176",
+    "base_resp": {
+      "status_code": 0,
+      "status_msg": "success"
+    }
+  }
+}

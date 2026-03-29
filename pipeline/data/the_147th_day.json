@@ -365,6 +365,22 @@
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
                   "note": "V5版本：仅使用首帧(robo_no5_character.jpg)，按照镜头01提示词生成，手绘风格角色"
+                },
+                {
+                  "id": "hailuo_shot02",
+                  "title": "镜头02 - 暴雨场景（NEW）",
+                  "time": "0-10s",
+                  "desc": "镜头02：暴雨中机器人保护花朵，使用手绘风格角色图作为首帧",
+                  "filename": "hailuo_shot02_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot02_10s.mp4",
+                  "size": "2.2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image (单首帧模式)",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "referenceImage": "robo_no5_character.jpg (手绘风格)",
+                  "scene": "暴雨中保护花朵",
+                  "note": "镜头02：第二段分镜，暴雨场景，机器人用机械臂和身体护住花朵"
                 }
               ],
               "comparison": {
@@ -430,6 +446,12 @@
             "platform": "飞书",
             "summary": "使用手绘风格角色图(robo_no5_character.jpg)作为首帧，按照镜头01提示词重新生成",
             "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "手绘风格首帧"]
+          },
+          {
+            "date": "2026-03-29 20:07",
+            "platform": "飞书",
+            "summary": "生成镜头02：暴雨场景，机器人保护花朵，使用手绘风格首帧",
+            "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "暴雨场景", "手绘风格首帧"]
           }
         ]
       }
