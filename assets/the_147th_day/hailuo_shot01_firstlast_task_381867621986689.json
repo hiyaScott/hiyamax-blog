@@ -1,0 +1,26 @@
+{
+  "task_id": "381867621986689",
+  "model": "MiniMax-Hailuo-02",
+  "mode": "first_last_frame",
+  "duration": 10,
+  "resolution": "768P",
+  "first_frame": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+  "last_frame": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg",
+  "prompt": "A lonely old robot 'Robo No.5' gently guarding a small potted blue flower in golden hour sunset lighting. The robot slowly turns its head toward the flower, eyes blinking with warm orange glow. A gentle breeze sways the flower and the robot's metal body. The scene transforms from hand-drawn sketch style to photorealistic 3D render, maintaining the same pose and composition. Post-apocalyptic wasteland background, cinematic lighting, film grain texture.",
+  "submitted_at": "2026-03-29 19:04:32",
+  "completed_at": "2026-03-29 19:06:00",
+  "status": "completed",
+  "file_id": "381845382099176",
+  "video_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-29%2Fa4aa6bc8-fbb3-4d91-a9e5-59680ece4a3a%2Foutput_aigc.mp4",
+  "local_path": "./assets/the_147th_day/hailuo_shot01_firstlast_10s.mp4",
+  "video_size": "2.5MB",
+  "video_resolution": "768x768",
+  "note": "镜头01首尾帧重制版：手绘→写实过渡，10秒768P",
+  "api_response": {
+    "task_id": "381867621986689",
+    "base_resp": {
+      "status_code": 0,
+      "status_msg": "success"
+    }
+  }
+}

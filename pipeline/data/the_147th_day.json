@@ -336,16 +336,31 @@
                   "duration": "10秒",
                   "param": "first_frame_image (标准)",
                   "note": "此视频使用正确的first_frame_image参数，符合DMXAPI官方文档"
+                },
+                {
+                  "id": "hailuo_v4_firstlast",
+                  "title": "首尾帧生成 - 镜头01重制版（NEW）",
+                  "time": "0-10s",
+                  "desc": "使用首尾帧模式（first_frame_image + last_frame_image），从手绘风格过渡到写实风格的10秒视频",
+                  "filename": "hailuo_shot01_firstlast_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot01_firstlast_10s.mp4",
+                  "size": "2.5MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image + last_frame_image (首尾帧模式)",
+                  "model": "MiniMax-Hailuo-02",
+                  "note": "镜头01重制版：首帧手绘角色图→尾帧写实角色图，最高角色一致性保障"
                 }
               ],
               "comparison": {
-                "title": "API参数对比测试",
-                "description": "相同参考图、相同提示词，仅参数名不同，观察输出差异",
+                "title": "API参数与生成方式对比",
+                "description": "相同参考图、相同提示词，测试不同参数和生成方式的效果差异",
                 "table": [
-                  {"param": "image", "standard": "否", "outputSize": "1366x768", "source": "后台手动获取"},
-                  {"param": "first_frame_image", "standard": "是", "outputSize": "768x768", "source": "轮询查询获取"}
+                  {"param": "image", "method": "单图生成", "standard": "否", "outputSize": "1366x768", "duration": "10秒", "source": "后台手动获取"},
+                  {"param": "first_frame_image", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取"},
+                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取"}
                 ],
-                "conclusion": "两个参数都被API接受，但first_frame_image是标准用法，输出尺寸固定；image参数输出尺寸跟随原图，属于兼容行为"
+                "conclusion": "首尾帧模式可以精确控制视频起止状态，角色一致性最佳；first_frame_image是标准单图生成用法；image参数属于兼容行为"
               },
               "features": [
                 "正确使用first_frame_image参数（不是image）",
@@ -389,10 +404,10 @@
             "decisions": ["视频素材获取成功", "进入后期剪辑"]
           },
           {
-            "date": "2026-03-29 18:15",
+            "date": "2026-03-29 19:00",
             "platform": "飞书",
-            "summary": "DMXAPI客服反馈海螺质量很好，重新测试正确使用API",
-            "decisions": ["使用first_frame_image参数", "使用MiniMax-Hailuo-2.3", "10秒768P", "测试角色一致性"]
+            "summary": "使用首尾帧模式重制镜头01，首帧手绘图尾帧写实图",
+            "decisions": ["MiniMax-Hailuo-02首尾帧模式", "10秒768P", "手绘→写实过渡"]
           }
         ]
       }
