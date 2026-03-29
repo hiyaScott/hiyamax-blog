@@ -922,6 +922,44 @@
                 html += `</div></div>`;
             }
             
+            // Three Views - 三视图展示
+            if (data.threeViews) {
+                html += `<div class="content-block"><h3>📐 三视图（角色一致性规范）</h3><div class="reference-images">`;
+                const views = [
+                    { key: 'front', label: '正视图' },
+                    { key: 'side', label: '侧视图' },
+                    { key: 'back', label: '后视图' }
+                ];
+                views.forEach(view => {
+                    const viewData = data.threeViews[view.key];
+                    if (viewData) {
+                        const imageUrl = viewData.image.startsWith('http') ? viewData.image : `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${viewData.image}`;
+                        html += `
+                            <div class="reference-image-item">
+                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
+                                    <img src="${imageUrl}" alt="${view.label}" onerror="this.style.display='none'">
+                                </a>
+                                <div class="image-info">
+                                    <div class="image-title">${view.label}</div>
+                                    <div class="image-desc">${viewData.desc || ''}</div>
+                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载${view.label}</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div></div>`;
+            }
+            
+            // Best Practice - 最佳实践
+            if (data.bestPractice) {
+                html += `<div class="content-block"><h3>⭐ ${data.bestPractice.title}</h3><ul>`;
+                data.bestPractice.points.forEach(point => {
+                    html += `<li>${point}</li>`;
+                });
+                html += `</ul></div>`;
+            }
+            
             // Shots / Keyframes - 分镜首帧展示
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="reference-images">`;
