@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI短片制作协作流程说明书 | HIYAMAX</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: #151515;
+            --text-primary: #fff;
+            --text-secondary: #aaa;
+            --text-muted: #666;
+            --border-primary: #333;
+            --border-secondary: #222;
+            --accent-blue: #3498db;
+            --accent-green: #27ae60;
+            --accent-orange: #f39c12;
+            --accent-red: #e74c3c;
+            --accent-purple: #9b59b6;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 2px solid var(--border-primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-top a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .nav-top a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.15);
+            border: 1px solid var(--accent-blue);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 12px;
+            color: var(--accent-blue);
+            margin-top: 10px;
+        }
+        
+        /* Sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-primary);
+            color: var(--accent-blue);
+        }
+        
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--accent-green);
+        }
+        
+        .section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            color: var(--text-secondary);
+        }
+        
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        
+        /* Flow Diagram */
+        .flow-diagram {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 2;
+            overflow-x: auto;
+            color: var(--text-secondary);
+        }
+        
+        .flow-diagram .arrow {
+            color: var(--accent-blue);
+        }
+        
+        .flow-diagram .box {
+            color: var(--accent-green);
+        }
+        
+        /* Table */
+        .workflow-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        .workflow-table th,
+        .workflow-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-primary);
+        }
+        
+        .workflow-table th {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+        
+        .workflow-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .workflow-table td {
+            color: var(--text-secondary);
+        }
+        
+        .step-num {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-blue);
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        /* Rules */
+        .rules-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .rules-list li {
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--accent-orange);
+        }
+        
+        .rules-list li strong {
+            color: var(--accent-orange);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .rules-list li span {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        /* Command Types */
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .command-card {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid var(--border-secondary);
+        }
+        
+        .command-card .type {
+            font-size: 12px;
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .command-card .example {
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .command-card .response {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box h4 {
+            color: var(--accent-orange);
+            margin-top: 0;
+        }
+        
+        .highlight-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .highlight-box li {
+            color: var(--text-secondary);
+            margin: 8px 0;
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            color: var(--text-secondary);
+            margin: 15px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-primary);
+            margin-top: 40px;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        
+        /* TOC */
+        .toc {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+        
+        .toc li:last-child {
+            border-bottom: none;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .toc a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .toc a::before {
+            content: "→ ";
+            color: var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .command-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .workflow-table {
+                font-size: 12px;
+            }
+            
+            .workflow-table th,
+            .workflow-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-top">
+                <a href="./pipeline.html">← 返回 Pipeline</a>
+                <a href="./shortfilm-collection.html">短片合集 →</a>
+            </div>
+            <div class="header-content">
+                <div class="header-icon">📋</div>
+                <h1>AI短片制作协作流程说明书</h1>
+                <p class="subtitle">基于《第147天》项目的实战经验总结</p>
+                <span class="version-badge">📌 版本 v1.0 | 2026-03-29</span>
+            </div>
+        </header>
+        
+        <!-- TOC -->
+        <div class="toc">
+            <h3>📑 目录</h3>
+            <ul>
+                <li><a href="#overview">一、协作机制总览</a></li>
+                <li><a href="#workflow">二、详细流程说明（5个Step）</a></li>
+                <li><a href="#commands">三、指令类型与响应标准</a></li>
+                <li><a href="#rules">四、必须遵守的规则</a></li>
+                <li><a href="#pipeline">五、Pipeline页面结构</a></li>
+                <li><a href="#cost">六、成本记录规范</a></li>
+                <li><a href="#errors">七、故障处理流程</a></li>
+            </ul>
+        </div>
+        
+        <!-- Section 1: Overview -->
+        <div class="section" id="overview">
+            <h2>一、协作机制总览</h2>
+            
+            <div class="flow-diagram">
+<span class="box">┌─────────────┐</span>     <span class="box">┌─────────────┐</span>     <span class="box">┌─────────────┐</span>
+<span class="box">│  飞书讨论    │</span><span class="arrow">────▶</span><span class="box">│  AI平台执行  │</span><span class="arrow">────▶</span><span class="box">│  Web呈现    │</span>
+<span class="box">│  (指令下达)  │</span>     <span class="box">│  (Token消耗) │</span>     <span class="box">│  (成果展示) │</span>
+<span class="box">└─────────────┘</span>     <span class="box">└─────────────┘</span>     <span class="box">└─────────────┘</span>
+       <span class="arrow">▲</span>                                          <span class="arrow">│</span>
+       <span class="arrow">└──────────────────────────────────────────┘</span>
+                      (反馈确认)
+            </div>
+            
+            <p><strong>核心原则：</strong>飞书对话驱动 → Pipeline页面记录 → Web成果展示 → 用户确认后再推进</p>
+        </div>
+        
+        <!-- Section 2: Workflow -->
+        <div class="section" id="workflow">
+            <h2>二、详细流程说明（5个Step）</h2>
+            
+            <table class="workflow-table">
+                <thead>
+                    <tr>
+                        <th>阶段</th>
+                        <th>飞书指令</th>
+                        <th>AI执行</th>
+                        <th>呈现形式</th>
+                        <th>成本</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="step-num">1</span> 剧本</td>
+                        <td>"开始讨论剧本"</td>
+                        <td>整理故事结构</td>
+                        <td>Pipeline页面文字</td>
+                        <td>¥0</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">2</span> 角色</td>
+                        <td>"开始角色设计"</td>
+                        <td>即梦AI生成</td>
+                        <td>角色参考图（手绘→AI）</td>
+                        <td>即梦Token</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">3</span> 视频</td>
+                        <td>"生成视频"</td>
+                        <td>海螺/可灵API</td>
+                        <td>视频片段+成本记录</td>
+                        <td>API按次计费</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">4</span> 剪辑</td>
+                        <td>"开始后期"</td>
+                        <td>FFmpeg处理</td>
+                        <td>成片视频</td>
+                        <td>¥0</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">5</span> 发布</td>
+                        <td>"部署"</td>
+                        <td>GitHub Push</td>
+                        <td>专题页面URL</td>
+                        <td>¥0</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>各阶段详细说明</h3>
+            
+            <h4>Step 1: 剧本创作</h4>
+            <p><strong>触发：</strong>用户在飞书发送项目启动指令</p>
+            <p><strong>内容：</strong>讨论故事核心、角色、情感基调、时长、结构</p>
+            <p><strong>输出：</strong>更新 pipeline/data/{project}.json，包含故事结构、角色设定、关键记忆点</p>
+            
+            <h4>Step 2: 角色设计</h4>
+            <p><strong>触发：</strong>用户说"开始角色设计"</p>
+            <p><strong>执行：</strong>调用即梦AI生成角色参考图（如有手绘则图生图转3D写实）</p>
+            <p><strong>输出：</strong>角色参考图保存到 assets/{project}/，Pipeline页面展示手绘→AI对比</p>
+            
+            <h4>Step 3: 视频生成</h4>
+            <div class="highlight-box">
+                <h4>⚠️ 重要资金保护机制</h4>
+                <ul>
+                    <li>调用前检查账户余额</li>
+                    <li>单次任务最多3次重试</li>
+                    <li>用户明确说"开始"后才执行</li>
+                    <li><strong>用户说"停"必须立即停止</strong></li>
+                </ul>
+            </div>
+            
+            <h4>Step 4: 后期剪辑</h4>
+            <p><strong>工具：</strong>FFmpeg（本地处理，无额外成本）</p>
+            <p><strong>流程：</strong>合并片段 → 添加硬字幕（Noto Serif CJK字体）→ 生成BGM → 混音输出</p>
+            
+            <h4>Step 5: 发布</h4>
+            <p><strong>部署：</strong>GitHub Pages</p>
+            <p><strong>输出：</strong>专题页面URL + 合集页面入口</p>
+        </div>
+        
+        <!-- Section 3: Commands -->
+        <div class="section" id="commands">
+            <h2>三、指令类型与响应标准</h2>
+            
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="type">🚀 启动指令</div>
+                    <div class="example">"开始做AI短片"</div>
+                    <div class="response">确认需求 → 开始Step 1讨论</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="type">✅ 确认指令</div>
+                    <div class="example">"确认这个方案"</div>
+                    <div class="response">记录决策 → 推进到下一步</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="type">⚡ 执行指令</div>
+                    <div class="example">"生成角色图"</div>
+                    <div class="response">检查前提 → 执行 → 汇报结果</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="type">⏸️ 暂停指令</div>
+                    <div class="example">"先停一下"</div>
+                    <div class="response"><strong>立即停止</strong> → 等待指示</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="type">🔄 修改指令</div>
+                    <div class="example">"重新生成第3个"</div>
+                    <div class="response">执行修改 → 更新Pipeline</div>
+                </div>
+                
+                <div class="command-card">
+                    <div class="type">📤 部署指令</div>
+                    <div class="example">"部署这个视频"</div>
+                    <div class="response">执行发布 → 提供URL</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 4: Rules -->
+        <div class="section" id="rules">
+            <h2>四、必须遵守的规则</h2>
+            
+            <ul class="rules-list">
+                <li>
+                    <strong>1. 用户说"停"必须立即停止</strong>
+                    <span>无论当前进行到哪一步，不要擅自继续</span>
+                </li>
+                <li>
+                    <strong>2. 遇到困难先问，不自己乱试</strong>
+                    <span>API调用失败时询问用户，不要反复重试导致资金浪费</span>
+                </li>
+                <li>
+                    <strong>3. 资金保护机制</strong>
+                    <span>API调用前检查余额；单次任务最多3次重试；高频调用加30秒间隔</span>
+                </li>
+                <li>
+                    <strong>4. 阶段性确认</strong>
+                    <span>每完成一个Step必须用户确认，不要擅自进入下一阶段</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Section 5: Pipeline Structure -->
+        <div class="section" id="pipeline">
+            <h2>五、Pipeline页面结构</h2>
+            
+            <div class="code-block">
+┌─────────────────────────────────────┐
+│ Step N: 阶段标题                    │
+│ [状态标签: 已完成/进行中/待开始]    │
+├─────────────────────────────────────┤
+│ 版本切换: [v1] [v2] [v3]           │
+├─────────────────────────────────────┤
+│ 📋 版本信息                         │
+│ 版本/状态/时间/作者/变更说明        │
+├─────────────────────────────────────┤
+│ 💡 核心概念 / 成果展示              │
+│ 文字描述 + 图片/视频预览            │
+├─────────────────────────────────────┤
+│ ✅ 关键决策 / 技术参数              │
+│ 决策列表 / 工具参数 / 成本信息      │
+├─────────────────────────────────────┤
+│ 💬 讨论记录（从飞书同步）           │
+│ 时间/平台/摘要/决策标签             │
+└─────────────────────────────────────┘
+            </div>
+        </div>
+        
+        <!-- Section 6: Cost -->
+        <div class="section" id="cost">
+            <h2>六、成本记录规范</h2>
+            
+            <div class="code-block">
+{
+  "cost": {
+    "characterDesign": "即梦AI - 约¥X（X次生成）",
+    "videoGeneration": "海螺AI - ¥43.2（27次调用，含事故）",
+    "postProduction": "FFmpeg - ¥0（本地处理）",
+    "deployment": "GitHub Pages - ¥0",
+    "total": "¥XX.XX"
+  }
+}
+            </div>
+        </div>
+        
+        <!-- Section 7: Errors -->
+        <div class="section" id="errors">
+            <h2>七、故障处理流程</h2>
+            
+            <h4>API调用失控（如第147天事故）</h4>
+            <ol style="color: var(--text-secondary); padding-left: 20px;">
+                <li>立即停止脚本</li>
+                <li>记录事故：调用次数、损失金额、时间范围</li>
+                <li>通知用户：汇报事故详情</li>
+                <li>修复脚本：区分提交/查询端点，加频率限制</li>
+                <li>手动补救：用户从后台获取视频链接，逐个下载</li>
+                <li>更新MEMORY.md：记录教训和防范措施</li>
+            </ol>
+            
+            <h4>字幕乱码</h4>
+            <ol style="color: var(--text-secondary); padding-left: 20px;">
+                <li>问题定位：检查字体是否支持中文</li>
+                <li>解决方案：改用Noto Serif CJK等CJK字体</li>
+                <li>重新压制：FFmpeg重新生成视频</li>
+                <li>验证：确认中文正常显示</li>
+            </ol>
+        </div>
+        
+        <footer>
+            <p>📌 本说明书基于《第147天》项目实战经验编制</p>
+            <p style="margin-top: 10px;">HIYAMAX AI Shortfilm Lab · 协作流程 v1.0 · 2026-03-29</p>
+        </footer>
+    </div>
+</body>
+</html>
