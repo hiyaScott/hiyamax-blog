@@ -922,6 +922,31 @@
                 html += `</div></div>`;
             }
             
+            // Shots / Keyframes - 分镜首帧展示
+            if (data.shots) {
+                html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="reference-images">`;
+                data.shots.forEach(shot => {
+                    const firstFrame = shot.firstFrame || {};
+                    const imageUrl = firstFrame.image || firstFrame.url;
+                    if (imageUrl) {
+                        html += `
+                            <div class="reference-image-item">
+                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
+                                    <img src="${imageUrl}" alt="${shot.title}" onerror="this.style.display='none'">
+                                </a>
+                                <div class="image-info">
+                                    <div class="image-title">镜头${shot.number} - ${shot.title}</div>
+                                    <div class="image-desc">${shot.desc || ''} (${shot.time || ''})</div>
+                                    <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">状态: ${shot.status || ''}</div>
+                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载首帧</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div></div>`;
+            }
+            
             // Video clips - With player and download
             if (data.clips) {
                 html += `<div class="content-block"><h3>🎬 视频片段（点击播放/下载）</h3>`;
