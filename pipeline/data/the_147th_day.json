@@ -157,8 +157,8 @@
             "version": "v1",
             "date": "2026-03-29 01:00",
             "author": "Jetton (海螺AI)",
-            "status": "当前版本",
-            "changes": "使用海螺AI图生视频生成多个镜头素材",
+            "status": "当前版本（成片使用）",
+            "changes": "首批生成的3个镜头，最终用于成片",
             "data": {
               "concept": "通过DMXAPI调用海螺MiniMax-Hailuo-02模型生成视频",
               "tool": "海螺AI (MiniMax-Hailuo-02)",
@@ -197,6 +197,59 @@
                 "API调用失控：脚本混淆提交/查询端点，导致27次调用",
                 "字符编码：字幕使用DejaVuSans字体不支持中文，后改用Noto Serif CJK",
                 "无音频：海螺视频生成不带音频，需后期添加"
+              ]
+            }
+          },
+          {
+            "version": "v2",
+            "date": "2026-03-29 01:38",
+            "author": "Jetton (海螺AI)",
+            "status": "已归档（备用素材）",
+            "changes": "API事故期间意外生成的额外镜头，作为备用素材",
+            "data": {
+              "concept": "API调用失控期间意外生成的额外视频片段",
+              "tool": "海螺AI (MiniMax-Hailuo-02)",
+              "apiProvider": "DMXAPI",
+              "cost": "包含在¥43.2总损失中",
+              "note": "这些素材是由于脚本错误导致的重复生成，部分画面质量与V1有所不同，可作为备用或参考",
+              "clips": [
+                {
+                  "id": "batch_01",
+                  "title": "备用镜头-Batch 01",
+                  "desc": "API失控期间生成的备用素材",
+                  "filename": "hailuo_batch_01_2026-03-29.mp4",
+                  "src": "./assets/the_147th_day/hailuo_batch_01_2026-03-29.mp4",
+                  "size": "1.0MB"
+                },
+                {
+                  "id": "batch_02",
+                  "title": "备用镜头-Batch 02",
+                  "desc": "API失控期间生成的备用素材",
+                  "filename": "hailuo_batch_02_2026-03-29.mp4",
+                  "src": "./assets/the_147th_day/hailuo_batch_02_2026-03-29.mp4",
+                  "size": "730KB"
+                },
+                {
+                  "id": "final_01",
+                  "title": "备用镜头-Final 01",
+                  "desc": "后期补充生成的备用素材",
+                  "filename": "hailuo_final_01_2026-03-29.mp4",
+                  "src": "./assets/the_147th_day/hailuo_final_01_2026-03-29.mp4",
+                  "size": "634KB"
+                },
+                {
+                  "id": "final_02",
+                  "title": "备用镜头-Final 02",
+                  "desc": "后期补充生成的备用素材",
+                  "filename": "hailuo_final_02_2026-03-29.mp4",
+                  "src": "./assets/the_147th_day/hailuo_final_02_2026-03-29.mp4",
+                  "size": "734KB"
+                }
+              ],
+              "issues": [
+                "与V1相比，部分画面质量略有差异",
+                "由于API事故产生，未经仔细筛选",
+                "仅作为备用素材，未用于成片"
               ]
             }
           }
