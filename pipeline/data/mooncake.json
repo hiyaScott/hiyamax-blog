@@ -1,48 +1,73 @@
 {
   "id": "mooncake",
   "emoji": "🥮",
-  "title": "外婆的月饼模",
-  "subtitle": "中秋温情+12年时间胶囊",
+  "title": "外婆的月饼模 Grandma's Mooncake Mold",
+  "subtitle": "中秋温情短片 - 12年时间胶囊与传承",
+  "type": "AI实验短片",
   "duration": "5分钟",
-  "status": "已完成",
-  "stages": [
+  "status": "剧本完成",
+  "currentStep": 1,
+  "createdAt": "2026-03-28",
+  "updatedAt": "2026-03-28",
+  "finalProduct": {
+    "pageUrl": "https://hiyascott.github.io/scott-portfolio/private/ai-shortfilm-tutorial/shortfilm-012.html"
+  },
+  "steps": [
     {
       "number": 1,
-      "title": "故事构思",
-      "desc": "从想法到剧本，确定核心创意",
-      "input": {
-        "title": "设计输入",
-        "content": [
+      "title": "剧本创作",
+      "status": "已完成",
+      "desc": "中秋团圆主题，12格月饼模具承载12年记忆",
+      "content": {
+        "currentVersion": "v1",
+        "versions": [
           {
-            "subtitle": "项目类型",
-            "text": "中秋团圆主题短片，延续中式温情题材"
-          },
-          {
-            "subtitle": "核心创意",
-            "text": "12格月饼模具 = 12年时间胶囊，每格底部刻着不同年份的记忆"
+            "version": "v1",
+            "date": "2026-03-28",
+            "author": "Scott + Jetton",
+            "status": "当前版本",
+            "changes": "12年时间胶囊设计，女性传承视角",
+            "data": {
+              "concept": "12格月饼模具 = 12年时间胶囊。每格模具底部刻着不同年份的记忆，第12格空白制造悬念。",
+              "target": "对中秋团圆、女性传承有共鸣的观众",
+              "references": [
+                "第11片纸鸢归的中式温情",
+                "12年时间跨度",
+                "外婆-外孙女女性传承"
+              ],
+              "decisions": [
+                "题材：中秋团圆",
+                "核心道具：12格月饼模具",
+                "视角：外婆-外孙女（女性）",
+                "反转：空白模具=自由"
+              ],
+              "story": {
+                "core": "外孙女小萱收到外婆寄来的月饼模具，发现每格底部都刻着不同年份的记忆。第12格空白，附信说："你的人生不该被我的刻字定义，该由你自己书写。"",
+                "characters": [
+                  { "name": "外婆", "type": "主角", "desc": "传统糕点师，用模具记录外孙女成长" },
+                  { "name": "小萱", "type": "主角", "desc": "外孙女，发现12年时间胶囊" }
+                ],
+                "structure": [
+                  { "phase": "第一幕-发现", "time": "0-1.5m", "content": "收到神秘包裹，发现模具" },
+                  { "phase": "第二幕-回忆", "time": "1.5-3m", "content": "逐格解锁12年记忆" },
+                  { "phase": "第三幕-困惑", "time": "3-3.5m", "content": "第12格空白，制造悬念" },
+                  { "phase": "第四幕-传承", "time": "3.5-5m", "content": "发现信件，理解空白深意" }
+                ]
+              },
+              "keyMoments": [
+                "视觉：面粉扬起时的光柱照亮刻字",
+                "金句："传承不是复制，而是带着她的温度继续生活"",
+                "反转：空白模具=留给未来的自由"
+              ]
+            }
           }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["中秋主题", "12格模具", "外婆-外孙女"],
-        "content": [
+        ],
+        "discussions": [
           {
-            "subtitle": "决策理由",
-            "text": "1. 弥补前10片缺少的中式家庭题材\n2. 女性视角传承（外婆-外孙女）\n3. 12年时间跨度有情感累积效应"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "故事核心",
-            "text": "外孙女收到外婆留下的月饼模具，逐格解锁12年记忆，发现第12格空白的深意——传承不是复制，而是自由。"
-          },
-          {
-            "subtitle": "12格刻字",
-            "text": "第1格：小萱第一次叫外婆\n第6格：考试失利躲在厨房哭\n第11格：最后一次一起做月饼\n第12格：【空白】留给未来"
+            "date": "2026-03-28",
+            "platform": "飞书",
+            "summary": "延续第11片中式温情，中秋团圆主题",
+            "decisions": ["中秋题材", "12年时间胶囊", "女性传承"]
           }
         ]
       }
@@ -50,141 +75,30 @@
     {
       "number": 2,
       "title": "角色设计",
-      "desc": "确定视觉风格，设计角色提示词",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "角色需求",
-            "text": "• 外婆：慈祥手艺人，传统糕点师形象\n• 外孙女：从童年到成年的时间跨度"
-          },
-          {
-            "subtitle": "风格方向",
-            "text": "温暖色调 + 传统中式美学 + 时间流转感"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["时间跨度", "含蓄表达", "物品叙事"],
-        "content": [
-          {
-            "subtitle": "设计决策",
-            "text": "通过同一物件（模具）串联12年时间\n用面粉、光柱等元素作为情感载体"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "反转设计",
-            "text": "空白模具的真正含义：外婆的信——\"你的人生不该被我的刻字定义，该由你自己书写。\""
-          }
-        ],
-        "image": "[角色设计图]"
-      }
+      "status": "待启动",
+      "desc": "设计外婆和外孙女的角色形象",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 3,
-      "title": "分镜设计",
-      "desc": "规划24个镜头，确定视觉节奏",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "四幕结构",
-            "text": "• 第一幕 发现：0-1.5min\n• 第二幕 回忆：1.5-3min\n• 第三幕 困惑：3-3.5min\n• 第四幕 传承：3.5-5min"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["拼图式叙事", "24个镜头", "色彩渐变"],
-        "content": [
-          {
-            "subtitle": "视觉设计",
-            "text": "暖黄灯光 → 月白清辉 → 炉火橙红\n面粉扬起时光柱照亮刻字（情感高潮）"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "核心记忆点",
-            "text": "视觉：面粉光柱照亮12格刻字\n金句：\"传承不是复制，而是带着她的温度继续生活\""
-          }
-        ]
-      }
+      "title": "视频生成",
+      "status": "待启动",
+      "desc": "使用AI生成视频片段",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 4,
-      "title": "视频生成",
-      "desc": "使用AI工具生成画面",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "工具选择、参数设置"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "生成过程中的选择和调整"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "生成片段展示"
-      }
+      "title": "后期剪辑",
+      "status": "待启动",
+      "desc": "FFmpeg合并、字幕、BGM",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 5,
-      "title": "后期剪辑",
-      "desc": "剪辑、配乐、调色",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "素材整理"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "剪辑节奏选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "最终成片"
-      }
-    },
-    {
-      "number": 6,
-      "title": "封装发布",
-      "desc": "封面、标题、描述、标签",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "平台要求"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "标题选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "发布链接"
-      }
-    },
-    {
-      "number": 7,
-      "title": "数据复盘",
-      "desc": "播放量、互动、经验总结",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "数据收集"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "成功因素分析"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "经验沉淀"
-      }
+      "title": "发布",
+      "status": "待启动",
+      "desc": "部署到GitHub Pages",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     }
   ]
 }

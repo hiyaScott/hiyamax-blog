@@ -1,191 +1,49 @@
 {
   "id": "shiba",
   "emoji": "🐕",
-  "title": "柴犬物语",
-  "subtitle": "治愈系宠物短片",
-  "duration": "2分钟",
-  "status": "进行中",
-  "stages": [
+  "title": "柴犬",
+  "subtitle": "温馨短片 - 柴犬主题",
+  "type": "AI实验短片",
+  "duration": "待定",
+  "status": "待启动",
+  "currentStep": 1,
+  "createdAt": "2026-03-28",
+  "updatedAt": "2026-03-28",
+  "steps": [
     {
       "number": 1,
-      "title": "故事构思",
-      "desc": "从想法到剧本，确定核心创意",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "核心创意",
-            "text": "一只柴犬的视角看人类世界，记录它和主人的日常温馨时刻"
-          },
-          {
-            "subtitle": "情感基调",
-            "text": "治愈、温暖、陪伴"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["宠物视角", "治愈系", "日常生活"],
-        "content": [
-          {
-            "subtitle": "决策理由",
-            "text": "1. 柴犬受众广泛，容易获得共鸣\n2. 低视角拍摄有独特视觉体验\n3. 日常生活场景易于AI生成"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "故事核心",
-            "text": "从柴犬的低视角出发，记录它等待主人回家、一起散步、依偎睡觉的日常片段，展现陪伴的意义。"
-          }
-        ]
-      }
+      "title": "剧本创作",
+      "status": "待启动",
+      "desc": "温馨短片剧本，柴犬主题",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 2,
       "title": "角色设计",
-      "desc": "确定视觉风格，设计角色提示词",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "角色需求",
-            "text": "• 柴犬：赤色，豆眉，飞机耳\n• 主人：温和的年轻人，与柴犬互动自然"
-          },
-          {
-            "subtitle": "风格方向",
-            "text": "日系清新 + 温暖色调 + 柔和光影"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["低视角", "日系风格", "温暖色调"],
-        "content": [
-          {
-            "subtitle": "设计要点",
-            "text": "使用低机位拍摄（狗的视角）\n浅景深突出柴犬表情\n暖色调营造家的温馨感"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "角色设计稿",
-            "code": "Adorable Shiba Inu, red fur, curled tail, airplane ears, big round eyes, soft fluffy texture, warm lighting, Japanese home interior, Studio Ghibli inspired style"
-          }
-        ],
-        "image": "[角色设计图 - 即梦AI已生成]"
-      }
+      "status": "待启动",
+      "desc": "设计柴犬角色形象",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 3,
-      "title": "分镜设计",
-      "desc": "规划镜头，确定视觉节奏",
-      "input": {
-        "title": "设计输入",
-        "content": [
-          {
-            "subtitle": "场景规划",
-            "text": "• 玄关等待\n• 公园散步\n• 沙发依偎\n• 睡前道晚安"
-          }
-        ]
-      },
-      "decision": {
-        "title": "决策记录",
-        "badges": ["4个场景", "低视角", "慢节奏"],
-        "content": [
-          {
-            "subtitle": "镜头设计",
-            "text": "开场：柴犬在玄关等门\n发展：公园散步的欢乐\n高潮：沙发上依偎的温暖\n结尾：睡前对视的信任"
-          }
-        ]
-      },
-      "output": {
-        "title": "成果输出",
-        "content": [
-          {
-            "subtitle": "分镜要点",
-            "timeline": [
-              {"time": "镜头01", "desc": "低视角：柴犬趴在玄关，耳朵竖起听门声"},
-              {"time": "镜头02", "desc": "门开瞬间：柴犬摇尾迎接"},
-              {"time": "镜头03", "desc": "公园：柴犬奔跑，落叶纷飞"},
-              {"time": "镜头04", "desc": "特写：柴犬飞机耳，眼神温柔"}
-            ]
-          }
-        ]
-      }
+      "title": "视频生成",
+      "status": "待启动",
+      "desc": "使用AI生成视频片段",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 4,
-      "title": "视频生成",
-      "desc": "使用AI工具生成画面",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "工具选择、参数设置"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "生成过程中的选择和调整"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "生成片段展示"
-      }
+      "title": "后期剪辑",
+      "status": "待启动",
+      "desc": "FFmpeg合并、字幕、BGM",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     },
     {
       "number": 5,
-      "title": "后期剪辑",
-      "desc": "剪辑、配乐、调色",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "素材整理"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "剪辑节奏选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "最终成片"
-      }
-    },
-    {
-      "number": 6,
-      "title": "封装发布",
-      "desc": "封面、标题、描述、标签",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "平台要求"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "标题选择"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "发布链接"
-      }
-    },
-    {
-      "number": 7,
-      "title": "数据复盘",
-      "desc": "播放量、互动、经验总结",
-      "input": {
-        "title": "设计输入",
-        "placeholder": "数据收集"
-      },
-      "decision": {
-        "title": "决策记录",
-        "placeholder": "成功因素分析"
-      },
-      "output": {
-        "title": "成果输出",
-        "placeholder": "经验沉淀"
-      }
+      "title": "发布",
+      "status": "待启动",
+      "desc": "部署到GitHub Pages",
+      "content": { "currentVersion": null, "versions": [], "discussions": [] }
     }
   ]
 }
