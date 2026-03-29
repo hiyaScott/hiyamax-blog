@@ -641,7 +641,8 @@
         
         function getProjectId() {
             const params = new URLSearchParams(window.location.search);
-            return params.get('project');
+            const id = params.get('project');
+            return id ? id.replace(/-/g, '_') : null;
         }
         
         async function init() {
@@ -686,7 +687,7 @@
                                    p.status === '进行中' ? 'discussing' : 'pending';
                 
                 html += `
-                    <a href="?project=${p.id}" class="project-card">
+                    <a href="?project=${p.id.replace(/_/g, '-')}" class="project-card">
                         <div class="project-cover">
                             ${p.cover ? `<img src="${p.cover}" alt="${p.title}" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`}
                             <span class="project-status-badge ${statusClass}">${p.status}</span>
