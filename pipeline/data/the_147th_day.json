@@ -180,7 +180,7 @@
             "version": "v5",
             "date": "2026-03-30 00:58",
             "author": "Jetton (即梦AI)",
-            "status": "最新版本",
+            "status": "已归档",
             "changes": "生成标准三视图(正/侧/后)，建立角色一致性规范，用于后续分镜首帧生成",
             "data": {
               "concept": "基于V4角色设计生成标准三视图(正视图/侧视图/后视图)，建立角色一致性规范。三视图作为后续所有分镜首帧生成的统一参考，确保角色外观、比例、细节保持一致。",
@@ -225,6 +225,52 @@
               "model": "豆包图生图",
               "apiParams": { "reference_image": "V4角色设计图" }
             }
+          },
+          {
+            "version": "v6",
+            "date": "2026-03-30 02:04",
+            "author": "Scott (豆包AI)",
+            "status": "当前版本",
+            "changes": "使用豆包AI生成高质量三视图，角色一致性显著优于即梦AI，作为视频生成标准参考",
+            "data": {
+              "concept": "基于V4角色设计，使用豆包AI生成标准三视图(正视图/左侧视图/右侧视图)。三视图颜色、风格、造型完全统一，作为后续视频生成的标准角色参考。",
+              "workflow": [
+                "1. 基于V4角色设计概念",
+                "2. 使用豆包AI图生图功能生成三视图",
+                "3. 三视图保持完美的角色一致性",
+                "4. 视频生成时同时参考三视图确保角色一致"
+              ],
+              "features": [
+                "圆顶复古头部：经典机器人造型，小天线",
+                "生锈金属质感：温暖做旧棕色，豆包AI完美还原",
+                "圆形复古眼睛：深色护目镜风格",
+                "精致机械关节：工业美学细节",
+                "履带底座：稳定移动方式",
+                "双手捧花盆：虔诚守护姿态",
+                "三视图规范：正视图/左侧视图/右侧视图",
+                "角色一致性：三张图颜色、风格、造型完全统一"
+              ],
+              "referenceImages": [
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "基础角色设计图" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view_doubao.png", "title": "V6三视图 - 正视图", "desc": "豆包AI生成，正面，双手捧花盆" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_left_view_doubao.png", "title": "V6三视图 - 左侧视图", "desc": "豆包AI生成，左侧面，履带底座可见" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_right_view_doubao.png", "title": "V6三视图 - 右侧视图", "desc": "豆包AI生成，右侧面，坐姿" }
+              ],
+              "threeViews": {
+                "front": { "image": "robo_no5_front_view_doubao.png", "desc": "正视图 - 正面，双手捧花盆", "tool": "豆包AI", "consistency": "优秀" },
+                "sideLeft": { "image": "robo_no5_side_left_view_doubao.png", "desc": "左侧视图 - 左侧面，履带底座可见", "tool": "豆包AI", "consistency": "优秀" },
+                "sideRight": { "image": "robo_no5_side_right_view_doubao.png", "desc": "右侧视图 - 右侧面，坐姿", "tool": "豆包AI", "consistency": "优秀" }
+              },
+              "toolComparison": {
+                "即梦AI": "三视图颜色、风格差异明显，角色一致性较差",
+                "豆包AI": "三视图颜色、风格、造型完全统一，角色一致性优秀"
+              },
+              "prompt": "生成参考图中机器人的三视图，保持角色一致性",
+              "tool": "豆包AI",
+              "model": "豆包图生图",
+              "apiParams": { "reference_image": "V4角色设计图" }
+            }
           }
         ],
         "discussions": [
@@ -257,6 +303,12 @@
             "platform": "飞书",
             "summary": "使用豆包AI重新生成三视图，角色一致性显著优于即梦AI。三图颜色、风格、造型完全统一",
             "decisions": ["豆包AI生成三视图", "正视图/左侧视图/右侧视图", "三视图版本更新为V5"]
+          },
+          {
+            "date": "2026-03-30 02:11",
+            "platform": "飞书",
+            "summary": "将豆包AI三视图正式定为V6版本，作为视频生成标准参考。开始使用海螺AI测试视频生成角色一致性",
+            "decisions": ["V6正式版本", "豆包AI三视图为标准", "海螺AI视频生成测试"]
           }
         ]
       }
