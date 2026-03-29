@@ -6,7 +6,7 @@
   "type": "AI实验短片",
   "duration": "17秒",
   "status": "已发布",
-  "currentStep": 5,
+  "currentStep": 6,
   "createdAt": "2026-03-28",
   "updatedAt": "2026-03-29",
   "finalProduct": {
@@ -147,6 +147,44 @@
     },
     {
       "number": 3,
+      "title": "分镜首尾帧",
+      "status": "进行中",
+      "desc": "在即梦AI中基于角色参考图，生成各分镜的首帧/尾帧静态图",
+      "content": {
+        "currentVersion": "v1",
+        "versions": [
+          {
+            "version": "v1",
+            "date": "2026-03-29 22:30",
+            "author": "Scott + Jetton",
+            "status": "当前版本",
+            "changes": "初始化分镜首尾帧设计流程",
+            "data": {
+              "concept": "在即梦AI中使用'参考角色特征'功能，基于Robo No.5角色图生成各分镜的首帧/尾帧静态图",
+              "workflow": [
+                "1. 在即梦AI上传角色参考图 (robo_no5_character.jpg)",
+                "2. 输入分镜描述prompt，保持角色特征",
+                "3. 生成符合分镜需求的静态首帧图",
+                "4. (可选) 生成尾帧图用于首尾帧模式"
+              ],
+              "tool": "即梦AI (Jimeng)",
+              "inputImage": "robo_no5_character.jpg",
+              "outputFormat": "静态图片 (用于视频生成首帧)"
+            }
+          }
+        ],
+        "discussions": [
+          {
+            "date": "2026-03-29 22:30",
+            "platform": "飞书",
+            "summary": "确定新流程：即梦生成首帧→海螺API生成视频",
+            "decisions": ["新增'分镜首尾帧'步骤", "使用即梦参考角色特征功能", "首帧即分镜画面无需剪辑"]
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
       "title": "视频生成",
       "status": "已完成",
       "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
@@ -478,7 +516,7 @@
       }
     },
     {
-      "number": 4,
+      "number": 5,
       "title": "后期剪辑",
       "status": "已完成",
       "desc": "FFmpeg合并镜头、添加硬字幕、生成临时BGM",
@@ -541,7 +579,7 @@
       }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "发布",
       "status": "已完成",
       "desc": "部署到GitHub Pages，创建专题页面，更新合集索引",

@@ -635,7 +635,7 @@
         }
         
         (function() {
-            const saved = localStorage.getItem('theme') || 'dark';
+            const saved = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', saved);
         })();
         
@@ -791,7 +791,7 @@
             
             let html = `
                 <div class="step-section" id="step-${step.number}" data-step="${step.number}">
-                    <div class="step-header">
+                    <div class="step-header collapsed">
                         <div class="step-title-group">
                             <div class="step-number">${step.number}</div>
                             <div>
@@ -804,7 +804,7 @@
                             <span class="toggle-icon">▼</span>
                         </div>
                     </div>
-                    <div class="step-body">
+                    <div class="step-body collapsed">
             `;
             
             if (step.content && step.content.versions && step.content.versions.length > 0) {
