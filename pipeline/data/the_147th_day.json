@@ -255,7 +255,7 @@
               ],
               "threeViews": {
                 "front": { "image": "robo_no5_front_view_doubao.png", "title": "【Front】正视图", "desc": "正面视角，双手捧花盆", "model": "SeaDream 4.5" },
-                "left": { "image": "robo_no5_side_left_view_doubao.png", "title": "【Left】左侧视图", "desc": "左侧面，履带底座可见", "model": "SeaDream 4.5" },
+                "side": { "image": "robo_no5_side_left_view_doubao.png", "title": "【Side】侧视图", "desc": "左侧面，履带底座可见", "model": "SeaDream 4.5" },
                 "back": { "image": "robo_no5_back_view_doubao.jpg", "title": "【Back】背视图", "desc": "背面视角，手持花盆", "model": "SeaDream 4.5" }
               },
               "toolComparison": {
