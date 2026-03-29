@@ -294,7 +294,7 @@
             "date": "2026-03-29 18:21",
             "author": "Jetton (海螺AI)",
             "status": "最新测试（正确使用API）",
-            "changes": "使用正确的first_frame_image参数和查询接口，测试角色一致性",
+            "changes": "使用first_frame_image参数和查询接口，对比测试image vs first_frame_image两种参数的效果",
             "data": {
               "concept": "按照DMXAPI官方文档正确使用海螺图生视频API，使用first_frame_image参数确保角色一致性",
               "tool": "海螺AI (MiniMax-Hailuo-2.3)",
@@ -312,17 +312,41 @@
               "prompt": "A lonely old robot named 'Robo No.5' gently guarding a small potted blue flower. The robot has a boxy square metal head with orange glowing grid eyes, weathered teal-gray metal body with rust and scratches. Golden hour sunset lighting. The robot slowly turns its head, eyes blinking softly with warm light. A gentle breeze blows. Cinematic composition, post-apocalyptic wasteland background, film grain texture. [推进]",
               "clips": [
                 {
-                  "id": "hailuo_v4_consistency",
-                  "title": "角色一致性测试（V4）",
+                  "id": "hailuo_v4_image_param",
+                  "title": "API参数对比 - image（非标准）",
                   "time": "0-10s",
-                  "desc": "使用正确API参数生成的10秒视频，测试角色一致性",
+                  "desc": "使用非标准image参数生成，输出尺寸跟随原图(1366x768)，后台手动获取",
+                  "filename": "hailuo_callback_test.mp4",
+                  "src": "./assets/the_147th_day/hailuo_callback_test.mp4",
+                  "size": "1.7MB",
+                  "resolution": "1366x768",
+                  "duration": "10秒",
+                  "param": "image (非标准)",
+                  "note": "此视频使用错误的image参数，但API接受了。用户从DMXAPI后台获取下载链接"
+                },
+                {
+                  "id": "hailuo_v4_first_frame",
+                  "title": "API参数对比 - first_frame_image（标准）",
+                  "time": "0-10s",
+                  "desc": "使用标准first_frame_image参数生成，输出标准尺寸(768x768)，轮询查询获取",
                   "filename": "hailuo_v4_consistency_test.mp4",
                   "src": "./assets/the_147th_day/hailuo_v4_consistency_test.mp4",
                   "size": "1.7MB",
                   "resolution": "768x768",
-                  "duration": "10秒"
+                  "duration": "10秒",
+                  "param": "first_frame_image (标准)",
+                  "note": "此视频使用正确的first_frame_image参数，符合DMXAPI官方文档"
                 }
               ],
+              "comparison": {
+                "title": "API参数对比测试",
+                "description": "相同参考图、相同提示词，仅参数名不同，观察输出差异",
+                "table": [
+                  {"param": "image", "standard": "否", "outputSize": "1366x768", "source": "后台手动获取"},
+                  {"param": "first_frame_image", "standard": "是", "outputSize": "768x768", "source": "轮询查询获取"}
+                ],
+                "conclusion": "两个参数都被API接受，但first_frame_image是标准用法，输出尺寸固定；image参数输出尺寸跟随原图，属于兼容行为"
+              },
               "features": [
                 "正确使用first_frame_image参数（不是image）",
                 "使用MiniMax-Hailuo-2.3标准版本",
