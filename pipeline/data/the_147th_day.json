@@ -725,6 +725,29 @@
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
                   "scene": "暴雨中保护花朵",
                   "note": "镜头02参考图模式：使用image参数提供参考图，输出尺寸跟随原图(1366x768)，角色一致性保障"
+                },
+                {
+                  "id": "hailuo_shot02_v7",
+                  "title": "镜头02 - V7 SeaDream首帧版（最新）",
+                  "time": "0-10s",
+                  "desc": "镜头02 V7：使用SeaDream 4.5生成的首帧，角色一致性最佳的10秒视频",
+                  "filename": "shot02_v7_hailuo_2.3_10s.mp4",
+                  "src": "./assets/the_147th_day/shot02_v7_hailuo_2.3_10s.mp4",
+                  "videoUrl": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot02_v7_hailuo_2.3_10s.mp4",
+                  "size": "2.0MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image (单首帧模式)",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "referenceImage": "shot02_firstframe_seadream.png (SeaDream 4.5生成)",
+                  "scene": "暴雨中机器人单膝跪地保护白色小花",
+                  "note": "V7版本：使用SeaDream 4.5高质量首帧，角色一致性优秀。由于API查询状态延迟，意外生成了4个attempts，最终选用attempt_04",
+                  "attempts": [
+                    {"id": 1, "filename": "hailuo_shot02_attempt_01.mp4", "size": "1.5MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fab39ab3f-fc95-4848-b581-9fed57b684a1%2Foutput_aigc.mp4"},
+                    {"id": 2, "filename": "hailuo_shot02_attempt_02.mp4", "size": "1.1MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F367bd516-1c18-4947-95ff-1bb9d1f2610d%2Foutput_aigc.mp4"},
+                    {"id": 3, "filename": "hailuo_shot02_attempt_03.mp4", "size": "1.5MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F878da222-aa34-429b-af2c-09fb5e6cf2ad%2Foutput_aigc.mp4"},
+                    {"id": 4, "filename": "hailuo_shot02_attempt_04.mp4", "size": "2.0MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fdac270a3-3e9c-49ea-bbf3-39995c158538%2Foutput_aigc.mp4", "selected": true}
+                  ]
                 }
               ],
               "comparison": {
