@@ -171,6 +171,7 @@
                   "time": "0-6s",
                   "desc": "夕阳下机器人守护花朵",
                   "filename": "shot01_opening.mp4",
+                  "src": "./assets/the_147th_day/shot01_opening.mp4",
                   "size": "1.2MB"
                 },
                 {
@@ -179,6 +180,7 @@
                   "time": "6-12s",
                   "desc": "暴雨中保护花朵",
                   "filename": "shot08_midpoint.mp4",
+                  "src": "./assets/the_147th_day/shot08_midpoint.mp4",
                   "size": "4.6MB"
                 },
                 {
@@ -187,6 +189,7 @@
                   "time": "12-18s",
                   "desc": "机器人倒下花依然盛开",
                   "filename": "shot16_ending.mp4",
+                  "src": "./assets/the_147th_day/shot16_ending.mp4",
                   "size": "485KB"
                 }
               ],
