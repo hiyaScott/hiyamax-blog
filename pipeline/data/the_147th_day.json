@@ -186,44 +186,44 @@
               "concept": "基于V4角色设计生成标准三视图(正视图/侧视图/后视图)，建立角色一致性规范。三视图作为后续所有分镜首帧生成的统一参考，确保角色外观、比例、细节保持一致。",
               "workflow": [
                 "1. 基于V4角色设计概念",
-                "2. 使用即梦AI分别生成正视图、侧视图、后视图",
-                "3. 三视图保持统一的正交投影风格",
+                "2. 使用豆包AI生成三视图（正视图/左侧视图/右侧视图）",
+                "3. 三视图保持统一的生锈金属风格",
                 "4. 后续分镜首帧生成时同时参考三视图"
               ],
               "features": [
                 "圆顶复古头部：经典机器人造型，小天线",
-                "金色锈蚀金属：温暖做旧质感",
-                "圆形复古眼睛：橙色发光",
+                "生锈金属质感：温暖做旧棕色",
+                "圆形复古眼睛：深色护目镜风格",
                 "精致机械关节：工业美学细节",
                 "履带底座：稳定移动方式",
-                "三视图规范：正视图/侧视图/后视图"
+                "三视图规范：正视图/左侧视图/右侧视图"
               ],
               "referenceImages": [
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "基础角色设计图" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view.jpg", "title": "三视图 - 正视图", "desc": "正交投影正面视角，标准T-pose" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_view.jpg", "title": "三视图 - 侧视图", "desc": "基于正视图生成，保持比例一致" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_back_view.jpg", "title": "三视图 - 后视图", "desc": "基于正视图生成，保持比例一致" }
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view_doubao.png", "title": "豆包三视图 - 正视图", "desc": "正面视角，双手捧花盆" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_left_view_doubao.png", "title": "豆包三视图 - 左侧视图", "desc": "左侧面，履带底座可见" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_right_view_doubao.png", "title": "豆包三视图 - 右侧视图", "desc": "右侧面，坐姿" }
               ],
               "threeViews": {
-                "front": { "image": "robo_no5_front_view.jpg", "desc": "正视图 - 基准图，正面T-pose" },
-                "side": { "image": "robo_no5_side_view.jpg", "desc": "侧视图 - 基于正视图生成，保持比例一致", "basedOn": "front_view", "version": "v2" },
-                "back": { "image": "robo_no5_back_view.jpg", "desc": "后视图 - 基于正视图生成，保持比例一致", "basedOn": "front_view", "version": "v2" }
+                "front": { "image": "robo_no5_front_view_doubao.png", "desc": "正视图 - 正面，双手捧花盆", "tool": "豆包AI" },
+                "sideLeft": { "image": "robo_no5_side_left_view_doubao.png", "desc": "左侧视图 - 左侧面，履带底座可见", "tool": "豆包AI" },
+                "sideRight": { "image": "robo_no5_side_right_view_doubao.png", "desc": "右侧视图 - 右侧面，坐姿", "tool": "豆包AI" }
               },
               "bestPractice": {
                 "title": "角色一致性最佳实践",
                 "points": [
                   "单张参考图不足以保持角色一致性",
                   "三视图提供多角度结构信息，AI理解更全面",
+                  "豆包AI在角色一致性上表现优于即梦AI",
                   "生成首帧时同时上传三视图作为参考",
-                  "Prompt中明确指定角度和姿势",
-                  "必要时使用ControlNet/OpenPose锁定骨骼结构"
+                  "Prompt中明确指定角度和姿势"
                 ]
               },
-              "prompt": "A vintage robot character design, [front/side/back] view, orthographic projection, full body. Round dome head with small antenna, weathered teal-gray and golden rusted metal body, orange glowing grid eyes, mechanical joints. Clean white background, technical character sheet style, 3D render, highly detailed",
-              "tool": "即梦AI (Jimeng)",
-              "model": "jimeng_high_aes_general_v21_L",
-              "apiParams": { "image_url": "参考V4角色图" }
+              "prompt": "生成参考图中机器人的三视图，保持角色一致性",
+              "tool": "豆包AI",
+              "model": "豆包图生图",
+              "apiParams": { "reference_image": "V4角色设计图" }
             }
           }
         ],
@@ -253,10 +253,10 @@
             "decisions": ["文生图生成", "复古圆顶造型", "金色锈蚀金属", "V4当前版本"]
           },
           {
-            "date": "2026-03-30 00:58",
+            "date": "2026-03-30 02:04",
             "platform": "飞书",
-            "summary": "发现单张参考图无法保持角色一致性，三图差异明显。生成标准三视图作为后续分镜的统一参考",
-            "decisions": ["生成三视图", "正视图/侧视图/后视图", "三视图作为统一参考", "加入AI短片Pipeline最佳实践"]
+            "summary": "使用豆包AI重新生成三视图，角色一致性显著优于即梦AI。三图颜色、风格、造型完全统一",
+            "decisions": ["豆包AI生成三视图", "正视图/左侧视图/右侧视图", "三视图版本更新为V5"]
           }
         ]
       }
