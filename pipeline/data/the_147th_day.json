@@ -202,13 +202,13 @@
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "基础角色设计图" },
                 { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view.jpg", "title": "三视图 - 正视图", "desc": "正交投影正面视角，标准T-pose" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_view.jpg", "title": "三视图 - 侧视图", "desc": "正交投影侧面视角" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_back_view.jpg", "title": "三视图 - 后视图", "desc": "正交投影背面视角" }
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_view.jpg", "title": "三视图 - 侧视图", "desc": "基于正视图生成，保持比例一致" },
+                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_back_view.jpg", "title": "三视图 - 后视图", "desc": "基于正视图生成，保持比例一致" }
               ],
               "threeViews": {
-                "front": { "image": "robo_no5_front_view.jpg", "desc": "正视图 - 正面T-pose" },
-                "side": { "image": "robo_no5_side_view.jpg", "desc": "侧视图 - 左侧面" },
-                "back": { "image": "robo_no5_back_view.jpg", "desc": "后视图 - 背面" }
+                "front": { "image": "robo_no5_front_view.jpg", "desc": "正视图 - 基准图，正面T-pose" },
+                "side": { "image": "robo_no5_side_view.jpg", "desc": "侧视图 - 基于正视图生成，保持比例一致", "basedOn": "front_view", "version": "v2" },
+                "back": { "image": "robo_no5_back_view.jpg", "desc": "后视图 - 基于正视图生成，保持比例一致", "basedOn": "front_view", "version": "v2" }
               },
               "bestPractice": {
                 "title": "角色一致性最佳实践",
