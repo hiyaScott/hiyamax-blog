@@ -151,7 +151,7 @@
       "status": "已完成",
       "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
       "content": {
-        "currentVersion": "v3",
+        "currentVersion": "v4",
         "versions": [
           {
             "version": "v1",
@@ -288,6 +288,55 @@
                 "duration参数只能是5或10，其他值会报错"
               ]
             }
+          },
+          {
+            "version": "v4",
+            "date": "2026-03-29 18:21",
+            "author": "Jetton (海螺AI)",
+            "status": "最新测试（正确使用API）",
+            "changes": "使用正确的first_frame_image参数和查询接口，测试角色一致性",
+            "data": {
+              "concept": "按照DMXAPI官方文档正确使用海螺图生视频API，使用first_frame_image参数确保角色一致性",
+              "tool": "海螺AI (MiniMax-Hailuo-2.3)",
+              "apiProvider": "DMXAPI",
+              "cost": "约¥1.6 (10秒, 768P)",
+              "taskId": "381849978225055",
+              "fileId": "381824134861166",
+              "correctUsage": {
+                "submitEndpoint": "POST /v1/video_generation",
+                "queryEndpoint": "GET /v1/query/video_generation?task_id=xxx",
+                "downloadEndpoint": "GET /v1/files/retrieve?file_id=xxx&task_id=xxx",
+                "imageParam": "first_frame_image (不是image)",
+                "model": "MiniMax-Hailuo-2.3 (不是MiniMax-Hailuo-02)"
+              },
+              "prompt": "A lonely old robot named 'Robo No.5' gently guarding a small potted blue flower. The robot has a boxy square metal head with orange glowing grid eyes, weathered teal-gray metal body with rust and scratches. Golden hour sunset lighting. The robot slowly turns its head, eyes blinking softly with warm light. A gentle breeze blows. Cinematic composition, post-apocalyptic wasteland background, film grain texture. [推进]",
+              "clips": [
+                {
+                  "id": "hailuo_v4_consistency",
+                  "title": "角色一致性测试（V4）",
+                  "time": "0-10s",
+                  "desc": "使用正确API参数生成的10秒视频，测试角色一致性",
+                  "filename": "hailuo_v4_consistency_test.mp4",
+                  "src": "./assets/the_147th_day/hailuo_v4_consistency_test.mp4",
+                  "size": "1.7MB",
+                  "resolution": "768x768",
+                  "duration": "10秒"
+                }
+              ],
+              "features": [
+                "正确使用first_frame_image参数（不是image）",
+                "使用MiniMax-Hailuo-2.3标准版本",
+                "10秒时长，768P分辨率",
+                "支持运镜指令[推进]",
+                "完整的三步流程：提交→查询→下载"
+              ],
+              "improvements": [
+                "角色一致性比V1/V2更好（正确使用参考图参数）",
+                "API调用流程标准化（参考DMXAPI官方文档）",
+                "查询接口使用正确的GET /v1/query/video_generation",
+                "下载接口使用正确的GET /v1/files/retrieve"
+              ]
+            }
           }
         ],
         "discussions": [
@@ -314,6 +363,12 @@
             "platform": "飞书",
             "summary": "用户从后台获取视频链接，成功下载成片素材",
             "decisions": ["视频素材获取成功", "进入后期剪辑"]
+          },
+          {
+            "date": "2026-03-29 18:15",
+            "platform": "飞书",
+            "summary": "DMXAPI客服反馈海螺质量很好，重新测试正确使用API",
+            "decisions": ["使用first_frame_image参数", "使用MiniMax-Hailuo-2.3", "10秒768P", "测试角色一致性"]
           }
         ]
       }
