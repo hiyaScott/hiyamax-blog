@@ -251,10 +251,12 @@
                   "title": "镜头02 - 暴雨守护",
                   "time": "6-12s",
                   "desc": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者",
-                  "status": "首帧待生成",
+                  "status": "首帧已生成",
                   "firstFrame": {
-                    "image": null,
-                    "source": "即梦AI待生成",
+                    "image": "./assets/the_147th_day/shot02_firstframe_jimeng.jpg",
+                    "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300037549814076DCD757FDC2C42-3350-0~tplv-vuqhorh59i-image-v1.image",
+                    "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
+                    "date": "2026-03-30 00:38",
                     "prompt": "A vintage robot with round dome head and golden rusted metal body, crouching in heavy rain, using its mechanical arms and body to shield a small potted white flower. Rain pouring down, wet metal surface, dark stormy atmosphere, post-apocalyptic wasteland background. The robot's orange eyes glow warmly in the darkness, determined protective posture. 3D realistic render, cinematic lighting, dramatic composition"
                   },
                   "mood": "紧张而坚定，守护者的坚韧",
@@ -265,10 +267,12 @@
                   "title": "镜头03 - 倒下与绽放",
                   "time": "12-18s",
                   "desc": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开",
-                  "status": "首帧待生成",
+                  "status": "首帧已生成",
                   "firstFrame": {
-                    "image": null,
-                    "source": "即梦AI待生成",
+                    "image": "./assets/the_147th_day/shot03_firstframe_jimeng.jpg",
+                    "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300039079118A4D917053F3CE1FD-2717-0~tplv-vuqhorh59i-image-v1.image",
+                    "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
+                    "date": "2026-03-30 00:39",
                     "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render"
                   },
                   "mood": "悲伤但希望，生命延续的感动",
@@ -290,6 +294,12 @@
             "platform": "飞书",
             "summary": "完善三组镜头首帧设计，第一帧已确认使用V4角色图",
             "decisions": ["镜头01首帧使用robo_no5_v3_ai_generated.jpg", "镜头02/03首帧通过即梦生成", "确保三组镜头角色一致性"]
+          },
+          {
+            "date": "2026-03-30 00:38",
+            "platform": "飞书",
+            "summary": "使用即梦API成功生成镜头02和镜头03首帧，验证了image_url参考图参数",
+            "decisions": ["API参数: image_url + jimeng_high_aes_general_v21_L", "镜头02首帧生成成功", "镜头03首帧生成成功"]
           }
         ]
       }
