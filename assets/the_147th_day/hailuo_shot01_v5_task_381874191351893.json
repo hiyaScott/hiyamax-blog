@@ -1,0 +1,25 @@
+{
+  "task_id": "381874191351893",
+  "model": "MiniMax-Hailuo-2.3",
+  "mode": "first_frame_only",
+  "duration": 10,
+  "resolution": "768P",
+  "first_frame": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+  "prompt": "A lonely old robot named 'Robo No.5' gently guarding a small potted blue flower. The robot has a boxy square metal head with orange glowing grid eyes, weathered teal-gray metal body with rust and scratches. Golden hour sunset lighting. The robot slowly turns its head, eyes blinking softly with warm light. A gentle breeze blows. Cinematic composition, post-apocalyptic wasteland background, film grain texture. [推进]",
+  "submitted_at": "2026-03-29 19:52:49",
+  "completed_at": "2026-03-29 19:54:00",
+  "status": "completed",
+  "file_id": "381866755088586",
+  "video_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-29%2F03bb6580-4924-4901-be9b-b8e062da577c%2Foutput_aigc.mp4",
+  "local_path": "./assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+  "video_size": "1.8MB",
+  "video_resolution": "768x768",
+  "note": "镜头01重制版：仅首帧(robo_no5_character.jpg)，手绘风格角色图，10秒768P",
+  "api_response": {
+    "task_id": "381874191351893",
+    "base_resp": {
+      "status_code": 0,
+      "status_msg": "success"
+    }
+  }
+}

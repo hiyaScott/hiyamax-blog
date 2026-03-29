@@ -294,7 +294,7 @@
             "date": "2026-03-29 18:21",
             "author": "Jetton (海螺AI)",
             "status": "最新测试（正确使用API）",
-            "changes": "使用first_frame_image参数和查询接口，对比测试image vs first_frame_image两种参数的效果",
+            "changes": "使用first_frame_image参数和查询接口，对比测试不同参数效果，新增V5版本使用手绘风格首帧",
             "data": {
               "concept": "按照DMXAPI官方文档正确使用海螺图生视频API，使用first_frame_image参数确保角色一致性",
               "tool": "海螺AI (MiniMax-Hailuo-2.3)",
@@ -339,7 +339,7 @@
                 },
                 {
                   "id": "hailuo_v4_firstlast",
-                  "title": "首尾帧生成 - 镜头01重制版（NEW）",
+                  "title": "首尾帧生成 - 镜头01重制版",
                   "time": "0-10s",
                   "desc": "使用首尾帧模式（first_frame_image + last_frame_image），从手绘风格过渡到写实风格的10秒视频",
                   "filename": "hailuo_shot01_firstlast_10s.mp4",
@@ -350,17 +350,33 @@
                   "param": "first_frame_image + last_frame_image (首尾帧模式)",
                   "model": "MiniMax-Hailuo-02",
                   "note": "镜头01重制版：首帧手绘角色图→尾帧写实角色图，最高角色一致性保障"
+                },
+                {
+                  "id": "hailuo_v5_shot01",
+                  "title": "镜头01重制版 V5（最新）",
+                  "time": "0-10s",
+                  "desc": "使用robo_no5_character.jpg作为首帧，镜头01提示词重新生成的10秒视频",
+                  "filename": "hailuo_shot01_v5_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "size": "1.8MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image (单首帧模式)",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "referenceImage": "robo_no5_character.jpg (手绘风格)",
+                  "note": "V5版本：仅使用首帧(robo_no5_character.jpg)，按照镜头01提示词生成，手绘风格角色"
                 }
               ],
               "comparison": {
                 "title": "API参数与生成方式对比",
                 "description": "相同参考图、相同提示词，测试不同参数和生成方式的效果差异",
                 "table": [
-                  {"param": "image", "method": "单图生成", "standard": "否", "outputSize": "1366x768", "duration": "10秒", "source": "后台手动获取"},
-                  {"param": "first_frame_image", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取"},
-                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取"}
+                  {"param": "image", "method": "单图生成", "standard": "否", "outputSize": "1366x768", "duration": "10秒", "source": "后台手动获取", "referenceImage": "robo_no5_realistic_front.jpg"},
+                  {"param": "first_frame_image", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_realistic_front.jpg"},
+                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg → robo_no5_realistic_front.jpg"},
+                  {"param": "first_frame_image (V5)", "method": "单图生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)"}
                 ],
-                "conclusion": "首尾帧模式可以精确控制视频起止状态，角色一致性最佳；first_frame_image是标准单图生成用法；image参数属于兼容行为"
+                "conclusion": "V5使用手绘风格角色图作为首帧，测试原始手绘风格的视频生成效果；首尾帧模式可以精确控制视频起止状态；first_frame_image是标准单图生成用法"
               },
               "features": [
                 "正确使用first_frame_image参数（不是image）",
@@ -408,6 +424,12 @@
             "platform": "飞书",
             "summary": "使用首尾帧模式重制镜头01，首帧手绘图尾帧写实图",
             "decisions": ["MiniMax-Hailuo-02首尾帧模式", "10秒768P", "手绘→写实过渡"]
+          },
+          {
+            "date": "2026-03-29 19:52",
+            "platform": "飞书",
+            "summary": "使用手绘风格角色图(robo_no5_character.jpg)作为首帧，按照镜头01提示词重新生成",
+            "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "手绘风格首帧"]
           }
         ]
       }
