@@ -1041,22 +1041,24 @@
                 html += `</ul></div>`;
             }
             
-            // Scenes - 场景设计展示 (卡片式大图)
+            // Scenes - 场景设计展示 (卡片式大图，缩略图预览)
             if (data.scenes) {
                 html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
-                    const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : scene.image;
+                    const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : 
+                                     (scene.image ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${scene.image}` : '');
+                    const thumbUrl = scene.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${scene.thumbnail}` : imageUrl;
                     if (imageUrl) {
                         html += `
                             <div class="scene-card">
-                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
-                                    <img src="${imageUrl}" alt="${scene.title}" onerror="this.style.display='none'">
+                                <a href="${imageUrl}" target="_blank" title="点击查看原图">
+                                    <img src="${thumbUrl}" alt="${scene.title}" loading="lazy" onerror="this.src='${imageUrl}'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${scene.title}</div>
                                     <div class="image-desc">${scene.desc || ''}</div>
                                     <div class="image-meta">${scene.shot || ''} · 氛围: ${scene.mood || ''} · 光线: ${scene.lighting || ''}</div>
-                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载图片</a>
+                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载原图</a>
                                 </div>
                             </div>
                         `;

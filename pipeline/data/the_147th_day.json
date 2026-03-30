@@ -466,7 +466,8 @@
                   "mood": "孤独但温暖，宁静",
                   "lighting": "暖色调，金色逆光，柔和阴影",
                   "image": "scene_sunset_wasteland_01.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_01_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_02",
@@ -476,7 +477,8 @@
                   "mood": "宁静、荒废中的生机",
                   "lighting": "暖色调，侧光，轮廓光",
                   "image": "scene_sunset_wasteland_02.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_03",
@@ -486,7 +488,8 @@
                   "mood": "壮丽、悲伤但希望",
                   "lighting": "暖色调，逆光剪影，大气透视",
                   "image": "scene_sunset_wasteland_03.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_03_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_01",
@@ -496,7 +499,8 @@
                   "mood": "悲壮、紧张、守护",
                   "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
                   "image": "scene_storm_wasteland.jpg",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg",
+                  "thumbnail": "thumbnails/scene_storm_wasteland_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_02",
@@ -506,7 +510,8 @@
                   "mood": "紧张、守护、电影感",
                   "lighting": "冷蓝青色调，多道闪电，水面反射",
                   "image": "scene_storm_wasteland_02.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png",
+                  "thumbnail": "thumbnails/scene_storm_wasteland_02_thumb_thumb.jpg"
                 }
               ],
               "promptExamples": {
@@ -539,7 +544,8 @@
                   "mood": "孤独但温暖，宁静",
                   "lighting": "暖色调，金色逆光，柔和阴影",
                   "image": "scene_sunset_wasteland_01.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_01_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_02",
@@ -549,7 +555,8 @@
                   "mood": "宁静、荒废中的生机",
                   "lighting": "暖色调，侧光，轮廓光",
                   "image": "scene_sunset_wasteland_02.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_03",
@@ -559,7 +566,8 @@
                   "mood": "壮丽、悲伤但希望",
                   "lighting": "暖色调，逆光剪影，大气透视",
                   "image": "scene_sunset_wasteland_03.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png",
+                  "thumbnail": "thumbnails/scene_sunset_wasteland_03_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_01",
@@ -569,7 +577,8 @@
                   "mood": "悲壮、紧张、守护",
                   "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
                   "image": "scene_storm_wasteland.jpg",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg",
+                  "thumbnail": "thumbnails/scene_storm_wasteland_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_02",
@@ -579,7 +588,8 @@
                   "mood": "紧张、守护、电影感",
                   "lighting": "冷蓝青色调，多道闪电，水面反射",
                   "image": "scene_storm_wasteland_02.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png",
+                  "thumbnail": "thumbnails/scene_storm_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_city_v2",
@@ -589,7 +599,8 @@
                   "mood": "壮丽、希望与荒凉并存",
                   "lighting": "暖金色调，逆光，大气透视",
                   "image": "scene_sunset_city_v2.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_city_v2.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_city_v2.png",
+                  "thumbnail": "thumbnails/scene_sunset_city_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_street_v2",
@@ -599,7 +610,8 @@
                   "mood": "宁静、荒废中的生机",
                   "lighting": "暖色调，侧光，柔和阴影",
                   "image": "scene_sunset_street_v2.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_street_v2.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_street_v2.png",
+                  "thumbnail": "thumbnails/scene_sunset_street_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_lightning_v2",
@@ -609,7 +621,8 @@
                   "mood": "紧张、守护、电影感",
                   "lighting": "冷蓝青色调，闪电高亮，水面反射",
                   "image": "scene_storm_lightning_v2.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_lightning_v2.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_lightning_v2.png",
+                  "thumbnail": "thumbnails/scene_storm_lightning_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_ground_v2",
@@ -619,7 +632,8 @@
                   "mood": "细腻、温暖、真实",
                   "lighting": "暖色调，低角度阳光，质感丰富",
                   "image": "scene_sunset_ground_v2.png",
-                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_ground_v2.png"
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_ground_v2.png",
+                  "thumbnail": "thumbnails/scene_sunset_ground_v2_thumb_thumb.jpg"
                 }
               ],
               "promptExamples": {
