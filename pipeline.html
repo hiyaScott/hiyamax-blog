@@ -511,51 +511,6 @@
         
         .discussion-summary { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; }
         
-        /* Reference Images - Clickable */
-        .reference-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .reference-image-item {
-            background: var(--bg-tertiary);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.2s;
-        }
-        
-        .reference-image-item:hover { transform: translateY(-2px); }
-        
-        .reference-image-item a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .reference-image-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            transition: opacity 0.2s;
-        }
-        
-        .reference-image-item:hover img { opacity: 0.9; }
-        
-        .reference-image-item .image-info { padding: 12px; }
-        .reference-image-item .image-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-        .reference-image-item .image-desc { font-size: 12px; color: var(--text-secondary); }
-        .reference-image-item .download-link {
-            display: inline-block;
-            margin-top: 8px;
-            font-size: 11px;
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-        
-        .reference-image-item .download-link:hover { text-decoration: underline; }
-        
         /* Scene Cards - Compact grid layout like three-views */
         .scene-cards {
             display: grid;
@@ -581,6 +536,7 @@
             color: inherit;
         }
         
+        .scene-card picture,
         .scene-card img {
             width: 100%;
             height: 160px;
@@ -630,46 +586,139 @@
             text-decoration: underline;
         }
         
-        /* Video Container - Clickable */
-        .video-container {
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            overflow: hidden;
+        /* Video Cards - Compact grid layout with poster and play button */
+        .video-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
             margin-top: 15px;
         }
         
-        .video-container video {
+        .video-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-thumbnail {
+            position: relative;
             width: 100%;
-            max-height: 400px;
+            aspect-ratio: 16/9;
+            background: var(--bg-primary);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail picture,
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
+        }
+        
+        .video-play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.2s;
+        }
+        
+        .video-thumbnail:hover .video-play-overlay {
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .video-play-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent var(--accent-red);
+            margin-left: 4px;
+        }
+        
+        .video-thumbnail:hover .video-play-btn {
+            transform: scale(1.1);
+            background: #fff;
+        }
+        
+        .video-player-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
             background: #000;
         }
         
+        .video-player-container video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
         .video-info { padding: 15px; }
-        .video-info h4 { font-size: 14px; color: var(--text-primary); margin-bottom: 8px; }
-        .video-info p { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+        .video-info h4 { 
+            font-size: 14px; 
+            color: var(--text-primary); 
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .video-info p { 
+            font-size: 12px; 
+            color: var(--text-secondary); 
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.5;
+        }
         
         .video-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            font-size: 12px;
+            gap: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 10px;
         }
         
         .video-actions {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         
         .video-actions a {
-            padding: 6px 12px;
+            padding: 5px 10px;
             background: rgba(52, 152, 219, 0.15);
             border: 1px solid rgba(52, 152, 219, 0.3);
             border-radius: 6px;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--accent-blue);
             text-decoration: none;
             transition: all 0.2s;
@@ -693,6 +742,31 @@
         
         @keyframes spin { to { transform: rotate(360deg); } }
         
+        /* Offline indicator */
+        .offline-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 16px;
+            background: var(--accent-orange);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 12px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .offline-indicator.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -702,11 +776,67 @@
             color: var(--text-muted);
         }
         
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .project-list { grid-template-columns: 1fr; }
+            .container { padding: 20px 15px; }
+            .project-list { grid-template-columns: 1fr; gap: 15px; }
             .nav-top { flex-wrap: wrap; gap: 10px; }
             .step-header { padding: 15px 20px; }
             .step-title-group h2 { font-size: 16px; }
+            .step-title-group { gap: 10px; }
+            .step-number { width: 32px; height: 32px; font-size: 12px; }
+            
+            .scene-cards,
+            .video-cards {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .video-card,
+            .scene-card {
+                border-radius: 10px;
+            }
+            
+            .video-thumbnail,
+            .video-player-container {
+                aspect-ratio: 16/9;
+            }
+            
+            .video-play-btn {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .video-play-btn::after {
+                border-width: 10px 0 10px 16px;
+            }
+            
+            .project-title h1 { font-size: 24px; }
+            .quick-nav { padding: 10px 0; }
+            .content-block { padding: 15px; }
+            .step-body { padding: 20px 15px; }
+            
+            .offline-indicator {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-actions {
+                flex-direction: column;
+                gap: 6px;
+            }
+            
+            .video-actions a {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -730,12 +860,43 @@
         </div>
         
         <footer>
-            <p>HIYAMAX AI Shortfilm Lab · Pipeline v2.1</p>
+            <p>HIYAMAX AI Shortfilm Lab · Pipeline v2.2</p>
             <p>协作流程：飞书讨论 → Pipeline记录 → AI执行 → Web呈现 → 飞书确认</p>
         </footer>
     </div>
     
+    <div class="offline-indicator" id="offline-indicator">
+        📴 离线模式 - 已加载缓存内容
+    </div>
+    
     <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('SW registration failed: ', error);
+                    });
+            });
+        }
+        
+        // Online/Offline detection
+        function updateOnlineStatus() {
+            const indicator = document.getElementById('offline-indicator');
+            if (!navigator.onLine) {
+                indicator.classList.add('show');
+            } else {
+                indicator.classList.remove('show');
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+        
         // Theme toggle
         function toggleTheme() {
             const html = document.documentElement;
@@ -754,6 +915,87 @@
             const params = new URLSearchParams(window.location.search);
             const id = params.get('project');
             return id ? id.replace(/-/g, '_') : null;
+        }
+        
+        // Helper: Get WebP path from image path
+        function getWebPPath(imagePath) {
+            if (!imagePath) return null;
+            // Replace .jpg, .jpeg, .png with .webp
+            return imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+        }
+        
+        // Helper: Get thumbnail path
+        function getThumbPath(imagePath, thumbPath) {
+            if (thumbPath) return thumbPath;
+            if (!imagePath) return null;
+            // Try to construct thumbnail path
+            const basePath = imagePath.replace(/\.[^.]+$/, '');
+            return `${basePath}_thumb.jpg`;
+        }
+        
+        // Helper: Create picture element with WebP fallback
+        function createPictureElement(src, thumbSrc, alt, className = '') {
+            const webpSrc = getWebPPath(src);
+            const webpThumb = thumbSrc ? getWebPPath(thumbSrc) : null;
+            
+            let html = `<picture>`;
+            
+            // WebP thumbnail (smallest)
+            if (webpThumb) {
+                html += `<source srcset="${webpThumb}" type="image/webp" media="(max-width: 768px)">`;
+            }
+            // WebP full size
+            if (webpSrc) {
+                html += `<source srcset="${webpSrc}" type="image/webp">`;
+            }
+            // JPEG thumbnail for mobile
+            if (thumbSrc) {
+                html += `<source srcset="${thumbSrc}" media="(max-width: 768px)">`;
+            }
+            // JPEG fallback
+            html += `<img src="${src}" alt="${alt || ''}" loading="lazy" decoding="async" ${className ? `class="${className}"` : ''} onerror="this.onerror=null; this.style.display='none';">`;
+            html += `</picture>`;
+            
+            return html;
+        }
+        
+        // Video player management
+        const videoPlayers = new Map();
+        
+        function initVideoPlayer(videoId, videoSrc, posterSrc) {
+            const container = document.getElementById(`video-container-${videoId}`);
+            if (!container) return;
+            
+            // Check if already initialized
+            if (videoPlayers.has(videoId)) {
+                const player = videoPlayers.get(videoId);
+                player.play();
+                return;
+            }
+            
+            // Create video element
+            const videoHtml = `
+                <div class="video-player-container">
+                    <video 
+                        controls 
+                        autoplay
+                        playsinline 
+                        webkit-playsinline 
+                        x5-playsinline 
+                        x5-video-player-type="h5" 
+                        x5-video-player-fullscreen="false"
+                        poster="${posterSrc || ''}"
+                    >
+                        <source src="${videoSrc}" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
+            `;
+            
+            container.innerHTML = videoHtml;
+            
+            const video = container.querySelector('video');
+            videoPlayers.set(videoId, video);
         }
         
         async function init() {
@@ -797,10 +1039,13 @@
                 const statusClass = p.status === '已发布' ? 'completed' : 
                                    p.status === '进行中' ? 'discussing' : 'pending';
                 
+                const coverImage = p.coverThumb || p.cover;
+                const coverWebP = coverImage ? getWebPPath(coverImage) : null;
+                
                 html += `
                     <a href="?project=${p.id.replace(/_/g, '-')}" class="project-card">
                         <div class="project-cover">
-                            ${p.coverThumb ? `<img src="${p.coverThumb}" alt="${p.title}" onerror="this.onerror=null; this.src='${p.cover || p.coverThumb}'; this.onerror=function(){this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';}">` : (p.cover ? `<img src="${p.cover}" alt="${p.title}" onerror="this.onerror=null; this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`)}
+                            ${coverImage ? createPictureElement(p.cover || p.coverThumb, p.coverThumb, p.title) : `<span class="emoji-fallback">${p.emoji}</span>`}
                             <span class="project-status-badge ${statusClass}">${p.status}</span>
                         </div>
                         <div class="project-info">
@@ -890,7 +1135,6 @@
                     const stepBody = stepSection.querySelector('.step-body');
                     const isCollapsed = stepBody.classList.contains('collapsed');
                     
-                    // Toggle current section
                     stepBody.classList.toggle('collapsed', !isCollapsed);
                     this.classList.toggle('collapsed', !isCollapsed);
                 });
@@ -1013,7 +1257,7 @@
                 html += `</ul></div>`;
             }
             
-            // Reference images - Clickable with thumbnail
+            // Reference images
             if (data.referenceImages) {
                 html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
@@ -1021,7 +1265,7 @@
                     html += `
                         <div class="scene-card">
                             <a href="${img.src}" target="_blank" title="点击查看原图">
-                                <img src="${thumbUrl}" alt="${img.title}" onerror="this.onerror=null; this.src='${img.src}'">
+                                ${createPictureElement(img.src, thumbUrl, img.title)}
                             </a>
                             <div class="image-info">
                                 <div class="image-title">${img.title}</div>
@@ -1034,13 +1278,13 @@
                 html += `</div></div>`;
             }
             
-            // Three Views - 三视图展示 (紧凑网格)
+            // Three Views
             if (data.threeViews) {
                 html += `<div class="content-block"><h3>📐 三视图（角色一致性规范）</h3><div class="scene-cards">`;
                 const views = [
                     { key: 'front', label: '正视图' },
                     { key: 'side', label: '侧视图' },
-                    { key: 'back', label: '后视图' }
+                    { key: 'back', label: '背视图' }
                 ];
                 views.forEach(view => {
                     const viewData = data.threeViews[view.key];
@@ -1050,7 +1294,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${view.label}" onerror="this.onerror=null; this.src='${imageUrl}';">
+                                    ${createPictureElement(imageUrl, thumbUrl, view.label)}
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${view.label}</div>
@@ -1064,7 +1308,7 @@
                 html += `</div></div>`;
             }
             
-            // Best Practice - 最佳实践
+            // Best Practice
             if (data.bestPractice) {
                 html += `<div class="content-block"><h3>⭐ ${data.bestPractice.title}</h3><ul>`;
                 data.bestPractice.points.forEach(point => {
@@ -1073,7 +1317,7 @@
                 html += `</ul></div>`;
             }
             
-            // Scenes - 场景设计展示 (卡片式大图，缩略图预览)
+            // Scenes
             if (data.scenes) {
                 html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
@@ -1084,7 +1328,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${scene.title}" onerror="this.onerror=null; this.src='${imageUrl}'">
+                                    ${createPictureElement(imageUrl, thumbUrl, scene.title)}
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${scene.title}</div>
@@ -1099,7 +1343,7 @@
                 html += `</div></div>`;
             }
 
-            // Shots / Keyframes - 分镜首帧展示 (紧凑网格布局)
+            // Shots / Keyframes
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
@@ -1110,7 +1354,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${shot.title}" onerror="this.onerror=null; this.src='${imageUrl}'">
+                                    ${createPictureElement(imageUrl, thumbUrl, shot.title)}
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
@@ -1125,22 +1369,28 @@
                 html += `</div></div>`;
             }
             
-            // Video clips - With player and download
+            // Video clips - Optimized with poster and play button
             if (data.clips) {
-                html += `<div class="content-block"><h3>🎬 视频片段（点击播放/下载）</h3>`;
-                data.clips.forEach(clip => {
+                html += `<div class="content-block"><h3>🎬 视频片段（点击播放）</h3><div class="video-cards">`;
+                data.clips.forEach((clip, index) => {
+                    const videoId = `clip-${stepNum}-${index}`;
                     const videoPath = clip.src || `./assets/the_147th_day/${clip.filename}`;
+                    // Use thumbnail as poster if available, or generate from video path
+                    const posterPath = clip.poster || videoPath.replace(/\.mp4$/, '_poster.jpg');
+                    
                     html += `
-                        <div class="video-container">
-                            <video controls preload="auto" playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
-                                <source src="${videoPath}" type="video/mp4">
-                                您的浏览器不支持视频播放
-                            </video>
+                        <div class="video-card" id="video-card-${videoId}">
+                            <div class="video-thumbnail" id="video-container-${videoId}" onclick="initVideoPlayer('${videoId}', '${videoPath}', '${posterPath}')">
+                                ${createPictureElement(posterPath, null, clip.title)}
+                                <div class="video-play-overlay">
+                                    <div class="video-play-btn"></div>
+                                </div>
+                            </div>
                             <div class="video-info">
-                                <h4>${clip.title} (${clip.time})</h4>
-                                <p>${clip.desc}</p>
+                                <h4>${clip.title} (${clip.time || '未知时长'})</h4>
+                                <p>${clip.desc || ''}</p>
                                 <div class="video-meta">
-                                    <span>📁 ${clip.filename || clip.id}</span>
+                                    <span>📁 ${clip.filename || clip.id || 'video.mp4'}</span>
                                     ${clip.size ? `<span>💾 ${clip.size}</span>` : ''}
                                 </div>
                                 <div class="video-actions">
@@ -1151,7 +1401,7 @@
                         </div>
                     `;
                 });
-                html += `</div>`;
+                html += `</div></div>`;
             }
             
             // Prompt display

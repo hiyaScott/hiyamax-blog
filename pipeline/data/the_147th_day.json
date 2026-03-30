@@ -988,7 +988,8 @@
                   "desc": "夕阳下机器人守护花朵",
                   "filename": "shot01_opening.mp4",
                   "src": "./assets/the_147th_day/shot01_opening.mp4",
-                  "size": "1.2MB"
+                  "size": "1.2MB",
+                  "poster": "./assets/the_147th_day/posters/shot01_opening_poster.jpg"
                 },
                 {
                   "id": "shot08",
@@ -997,7 +998,8 @@
                   "desc": "暴雨中保护花朵",
                   "filename": "shot08_midpoint.mp4",
                   "src": "./assets/the_147th_day/shot08_midpoint.mp4",
-                  "size": "4.6MB"
+                  "size": "4.6MB",
+                  "poster": "./assets/the_147th_day/posters/shot08_midpoint_poster.jpg"
                 },
                 {
                   "id": "shot16",
@@ -1006,7 +1008,8 @@
                   "desc": "机器人倒下花依然盛开",
                   "filename": "shot16_ending.mp4",
                   "src": "./assets/the_147th_day/shot16_ending.mp4",
-                  "size": "485KB"
+                  "size": "485KB",
+                  "poster": "./assets/the_147th_day/posters/shot16_ending_poster.jpg"
                 }
               ],
               "issues": [
@@ -1035,7 +1038,8 @@
                   "desc": "API失控期间生成的备用素材",
                   "filename": "hailuo_batch_01_2026-03-29.mp4",
                   "src": "./assets/the_147th_day/hailuo_batch_01_2026-03-29.mp4",
-                  "size": "1.0MB"
+                  "size": "1.0MB",
+                  "poster": "./assets/the_147th_day/posters/hailuo_batch_01_2026-03-29_poster.jpg"
                 },
                 {
                   "id": "batch_02",
@@ -1043,7 +1047,8 @@
                   "desc": "API失控期间生成的备用素材",
                   "filename": "hailuo_batch_02_2026-03-29.mp4",
                   "src": "./assets/the_147th_day/hailuo_batch_02_2026-03-29.mp4",
-                  "size": "730KB"
+                  "size": "730KB",
+                  "poster": "./assets/the_147th_day/posters/hailuo_batch_02_2026-03-29_poster.jpg"
                 },
                 {
                   "id": "final_01",
@@ -1051,7 +1056,8 @@
                   "desc": "后期补充生成的备用素材",
                   "filename": "hailuo_final_01_2026-03-29.mp4",
                   "src": "./assets/the_147th_day/hailuo_final_01_2026-03-29.mp4",
-                  "size": "634KB"
+                  "size": "634KB",
+                  "poster": "./assets/the_147th_day/posters/hailuo_final_01_2026-03-29_poster.jpg"
                 },
                 {
                   "id": "final_02",
@@ -1059,7 +1065,8 @@
                   "desc": "后期补充生成的备用素材",
                   "filename": "hailuo_final_02_2026-03-29.mp4",
                   "src": "./assets/the_147th_day/hailuo_final_02_2026-03-29.mp4",
-                  "size": "734KB"
+                  "size": "734KB",
+                  "poster": "./assets/the_147th_day/posters/hailuo_final_02_2026-03-29_poster.jpg"
                 }
               ],
               "issues": [
@@ -1090,7 +1097,8 @@
                   "desc": "夕阳下机器人守护花朵 - 可灵v2.6生成",
                   "filename": "kling_shot01_v3.mp4",
                   "src": "./assets/the_147th_day/kling_shot01_v3.mp4",
-                  "size": "12MB"
+                  "size": "12MB",
+                  "poster": "./assets/the_147th_day/posters/kling_shot01_v3_poster.jpg"
                 }
               ],
               "features": [
@@ -1138,7 +1146,8 @@
                   "resolution": "1366x768",
                   "duration": "10秒",
                   "param": "image (非标准)",
-                  "note": "此视频使用错误的image参数，但API接受了。用户从DMXAPI后台获取下载链接"
+                  "note": "此视频使用错误的image参数，但API接受了。用户从DMXAPI后台获取下载链接",
+                  "poster": "./assets/the_147th_day/posters/hailuo_callback_test_poster.jpg"
                 },
                 {
                   "id": "hailuo_v4_first_frame",
@@ -1151,7 +1160,8 @@
                   "resolution": "768x768",
                   "duration": "10秒",
                   "param": "first_frame_image (标准)",
-                  "note": "此视频使用正确的first_frame_image参数，符合DMXAPI官方文档"
+                  "note": "此视频使用正确的first_frame_image参数，符合DMXAPI官方文档",
+                  "poster": "./assets/the_147th_day/posters/hailuo_v4_consistency_test_poster.jpg"
                 },
                 {
                   "id": "hailuo_v4_firstlast",
@@ -1165,7 +1175,8 @@
                   "duration": "10秒",
                   "param": "first_frame_image + last_frame_image (首尾帧模式)",
                   "model": "MiniMax-Hailuo-02",
-                  "note": "镜头01重制版：首帧手绘角色图→尾帧写实角色图，最高角色一致性保障"
+                  "note": "镜头01重制版：首帧手绘角色图→尾帧写实角色图，最高角色一致性保障",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot01_firstlast_10s_poster.jpg"
                 },
                 {
                   "id": "hailuo_v5_shot01",
@@ -1182,7 +1193,8 @@
                   "param": "first_frame_image (单首帧模式)",
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
-                  "note": "V5版本：仅使用首帧(robo_no5_character.jpg)，按照镜头01提示词生成，手绘风格角色"
+                  "note": "V5版本：仅使用首帧(robo_no5_character.jpg)，按照镜头01提示词生成，手绘风格角色",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot01_v5_10s_poster.jpg"
                 },
                 {
                   "id": "hailuo_shot02",
@@ -1198,7 +1210,8 @@
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
                   "scene": "暴雨中保护花朵",
-                  "note": "镜头02首帧模式：第二段分镜，暴雨场景"
+                  "note": "镜头02首帧模式：第二段分镜，暴雨场景",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot02_10s_poster.jpg"
                 },
                 {
                   "id": "hailuo_shot02_v2",
@@ -1214,7 +1227,8 @@
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg (手绘风格)",
                   "scene": "暴雨中保护花朵",
-                  "note": "镜头02参考图模式：使用image参数提供参考图，输出尺寸跟随原图(1366x768)，角色一致性保障"
+                  "note": "镜头02参考图模式：使用image参数提供参考图，输出尺寸跟随原图(1366x768)，角色一致性保障",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot02_v2_10s_poster.jpg"
                 },
                 {
                   "id": "hailuo_shot02_v7",
@@ -1258,7 +1272,8 @@
                       "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fdac270a3-3e9c-49ea-bbf3-39995c158538%2Foutput_aigc.mp4",
                       "selected": true
                     }
-                  ]
+                  ],
+                  "poster": "./assets/the_147th_day/posters/shot02_v7_hailuo_2.3_10s_poster.jpg"
                 }
               ],
               "comparison": {
@@ -1339,7 +1354,8 @@
                   "param": "first_frame_image (单首帧模式)",
                   "model": "MiniMax-Hailuo-2.3",
                   "referenceImage": "robo_no5_character.jpg",
-                  "note": "夕阳守护场景，手绘风格角色"
+                  "note": "夕阳守护场景，手绘风格角色",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot01_v5_10s_poster.jpg"
                 },
                 {
                   "id": "hailuo_v5_shot02_a",
@@ -1393,7 +1409,8 @@
                   "duration": "10秒",
                   "param": "first_frame_image",
                   "model": "MiniMax-Hailuo-2.3",
-                  "note": "本地已上传的V5版本文件"
+                  "note": "本地已上传的V5版本文件",
+                  "poster": "./assets/the_147th_day/posters/hailuo_shot01_v5_10s_poster.jpg"
                 }
               ],
               "summary": {
@@ -1552,7 +1569,8 @@
                   "size": "约8MB",
                   "resolution": "1920x1080",
                   "duration": "17秒",
-                  "note": "最终成片输出"
+                  "note": "最终成片输出",
+                  "poster": "./assets/the_147th_day/posters/the_147th_day_final_poster.jpg"
                 }
               ]
             }
