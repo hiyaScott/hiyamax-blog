@@ -1,10 +1,10 @@
 // Service Worker for HIYAMAX Pipeline
 // Caching strategy: Images - Cache First, JSON - Stale While Revalidate, Pages - Network First
 
-const CACHE_NAME = 'hiyamax-pipeline-v1';
-const STATIC_CACHE = 'hiyamax-static-v1';
-const IMAGE_CACHE = 'hiyamax-images-v1';
-const JSON_CACHE = 'hiyamax-json-v1';
+const CACHE_NAME = 'hiyamax-pipeline-v2';
+const STATIC_CACHE = 'hiyamax-static-v2';
+const IMAGE_CACHE = 'hiyamax-images-v2';
+const JSON_CACHE = 'hiyamax-json-v2';
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
