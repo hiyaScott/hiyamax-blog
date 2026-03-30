@@ -763,7 +763,7 @@
                 html += `
                     <a href="?project=${p.id.replace(/_/g, '-')}" class="project-card">
                         <div class="project-cover">
-                            ${p.cover ? `<img src="${p.cover}" alt="${p.title}" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`}
+                            ${p.coverThumb ? `<img src="${p.coverThumb}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : (p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`)}
                             <span class="project-status-badge ${statusClass}">${p.status}</span>
                         </div>
                         <div class="project-info">

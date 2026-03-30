@@ -10,7 +10,8 @@
     "currentStep": 6,
     "totalSteps": 6,
     "createdAt": "2026-03-28",
-    "cover": "./assets/the_147th_day/robo_no5_realistic_front.jpg"
+    "cover": "./assets/the_147th_day/robo_no5_realistic_front.jpg",
+    "coverThumb": "./assets/the_147th_day/thumbnails/robo_no5_realistic_front_thumb.jpg"
   },
   {
     "id": "kite",
