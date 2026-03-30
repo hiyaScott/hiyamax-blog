@@ -442,10 +442,47 @@
         }
         
         /* Discussion Cards */
+        .discussion-section h3 {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .discussion-toggle {
+            transition: opacity 0.2s;
+        }
+        
+        .discussion-toggle:hover {
+            opacity: 0.8;
+        }
+        
+        .toggle-icon {
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+        
+        .discussion-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: normal;
+            margin-left: auto;
+        }
+        
         .discussion-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s;
+        }
+        
+        .discussion-list.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
         }
         
         .discussion-card {
@@ -1146,10 +1183,11 @@
         }
         
         function renderDiscussions(discussions) {
-            let html = `<div class="content-block"><h3>💬 讨论记录</h3><div class="discussion-list">`;
+            const discussionId = 'discussions-' + Math.random().toString(36).substr(2, 9);
+            let cardsHtml = '';
             
             discussions.forEach(d => {
-                html += `
+                cardsHtml += `
                     <div class="discussion-card">
                         <div class="discussion-header">
                             <span class="discussion-date">${d.date}</span>
@@ -1159,16 +1197,37 @@
                 `;
                 
                 if (d.decisions && d.decisions.length > 0) {
-                    html += `<div class="decision-tags">`;
-                    d.decisions.forEach(dec => html += `<span class="decision-tag">${dec}</span>`);
-                    html += `</div>`;
+                    cardsHtml += `<div class="decision-tags">`;
+                    d.decisions.forEach(dec => cardsHtml += `<span class="decision-tag">${dec}</span>`);
+                    cardsHtml += `</div>`;
                 }
                 
-                html += `</div>`;
+                cardsHtml += `</div>`;
             });
             
-            html += `</div></div>`;
-            return html;
+            return `
+                <div class="content-block discussion-section">
+                    <h3 class="discussion-toggle" onclick="toggleDiscussions('${discussionId}')">
+                        💬 讨论记录 
+                        <span class="toggle-icon" id="${discussionId}-icon">▶</span>
+                        <span class="discussion-count">${discussions.length}条</span>
+                    </h3>
+                    <div class="discussion-list collapsed" id="${discussionId}">
+                        ${cardsHtml}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function toggleDiscussions(id) {
+            const list = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            if (list) {
+                list.classList.toggle('collapsed');
+                if (icon) {
+                    icon.textContent = list.classList.contains('collapsed') ? '▶' : '▼';
+                }
+            }
         }
         
         function switchVersion(stepNum, versionIndex) {

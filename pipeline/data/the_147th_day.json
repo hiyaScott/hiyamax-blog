@@ -1540,7 +1540,21 @@
                 "4. 混音输出：video + BGM"
               ],
               "subtitleText": "第147天。花还活着。",
-              "bgm": "FFmpeg生成的临时氛围音乐（220Hz正弦波+淡入淡出）"
+              "bgm": "FFmpeg生成的临时氛围音乐（220Hz正弦波+淡入淡出）",
+              "clips": [
+                {
+                  "id": "final_output_v2",
+                  "title": "第147天 - 成片 (V2)",
+                  "time": "0-17s",
+                  "desc": "FFmpeg后期处理完成版：合并3镜头+硬字幕+临时BGM",
+                  "filename": "the_147th_day_final.mp4",
+                  "src": "./assets/the_147th_day/the_147th_day_final.mp4",
+                  "size": "约8MB",
+                  "resolution": "1920x1080",
+                  "duration": "17秒",
+                  "note": "最终成片输出"
+                }
+              ]
             }
           }
         ],
