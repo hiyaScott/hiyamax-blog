@@ -1256,7 +1256,7 @@
             if (data.referenceImages) {
                 html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
-                    const basePath = './assets/the_147th_day/';
+                    const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                     const thumbUrl = img.thumbnail ? basePath + img.thumbnail : img.src;
                     html += `
                         <div class="scene-card">
@@ -1285,9 +1285,9 @@
                 views.forEach(view => {
                     const viewData = data.threeViews[view.key];
                     if (viewData) {
-                        const basePath = './assets/the_147th_day/';
-                        const imageUrl = viewData.image.startsWith('http') ? viewData.image : `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${viewData.image}`;
-                        const thumbUrl = viewData.thumbnail ? basePath + viewData.thumbnail : imageUrl;
+                        const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
+                        const imageUrl = viewData.image.startsWith('http') ? viewData.image : basePath + viewData.image;
+                        const thumbUrl = viewData.thumbnail ? basePath + 'thumbnails/' + viewData.thumbnail : imageUrl;
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
@@ -1318,9 +1318,9 @@
             if (data.scenes) {
                 html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
-                    const basePath = './assets/the_147th_day/';
+                    const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                     const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : 
-                                     (scene.image ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${scene.image}` : '');
+                                     (scene.image ? basePath + scene.image : '');
                     const thumbUrl = scene.thumbnail ? basePath + scene.thumbnail : imageUrl;
                     if (imageUrl) {
                         html += `
@@ -1345,10 +1345,10 @@
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
-                    const basePath = './assets/the_147th_day/';
+                    const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                     const firstFrame = shot.firstFrame || {};
                     const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : 
-                                     (firstFrame.image ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${firstFrame.image}` : 
+                                     (firstFrame.image ? basePath + firstFrame.image : 
                                      (firstFrame.url || ''));
                     const thumbUrl = firstFrame.thumbnail ? basePath + firstFrame.thumbnail : imageUrl;
                     if (imageUrl) {
