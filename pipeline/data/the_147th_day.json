@@ -321,7 +321,7 @@
             "version": "v1",
             "date": "2026-03-30 02:42",
             "author": "Jetton (即梦AI)",
-            "status": "当前版本",
+            "status": "已归档",
             "changes": "生成暴雨废墟场景，为分镜02提供背景参考",
             "data": {
               "concept": "末世废墟场景设计，包含夕阳下的温暖废墟和暴雨中的紧张氛围。场景为三个分镜提供背景支撑。",
@@ -375,6 +375,119 @@
                   "lighting": "冷蓝青色调，多道闪电，水面反射",
                   "image": "scene_storm_wasteland_02.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png"
+                }
+              ],
+              "promptExamples": {
+                "sunset": "A post-apocalyptic wasteland at golden hour. Ruined buildings silhouetted against warm orange sunset. Dust particles in the air, cinematic atmosphere. Desolate landscape with scattered debris. 8K quality, photorealistic, film grain",
+                "storm": "A post-apocalyptic wasteland during a violent thunderstorm. Dark storm clouds, lightning strikes, heavy rain. Flooded ground with reflections. Cold blue-cyan color palette, dramatic lighting. 8K quality, photorealistic"
+              },
+              "tool": "SeaDream 4.5 / 即梦AI",
+              "workflow": [
+                "1. 根据分镜需求确定场景氛围（夕阳/暴雨）",
+                "2. 使用SeaDream/即梦生成场景图（不含角色）",
+                "3. 场景图作为背景参考，与角色分层合成",
+                "4. 或作为视频生成的场景参考"
+              ]
+            }
+          },
+          {
+            "version": "v2",
+            "date": "2026-03-30 09:03",
+            "author": "Scott (豆包AI)",
+            "status": "当前版本",
+            "changes": "添加四张高质量场景图，包含夕阳和暴雨氛围",
+            "data": {
+              "concept": "末世废墟场景设计V2，使用豆包AI生成的高质量场景图，包含夕阳下的温暖废墟和暴雨中的紧张氛围，为三个分镜提供更丰富的背景参考。",
+              "scenes": [
+                {
+                  "id": "scene_sunset_01",
+                  "title": "夕阳废墟 - 远景",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "金色夕阳下的废墟远景，温暖的逆光氛围",
+                  "mood": "孤独但温暖，宁静",
+                  "lighting": "暖色调，金色逆光，柔和阴影",
+                  "image": "scene_sunset_wasteland_01.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png"
+                },
+                {
+                  "id": "scene_sunset_02",
+                  "title": "夕阳废墟 - 中景街道",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "废墟街道，夕阳侧光，地面杂草丛生",
+                  "mood": "宁静、荒废中的生机",
+                  "lighting": "暖色调，侧光，轮廓光",
+                  "image": "scene_sunset_wasteland_02.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png"
+                },
+                {
+                  "id": "scene_sunset_03",
+                  "title": "夕阳废墟 - 建筑群",
+                  "shot": "镜头01/03 - 夕阳守护/倒下与绽放",
+                  "desc": "破碎建筑剪影，远处山脉，夕阳余晖",
+                  "mood": "壮丽、悲伤但希望",
+                  "lighting": "暖色调，逆光剪影，大气透视",
+                  "image": "scene_sunset_wasteland_03.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png"
+                },
+                {
+                  "id": "scene_storm_01",
+                  "title": "暴雨废墟 - 首版",
+                  "shot": "镜头02 - 暴雨守护",
+                  "desc": "末世废墟在暴风雨中的场景，乌云、闪电、积水",
+                  "mood": "悲壮、紧张、守护",
+                  "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
+                  "image": "scene_storm_wasteland.jpg",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg"
+                },
+                {
+                  "id": "scene_storm_02",
+                  "title": "暴雨废墟 - 升级版",
+                  "shot": "镜头02 - 暴雨守护",
+                  "desc": "暴风雨中的废墟，闪电照亮积水，桥梁残骸",
+                  "mood": "紧张、守护、电影感",
+                  "lighting": "冷蓝青色调，多道闪电，水面反射",
+                  "image": "scene_storm_wasteland_02.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png"
+                },
+                {
+                  "id": "scene_sunset_city_v2",
+                  "title": "夕阳废墟城市 - V2",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "豆包AI生成的夕阳废墟城市景观，破碎建筑与金色阳光交织",
+                  "mood": "壮丽、希望与荒凉并存",
+                  "lighting": "暖金色调，逆光，大气透视",
+                  "image": "scene_sunset_city_v2.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_city_v2.png"
+                },
+                {
+                  "id": "scene_sunset_street_v2",
+                  "title": "夕阳废墟街道 - V2",
+                  "shot": "镜头01 - 夕阳守护",
+                  "desc": "豆包AI生成的夕阳废墟街道，碎石小路与废弃建筑",
+                  "mood": "宁静、荒废中的生机",
+                  "lighting": "暖色调，侧光，柔和阴影",
+                  "image": "scene_sunset_street_v2.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_street_v2.png"
+                },
+                {
+                  "id": "scene_storm_lightning_v2",
+                  "title": "暴雨废墟闪电 - V2",
+                  "shot": "镜头02 - 暴雨守护",
+                  "desc": "豆包AI生成的暴雨废墟场景，闪电照亮积水与废墟",
+                  "mood": "紧张、守护、电影感",
+                  "lighting": "冷蓝青色调，闪电高亮，水面反射",
+                  "image": "scene_storm_lightning_v2.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_lightning_v2.png"
+                },
+                {
+                  "id": "scene_sunset_ground_v2",
+                  "title": "夕阳废墟地面 - V2",
+                  "shot": "镜头01/03 - 夕阳守护/倒下与绽放",
+                  "desc": "豆包AI生成的夕阳废墟地面近景，碎石与野草",
+                  "mood": "细腻、温暖、真实",
+                  "lighting": "暖色调，低角度阳光，质感丰富",
+                  "image": "scene_sunset_ground_v2.png",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_ground_v2.png"
                 }
               ],
               "promptExamples": {
