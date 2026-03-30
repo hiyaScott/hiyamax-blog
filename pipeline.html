@@ -935,25 +935,19 @@
         
         // Helper: Create picture element with WebP fallback
         function createPictureElement(src, thumbSrc, alt, className = '') {
-            const webpSrc = getWebPPath(src);
-            const webpThumb = thumbSrc ? getWebPPath(thumbSrc) : null;
+            // 优先使用缩略图，避免加载大文件
+            const imageSrc = thumbSrc || src;
+            const webpSrc = getWebPPath(imageSrc);
             
             let html = `<picture>`;
             
-            // WebP thumbnail (smallest)
-            if (webpThumb) {
-                html += `<source srcset="${webpThumb}" type="image/webp" media="(max-width: 768px)">`;
-            }
-            // WebP full size
+            // WebP version (优先)
             if (webpSrc) {
                 html += `<source srcset="${webpSrc}" type="image/webp">`;
             }
-            // JPEG thumbnail for mobile
-            if (thumbSrc) {
-                html += `<source srcset="${thumbSrc}" media="(max-width: 768px)">`;
-            }
-            // JPEG fallback
-            html += `<img src="${src}" alt="${alt || ''}" loading="lazy" decoding="async" ${className ? `class="${className}"` : ''} onerror="this.onerror=null; this.style.display='none';">`;
+            
+            // JPEG fallback - 使用更健壮的错误处理
+            html += `<img src="${imageSrc}" alt="${alt || ''}" ${className ? `class="${className}"` : ''} onerror="this.onerror=function(){this.onerror=null; this.src='${src}'; this.onerror=function(){this.style.display='none';}};" decoding="async">`;
             html += `</picture>`;
             
             return html;
