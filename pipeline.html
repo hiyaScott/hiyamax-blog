@@ -800,7 +800,7 @@
                 html += `
                     <a href="?project=${p.id.replace(/_/g, '-')}" class="project-card">
                         <div class="project-cover">
-                            ${p.coverThumb ? `<img src="${p.coverThumb}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : (p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`)}
+                            ${p.coverThumb ? `<img src="${p.coverThumb}" alt="${p.title}" onerror="this.onerror=null; this.src='${p.cover || p.coverThumb}'; this.onerror=function(){this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';}">` : (p.cover ? `<img src="${p.cover}" alt="${p.title}" onerror="this.onerror=null; this.style.display='none'; this.parentNode.innerHTML='<span class=\'emoji-fallback\'>${p.emoji}</span>';">` : `<span class="emoji-fallback">${p.emoji}</span>`)}
                             <span class="project-status-badge ${statusClass}">${p.status}</span>
                         </div>
                         <div class="project-info">
@@ -1021,7 +1021,7 @@
                     html += `
                         <div class="scene-card">
                             <a href="${img.src}" target="_blank" title="点击查看原图">
-                                <img src="${thumbUrl}" alt="${img.title}" loading="lazy" onerror="this.src='${img.src}'">
+                                <img src="${thumbUrl}" alt="${img.title}" onerror="this.onerror=null; this.src='${img.src}'">
                             </a>
                             <div class="image-info">
                                 <div class="image-title">${img.title}</div>
@@ -1050,7 +1050,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${view.label}" loading="lazy" onerror="this.src='${imageUrl}'">
+                                    <img src="${thumbUrl}" alt="${view.label}" onerror="this.onerror=null; this.src='${imageUrl}';">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${view.label}</div>
@@ -1084,7 +1084,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${scene.title}" loading="lazy" onerror="this.src='${imageUrl}'">
+                                    <img src="${thumbUrl}" alt="${scene.title}" onerror="this.onerror=null; this.src='${imageUrl}'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${scene.title}</div>
@@ -1110,7 +1110,7 @@
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${shot.title}" loading="lazy" onerror="this.src='${imageUrl}'">
+                                    <img src="${thumbUrl}" alt="${shot.title}" onerror="this.onerror=null; this.src='${imageUrl}'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
@@ -1132,7 +1132,7 @@
                     const videoPath = clip.src || `./assets/the_147th_day/${clip.filename}`;
                     html += `
                         <div class="video-container">
-                            <video controls preload="metadata">
+                            <video controls preload="auto" playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
                                 <source src="${videoPath}" type="video/mp4">
                                 您的浏览器不支持视频播放
                             </video>
