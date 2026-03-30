@@ -702,10 +702,10 @@
                   "desc": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁",
                   "status": "首帧已确认",
                   "firstFrame": {
-                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
+                    "image": "robo_no5_v3_ai_generated.jpg",
                     "source": "AI生成版 V4 - 用户确认",
                     "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition",
-                    "thumbnail": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated_thumb.jpg"
+                    "thumbnail": "robo_no5_v3_ai_generated_thumb.jpg"
                   },
                   "mood": "孤独但温暖，守护者的宁静",
                   "keyElements": [
@@ -761,12 +761,12 @@
                   "desc": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开",
                   "status": "首帧已生成",
                   "firstFrame": {
-                    "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot03_firstframe_jimeng.jpg",
+                    "image": "shot03_firstframe_jimeng.jpg",
                     "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300039079118A4D917053F3CE1FD-2717-0~tplv-vuqhorh59i-image-v1.image",
                     "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
                     "date": "2026-03-30 00:39",
                     "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render",
-                    "thumbnail": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot03_firstframe_jimeng_thumb.jpg"
+                    "thumbnail": "shot03_firstframe_jimeng_thumb.jpg"
                   },
                   "mood": "悲伤但希望，生命延续的感动",
                   "keyElements": [
