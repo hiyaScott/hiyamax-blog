@@ -519,6 +519,87 @@
         
         .reference-image-item .download-link:hover { text-decoration: underline; }
         
+        /* Scene Cards - Full width image cards like reference */
+        .scene-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .scene-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .scene-card:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        
+        .scene-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .scene-card img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s;
+        }
+        
+        .scene-card:hover img { opacity: 0.95; }
+        
+        .scene-card .image-info { 
+            padding: 16px 18px; 
+            background: var(--bg-tertiary);
+        }
+        
+        .scene-card .image-title { 
+            font-size: 15px; 
+            font-weight: 600; 
+            color: var(--text-primary); 
+            margin-bottom: 6px; 
+        }
+        
+        .scene-card .image-desc { 
+            font-size: 13px; 
+            color: var(--text-secondary); 
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+        
+        .scene-card .image-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+        
+        .scene-card .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            padding: 6px 12px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        
+        .scene-card .download-link:hover { 
+            background: rgba(52, 152, 219, 0.2);
+            text-decoration: none;
+        }
+        
         /* Video Container - Clickable */
         .video-container {
             background: var(--bg-tertiary);
@@ -960,23 +1041,22 @@
                 html += `</ul></div>`;
             }
             
-            // Scenes - 场景设计展示
+            // Scenes - 场景设计展示 (卡片式大图)
             if (data.scenes) {
-                html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="reference-images">`;
+                html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
                     const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : scene.image;
                     if (imageUrl) {
                         html += `
-                            <div class="reference-image-item">
+                            <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看大图">
                                     <img src="${imageUrl}" alt="${scene.title}" onerror="this.style.display='none'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${scene.title}</div>
-                                    <div class="image-desc">${scene.desc || ''} (${scene.shot || ''})</div>
-                                    <div style="margin-top: 4px; font-size: 11px; color: var(--text-muted);">氛围: ${scene.mood || ''}</div>
-                                    <div style="font-size: 11px; color: var(--text-muted);">光线: ${scene.lighting || ''}</div>
-                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载场景</a>
+                                    <div class="image-desc">${scene.desc || ''}</div>
+                                    <div class="image-meta">${scene.shot || ''} · 氛围: ${scene.mood || ''} · 光线: ${scene.lighting || ''}</div>
+                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载图片</a>
                                 </div>
                             </div>
                         `;
@@ -985,22 +1065,22 @@
                 html += `</div></div>`;
             }
 
-            // Shots / Keyframes - 分镜首帧展示
+            // Shots / Keyframes - 分镜首帧展示 (卡片式大图)
             if (data.shots) {
-                html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="reference-images">`;
+                html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
                     const firstFrame = shot.firstFrame || {};
                     const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : (firstFrame.image || firstFrame.url);
                     if (imageUrl) {
                         html += `
-                            <div class="reference-image-item">
+                            <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看大图">
                                     <img src="${imageUrl}" alt="${shot.title}" onerror="this.style.display='none'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
-                                    <div class="image-desc">${shot.desc || ''} (${shot.time || ''})</div>
-                                    <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">状态: ${shot.status || ''}</div>
+                                    <div class="image-desc">${shot.desc || ''}</div>
+                                    <div class="image-meta">${shot.time || ''} · 状态: ${shot.status || ''}</div>
                                     <a href="${imageUrl}" download class="download-link">⬇️ 下载首帧</a>
                                 </div>
                             </div>
