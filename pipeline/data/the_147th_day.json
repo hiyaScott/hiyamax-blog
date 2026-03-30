@@ -341,7 +341,8 @@
                 {
                   "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
                   "title": "基础角色设计图",
-                  "desc": "V4版本，用于三视图生成的参考"
+                  "desc": "V4版本，用于三视图生成的参考",
+                  "thumbnail": "robo_no5_v3_ai_generated_thumb.jpg"
                 }
               ],
               "threeViews": {
