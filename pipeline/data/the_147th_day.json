@@ -945,7 +945,7 @@
       "status": "已完成",
       "desc": "使用海螺AI生成视频片段，经历API调用事故后成功获取素材",
       "content": {
-        "currentVersion": "v4",
+        "currentVersion": "v5",
         "versions": [
           {
             "version": "v1",
@@ -1087,7 +1087,7 @@
             "version": "v4",
             "date": "2026-03-29 18:21",
             "author": "Jetton (海螺AI)",
-            "status": "最新测试（正确使用API）",
+            "status": "已归档",
             "changes": "使用first_frame_image参数和查询接口，对比测试不同参数效果，新增V5版本使用手绘风格首帧",
             "data": {
               "concept": "按照DMXAPI官方文档正确使用海螺图生视频API，使用first_frame_image参数确保角色一致性",
@@ -1289,6 +1289,98 @@
                 "查询接口使用正确的GET /v1/query/video_generation",
                 "下载接口使用正确的GET /v1/files/retrieve"
               ]
+            }
+          },
+          {
+            "version": "v5",
+            "date": "2026-03-30 10:25",
+            "author": "Scott (海螺AI)",
+            "status": "当前版本",
+            "changes": "新增5个视频片段，包含夕阳守护和暴雨守护场景",
+            "data": {
+              "concept": "使用海螺AI图生视频功能，基于V2版本首帧图生成高质量视频片段",
+              "tool": "海螺AI (MiniMax-Hailuo-2.3)",
+              "apiProvider": "DMXAPI",
+              "clips": [
+                {
+                  "id": "hailuo_v5_shot01",
+                  "title": "镜头01 - 夕阳守护 V5 (10s)",
+                  "time": "0-10s",
+                  "desc": "使用robo_no5_character.jpg作为首帧，镜头01提示词生成",
+                  "filename": "hailuo_shot01_v5_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "videoUrl": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "download_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fab39ab3f-fc95-4848-b581-9fed57b684a1%2Foutput_aigc.mp4?Expires=1774843141&OSSAccessKeyId=LTAI5tAmwsjSaaZVA6cEFAUu&Signature=yJ%2F4mh7jX%2Fi1LBcSgqI2txO%2FYMI%3D",
+                  "size": "约2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image (单首帧模式)",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "referenceImage": "robo_no5_character.jpg",
+                  "note": "夕阳守护场景，手绘风格角色"
+                },
+                {
+                  "id": "hailuo_v5_shot02_a",
+                  "title": "镜头02 - 暴雨守护 V5 (版本A)",
+                  "time": "0-10s",
+                  "desc": "暴雨场景，机器人守护花朵",
+                  "download_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F367bd516-1c18-4947-95ff-1bb9d1f2610d%2Foutput_aigc.mp4?Expires=1774843317&OSSAccessKeyId=LTAI5tAmwsjSaaZVA6cEFAUu&Signature=Z%2FrDo4lQ%2F0E%2Blt1zks1ZYzNcWxw%3D",
+                  "size": "约2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "note": "暴雨守护场景版本A"
+                },
+                {
+                  "id": "hailuo_v5_shot02_b",
+                  "title": "镜头02 - 暴雨守护 V5 (版本B)",
+                  "time": "0-10s",
+                  "desc": "暴雨场景，机器人守护花朵 - 变体B",
+                  "download_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F878da222-aa34-429b-af2c-09fb5e6cf2ad%2Foutput_aigc.mp4?Expires=1774843877&OSSAccessKeyId=LTAI5tAmwsjSaaZVA6cEFAUu&Signature=YreprxEqwg0tdLmBYzfdJl5cOKk%3D",
+                  "size": "约2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "note": "暴雨守护场景版本B"
+                },
+                {
+                  "id": "hailuo_v5_shot02_c",
+                  "title": "镜头02 - 暴雨守护 V5 (版本C)",
+                  "time": "0-10s",
+                  "desc": "暴雨场景，机器人守护花朵 - 变体C",
+                  "download_url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fdac270a3-3e9c-49ea-bbf3-39995c158538%2Foutput_aigc.mp4?Expires=1774844498&OSSAccessKeyId=LTAI5tAmwsjSaaZVA6cEFAUu&Signature=natSKkCjFY5PavqlUw%2FQxv9Qw6g%3D",
+                  "size": "约2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "note": "暴雨守护场景版本C"
+                },
+                {
+                  "id": "hailuo_v5_shot01_local",
+                  "title": "镜头01 - 夕阳守护 V5 (本地文件)",
+                  "time": "0-10s",
+                  "desc": "hailuo-shot01-v5-10s 本地文件版本",
+                  "filename": "hailuo_shot01_v5_10s.mp4",
+                  "src": "./assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "videoUrl": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/hailuo_shot01_v5_10s.mp4",
+                  "size": "约2MB",
+                  "resolution": "768x768",
+                  "duration": "10秒",
+                  "param": "first_frame_image",
+                  "model": "MiniMax-Hailuo-2.3",
+                  "note": "本地已上传的V5版本文件"
+                }
+              ],
+              "summary": {
+                "totalClips": 5,
+                "shot01": 2,
+                "shot02": 3,
+                "tool": "海螺AI MiniMax-Hailuo-2.3",
+                "note": "V5版本基于V2首帧生成，角色一致性更好"
+              }
             }
           }
         ],
