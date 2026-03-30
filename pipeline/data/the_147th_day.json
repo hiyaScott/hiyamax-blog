@@ -281,7 +281,8 @@
                 "front": {
                   "image": "robo_no5_front_view_doubao.png",
                   "desc": "正视图 - 正面，双手捧花盆",
-                  "tool": "豆包AI"
+                  "tool": "豆包AI",
+                  "thumbnail": "robo_no5_front_view_doubao_thumb_thumb.jpg"
                 },
                 "sideLeft": {
                   "image": "robo_no5_side_left_view_doubao.png",
@@ -348,19 +349,22 @@
                   "image": "robo_no5_front_view_doubao.png",
                   "title": "【Front】正视图",
                   "desc": "正面视角，双手捧花盆",
-                  "model": "SeaDream 4.5"
+                  "model": "SeaDream 4.5",
+                  "thumbnail": "robo_no5_front_view_doubao_thumb_thumb.jpg"
                 },
                 "side": {
                   "image": "robo_no5_side_view_v7.png",
                   "title": "【Side】侧视图",
                   "desc": "左侧面，履带底座清晰可见",
-                  "model": "豆包AI"
+                  "model": "豆包AI",
+                  "thumbnail": "robo_no5_side_view_v7_thumb_thumb.jpg"
                 },
                 "back": {
                   "image": "robo_no5_back_view_doubao.jpg",
                   "title": "【Back】背视图",
                   "desc": "背面视角，手持花盆",
-                  "model": "SeaDream 4.5"
+                  "model": "SeaDream 4.5",
+                  "thumbnail": "robo_no5_back_view_doubao_thumb.jpg"
                 }
               },
               "toolComparison": {
@@ -467,7 +471,7 @@
                   "lighting": "暖色调，金色逆光，柔和阴影",
                   "image": "scene_sunset_wasteland_01.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_01_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_01_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_02",
@@ -478,7 +482,7 @@
                   "lighting": "暖色调，侧光，轮廓光",
                   "image": "scene_sunset_wasteland_02.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_02_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_03",
@@ -489,7 +493,7 @@
                   "lighting": "暖色调，逆光剪影，大气透视",
                   "image": "scene_sunset_wasteland_03.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_03_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_03_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_01",
@@ -500,7 +504,7 @@
                   "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
                   "image": "scene_storm_wasteland.jpg",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg",
-                  "thumbnail": "thumbnails/scene_storm_wasteland_thumb.jpg"
+                  "thumbnail": "scene_storm_wasteland_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_02",
@@ -511,7 +515,7 @@
                   "lighting": "冷蓝青色调，多道闪电，水面反射",
                   "image": "scene_storm_wasteland_02.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png",
-                  "thumbnail": "thumbnails/scene_storm_wasteland_02_thumb_thumb.jpg"
+                  "thumbnail": "scene_storm_wasteland_02_thumb_thumb.jpg"
                 }
               ],
               "promptExamples": {
@@ -545,7 +549,7 @@
                   "lighting": "暖色调，金色逆光，柔和阴影",
                   "image": "scene_sunset_wasteland_01.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_01.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_01_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_01_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_02",
@@ -556,7 +560,7 @@
                   "lighting": "暖色调，侧光，轮廓光",
                   "image": "scene_sunset_wasteland_02.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_02.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_02_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_03",
@@ -567,7 +571,7 @@
                   "lighting": "暖色调，逆光剪影，大气透视",
                   "image": "scene_sunset_wasteland_03.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_wasteland_03.png",
-                  "thumbnail": "thumbnails/scene_sunset_wasteland_03_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_wasteland_03_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_01",
@@ -578,7 +582,7 @@
                   "lighting": "冷色调，闪电提供瞬间高亮，体积光穿透雨幕",
                   "image": "scene_storm_wasteland.jpg",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland.jpg",
-                  "thumbnail": "thumbnails/scene_storm_wasteland_thumb.jpg"
+                  "thumbnail": "scene_storm_wasteland_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_02",
@@ -589,7 +593,7 @@
                   "lighting": "冷蓝青色调，多道闪电，水面反射",
                   "image": "scene_storm_wasteland_02.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_wasteland_02.png",
-                  "thumbnail": "thumbnails/scene_storm_wasteland_02_thumb_thumb.jpg"
+                  "thumbnail": "scene_storm_wasteland_02_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_city_v2",
@@ -600,7 +604,7 @@
                   "lighting": "暖金色调，逆光，大气透视",
                   "image": "scene_sunset_city_v2.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_city_v2.png",
-                  "thumbnail": "thumbnails/scene_sunset_city_v2_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_city_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_street_v2",
@@ -611,7 +615,7 @@
                   "lighting": "暖色调，侧光，柔和阴影",
                   "image": "scene_sunset_street_v2.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_street_v2.png",
-                  "thumbnail": "thumbnails/scene_sunset_street_v2_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_street_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_storm_lightning_v2",
@@ -622,7 +626,7 @@
                   "lighting": "冷蓝青色调，闪电高亮，水面反射",
                   "image": "scene_storm_lightning_v2.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_storm_lightning_v2.png",
-                  "thumbnail": "thumbnails/scene_storm_lightning_v2_thumb_thumb.jpg"
+                  "thumbnail": "scene_storm_lightning_v2_thumb_thumb.jpg"
                 },
                 {
                   "id": "scene_sunset_ground_v2",
@@ -633,7 +637,7 @@
                   "lighting": "暖色调，低角度阳光，质感丰富",
                   "image": "scene_sunset_ground_v2.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_ground_v2.png",
-                  "thumbnail": "thumbnails/scene_sunset_ground_v2_thumb_thumb.jpg"
+                  "thumbnail": "scene_sunset_ground_v2_thumb_thumb.jpg"
                 }
               ],
               "promptExamples": {
@@ -700,7 +704,8 @@
                   "firstFrame": {
                     "image": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
                     "source": "AI生成版 V4 - 用户确认",
-                    "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition"
+                    "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition",
+                    "thumbnail": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated_thumb.jpg"
                   },
                   "mood": "孤独但温暖，守护者的宁静",
                   "keyElements": [
@@ -760,7 +765,8 @@
                     "url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202603300039079118A4D917053F3CE1FD-2717-0~tplv-vuqhorh59i-image-v1.image",
                     "source": "即梦AI API生成 (jimeng_high_aes_general_v21_L)",
                     "date": "2026-03-30 00:39",
-                    "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render"
+                    "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render",
+                    "thumbnail": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot03_firstframe_jimeng_thumb.jpg"
                   },
                   "mood": "悲伤但希望，生命延续的感动",
                   "keyElements": [
@@ -882,7 +888,8 @@
                     "date": "2026-03-30 09:45",
                     "prompt": "复古小机器人，圆顶头部，生锈金属机身，履带式底座，手捧白色小花盆，站在末世废墟中，夕阳金色光线，温暖氛围，电影级光影，超高清",
                     "model": "豆包AI",
-                    "note": "V2版本：角色与场景融合自然，氛围感强"
+                    "note": "V2版本：角色与场景融合自然，氛围感强",
+                    "thumbnail": "shot02_sunset_guardian_v2_thumb.jpg"
                   },
                   "mood": "孤独但温暖，守护者的宁静",
                   "keyElements": [
@@ -905,7 +912,8 @@
                     "date": "2026-03-30 09:45",
                     "prompt": "复古小机器人，圆顶头部，生锈金属机身，履带式底座，跪在积水中，双手守护地上的白色小花，暴雨倾盆，闪电照亮，乌云密布，冷蓝青色调，电影级光影，超高清",
                     "model": "豆包AI",
-                    "note": "V2版本：角色与场景融合自然，闪电氛围感强"
+                    "note": "V2版本：角色与场景融合自然，闪电氛围感强",
+                    "thumbnail": "shot02_storm_guardian_v2_thumb_thumb.jpg"
                   },
                   "mood": "紧张而坚定，守护者的坚韧",
                   "keyElements": [

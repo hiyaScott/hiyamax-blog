@@ -976,18 +976,19 @@
                 html += `</ul></div>`;
             }
             
-            // Reference images - Clickable with download
+            // Reference images - Clickable with thumbnail
             if (data.referenceImages) {
-                html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="reference-images">`;
+                html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
+                    const thumbUrl = img.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/${img.thumbnail}` : img.src;
                     html += `
-                        <div class="reference-image-item">
-                            <a href="${img.src}" target="_blank" title="点击查看大图">
-                                <img src="${img.src}" alt="${img.title}" onerror="this.style.display='none'">
+                        <div class="scene-card">
+                            <a href="${img.src}" target="_blank" title="点击查看原图">
+                                <img src="${thumbUrl}" alt="${img.title}" loading="lazy" onerror="this.src='${img.src}'">
                             </a>
                             <div class="image-info">
                                 <div class="image-title">${img.title}</div>
-                                <div class="image-desc">${img.desc}</div>
+                                <div class="image-desc">${img.desc || ''}</div>
                                 <a href="${img.src}" download class="download-link">⬇️ 下载图片</a>
                             </div>
                         </div>
@@ -996,9 +997,9 @@
                 html += `</div></div>`;
             }
             
-            // Three Views - 三视图展示
+            // Three Views - 三视图展示 (紧凑网格)
             if (data.threeViews) {
-                html += `<div class="content-block"><h3>📐 三视图（角色一致性规范）</h3><div class="reference-images">`;
+                html += `<div class="content-block"><h3>📐 三视图（角色一致性规范）</h3><div class="scene-cards">`;
                 const views = [
                     { key: 'front', label: '正视图' },
                     { key: 'side', label: '侧视图' },
@@ -1008,10 +1009,11 @@
                     const viewData = data.threeViews[view.key];
                     if (viewData) {
                         const imageUrl = viewData.image.startsWith('http') ? viewData.image : `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${viewData.image}`;
+                        const thumbUrl = viewData.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/${viewData.thumbnail}` : imageUrl;
                         html += `
-                            <div class="reference-image-item">
-                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
-                                    <img src="${imageUrl}" alt="${view.label}" onerror="this.style.display='none'">
+                            <div class="scene-card">
+                                <a href="${imageUrl}" target="_blank" title="点击查看原图">
+                                    <img src="${thumbUrl}" alt="${view.label}" loading="lazy" onerror="this.src='${imageUrl}'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${view.label}</div>
