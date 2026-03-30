@@ -1252,14 +1252,16 @@
             }
             
             // Reference images
+            // Reference images
             if (data.referenceImages) {
                 html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
-                    const thumbUrl = img.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/${img.thumbnail}` : img.src;
+                    const basePath = './assets/the_147th_day/';
+                    const thumbUrl = img.thumbnail ? basePath + img.thumbnail : img.src;
                     html += `
                         <div class="scene-card">
                             <a href="${img.src}" target="_blank" title="点击查看原图">
-                                ${createPictureElement(img.src, thumbUrl, img.title)}
+                                <img src="${thumbUrl}" alt="${img.title}" onerror="this.onerror=function(){this.src='${img.src}';};" decoding="async">
                             </a>
                             <div class="image-info">
                                 <div class="image-title">${img.title}</div>
@@ -1283,12 +1285,13 @@
                 views.forEach(view => {
                     const viewData = data.threeViews[view.key];
                     if (viewData) {
+                        const basePath = './assets/the_147th_day/';
                         const imageUrl = viewData.image.startsWith('http') ? viewData.image : `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${viewData.image}`;
-                        const thumbUrl = viewData.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/${viewData.thumbnail}` : imageUrl;
+                        const thumbUrl = viewData.thumbnail ? basePath + viewData.thumbnail : imageUrl;
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    ${createPictureElement(imageUrl, thumbUrl, view.label)}
+                                    <img src="${thumbUrl}" alt="${view.label}" onerror="this.onerror=function(){this.src='${imageUrl}';};" decoding="async">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${view.label}</div>
@@ -1315,14 +1318,15 @@
             if (data.scenes) {
                 html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
+                    const basePath = './assets/the_147th_day/';
                     const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : 
                                      (scene.image ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${scene.image}` : '');
-                    const thumbUrl = scene.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${scene.thumbnail}` : imageUrl;
+                    const thumbUrl = scene.thumbnail ? basePath + scene.thumbnail : imageUrl;
                     if (imageUrl) {
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    ${createPictureElement(imageUrl, thumbUrl, scene.title)}
+                                    <img src="${thumbUrl}" alt="${scene.title}" onerror="this.onerror=function(){this.src='${imageUrl}';};" decoding="async">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">${scene.title}</div>
@@ -1341,14 +1345,17 @@
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
+                    const basePath = './assets/the_147th_day/';
                     const firstFrame = shot.firstFrame || {};
-                    const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : (firstFrame.image || firstFrame.url);
-                    const thumbUrl = firstFrame.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${firstFrame.thumbnail}` : imageUrl;
+                    const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : 
+                                     (firstFrame.image ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${firstFrame.image}` : 
+                                     (firstFrame.url || ''));
+                    const thumbUrl = firstFrame.thumbnail ? basePath + firstFrame.thumbnail : imageUrl;
                     if (imageUrl) {
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    ${createPictureElement(imageUrl, thumbUrl, shot.title)}
+                                    <img src="${thumbUrl}" alt="${shot.title}" onerror="this.onerror=function(){this.src='${imageUrl}';};" decoding="async">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
