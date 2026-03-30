@@ -960,12 +960,37 @@
                 html += `</ul></div>`;
             }
             
+            // Scenes - 场景设计展示
+            if (data.scenes) {
+                html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="reference-images">`;
+                data.scenes.forEach(scene => {
+                    const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : scene.image;
+                    if (imageUrl) {
+                        html += `
+                            <div class="reference-image-item">
+                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
+                                    <img src="${imageUrl}" alt="${scene.title}" onerror="this.style.display='none'">
+                                </a>
+                                <div class="image-info">
+                                    <div class="image-title">${scene.title}</div>
+                                    <div class="image-desc">${scene.desc || ''} (${scene.shot || ''})</div>
+                                    <div style="margin-top: 4px; font-size: 11px; color: var(--text-muted);">氛围: ${scene.mood || ''}</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">光线: ${scene.lighting || ''}</div>
+                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载场景</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div></div>`;
+            }
+
             // Shots / Keyframes - 分镜首帧展示
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="reference-images">`;
                 data.shots.forEach(shot => {
                     const firstFrame = shot.firstFrame || {};
-                    const imageUrl = firstFrame.image || firstFrame.url;
+                    const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : (firstFrame.image || firstFrame.url);
                     if (imageUrl) {
                         html += `
                             <div class="reference-image-item">
