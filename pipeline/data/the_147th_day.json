@@ -45,12 +45,28 @@
               "story": {
                 "core": "孤独的机器人 Robo No.5 在末日废墟中守护着一盆小花。147天里，它经历了暴风雨的考验，最终在夕阳下静静倒下，而花朵依然绽放——生命的意义不在于永恒，而在于曾经守护。",
                 "characters": [
-                  { "name": "Robo No.5", "type": "主角", "desc": "方头方身的老旧机器人，橙色网格眼，头顶红色警示灯，执着守护者" }
+                  {
+                    "name": "Robo No.5",
+                    "type": "主角",
+                    "desc": "方头方身的老旧机器人，橙色网格眼，头顶红色警示灯，执着守护者"
+                  }
                 ],
                 "structure": [
-                  { "phase": "第一幕-开场", "time": "0-6s", "content": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁" },
-                  { "phase": "第二幕-中点", "time": "6-12s", "content": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者" },
-                  { "phase": "第三幕-结局", "time": "12-18s", "content": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开" }
+                  {
+                    "phase": "第一幕-开场",
+                    "time": "0-6s",
+                    "content": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁"
+                  },
+                  {
+                    "phase": "第二幕-中点",
+                    "time": "6-12s",
+                    "content": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者"
+                  },
+                  {
+                    "phase": "第三幕-结局",
+                    "time": "12-18s",
+                    "content": "Robo No.5 倒在废墟中，警示灯微弱闪烁后熄灭，花朵依然盛开"
+                  }
                 ]
               },
               "keyMoments": [
@@ -66,13 +82,21 @@
             "date": "2026-03-28 15:00",
             "platform": "飞书",
             "summary": "确定末日温情题材，机器人守护花朵的核心创意",
-            "decisions": ["末日温情", "机器人主角", "147天时间跨度"]
+            "decisions": [
+              "末日温情",
+              "机器人主角",
+              "147天时间跨度"
+            ]
           },
           {
             "date": "2026-03-28 15:30",
             "platform": "飞书",
             "summary": "确定三幕结构，18秒时长分配",
-            "decisions": ["3个镜头", "6秒/镜", "夕阳-暴雨-倒下三段式"]
+            "decisions": [
+              "3个镜头",
+              "6秒/镜",
+              "夕阳-暴雨-倒下三段式"
+            ]
           }
         ]
       }
@@ -101,7 +125,11 @@
                 "老旧磨损：锈迹划痕体现岁月感"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+                  "title": "手绘原稿",
+                  "desc": "用户手绘插画风格"
+                }
               ]
             }
           },
@@ -122,8 +150,16 @@
                 "手捧花盆：剧情核心道具"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg", "title": "写实3D版", "desc": "即梦AI生成，视频生成参考" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+                  "title": "手绘原稿",
+                  "desc": "用户手绘插画风格"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_front.jpg",
+                  "title": "写实3D版",
+                  "desc": "即梦AI生成，视频生成参考"
+                }
               ],
               "prompt": "A lonely old robot 'Robo No.5' in post-apocalyptic wasteland, boxy square metal head with orange glowing eyes, weathered teal-gray metal body with rust, hydraulic mechanical arms, holding a small potted flower, golden hour sunset, 3D realistic render, WALL-E aesthetic, Pixar style"
             }
@@ -146,8 +182,16 @@
                 "废墟背景：末日氛围营造"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格 - 正确版本" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_v3.jpg", "title": "写实3D版 V3", "desc": "即梦AI基于手绘稿生成，保持角色特征" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+                  "title": "手绘原稿",
+                  "desc": "用户手绘插画风格 - 正确版本"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_realistic_v3.jpg",
+                  "title": "写实3D版 V3",
+                  "desc": "即梦AI基于手绘稿生成，保持角色特征"
+                }
               ],
               "prompt": "参考手绘原稿的Robo No.5机器人，方头网格眼，生成3D写实版本，末日废墟背景，手捧花盆，夕阳金色光线"
             }
@@ -170,8 +214,16 @@
                 "夕阳废墟背景：末世温情对比"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "文生图生成的复古机器人，金色锈蚀金属质感" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+                  "title": "手绘原稿",
+                  "desc": "用户手绘插画风格"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
+                  "title": "AI生成版 V4",
+                  "desc": "文生图生成的复古机器人，金色锈蚀金属质感"
+                }
               ],
               "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition"
             }
@@ -199,16 +251,48 @@
                 "三视图规范：正视图/左侧视图/右侧视图"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg", "title": "手绘原稿", "desc": "用户手绘插画风格" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "AI生成版 V4", "desc": "基础角色设计图" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view_doubao.png", "title": "豆包三视图 - 正视图", "desc": "正面视角，双手捧花盆" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_left_view_doubao.png", "title": "豆包三视图 - 左侧视图", "desc": "左侧面，履带底座可见" },
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_right_view_doubao.png", "title": "豆包三视图 - 右侧视图", "desc": "右侧面，坐姿" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_character.jpg",
+                  "title": "手绘原稿",
+                  "desc": "用户手绘插画风格"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
+                  "title": "AI生成版 V4",
+                  "desc": "基础角色设计图"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_front_view_doubao.png",
+                  "title": "豆包三视图 - 正视图",
+                  "desc": "正面视角，双手捧花盆"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_left_view_doubao.png",
+                  "title": "豆包三视图 - 左侧视图",
+                  "desc": "左侧面，履带底座可见"
+                },
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_side_right_view_doubao.png",
+                  "title": "豆包三视图 - 右侧视图",
+                  "desc": "右侧面，坐姿"
+                }
               ],
               "threeViews": {
-                "front": { "image": "robo_no5_front_view_doubao.png", "desc": "正视图 - 正面，双手捧花盆", "tool": "豆包AI" },
-                "sideLeft": { "image": "robo_no5_side_left_view_doubao.png", "desc": "左侧视图 - 左侧面，履带底座可见", "tool": "豆包AI" },
-                "sideRight": { "image": "robo_no5_side_right_view_doubao.png", "desc": "右侧视图 - 右侧面，坐姿", "tool": "豆包AI" }
+                "front": {
+                  "image": "robo_no5_front_view_doubao.png",
+                  "desc": "正视图 - 正面，双手捧花盆",
+                  "tool": "豆包AI"
+                },
+                "sideLeft": {
+                  "image": "robo_no5_side_left_view_doubao.png",
+                  "desc": "左侧视图 - 左侧面，履带底座可见",
+                  "tool": "豆包AI"
+                },
+                "sideRight": {
+                  "image": "robo_no5_side_right_view_doubao.png",
+                  "desc": "右侧视图 - 右侧面，坐姿",
+                  "tool": "豆包AI"
+                }
               },
               "bestPractice": {
                 "title": "角色一致性最佳实践",
@@ -223,7 +307,9 @@
               "prompt": "生成参考图中机器人的三视图，保持角色一致性",
               "tool": "豆包AI",
               "model": "豆包图生图",
-              "apiParams": { "reference_image": "V4角色设计图" }
+              "apiParams": {
+                "reference_image": "V4角色设计图"
+              }
             }
           },
           {
@@ -251,12 +337,31 @@
                 "角色一致性：三张图颜色、风格、造型完全统一"
               ],
               "referenceImages": [
-                { "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg", "title": "基础角色设计图", "desc": "V4版本，用于三视图生成的参考" }
+                {
+                  "src": "/hiyamax-blog/assets/the_147th_day/robo_no5_v3_ai_generated.jpg",
+                  "title": "基础角色设计图",
+                  "desc": "V4版本，用于三视图生成的参考"
+                }
               ],
               "threeViews": {
-                "front": { "image": "robo_no5_front_view_doubao.png", "title": "【Front】正视图", "desc": "正面视角，双手捧花盆", "model": "SeaDream 4.5" },
-                "side": { "image": "robo_no5_side_view_v7.png", "title": "【Side】侧视图", "desc": "左侧面，履带底座清晰可见", "model": "豆包AI" },
-                "back": { "image": "robo_no5_back_view_doubao.jpg", "title": "【Back】背视图", "desc": "背面视角，手持花盆", "model": "SeaDream 4.5" }
+                "front": {
+                  "image": "robo_no5_front_view_doubao.png",
+                  "title": "【Front】正视图",
+                  "desc": "正面视角，双手捧花盆",
+                  "model": "SeaDream 4.5"
+                },
+                "side": {
+                  "image": "robo_no5_side_view_v7.png",
+                  "title": "【Side】侧视图",
+                  "desc": "左侧面，履带底座清晰可见",
+                  "model": "豆包AI"
+                },
+                "back": {
+                  "image": "robo_no5_back_view_doubao.jpg",
+                  "title": "【Back】背视图",
+                  "desc": "背面视角，手持花盆",
+                  "model": "SeaDream 4.5"
+                }
               },
               "toolComparison": {
                 "即梦AI": "三视图颜色、风格差异明显，角色一致性较差",
@@ -265,7 +370,9 @@
               "prompt": "生成参考图中机器人的三视图，保持角色一致性",
               "tool": "SeaDream 4.5",
               "model": "SeaDream 4.5",
-              "apiParams": { "reference_image": "V4角色设计图" }
+              "apiParams": {
+                "reference_image": "V4角色设计图"
+              }
             }
           }
         ],
@@ -274,37 +381,62 @@
             "date": "2026-03-28 16:00",
             "platform": "飞书",
             "summary": "用户展示手绘Robo No.5，确定方头网格眼核心特征",
-            "decisions": ["方头网格眼", "红色警示灯", "手绘风格"]
+            "decisions": [
+              "方头网格眼",
+              "红色警示灯",
+              "手绘风格"
+            ]
           },
           {
             "date": "2026-03-28 23:00",
             "platform": "飞书",
             "summary": "使用即梦AI将手绘转为3D写实风格",
-            "decisions": ["手绘转3D", "即梦AI生成", "用于视频生成参考"]
+            "decisions": [
+              "手绘转3D",
+              "即梦AI生成",
+              "用于视频生成参考"
+            ]
           },
           {
             "date": "2026-03-29 23:00",
             "platform": "飞书",
             "summary": "基于正确的手绘原稿，使用即梦AI参考角色特征功能生成V3写实版本",
-            "decisions": ["使用手绘原稿作为参考", "即梦AI参考角色特征", "保持核心造型特征"]
+            "decisions": [
+              "使用手绘原稿作为参考",
+              "即梦AI参考角色特征",
+              "保持核心造型特征"
+            ]
           },
           {
             "date": "2026-03-29 23:05",
             "platform": "飞书",
             "summary": "文生图生成复古机器人V4版本，金色锈蚀金属质感，用户喜欢这个造型",
-            "decisions": ["文生图生成", "复古圆顶造型", "金色锈蚀金属", "V4当前版本"]
+            "decisions": [
+              "文生图生成",
+              "复古圆顶造型",
+              "金色锈蚀金属",
+              "V4当前版本"
+            ]
           },
           {
             "date": "2026-03-30 02:04",
             "platform": "飞书",
             "summary": "使用豆包AI重新生成三视图，角色一致性显著优于即梦AI。三图颜色、风格、造型完全统一",
-            "decisions": ["豆包AI生成三视图", "正视图/左侧视图/右侧视图", "三视图版本更新为V5"]
+            "decisions": [
+              "豆包AI生成三视图",
+              "正视图/左侧视图/右侧视图",
+              "三视图版本更新为V5"
+            ]
           },
           {
             "date": "2026-03-30 02:11",
             "platform": "飞书",
             "summary": "将豆包AI三视图正式定为V6版本，作为视频生成标准参考。开始使用海螺AI测试视频生成角色一致性",
-            "decisions": ["V6正式版本", "豆包AI三视图为标准", "海螺AI视频生成测试"]
+            "decisions": [
+              "V6正式版本",
+              "豆包AI三视图为标准",
+              "海螺AI视频生成测试"
+            ]
           }
         ]
       }
@@ -509,7 +641,11 @@
             "date": "2026-03-30 02:36",
             "platform": "飞书",
             "summary": "确定场景设计流程，在角色设计之后、分镜之前添加场景设计步骤",
-            "decisions": ["添加场景设计步骤", "先生成场景再生成角色分镜", "场景与角色分层处理"]
+            "decisions": [
+              "添加场景设计步骤",
+              "先生成场景再生成角色分镜",
+              "场景与角色分层处理"
+            ]
           }
         ]
       }
@@ -520,13 +656,13 @@
       "status": "进行中",
       "desc": "在即梦AI中基于角色参考图，生成各分镜的首帧/尾帧静态图",
       "content": {
-        "currentVersion": "v1",
+        "currentVersion": "v2",
         "versions": [
           {
             "version": "v1",
             "date": "2026-03-29 22:30",
             "author": "Scott + Jetton",
-            "status": "当前版本",
+            "status": "已归档",
             "changes": "添加三组镜头的首帧设计与生成方案",
             "data": {
               "concept": "在即梦AI中使用'参考角色特征'功能，基于Robo No.5角色图生成各分镜的首帧/尾帧静态图。三组镜头首帧确保角色一致性。",
@@ -553,7 +689,12 @@
                     "prompt": "A vintage robot with round dome head, golden rusted metal body, holding a potted white flower, post-apocalyptic wasteland background, warm sunset lighting, 3D render, cinematic composition"
                   },
                   "mood": "孤独但温暖，守护者的宁静",
-                  "keyElements": ["夕阳金色光线", "废墟背景", "机器人手持花盆", "温柔神情"]
+                  "keyElements": [
+                    "夕阳金色光线",
+                    "废墟背景",
+                    "机器人手持花盆",
+                    "温柔神情"
+                  ]
                 },
                 {
                   "number": 2,
@@ -576,13 +717,23 @@
                       "source": "SeaDream 4.5 生成 (用户上传)",
                       "date": "2026-03-30 02:48",
                       "prompt": "参考三视图Front/Left/Back + 画面质感参考robo_no5_character。全景低角度仰拍，机器人单膝跪地庇护白色小花，乌云闪电背景，冷色调，电影级氛围",
-                      "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                      "referenceImages": [
+                        "robo_no5_front_view_doubao.png",
+                        "robo_no5_side_left_view_doubao.png",
+                        "robo_no5_back_view_doubao.jpg",
+                        "robo_no5_character.jpg"
+                      ],
                       "note": "角色一致性优秀，完美匹配三视图",
                       "model": "SeaDream 4.5"
                     }
                   },
                   "mood": "紧张而坚定，守护者的坚韧",
-                  "keyElements": ["暴雨倾盆", "机器人弯腰护花", "雨水打湿的金属", "黑暗中发光的眼"]
+                  "keyElements": [
+                    "暴雨倾盆",
+                    "机器人弯腰护花",
+                    "雨水打湿的金属",
+                    "黑暗中发光的眼"
+                  ]
                 },
                 {
                   "number": 3,
@@ -598,7 +749,12 @@
                     "prompt": "A vintage robot with round dome head and golden rusted metal body, lying fallen on its side in post-apocalyptic wasteland, sunset golden hour lighting. The robot's orange eyes dimming, a small potted white flower blooming beautifully beside it. Dusty ground, broken concrete, melancholic atmosphere. Life and death contrast, emotional cinematic composition, 3D realistic render"
                   },
                   "mood": "悲伤但希望，生命延续的感动",
-                  "keyElements": ["机器人侧躺倒下", "花朵盛开", "夕阳余晖", "警示灯微弱闪烁"]
+                  "keyElements": [
+                    "机器人侧躺倒下",
+                    "花朵盛开",
+                    "夕阳余晖",
+                    "警示灯微弱闪烁"
+                  ]
                 }
               ],
               "shotsV2": [
@@ -613,12 +769,22 @@
                     "source": "SeaDream 4.5 生成",
                     "date": "2026-03-30 03:40",
                     "prompt": "参考三视图+画面质感。夕阳下，机器人手持花盆，废墟背景，暖色调，电影级光影",
-                    "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                    "referenceImages": [
+                      "robo_no5_front_view_doubao.png",
+                      "robo_no5_side_left_view_doubao.png",
+                      "robo_no5_back_view_doubao.jpg",
+                      "robo_no5_character.jpg"
+                    ],
                     "model": "SeaDream 4.5",
                     "note": "V2版本：角色一致性优秀，完美匹配三视图"
                   },
                   "mood": "孤独但温暖，守护者的宁静",
-                  "keyElements": ["夕阳金色光线", "废墟背景", "机器人手持花盆", "温柔神情"]
+                  "keyElements": [
+                    "夕阳金色光线",
+                    "废墟背景",
+                    "机器人手持花盆",
+                    "温柔神情"
+                  ]
                 },
                 {
                   "number": 2,
@@ -631,12 +797,22 @@
                     "source": "SeaDream 4.5 生成",
                     "date": "2026-03-30 03:40",
                     "prompt": "参考三视图+画面质感。全景低角度仰拍，机器人单膝跪地庇护白色小花，乌云闪电背景，冷色调，电影级氛围",
-                    "referenceImages": ["robo_no5_front_view_doubao.png", "robo_no5_side_left_view_doubao.png", "robo_no5_back_view_doubao.jpg", "robo_no5_character.jpg"],
+                    "referenceImages": [
+                      "robo_no5_front_view_doubao.png",
+                      "robo_no5_side_left_view_doubao.png",
+                      "robo_no5_back_view_doubao.jpg",
+                      "robo_no5_character.jpg"
+                    ],
                     "model": "SeaDream 4.5",
                     "note": "V2版本：角色一致性优秀，完美匹配三视图"
                   },
                   "mood": "紧张而坚定，守护者的坚韧",
-                  "keyElements": ["暴雨倾盆", "机器人单膝跪地护花", "雨水打湿的金属", "闪电照亮"]
+                  "keyElements": [
+                    "暴雨倾盆",
+                    "机器人单膝跪地护花",
+                    "雨水打湿的金属",
+                    "闪电照亮"
+                  ]
                 }
               ],
               "comparison": {
@@ -644,14 +820,88 @@
                 "v1": {
                   "tool": "即梦AI API",
                   "characterConsistency": "较差",
-                  "issues": ["履带变脚板", "造型偏差"]
+                  "issues": [
+                    "履带变脚板",
+                    "造型偏差"
+                  ]
                 },
                 "v2": {
                   "tool": "SeaDream 4.5",
                   "characterConsistency": "优秀",
-                  "advantages": ["完美匹配三视图", "生锈金属质感一致", "造型准确"]
+                  "advantages": [
+                    "完美匹配三视图",
+                    "生锈金属质感一致",
+                    "造型准确"
+                  ]
                 }
               }
+            }
+          },
+          {
+            "version": "v2",
+            "date": "2026-03-30 09:45",
+            "author": "Scott (豆包AI)",
+            "status": "当前版本",
+            "changes": "使用豆包AI生成高质量首帧，角色与场景融合更自然",
+            "data": {
+              "concept": "使用豆包AI生成各分镜的首帧/尾帧静态图，角色与场景融合更自然，氛围感更强。",
+              "referenceCharacter": "robo_no5_v6_front_doubao.png",
+              "workflow": [
+                "1. 在豆包AI上传角色参考图",
+                "2. 输入分镜描述prompt，保持角色特征",
+                "3. 生成符合分镜需求的静态首帧图",
+                "4. 首帧用于视频生成，确保角色一致性"
+              ],
+              "tool": "豆包AI",
+              "outputFormat": "静态图片 (用于视频生成首帧)",
+              "shots": [
+                {
+                  "number": 1,
+                  "title": "镜头01 - 夕阳守护",
+                  "time": "0-6s",
+                  "desc": "Robo No.5 独自站在废墟中，夕阳下守护花朵，警示灯微微闪烁",
+                  "status": "首帧V2已生成",
+                  "firstFrame": {
+                    "image": "shot02_sunset_guardian_v2.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot02_sunset_guardian_v2.jpg",
+                    "source": "豆包AI 生成",
+                    "date": "2026-03-30 09:45",
+                    "prompt": "复古小机器人，圆顶头部，生锈金属机身，履带式底座，手捧白色小花盆，站在末世废墟中，夕阳金色光线，温暖氛围，电影级光影，超高清",
+                    "model": "豆包AI",
+                    "note": "V2版本：角色与场景融合自然，氛围感强"
+                  },
+                  "mood": "孤独但温暖，守护者的宁静",
+                  "keyElements": [
+                    "夕阳金色光线",
+                    "废墟背景",
+                    "机器人手持花盆",
+                    "温柔神情"
+                  ]
+                },
+                {
+                  "number": 2,
+                  "title": "镜头02 - 暴雨守护",
+                  "time": "6-12s",
+                  "desc": "暴雨中，机器人用机械臂和身体护住花朵，雨中的守护者",
+                  "status": "首帧V2已生成",
+                  "firstFrame": {
+                    "image": "shot02_storm_guardian_v2.png",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot02_storm_guardian_v2.png",
+                    "source": "豆包AI 生成",
+                    "date": "2026-03-30 09:45",
+                    "prompt": "复古小机器人，圆顶头部，生锈金属机身，履带式底座，跪在积水中，双手守护地上的白色小花，暴雨倾盆，闪电照亮，乌云密布，冷蓝青色调，电影级光影，超高清",
+                    "model": "豆包AI",
+                    "note": "V2版本：角色与场景融合自然，闪电氛围感强"
+                  },
+                  "mood": "紧张而坚定，守护者的坚韧",
+                  "keyElements": [
+                    "暴雨倾盆",
+                    "机器人跪地护花",
+                    "闪电照亮",
+                    "积水反射"
+                  ]
+                }
+              ]
             }
           }
         ],
@@ -660,19 +910,31 @@
             "date": "2026-03-29 22:30",
             "platform": "飞书",
             "summary": "确定新流程：即梦生成首帧→海螺API生成视频",
-            "decisions": ["新增'分镜首尾帧'步骤", "使用即梦参考角色特征功能", "首帧即分镜画面无需剪辑"]
+            "decisions": [
+              "新增'分镜首尾帧'步骤",
+              "使用即梦参考角色特征功能",
+              "首帧即分镜画面无需剪辑"
+            ]
           },
           {
             "date": "2026-03-30 00:20",
             "platform": "飞书",
             "summary": "完善三组镜头首帧设计，第一帧已确认使用V4角色图",
-            "decisions": ["镜头01首帧使用robo_no5_v3_ai_generated.jpg", "镜头02/03首帧通过即梦生成", "确保三组镜头角色一致性"]
+            "decisions": [
+              "镜头01首帧使用robo_no5_v3_ai_generated.jpg",
+              "镜头02/03首帧通过即梦生成",
+              "确保三组镜头角色一致性"
+            ]
           },
           {
             "date": "2026-03-30 00:38",
             "platform": "飞书",
             "summary": "使用即梦API成功生成镜头02和镜头03首帧，验证了image_url参考图参数",
-            "decisions": ["API参数: image_url + jimeng_high_aes_general_v21_L", "镜头02首帧生成成功", "镜头03首帧生成成功"]
+            "decisions": [
+              "API参数: image_url + jimeng_high_aes_general_v21_L",
+              "镜头02首帧生成成功",
+              "镜头03首帧生成成功"
+            ]
           }
         ]
       }
@@ -707,7 +969,7 @@
                   "size": "1.2MB"
                 },
                 {
-                  "id": "shot08", 
+                  "id": "shot08",
                   "title": "镜头08-中点",
                   "time": "6-12s",
                   "desc": "暴雨中保护花朵",
@@ -949,10 +1211,31 @@
                   "scene": "暴雨中机器人单膝跪地保护白色小花",
                   "note": "V7版本：使用SeaDream 4.5高质量首帧，角色一致性优秀。由于API查询状态延迟，意外生成了4个attempts，最终选用attempt_04",
                   "attempts": [
-                    {"id": 1, "filename": "hailuo_shot02_attempt_01.mp4", "size": "1.5MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fab39ab3f-fc95-4848-b581-9fed57b684a1%2Foutput_aigc.mp4"},
-                    {"id": 2, "filename": "hailuo_shot02_attempt_02.mp4", "size": "1.1MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F367bd516-1c18-4947-95ff-1bb9d1f2610d%2Foutput_aigc.mp4"},
-                    {"id": 3, "filename": "hailuo_shot02_attempt_03.mp4", "size": "1.5MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F878da222-aa34-429b-af2c-09fb5e6cf2ad%2Foutput_aigc.mp4"},
-                    {"id": 4, "filename": "hailuo_shot02_attempt_04.mp4", "size": "2.0MB", "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fdac270a3-3e9c-49ea-bbf3-39995c158538%2Foutput_aigc.mp4", "selected": true}
+                    {
+                      "id": 1,
+                      "filename": "hailuo_shot02_attempt_01.mp4",
+                      "size": "1.5MB",
+                      "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fab39ab3f-fc95-4848-b581-9fed57b684a1%2Foutput_aigc.mp4"
+                    },
+                    {
+                      "id": 2,
+                      "filename": "hailuo_shot02_attempt_02.mp4",
+                      "size": "1.1MB",
+                      "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F367bd516-1c18-4947-95ff-1bb9d1f2610d%2Foutput_aigc.mp4"
+                    },
+                    {
+                      "id": 3,
+                      "filename": "hailuo_shot02_attempt_03.mp4",
+                      "size": "1.5MB",
+                      "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2F878da222-aa34-429b-af2c-09fb5e6cf2ad%2Foutput_aigc.mp4"
+                    },
+                    {
+                      "id": 4,
+                      "filename": "hailuo_shot02_attempt_04.mp4",
+                      "size": "2.0MB",
+                      "url": "https://public-cdn-video-data-algeng.oss-cn-wulanchabu.aliyuncs.com/inference_output%2Fvideo%2F2026-03-30%2Fdac270a3-3e9c-49ea-bbf3-39995c158538%2Foutput_aigc.mp4",
+                      "selected": true
+                    }
                   ]
                 }
               ],
@@ -960,9 +1243,36 @@
                 "title": "API参数与生成方式对比",
                 "description": "相同参考图、相同提示词，测试不同参数和生成方式的效果差异",
                 "table": [
-                  {"param": "image", "method": "参考图生成", "standard": "兼容", "outputSize": "1366x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)", "consistency": "角色一致性参考"},
-                  {"param": "first_frame_image", "method": "首帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg (手绘风格)", "consistency": "首帧角色固定"},
-                  {"param": "first_frame_image + last_frame_image", "method": "首尾帧生成", "standard": "是", "outputSize": "768x768", "duration": "10秒", "source": "轮询查询获取", "referenceImage": "robo_no5_character.jpg → robo_no5_realistic_front.jpg", "consistency": "首尾角色控制"}
+                  {
+                    "param": "image",
+                    "method": "参考图生成",
+                    "standard": "兼容",
+                    "outputSize": "1366x768",
+                    "duration": "10秒",
+                    "source": "轮询查询获取",
+                    "referenceImage": "robo_no5_character.jpg (手绘风格)",
+                    "consistency": "角色一致性参考"
+                  },
+                  {
+                    "param": "first_frame_image",
+                    "method": "首帧生成",
+                    "standard": "是",
+                    "outputSize": "768x768",
+                    "duration": "10秒",
+                    "source": "轮询查询获取",
+                    "referenceImage": "robo_no5_character.jpg (手绘风格)",
+                    "consistency": "首帧角色固定"
+                  },
+                  {
+                    "param": "first_frame_image + last_frame_image",
+                    "method": "首尾帧生成",
+                    "standard": "是",
+                    "outputSize": "768x768",
+                    "duration": "10秒",
+                    "source": "轮询查询获取",
+                    "referenceImage": "robo_no5_character.jpg → robo_no5_realistic_front.jpg",
+                    "consistency": "首尾角色控制"
+                  }
                 ],
                 "conclusion": "image参数提供参考图确保角色一致性，输出尺寸跟随原图；first_frame_image固定首帧角色；首尾帧模式可控制视频起止状态"
               },
@@ -987,49 +1297,83 @@
             "date": "2026-03-28 21:40",
             "platform": "飞书",
             "summary": "首次尝试海螺视频生成3个镜头",
-            "decisions": ["海螺MiniMax-Hailuo-02", "6秒/镜"]
+            "decisions": [
+              "海螺MiniMax-Hailuo-02",
+              "6秒/镜"
+            ]
           },
           {
             "date": "2026-03-28 23:00",
             "platform": "飞书",
             "summary": "用户要求确认第一个镜头后再继续",
-            "decisions": ["等待用户确认", "先检查输出质量"]
+            "decisions": [
+              "等待用户确认",
+              "先检查输出质量"
+            ]
           },
           {
             "date": "2026-03-29 00:44",
             "platform": "飞书",
             "summary": "发生API调用失控事故，27次调用浪费¥43.2",
-            "decisions": ["事故记录", "脚本修复", "资金保护机制"]
+            "decisions": [
+              "事故记录",
+              "脚本修复",
+              "资金保护机制"
+            ]
           },
           {
             "date": "2026-03-29 09:30",
             "platform": "飞书",
             "summary": "用户从后台获取视频链接，成功下载成片素材",
-            "decisions": ["视频素材获取成功", "进入后期剪辑"]
+            "decisions": [
+              "视频素材获取成功",
+              "进入后期剪辑"
+            ]
           },
           {
             "date": "2026-03-29 19:00",
             "platform": "飞书",
             "summary": "使用首尾帧模式重制镜头01，首帧手绘图尾帧写实图",
-            "decisions": ["MiniMax-Hailuo-02首尾帧模式", "10秒768P", "手绘→写实过渡"]
+            "decisions": [
+              "MiniMax-Hailuo-02首尾帧模式",
+              "10秒768P",
+              "手绘→写实过渡"
+            ]
           },
           {
             "date": "2026-03-29 19:52",
             "platform": "飞书",
             "summary": "使用手绘风格角色图(robo_no5_character.jpg)作为首帧，按照镜头01提示词重新生成",
-            "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "手绘风格首帧"]
+            "decisions": [
+              "MiniMax-Hailuo-2.3",
+              "first_frame_image单首帧",
+              "10秒768P",
+              "手绘风格首帧"
+            ]
           },
           {
             "date": "2026-03-29 20:07",
             "platform": "飞书",
             "summary": "生成镜头02：暴雨场景，机器人保护花朵，使用手绘风格首帧",
-            "decisions": ["MiniMax-Hailuo-2.3", "first_frame_image单首帧", "10秒768P", "暴雨场景", "手绘风格首帧"]
+            "decisions": [
+              "MiniMax-Hailuo-2.3",
+              "first_frame_image单首帧",
+              "10秒768P",
+              "暴雨场景",
+              "手绘风格首帧"
+            ]
           },
           {
             "date": "2026-03-29 20:21",
             "platform": "飞书",
             "summary": "用户纠正：镜头02应使用参考图模式(image参数)而非首帧模式，以确保角色一致性",
-            "decisions": ["MiniMax-Hailuo-2.3", "image参考图模式", "10秒768P", "暴雨场景", "角色一致性保障"]
+            "decisions": [
+              "MiniMax-Hailuo-2.3",
+              "image参考图模式",
+              "10秒768P",
+              "暴雨场景",
+              "角色一致性保障"
+            ]
           }
         ]
       }
@@ -1050,7 +1394,9 @@
             "changes": "初步剪辑，但字幕字体错误导致中文乱码",
             "data": {
               "concept": "使用FFmpeg合并3个镜头并添加字幕",
-              "issues": ["字幕使用DejaVuSans字体，中文显示为方块"]
+              "issues": [
+                "字幕使用DejaVuSans字体，中文显示为方块"
+              ]
             }
           },
           {
@@ -1061,7 +1407,10 @@
             "changes": "修复字幕字体，使用Noto Serif CJK，添加临时BGM",
             "data": {
               "concept": "FFmpeg完整后期流程：合并→字幕→BGM",
-              "tools": ["FFmpeg", "Noto Serif CJK字体"],
+              "tools": [
+                "FFmpeg",
+                "Noto Serif CJK字体"
+              ],
               "output": {
                 "filename": "the_147th_day_final.mp4",
                 "duration": "17秒",
@@ -1086,13 +1435,19 @@
             "date": "2026-03-29 09:27",
             "platform": "飞书",
             "summary": "用户反馈字幕乱码、无音乐",
-            "decisions": ["字幕改用Noto Serif CJK字体", "FFmpeg生成临时BGM"]
+            "decisions": [
+              "字幕改用Noto Serif CJK字体",
+              "FFmpeg生成临时BGM"
+            ]
           },
           {
             "date": "2026-03-29 09:36",
             "platform": "飞书",
             "summary": "修复版视频完成，字幕正常，带临时BGM",
-            "decisions": ["字幕字体修复完成", "临时BGM已添加"]
+            "decisions": [
+              "字幕字体修复完成",
+              "临时BGM已添加"
+            ]
           }
         ]
       }
@@ -1142,7 +1497,10 @@
             "date": "2026-03-29 11:56",
             "platform": "飞书",
             "summary": "用户要求部署视频，使用FFmpeg BGM",
-            "decisions": ["部署到GitHub Pages", "更新合集索引"]
+            "decisions": [
+              "部署到GitHub Pages",
+              "更新合集索引"
+            ]
           }
         ]
       }
