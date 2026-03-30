@@ -519,24 +519,23 @@
         
         .reference-image-item .download-link:hover { text-decoration: underline; }
         
-        /* Scene Cards - Full width image cards like reference */
+        /* Scene Cards - Compact grid layout like three-views */
         .scene-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
             margin-top: 15px;
         }
         
         .scene-card {
             background: var(--bg-tertiary);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
         
         .scene-card:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
         
         .scene-card a {
@@ -547,57 +546,51 @@
         
         .scene-card img {
             width: 100%;
-            height: auto;
-            max-height: 400px;
+            height: 160px;
             object-fit: cover;
             display: block;
-            transition: opacity 0.2s;
         }
         
-        .scene-card:hover img { opacity: 0.95; }
-        
         .scene-card .image-info { 
-            padding: 16px 18px; 
-            background: var(--bg-tertiary);
+            padding: 12px; 
         }
         
         .scene-card .image-title { 
-            font-size: 15px; 
+            font-size: 14px; 
             font-weight: 600; 
             color: var(--text-primary); 
-            margin-bottom: 6px; 
+            margin-bottom: 4px; 
         }
         
         .scene-card .image-desc { 
-            font-size: 13px; 
+            font-size: 12px; 
             color: var(--text-secondary); 
-            line-height: 1.5;
-            margin-bottom: 4px;
+            line-height: 1.4;
+            margin-bottom: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
         .scene-card .image-meta {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 4px;
         }
         
         .scene-card .download-link {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            margin-top: 10px;
-            font-size: 12px;
+            margin-top: 8px;
+            font-size: 11px;
             color: var(--accent-blue);
             text-decoration: none;
-            padding: 6px 12px;
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 6px;
-            transition: background 0.2s;
         }
         
         .scene-card .download-link:hover { 
-            background: rgba(52, 152, 219, 0.2);
-            text-decoration: none;
+            text-decoration: underline;
         }
         
         /* Video Container - Clickable */
@@ -1067,22 +1060,23 @@
                 html += `</div></div>`;
             }
 
-            // Shots / Keyframes - 分镜首帧展示 (卡片式大图)
+            // Shots / Keyframes - 分镜首帧展示 (紧凑网格布局)
             if (data.shots) {
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
                     const firstFrame = shot.firstFrame || {};
                     const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : (firstFrame.image || firstFrame.url);
+                    const thumbUrl = firstFrame.thumbnail ? `https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/${firstFrame.thumbnail}` : imageUrl;
                     if (imageUrl) {
                         html += `
                             <div class="scene-card">
-                                <a href="${imageUrl}" target="_blank" title="点击查看大图">
-                                    <img src="${imageUrl}" alt="${shot.title}" onerror="this.style.display='none'">
+                                <a href="${imageUrl}" target="_blank" title="点击查看原图">
+                                    <img src="${thumbUrl}" alt="${shot.title}" loading="lazy" onerror="this.src='${imageUrl}'">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
                                     <div class="image-desc">${shot.desc || ''}</div>
-                                    <div class="image-meta">${shot.time || ''} · 状态: ${shot.status || ''}</div>
+                                    <div class="image-meta">${shot.time || ''} · ${shot.status || ''}</div>
                                     <a href="${imageUrl}" download class="download-link">⬇️ 下载首帧</a>
                                 </div>
                             </div>
