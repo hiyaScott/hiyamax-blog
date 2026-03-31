@@ -1070,19 +1070,22 @@
                     "三图融合效果"
                   ],
                   "video": {
-                    "filename": "shot03_video_v1_hailuo.mp4",
-                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_video_v1_hailuo.mp4",
-                    "poster": "/hiyamax-blog/assets/the_147th_day/shot03_video_v1_hailuo_poster.jpg",
+                    "filename": "shot03_video_v2_hailuo_firstlast.mp4",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_video_v2_hailuo_firstlast.mp4",
+                    "poster": "/hiyamax-blog/assets/the_147th_day/shot03_video_v2_hailuo_firstlast_poster.jpg",
                     "duration": "6s",
-                    "resolution": "1366x768",
-                    "size": "659KB",
+                    "resolution": "768x768",
+                    "size": "905KB",
                     "model": "MiniMax-Hailuo-02",
-                    "source": "海螺AI图生视频（首帧V7）",
-                    "taskId": "382498573992061",
+                    "source": "海螺AI首尾帧生成（首帧V7+尾帧V2）",
+                    "taskId": "382520106279346",
+                    "fileId": "382512162664685",
                     "date": "2026-03-31",
-                    "prompt": "电影级镜头运动：镜头缓慢推近，从机器人中景全景缓慢推至白色花朵特写，焦点从背景虚化的机器人转移到前景清晰的花朵。金色夕阳光从花朵后方穿透花瓣形成逆光轮廓光。机器人保持完全瘫软的姿态像没电了一样，身体松软无力侧躺。白色小花完全绽放，花瓣晶莹透亮。末世废墟背景，温暖忧伤氛围，电影宽屏，4K超高清。",
+                    "prompt": "镜头缓慢推近，从机器人中景全景推至白色花朵特写，焦点从背景转移到前景。金色夕阳光逆光效果。",
                     "firstFrame": "shot03_firstframe_v7_seedream.jpg",
-                    "note": "使用首帧V7生成，镜头从机器人全景推至花朵特写，6秒时长，768P分辨率"
+                    "lastFrame": "shot03_endframe_v2_seedream.jpg",
+                    "mode": "首尾帧模式",
+                    "note": "使用首帧V7和尾帧V2生成，确保镜头运动从机器人全景推至花朵特写"
                   }
                 }
               ]
