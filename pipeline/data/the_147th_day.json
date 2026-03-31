@@ -981,6 +981,57 @@
                     "note": "尾帧V1：镜头聚焦植物，花朵占画面50%，机器人已完全损坏成为背景，象征生命延续的希望",
                     "resolution": "1920x1920"
                   },
+                  "frameHistory": [
+                    {
+                      "version": "V4",
+                      "type": "首帧",
+                      "image": "shot03_firstframe_v3_jimeng.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3_jimeng.jpg",
+                      "thumbnail": "shot03_firstframe_v3_jimeng_thumb.jpg",
+                      "source": "即梦AI 图生图生成（参考三视图合成图）",
+                      "date": "2026-03-31",
+                      "note": "V4版本：使用完整三视图合成图作为参考，角色一致性更佳，4K超高清"
+                    },
+                    {
+                      "version": "V5",
+                      "type": "首帧",
+                      "image": "shot03_firstframe_v3_seedream.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3_seedream.jpg",
+                      "thumbnail": "shot03_firstframe_v3_seedream_thumb.jpg",
+                      "source": "Seedream 5.0 多图生成（三视图+风格参考）",
+                      "date": "2026-03-31",
+                      "note": "V5版本：Seedream 5.0多图融合生成，测试多图一致性和风格迁移能力",
+                      "referenceImages": [
+                        "robo_no5_three_views_combined.png (三视图/角色参考)",
+                        "robo_no5_v3_ai_generated.jpg (风格参考)"
+                      ]
+                    },
+                    {
+                      "version": "V6",
+                      "type": "首帧",
+                      "image": "shot03_firstframe_v6_seedream.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v6_seedream.jpg",
+                      "thumbnail": "shot03_firstframe_v6_seedream_thumb.jpg",
+                      "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
+                      "date": "2026-03-31",
+                      "note": "V6版本：Seedream 5.0三图融合，瘫软姿态更符合'没电了'的剧情设定",
+                      "referenceImages": [
+                        "robo_no5_three_views_combined.png (三视图/角色参考)",
+                        "robo_no5_v3_ai_generated.jpg (角色镜头参考)",
+                        "scene_shot03_ground_a.jpg (环境参考)"
+                      ]
+                    },
+                    {
+                      "version": "V1",
+                      "type": "尾帧",
+                      "image": "shot03_endframe_v1_seedream.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_endframe_v1_seedream.jpg",
+                      "thumbnail": "shot03_endframe_v1_seedream_thumb.jpg",
+                      "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
+                      "date": "2026-03-31",
+                      "note": "尾帧V1：镜头聚焦植物，花朵占画面50%，机器人已完全损坏成为背景，象征生命延续的希望"
+                    }
+                  ],
                   "mood": "悲伤但充满希望，生命延续与传承",
                   "keyElements": [
                     "机器人瘫软姿态（没电了）",

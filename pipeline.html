@@ -1398,6 +1398,33 @@
                             `;
                         }
                     }
+                    
+                    // 历史版本（如果存在frameHistory）
+                    if (shot.frameHistory && shot.frameHistory.length > 0) {
+                        shot.frameHistory.forEach((historyFrame, idx) => {
+                            if (idx < 2) { // 最多显示2个历史版本，避免过长
+                                const histImageUrl = historyFrame.src ? `https://hiyascott.github.io${historyFrame.src}` : 
+                                                 (historyFrame.image ? basePath + historyFrame.image : '');
+                                const histThumbUrl = historyFrame.thumbnail ? thumbBasePath + historyFrame.thumbnail : histImageUrl;
+                                
+                                if (histImageUrl) {
+                                    html += `
+                                        <div class="scene-card" style="opacity:0.85; border-left: 3px solid #666;">
+                                            <a href="${histImageUrl}" target="_blank" title="点击查看原图 - 历史版本">
+                                                <img src="${histThumbUrl}" alt="${shot.title} - ${historyFrame.version}" onerror="this.onerror=function(){this.src='${histImageUrl}';};" decoding="async">
+                                            </a>
+                                            <div class="image-info">
+                                                <div class="image-title">📜 历史版本: ${historyFrame.type} ${historyFrame.version}</div>
+                                                <div class="image-desc">${historyFrame.note || ''}</div>
+                                                <div class="image-meta">${historyFrame.date || ''} · ${historyFrame.source || ''}</div>
+                                                <a href="${histImageUrl}" download class="download-link">⬇️ 下载 ${historyFrame.version}</a>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                            }
+                        });
+                    }
                 });
                 html += `</div></div>`;
             }
