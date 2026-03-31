@@ -1072,7 +1072,7 @@
                   "video": {
                     "filename": "shot03_video_v2_hailuo_firstlast.mp4",
                     "src": "/hiyamax-blog/assets/the_147th_day/shot03_video_v2_hailuo_firstlast.mp4",
-                    "poster": "/hiyamax-blog/assets/the_147th_day/shot03_video_v2_hailuo_firstlast_poster.jpg",
+                    "poster": "/hiyamax-blog/assets/the_147th_day/posters/shot03_video_v2_hailuo_firstlast_poster.jpg",
                     "duration": "6s",
                     "resolution": "768x768",
                     "size": "905KB",
@@ -1602,7 +1602,7 @@
                   "param": "first_frame_image + last_frame_image",
                   "model": "MiniMax-Hailuo-02",
                   "note": "使用首帧V7和尾帧V2生成，确保镜头从机器人推至花朵",
-                  "poster": "./assets/the_147th_day/shot03_video_v2_hailuo_firstlast_poster.jpg",
+                  "poster": "./assets/the_147th_day/posters/shot03_video_v2_hailuo_firstlast_poster.jpg",
                   "referenceImages": [
                     "shot03_firstframe_v7_seedream.jpg (首帧)",
                     "shot03_endframe_v2_seedream.jpg (尾帧)"
