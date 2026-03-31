@@ -377,7 +377,7 @@
                 <div class="header-icon">📋</div>
                 <h1>AI短片制作协作流程说明书</h1>
                 <p class="subtitle">基于《第147天》项目的实战经验总结</p>
-                <span class="version-badge">📌 版本 v1.0 | 2026-03-29</span>
+                <span class="version-badge">📌 版本 v2.0 | 2026-03-31</span>
             </div>
         </header>
         
@@ -387,7 +387,7 @@
             <ul>
                 <li><a href="#version">版本历史</a></li>
                 <li><a href="#overview">一、协作机制总览</a></li>
-                <li><a href="#workflow">二、详细流程说明（5个Step）</a></li>
+                <li><a href="#workflow">二、详细流程说明（7个Step）</a></li>
                 <li><a href="#commands">三、指令类型与响应标准</a></li>
                 <li><a href="#rules">四、必须遵守的规则</a></li>
                 <li><a href="#pipeline">五、Pipeline页面结构</a></li>
@@ -410,6 +410,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td><span class="step-num">2</span> v2.0</td>
+                        <td>2026-03-31</td>
+                        <td>基于《第147天》项目实战经验，扩展为7步完整流程（新增场景设计、分镜首尾帧）；细化各阶段执行标准；更新资金保护规则</td>
+                        <td>Jetton</td>
+                    </tr>
                     <tr>
                         <td><span class="step-num">1</span> v1.0</td>
                         <td>2026-03-29</td>
@@ -450,7 +456,7 @@
         
         <!-- Section 2: Workflow -->
         <div class="section" id="workflow">
-            <h2>二、详细流程说明（5个Step）</h2>
+            <h2>二、详细流程说明（7个Step）</h2>
             
             <table class="workflow-table">
                 <thead>
@@ -464,35 +470,49 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="step-num">1</span> 剧本</td>
+                        <td><span class="step-num">1</span> 剧本创作</td>
                         <td>"开始讨论剧本"</td>
-                        <td>整理故事结构</td>
+                        <td>整理故事结构、人物关系</td>
                         <td>Pipeline页面文字</td>
                         <td>¥0</td>
                     </tr>
                     <tr>
-                        <td><span class="step-num">2</span> 角色</td>
+                        <td><span class="step-num">2</span> 角色设计</td>
                         <td>"开始角色设计"</td>
-                        <td>即梦AI生成</td>
-                        <td>角色参考图（手绘→AI）</td>
+                        <td>即梦AI生成角色图</td>
+                        <td>角色参考图 + 三视图</td>
                         <td>即梦Token</td>
                     </tr>
                     <tr>
-                        <td><span class="step-num">3</span> 视频</td>
+                        <td><span class="step-num">3</span> 场景设计</td>
+                        <td>"开始场景设计"</td>
+                        <td>即梦AI生成场景概念图</td>
+                        <td>场景参考图</td>
+                        <td>即梦Token</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">4</span> 分镜首尾帧</td>
+                        <td>"生成首帧/尾帧"</td>
+                        <td>即梦/Seedream多图参考生成</td>
+                        <td>首帧图 + 尾帧图 + 历史版本</td>
+                        <td>即梦/Seedream Token</td>
+                    </tr>
+                    <tr>
+                        <td><span class="step-num">5</span> 视频生成</td>
                         <td>"生成视频"</td>
-                        <td>海螺/可灵API</td>
-                        <td>视频片段+成本记录</td>
+                        <td>海螺/可灵API首尾帧生成</td>
+                        <td>视频片段 + 成本记录</td>
                         <td>API按次计费</td>
                     </tr>
                     <tr>
-                        <td><span class="step-num">4</span> 剪辑</td>
+                        <td><span class="step-num">6</span> 后期剪辑</td>
                         <td>"开始后期"</td>
                         <td>FFmpeg处理</td>
                         <td>成片视频</td>
                         <td>¥0</td>
                     </tr>
                     <tr>
-                        <td><span class="step-num">5</span> 发布</td>
+                        <td><span class="step-num">7</span> 发布</td>
                         <td>"部署"</td>
                         <td>GitHub Push</td>
                         <td>专题页面URL</td>
@@ -505,15 +525,32 @@
             
             <h4>Step 1: 剧本创作</h4>
             <p><strong>触发：</strong>用户在飞书发送项目启动指令</p>
-            <p><strong>内容：</strong>讨论故事核心、角色、情感基调、时长、结构</p>
-            <p><strong>输出：</strong>更新 pipeline/data/{project}.json，包含故事结构、角色设定、关键记忆点</p>
+            <p><strong>内容：</strong>讨论故事核心、角色、情感基调、时长、结构、关键记忆点</p>
+            <p><strong>输出：</strong>更新 pipeline/data/{project}.json，包含故事结构、角色设定、关键记忆点、视觉风格</p>
             
             <h4>Step 2: 角色设计</h4>
             <p><strong>触发：</strong>用户说"开始角色设计"</p>
-            <p><strong>执行：</strong>调用即梦AI生成角色参考图（如有手绘则图生图转3D写实）</p>
-            <p><strong>输出：</strong>角色参考图保存到 assets/{project}/，Pipeline页面展示手绘→AI对比</p>
+            <p><strong>执行：</strong>调用即梦AI生成角色参考图（如有手绘则图生图转3D写实风格）</p>
+            <p><strong>输出：</strong>角色参考图、三视图合成图保存到 assets/{project}/，Pipeline页面展示手绘→AI对比</p>
             
-            <h4>Step 3: 视频生成</h4>
+            <h4>Step 3: 场景设计</h4>
+            <p><strong>触发：</strong>用户说"开始场景设计"</p>
+            <p><strong>执行：</strong>根据剧本描述，使用即梦AI生成关键场景概念图</p>
+            <p><strong>输出：</strong>场景参考图保存到 assets/{project}/scenes/，用于分镜生成时参考环境氛围</p>
+            
+            <h4>Step 4: 分镜首尾帧</h4>
+            <p><strong>触发：</strong>用户说"生成首帧/尾帧"或"开始分镜"</p>
+            <p><strong>执行：</strong>使用即梦AI或Seedream 5.0，基于角色三视图+场景图生成每个镜头的首帧和尾帧</p>
+            <p><strong>关键技术：</strong></p>
+            <ul style="color: var(--text-secondary); padding-left: 20px; margin: 10px 0;">
+                <li>多图参考：角色三视图 + 场景图 + 姿态参考</li>
+                <li>Seedream 5.0支持base64直接传图，避免URL下载超时</li>
+                <li>首尾帧应为同一"决定性瞬间"的不同镜头构图</li>
+                <li>保留历史版本(frameHistory数组)，便于回溯对比</li>
+            </ul>
+            <p><strong>输出：</strong>首帧图 + 尾帧图 + 缩略图 + 生成参数记录</p>
+            
+            <h4>Step 5: 视频生成</h4>
             <div class="highlight-box">
                 <h4>⚠️ 重要资金保护机制</h4>
                 <ul>
@@ -521,16 +558,23 @@
                     <li>单次任务最多3次重试</li>
                     <li>用户明确说"开始"后才执行</li>
                     <li><strong>用户说"停"必须立即停止</strong></li>
+                    <li>区分"提交任务"和"查询状态"的不同API端点</li>
                 </ul>
             </div>
+            <p><strong>API选择：</strong></p>
+            <ul style="color: var(--text-secondary); padding-left: 20px; margin: 10px 0;">
+                <li><strong>海螺AI (MiniMax-Hailuo-02)</strong>：首尾帧模式，6秒，适合镜头运动</li>
+                <li><strong>可灵AI (kling-v2-6)</strong>：图生视频，5/10秒可选，角色稳定性好</li>
+            </ul>
+            <p><strong>输出：</strong>MP4视频片段 + 任务ID + 生成成本记录</p>
             
-            <h4>Step 4: 后期剪辑</h4>
+            <h4>Step 6: 后期剪辑</h4>
             <p><strong>工具：</strong>FFmpeg（本地处理，无额外成本）</p>
             <p><strong>流程：</strong>合并片段 → 添加硬字幕（Noto Serif CJK字体）→ 生成BGM → 混音输出</p>
             
-            <h4>Step 5: 发布</h4>
+            <h4>Step 7: 发布</h4>
             <p><strong>部署：</strong>GitHub Pages</p>
-            <p><strong>输出：</strong>专题页面URL + 合集页面入口</p>
+            <p><strong>输出：</strong>专题页面URL + Pipeline页面更新 + 合集页面入口</p>
         </div>
         
         <!-- Section 3: Commands -->
@@ -668,7 +712,7 @@
         
         <footer>
             <p>📌 本说明书基于《第147天》项目实战经验编制</p>
-            <p style="margin-top: 10px;">HIYAMAX AI Shortfilm Lab · 协作流程 v1.0 · 2026-03-29</p>
+            <p style="margin-top: 10px;">HIYAMAX AI Shortfilm Lab · 协作流程 v2.0 · 2026-03-31</p>
         </footer>
     </div>
 </body>
