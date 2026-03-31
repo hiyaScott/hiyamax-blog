@@ -877,7 +877,7 @@
             "date": "2026-03-30 09:45",
             "author": "Scott (豆包AI)",
             "status": "当前版本",
-            "changes": "使用豆包AI生成高质量首帧，角色与场景融合更自然",
+            "changes": "使用豆包AI生成高质量首帧，角色与场景融合更自然，新增分镜3首帧V3（结合三视图+场景A）",
             "data": {
               "concept": "使用豆包AI生成各分镜的首帧/尾帧静态图，角色与场景融合更自然，氛围感更强。",
               "referenceCharacter": "robo_no5_v6_front_doubao.png",
@@ -936,6 +936,39 @@
                     "机器人跪地护花",
                     "闪电照亮",
                     "积水反射"
+                  ]
+                },
+                {
+                  "number": 3,
+                  "title": "镜头03 - 倒下与绽放 V3",
+                  "time": "12-18s",
+                  "desc": "Robo No.5 侧躺在夕阳废墟中，一只手护着身旁盛开的小花，警示灯微弱闪烁",
+                  "status": "首帧V3已生成（参考三视图+场景A）",
+                  "firstFrame": {
+                    "currentVersion": "v3",
+                    "v3": {
+                      "image": "shot03_firstframe_v3.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3.jpg",
+                      "source": "即梦AI 图生图生成（参考三视图+场景A）",
+                      "date": "2026-03-31",
+                      "prompt": "复古小机器人Robo No.5，圆顶头部带小天线，生锈金属机身呈温暖棕褐色，圆形复古眼睛像老式相机镜头，履带式底座，侧躺在末世废墟地面上，身体微微倾斜，一只手护着身旁的白色小花，周围是破碎的混凝土和碎石，裂缝中长出野草和小白花，夕阳低角度金色光线从画面右侧斜射，形成长长的影子，机器人橙色眼睛在夕阳下反射微光，头顶红色警示灯微弱闪烁，暖橙色调，电影级光影，超高清8K",
+                      "referenceImages": [
+                        "robo_no5_front_view_doubao.png (正视图)",
+                        "robo_no5_side_view_v7.png (侧视图)",
+                        "robo_no5_back_view_doubao.jpg (背视图)",
+                        "scene_shot03_ground_a.jpg (场景A)"
+                      ],
+                      "thumbnail": "shot03_firstframe_v3_thumb.jpg",
+                      "note": "V3版本：结合三视图角色特征+场景A氛围，机器人和场景自然融合"
+                    }
+                  },
+                  "mood": "悲伤但希望，生命延续的感动",
+                  "keyElements": [
+                    "机器人侧躺姿势",
+                    "手护着白色小花",
+                    "夕阳金色光线",
+                    "废墟地面细节",
+                    "警示灯微弱闪烁"
                   ]
                 }
               ]
