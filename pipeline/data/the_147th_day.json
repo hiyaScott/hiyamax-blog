@@ -947,38 +947,37 @@
                 },
                 {
                   "number": 3,
-                  "title": "镜头03 - 倒下与绽放 V6",
+                  "title": "镜头03 - 倒下与绽放 V7",
                   "time": "12-18s",
-                  "desc": "Robo No.5 完全瘫软倒在夕阳废墟中，像没电了一样，身体松软无力地环抱着白色小花",
-                  "status": "首帧V6已生成（Seedream 5.0三图参考）",
+                  "desc": "Robo No.5 完全瘫软倒在夕阳废墟中，像没电了一样，身体松软无力地环抱着白色小花。首尾帧为同一时刻的不同镜头构图。",
+                  "status": "首帧V7+尾帧V2已生成（Seedream 5.0三图参考）",
                   "firstFrame": {
-                    "image": "shot03_firstframe_v6_seedream.jpg",
-                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v6_seedream.jpg",
-                    "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
+                    "image": "shot03_firstframe_v7_seedream.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v7_seedream.jpg",
+                    "source": "Seedream 5.0 多图生成（三视图+环境+首帧V7参考）",
                     "date": "2026-03-31",
-                    "prompt": "电影级分镜画面：末世废墟地面近景，夕阳低角度侧逆光照射。复古小机器人Robo No.5完全瘫软倒在破碎的混凝土地面上，像没电了一样，身体松软无力地侧躺，圆顶头部带小天线歪向一边，生锈金属机身呈温暖棕褐色，圆形复古眼睛暗淡无光，履带式底座松散展开。机器人的身体用柔软无力的姿态环抱着、保护着身旁的白色小花，像用最后的力气守护生命，手臂自然垂落搭在花盆旁，没有僵硬感，完全是'坏了'、'没电了'的瘫软状态。周围是破碎的混凝土、碎石和从裂缝中长出的野草。金色夕阳光线从侧面照入，在地面形成长长的影子，机器人头部微微低垂，橙色眼睛失去光芒，头顶红色警示灯完全熄灭。温暖而忧伤的氛围，电影宽屏比例，浅景深，写实渲染，温暖色调，末世浪漫主义美学。",
+                    "prompt": "电影级分镜：末世废墟夕阳场景【中景全景构图】。复古小机器人Robo No.5完全瘫软倒在破碎混凝土地面，像彻底没电了一样。身体松软无力侧躺，圆顶头部带小天线歪向一边，生锈金属机身温暖棕褐色，圆形复古眼睛暗淡无光完全熄灭，履带式底座松散展开。机械手臂自然垂落无力搭在身旁。身旁地面有一盆白色小花从裂缝生长。中景到全景构图，低角度45度侧面视角，机器人占画面高度40%，远处废墟建筑剪影、夕阳天空。金色夕阳光从侧面45度照入，形成长影，温暖忧伤氛围。电影宽屏，浅景深f/2.8，温暖金色调，末世浪漫主义美学，4K超高清。",
                     "referenceImages": [
                       "robo_no5_three_views_combined.png (三视图/角色参考)",
-                      "robo_no5_v3_ai_generated.jpg (角色镜头参考)",
                       "scene_shot03_ground_a.jpg (环境参考)"
                     ],
-                    "thumbnail": "shot03_firstframe_v6_seedream_thumb.jpg",
-                    "note": "V6版本：Seedream 5.0三图融合，瘫软姿态更符合'没电了'的剧情设定",
+                    "thumbnail": "shot03_firstframe_v7_seedream_thumb.jpg",
+                    "note": "首帧V7：Seedream 5.0双图融合，中景全景展示机器人瘫软姿态和环境",
                     "resolution": "1920x1920"
                   },
                   "endFrame": {
-                    "image": "shot03_endframe_v1_seedream.jpg",
-                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_endframe_v1_seedream.jpg",
-                    "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
+                    "image": "shot03_endframe_v2_seedream.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_endframe_v2_seedream.jpg",
+                    "source": "Seedream 5.0 多图生成（三视图+环境+首帧V7参考）",
                     "date": "2026-03-31",
-                    "prompt": "电影级分镜画面：末世废墟地面特写。画面构图：白色小花占据画面中央50%面积，花朵完全绽放，花瓣晶莹透亮，在夕阳下散发着生命的光芒，细节清晰可见，每一片花瓣都充满生机。背景中：复古小机器人Robo No.5已经完全损坏，圆顶头部低垂，生锈金属机身暗淡无光，履带式底座散开在碎石中，天线折断，警示灯彻底熄灭，没有任何光芒，像是彻底'死去了'，成为废墟的一部分。视角：从低角度仰视花朵，花朵显得高大而神圣，机器人渺小而安静地躺在背景中，形成强烈对比。光线：金色夕阳光从花朵后方穿透花瓣，形成逆光轮廓光，花朵像发光的宝石，象征着即使在末世，生命依然绽放希望。氛围：悲伤但充满希望，生命的延续与传承。",
+                    "prompt": "电影级分镜：末世废墟夕阳场景【特写构图，同一时刻】。白色小花盆占据画面中央60%面积，花朵完全绽放，花瓣晶莹透亮。从极低角度仰视花朵，花朵显得高大而神圣。背景中（虚化）：机器人保持完全同样的瘫软姿态，和首帧完全一致的'没电了'姿态，没有变化，只作为虚化的背景元素。特写镜头，花朵是主体，机器人退居背景，极低角度仰视，背景机器人占画面高度约20%严重虚化。金色夕阳光从花朵后方穿透花瓣，形成逆光轮廓光。核心要求：机器人姿态必须和首帧完全一致，只是镜头推近、焦点转移。电影特写镜头，极浅景深f/1.4，4K超高清。",
                     "referenceImages": [
                       "robo_no5_three_views_combined.png (三视图/角色参考)",
-                      "robo_no5_v3_ai_generated.jpg (角色镜头参考)",
-                      "scene_shot03_ground_a.jpg (环境参考)"
+                      "scene_shot03_ground_a.jpg (环境参考)",
+                      "shot03_firstframe_v7_seedream.jpg (首帧参考确保姿态一致)"
                     ],
-                    "thumbnail": "shot03_endframe_v1_seedream_thumb.jpg",
-                    "note": "尾帧V1：镜头聚焦植物，花朵占画面50%，机器人已完全损坏成为背景，象征生命延续的希望",
+                    "thumbnail": "shot03_endframe_v2_seedream_thumb.jpg",
+                    "note": "尾帧V2：Seedream 5.0三图融合，特写聚焦花朵，机器人背景虚化，姿态与首帧V7完全一致",
                     "resolution": "1920x1920"
                   },
                   "frameHistory": [
@@ -1022,6 +1021,20 @@
                       ]
                     },
                     {
+                      "version": "V7",
+                      "type": "首帧",
+                      "image": "shot03_firstframe_v7_seedream.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v7_seedream.jpg",
+                      "thumbnail": "shot03_firstframe_v7_seedream_thumb.jpg",
+                      "source": "Seedream 5.0 多图生成（三视图+环境参考）",
+                      "date": "2026-03-31",
+                      "note": "V7版本：中景全景构图，与尾帧V2为同一时刻的不同镜头，确保姿态一致",
+                      "referenceImages": [
+                        "robo_no5_three_views_combined.png (三视图/角色参考)",
+                        "scene_shot03_ground_a.jpg (环境参考)"
+                      ]
+                    },
+                    {
                       "version": "V1",
                       "type": "尾帧",
                       "image": "shot03_endframe_v1_seedream.jpg",
@@ -1029,15 +1042,31 @@
                       "thumbnail": "shot03_endframe_v1_seedream_thumb.jpg",
                       "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
                       "date": "2026-03-31",
-                      "note": "尾帧V1：镜头聚焦植物，花朵占画面50%，机器人已完全损坏成为背景，象征生命延续的希望"
+                      "note": "尾帧V1（旧）：镜头聚焦植物，花朵占画面50%，机器人姿态与首帧V6不一致"
+                    },
+                    {
+                      "version": "V2",
+                      "type": "尾帧",
+                      "image": "shot03_endframe_v2_seedream.jpg",
+                      "src": "/hiyamax-blog/assets/the_147th_day/shot03_endframe_v2_seedream.jpg",
+                      "thumbnail": "shot03_endframe_v2_seedream_thumb.jpg",
+                      "source": "Seedream 5.0 多图生成（三视图+环境+首帧V7参考）",
+                      "date": "2026-03-31",
+                      "note": "尾帧V2：特写聚焦花朵，机器人背景虚化，姿态与首帧V7完全一致，同一时刻的不同构图",
+                      "referenceImages": [
+                        "robo_no5_three_views_combined.png (三视图/角色参考)",
+                        "scene_shot03_ground_a.jpg (环境参考)",
+                        "shot03_firstframe_v7_seedream.jpg (首帧参考确保姿态一致)"
+                      ]
                     }
                   ],
-                  "mood": "悲伤但充满希望，生命延续与传承",
+                  "mood": "悲伤但充满希望，生命延续与传承。首尾帧同一时刻，镜头从全景推至特写。",
                   "keyElements": [
                     "机器人瘫软姿态（没电了）",
-                    "身体环抱保护小花",
+                    "首尾帧姿态一致",
+                    "镜头从全景推至特写",
+                    "花朵逆光效果（尾帧）",
                     "夕阳金色光线",
-                    "尾帧聚焦植物（生命希望）",
                     "三图融合效果"
                   ]
                 }
