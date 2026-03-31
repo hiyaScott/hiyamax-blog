@@ -1257,7 +1257,7 @@
                 html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
-                    const thumbUrl = img.thumbnail ? thumbBasePath + img.thumbnail : img.src;
+                    const thumbUrl = img.thumbnail ? thumbBasePath + img.thumbnail + '?v=20260331' : img.src;
                     html += `
                         <div class="scene-card">
                             <a href="${img.src}" target="_blank" title="点击查看原图">
@@ -1289,7 +1289,7 @@
                         const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                         const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                         const imageUrl = viewData.image.startsWith('http') ? viewData.image : basePath + viewData.image;
-                        const thumbUrl = viewData.thumbnail ? thumbBasePath + viewData.thumbnail : imageUrl;
+                        const thumbUrl = viewData.thumbnail ? thumbBasePath + viewData.thumbnail + '?v=20260331' : imageUrl;
                         html += `
                             <div class="scene-card">
                                 <a href="${imageUrl}" target="_blank" title="点击查看原图">
@@ -1324,7 +1324,7 @@
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : 
                                      (scene.image ? basePath + scene.image : '');
-                    const thumbUrl = scene.thumbnail ? thumbBasePath + scene.thumbnail : imageUrl;
+                    const thumbUrl = scene.thumbnail ? thumbBasePath + scene.thumbnail + '?v=20260331' : imageUrl;
                     if (imageUrl) {
                         html += `
                             <div class="scene-card">
@@ -1356,7 +1356,7 @@
                     const firstImageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : 
                                      (firstFrame.image ? basePath + firstFrame.image : 
                                      (firstFrame.url || ''));
-                    const firstThumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail : firstImageUrl;
+                    const firstThumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail + '?v=20260331' : firstImageUrl;
                     
                     if (firstImageUrl) {
                         html += `
@@ -1380,7 +1380,7 @@
                         const endImageUrl = endFrame.src ? `https://hiyascott.github.io${endFrame.src}` : 
                                      (endFrame.image ? basePath + endFrame.image : 
                                      (endFrame.url || ''));
-                        const endThumbUrl = endFrame.thumbnail ? thumbBasePath + endFrame.thumbnail : endImageUrl;
+                        const endThumbUrl = endFrame.thumbnail ? thumbBasePath + endFrame.thumbnail + '?v=20260331' : endImageUrl;
                         
                         if (endImageUrl) {
                             html += `
@@ -1405,7 +1405,7 @@
                             if (idx < 2) { // 最多显示2个历史版本，避免过长
                                 const histImageUrl = historyFrame.src ? `https://hiyascott.github.io${historyFrame.src}` : 
                                                  (historyFrame.image ? basePath + historyFrame.image : '');
-                                const histThumbUrl = historyFrame.thumbnail ? thumbBasePath + historyFrame.thumbnail : histImageUrl;
+                                const histThumbUrl = historyFrame.thumbnail ? thumbBasePath + historyFrame.thumbnail + '?v=20260331' : histImageUrl;
                                 
                                 if (histImageUrl) {
                                     html += `
