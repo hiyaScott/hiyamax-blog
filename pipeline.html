@@ -1350,25 +1350,54 @@
                 data.shots.forEach(shot => {
                     const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
+                    const cacheBuster = `?v=${Date.now()}`; // 添加缓存清除参数
+                    
+                    // 首帧
                     const firstFrame = shot.firstFrame || {};
-                    const imageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : 
-                                     (firstFrame.image ? basePath + firstFrame.image : 
+                    const firstImageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}${cacheBuster}` : 
+                                     (firstFrame.image ? basePath + firstFrame.image + cacheBuster : 
                                      (firstFrame.url || ''));
-                    const thumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail : imageUrl;
-                    if (imageUrl) {
+                    const firstThumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail + cacheBuster : firstImageUrl;
+                    
+                    if (firstImageUrl) {
                         html += `
                             <div class="scene-card">
-                                <a href="${imageUrl}" target="_blank" title="点击查看原图">
-                                    <img src="${thumbUrl}" alt="${shot.title}" onerror="this.onerror=function(){this.src='${imageUrl}';};" decoding="async">
+                                <a href="${firstImageUrl}" target="_blank" title="点击查看原图">
+                                    <img src="${firstThumbUrl}" alt="${shot.title}" onerror="this.onerror=function(){this.src='${firstImageUrl}';};" decoding="async">
                                 </a>
                                 <div class="image-info">
                                     <div class="image-title">镜头${shot.number} - ${shot.title}</div>
                                     <div class="image-desc">${shot.desc || ''}</div>
                                     <div class="image-meta">${shot.time || ''} · ${shot.status || ''}</div>
-                                    <a href="${imageUrl}" download class="download-link">⬇️ 下载首帧</a>
+                                    <a href="${firstImageUrl}" download class="download-link">⬇️ 下载首帧</a>
                                 </div>
                             </div>
                         `;
+                    }
+                    
+                    // 尾帧（如果存在）
+                    if (shot.endFrame) {
+                        const endFrame = shot.endFrame;
+                        const endImageUrl = endFrame.src ? `https://hiyascott.github.io${endFrame.src}${cacheBuster}` : 
+                                     (endFrame.image ? basePath + endFrame.image + cacheBuster : 
+                                     (endFrame.url || ''));
+                        const endThumbUrl = endFrame.thumbnail ? thumbBasePath + endFrame.thumbnail + cacheBuster : endImageUrl;
+                        
+                        if (endImageUrl) {
+                            html += `
+                                <div class="scene-card">
+                                    <a href="${endImageUrl}" target="_blank" title="点击查看原图">
+                                        <img src="${endThumbUrl}" alt="${shot.title} - 尾帧" onerror="this.onerror=function(){this.src='${endImageUrl}';};" decoding="async">
+                                    </a>
+                                    <div class="image-info">
+                                        <div class="image-title">镜头${shot.number} - ${shot.title} - 尾帧</div>
+                                        <div class="image-desc">${endFrame.note || shot.desc || ''}</div>
+                                        <div class="image-meta">尾帧 · ${endFrame.source || ''}</div>
+                                        <a href="${endImageUrl}" download class="download-link">⬇️ 下载尾帧</a>
+                                    </div>
+                                </div>
+                            `;
+                        }
                     }
                 });
                 html += `</div></div>`;
