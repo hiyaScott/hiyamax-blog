@@ -1508,7 +1508,7 @@
             "date": "2026-03-30 10:25",
             "author": "Scott (海螺AI)",
             "status": "当前版本",
-            "changes": "新增5个视频片段，包含夕阳守护和暴雨守护场景，新增分镜3首尾帧视频",
+            "changes": "新增5个视频片段，包含夕阳守护和暴雨守护场景，新增分镜3首尾帧视频V2和V3",
             "data": {
               "concept": "使用海螺AI图生视频功能，基于V2版本首帧图生成高质量视频片段",
               "tool": "海螺AI (MiniMax-Hailuo-2.3)",
@@ -1607,15 +1607,35 @@
                     "shot03_firstframe_v7_seedream.jpg (首帧)",
                     "shot03_endframe_v2_seedream.jpg (尾帧)"
                   ]
+                },
+                {
+                  "id": "hailuo_v5_shot03_firstlast_v3",
+                  "title": "镜头03 - 首尾帧推镜 V5 (V3重制版)",
+                  "time": "0-6s",
+                  "desc": "分镜3首尾帧重新生成，V3版本",
+                  "filename": "shot03_video_v3_hailuo_firstlast.mp4",
+                  "src": "./assets/the_147th_day/shot03_video_v3_hailuo_firstlast.mp4",
+                  "videoUrl": "https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/shot03_video_v3_hailuo_firstlast.mp4",
+                  "size": "651KB",
+                  "resolution": "768x768",
+                  "duration": "6秒",
+                  "param": "first_frame_image + last_frame_image",
+                  "model": "MiniMax-Hailuo-02",
+                  "note": "V3重制版，使用首帧V7和尾帧V2重新生成",
+                  "poster": "./assets/the_147th_day/posters/shot03_video_v3_hailuo_firstlast_poster.jpg",
+                  "referenceImages": [
+                    "shot03_firstframe_v7_seedream.jpg (首帧)",
+                    "shot03_endframe_v2_seedream.jpg (尾帧)"
+                  ]
                 }
               ],
               "summary": {
-                "totalClips": 6,
+                "totalClips": 7,
                 "shot01": 2,
                 "shot02": 3,
-                "shot03": 1,
+                "shot03": 2,
                 "tool": "海螺AI MiniMax-Hailuo-2.3",
-                "note": "V5版本基于V2首帧生成，角色一致性更好，新增分镜3首尾帧视频"
+                "note": "V5版本基于V2首帧生成，角色一致性更好，新增分镜3首尾帧视频V2+V3"
               }
             }
           }
@@ -1713,6 +1733,17 @@
               "6秒768P",
               "分镜3: 机器人全景→花朵特写推镜",
               "添加到Step 5视频生成V5版本"
+            ]
+          },
+          {
+            "date": "2026-03-31 18:38",
+            "platform": "飞书",
+            "summary": "重新生成分镜3视频V3，使用首尾帧模式，不覆盖之前的V1/V2版本",
+            "decisions": [
+              "MiniMax-Hailuo-02首尾帧模式",
+              "6秒768P",
+              "V3版本独立保存",
+              "保留V1/V2历史版本"
             ]
           }
         ]
