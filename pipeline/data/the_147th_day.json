@@ -366,6 +366,13 @@
                   "desc": "背面视角，手持花盆",
                   "model": "SeaDream 4.5",
                   "thumbnail": "robo_no5_back_view_doubao_thumb.jpg"
+                },
+                "combined": {
+                  "image": "robo_no5_three_views_combined.png",
+                  "title": "【Combined】完整三视图",
+                  "desc": "正视图+侧视图+背视图合成一张图，用于AI生成参考",
+                  "model": "Python PIL合成",
+                  "thumbnail": "robo_no5_three_views_combined_thumb.jpg"
                 }
               },
               "toolComparison": {
