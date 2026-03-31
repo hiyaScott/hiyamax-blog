@@ -947,31 +947,47 @@
                 },
                 {
                   "number": 3,
-                  "title": "镜头03 - 倒下与绽放 V5",
+                  "title": "镜头03 - 倒下与绽放 V6",
                   "time": "12-18s",
-                  "desc": "Robo No.5 侧躺在夕阳废墟中，一只手护着身旁盛开的小花，警示灯微弱闪烁",
-                  "status": "首帧V5已生成（Seedream 5.0多图参考）",
+                  "desc": "Robo No.5 完全瘫软倒在夕阳废墟中，像没电了一样，身体松软无力地环抱着白色小花",
+                  "status": "首帧V6已生成（Seedream 5.0三图参考）",
                   "firstFrame": {
-                    "image": "shot03_firstframe_v3_seedream.jpg",
-                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3_seedream.jpg",
-                    "source": "Seedream 5.0 多图生成（三视图+风格参考）",
+                    "image": "shot03_firstframe_v6_seedream.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v6_seedream.jpg",
+                    "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
                     "date": "2026-03-31",
-                    "prompt": "电影级分镜画面：末世废墟地面近景，夕阳低角度侧逆光照射。复古小机器人Robo No.5侧躺在破碎的混凝土地面上，圆顶头部带小天线，生锈金属机身呈温暖棕褐色，圆形复古眼睛，履带式底座，身体微微倾斜，一只手轻轻护着身旁的白色小花，周围是碎石和野草。金色夕阳光线从侧面照入，形成长长的影子，电影宽屏比例，写实渲染，温暖色调，末世浪漫主义美学。",
+                    "prompt": "电影级分镜画面：末世废墟地面近景，夕阳低角度侧逆光照射。复古小机器人Robo No.5完全瘫软倒在破碎的混凝土地面上，像没电了一样，身体松软无力地侧躺，圆顶头部带小天线歪向一边，生锈金属机身呈温暖棕褐色，圆形复古眼睛暗淡无光，履带式底座松散展开。机器人的身体用柔软无力的姿态环抱着、保护着身旁的白色小花，像用最后的力气守护生命，手臂自然垂落搭在花盆旁，没有僵硬感，完全是'坏了'、'没电了'的瘫软状态。周围是破碎的混凝土、碎石和从裂缝中长出的野草。金色夕阳光线从侧面照入，在地面形成长长的影子，机器人头部微微低垂，橙色眼睛失去光芒，头顶红色警示灯完全熄灭。温暖而忧伤的氛围，电影宽屏比例，浅景深，写实渲染，温暖色调，末世浪漫主义美学。",
                     "referenceImages": [
                       "robo_no5_three_views_combined.png (三视图/角色参考)",
-                      "robo_no5_v3_ai_generated.jpg (风格参考)"
+                      "robo_no5_v3_ai_generated.jpg (角色镜头参考)",
+                      "scene_shot03_ground_a.jpg (环境参考)"
                     ],
-                    "thumbnail": "shot03_firstframe_v3_seedream_thumb.jpg",
-                    "note": "V5版本：Seedream 5.0多图融合生成，测试多图一致性和风格迁移能力",
+                    "thumbnail": "shot03_firstframe_v6_seedream_thumb.jpg",
+                    "note": "V6版本：Seedream 5.0三图融合，瘫软姿态更符合'没电了'的剧情设定",
                     "resolution": "1920x1920"
                   },
-                  "mood": "悲伤但希望，生命延续的感动",
+                  "endFrame": {
+                    "image": "shot03_endframe_v1_seedream.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_endframe_v1_seedream.jpg",
+                    "source": "Seedream 5.0 多图生成（三视图+角色+环境参考）",
+                    "date": "2026-03-31",
+                    "prompt": "电影级分镜画面：末世废墟地面特写。画面构图：白色小花占据画面中央50%面积，花朵完全绽放，花瓣晶莹透亮，在夕阳下散发着生命的光芒，细节清晰可见，每一片花瓣都充满生机。背景中：复古小机器人Robo No.5已经完全损坏，圆顶头部低垂，生锈金属机身暗淡无光，履带式底座散开在碎石中，天线折断，警示灯彻底熄灭，没有任何光芒，像是彻底'死去了'，成为废墟的一部分。视角：从低角度仰视花朵，花朵显得高大而神圣，机器人渺小而安静地躺在背景中，形成强烈对比。光线：金色夕阳光从花朵后方穿透花瓣，形成逆光轮廓光，花朵像发光的宝石，象征着即使在末世，生命依然绽放希望。氛围：悲伤但充满希望，生命的延续与传承。",
+                    "referenceImages": [
+                      "robo_no5_three_views_combined.png (三视图/角色参考)",
+                      "robo_no5_v3_ai_generated.jpg (角色镜头参考)",
+                      "scene_shot03_ground_a.jpg (环境参考)"
+                    ],
+                    "thumbnail": "shot03_endframe_v1_seedream_thumb.jpg",
+                    "note": "尾帧V1：镜头聚焦植物，花朵占画面50%，机器人已完全损坏成为背景，象征生命延续的希望",
+                    "resolution": "1920x1920"
+                  },
+                  "mood": "悲伤但充满希望，生命延续与传承",
                   "keyElements": [
-                    "机器人侧躺姿势",
-                    "手捧白色小花",
+                    "机器人瘫软姿态（没电了）",
+                    "身体环抱保护小花",
                     "夕阳金色光线",
-                    "废墟地面细节",
-                    "多图融合效果"
+                    "尾帧聚焦植物（生命希望）",
+                    "三图融合效果"
                   ]
                 }
               ]
