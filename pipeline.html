@@ -1350,14 +1350,13 @@
                 data.shots.forEach(shot => {
                     const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
-                    const cacheBuster = `?v=${Date.now()}`; // 添加缓存清除参数
                     
                     // 首帧
                     const firstFrame = shot.firstFrame || {};
-                    const firstImageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}${cacheBuster}` : 
-                                     (firstFrame.image ? basePath + firstFrame.image + cacheBuster : 
+                    const firstImageUrl = firstFrame.src ? `https://hiyascott.github.io${firstFrame.src}` : 
+                                     (firstFrame.image ? basePath + firstFrame.image : 
                                      (firstFrame.url || ''));
-                    const firstThumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail + cacheBuster : firstImageUrl;
+                    const firstThumbUrl = firstFrame.thumbnail ? thumbBasePath + firstFrame.thumbnail : firstImageUrl;
                     
                     if (firstImageUrl) {
                         html += `
@@ -1378,10 +1377,10 @@
                     // 尾帧（如果存在）
                     if (shot.endFrame) {
                         const endFrame = shot.endFrame;
-                        const endImageUrl = endFrame.src ? `https://hiyascott.github.io${endFrame.src}${cacheBuster}` : 
-                                     (endFrame.image ? basePath + endFrame.image + cacheBuster : 
+                        const endImageUrl = endFrame.src ? `https://hiyascott.github.io${endFrame.src}` : 
+                                     (endFrame.image ? basePath + endFrame.image : 
                                      (endFrame.url || ''));
-                        const endThumbUrl = endFrame.thumbnail ? thumbBasePath + endFrame.thumbnail + cacheBuster : endImageUrl;
+                        const endThumbUrl = endFrame.thumbnail ? thumbBasePath + endFrame.thumbnail : endImageUrl;
                         
                         if (endImageUrl) {
                             html += `
