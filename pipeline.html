@@ -1256,7 +1256,7 @@
             if (data.referenceImages) {
                 html += `<div class="content-block"><h3>🖼️ 参考图（点击查看/下载）</h3><div class="scene-cards">`;
                 data.referenceImages.forEach(img => {
-                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/thumbnails/';
+                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     const thumbUrl = img.thumbnail ? thumbBasePath + img.thumbnail : img.src;
                     html += `
                         <div class="scene-card">
@@ -1287,7 +1287,7 @@
                     const viewData = data.threeViews[view.key];
                     if (viewData) {
                         const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
-                        const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/thumbnails/';
+                        const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                         const imageUrl = viewData.image.startsWith('http') ? viewData.image : basePath + viewData.image;
                         const thumbUrl = viewData.thumbnail ? thumbBasePath + viewData.thumbnail : imageUrl;
                         html += `
@@ -1321,7 +1321,7 @@
                 html += `<div class="content-block"><h3>🎨 场景设计</h3><div class="scene-cards">`;
                 data.scenes.forEach(scene => {
                     const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
-                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/thumbnails/';
+                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     const imageUrl = scene.src ? `https://hiyascott.github.io${scene.src}` : 
                                      (scene.image ? basePath + scene.image : '');
                     const thumbUrl = scene.thumbnail ? thumbBasePath + scene.thumbnail : imageUrl;
@@ -1349,7 +1349,7 @@
                 html += `<div class="content-block"><h3>🎬 分镜首帧</h3><div class="scene-cards">`;
                 data.shots.forEach(shot => {
                     const basePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/';
-                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/thumbnails/';
+                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     
                     // 首帧
                     const firstFrame = shot.firstFrame || {};
