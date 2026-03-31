@@ -537,7 +537,7 @@
             "date": "2026-03-30 09:03",
             "author": "Scott (豆包AI)",
             "status": "当前版本",
-            "changes": "添加四张高质量场景图，包含夕阳和暴雨氛围",
+            "changes": "添加四张高质量场景图 + 分镜3场景A（夕阳废墟地面近景）",
             "data": {
               "concept": "末世废墟场景设计V2，使用豆包AI生成的高质量场景图，包含夕阳下的温暖废墟和暴雨中的紧张氛围，为三个分镜提供更丰富的背景参考。",
               "scenes": [
@@ -639,6 +639,20 @@
                   "image": "scene_sunset_ground_v2.png",
                   "src": "/hiyamax-blog/assets/the_147th_day/scene_sunset_ground_v2.png",
                   "thumbnail": "scene_sunset_ground_v2_thumb.jpg"
+                },
+                {
+                  "id": "scene_shot03_ground_a",
+                  "title": "分镜3 - 夕阳废墟地面近景",
+                  "shot": "镜头03 - 倒下与绽放",
+                  "desc": "夕阳余晖下的废墟地面近景，破碎的混凝土和碎石，裂缝中长出野草和小白花，金色光线斜射地面，为机器人倒下场景提供背景",
+                  "mood": "悲伤但希望，生命延续的感动",
+                  "lighting": "暖橙色调，金色逆光，低角度阳光，细腻质感",
+                  "image": "scene_shot03_ground_a.jpg",
+                  "src": "/hiyamax-blog/assets/the_147th_day/scene_shot03_ground_a.jpg",
+                  "thumbnail": "scene_shot03_ground_a_thumb.jpg",
+                  "tool": "即梦AI (jimeng_high_aes_general_v21_L)",
+                  "date": "2026-03-31",
+                  "prompt": "末世废墟地面近景，破碎的混凝土和碎石，裂缝中长出野草和小白花，夕阳低角度照射，金色光线斜射地面，形成长长的影子，暖橙色调，细腻质感，灰尘在光柱中飘浮，电影级光影，超高清8K，16:9画幅"
                 }
               ],
               "promptExamples": {
