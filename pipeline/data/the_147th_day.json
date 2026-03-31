@@ -947,30 +947,31 @@
                 },
                 {
                   "number": 3,
-                  "title": "镜头03 - 倒下与绽放 V4",
+                  "title": "镜头03 - 倒下与绽放 V5",
                   "time": "12-18s",
                   "desc": "Robo No.5 侧躺在夕阳废墟中，一只手护着身旁盛开的小花，警示灯微弱闪烁",
-                  "status": "首帧V4已生成（参考三视图合成图）",
+                  "status": "首帧V5已生成（Seedream 5.0多图参考）",
                   "firstFrame": {
-                    "image": "shot03_firstframe_v3_jimeng.jpg",
-                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3_jimeng.jpg",
-                    "source": "即梦AI 图生图生成（参考三视图合成图）",
+                    "image": "shot03_firstframe_v3_seedream.jpg",
+                    "src": "/hiyamax-blog/assets/the_147th_day/shot03_firstframe_v3_seedream.jpg",
+                    "source": "Seedream 5.0 多图生成（三视图+风格参考）",
                     "date": "2026-03-31",
-                    "prompt": "复古小机器人Robo No.5，圆顶头部带小天线，生锈金属机身呈温暖棕褐色，圆形复古眼睛像老式相机镜头，履带式底座，侧躺在末世废墟地面上，身体微微倾斜，一只手护着身旁的白色小花，周围是破碎的混凝土和碎石，裂缝中长出野草和小白花，夕阳低角度金色光线从画面右侧斜射，形成长长的影子，机器人橙色眼睛在夕阳下反射微光，头顶红色警示灯微弱闪烁，暖橙色调，电影级光影，超高清8K",
+                    "prompt": "电影级分镜画面：末世废墟地面近景，夕阳低角度侧逆光照射。复古小机器人Robo No.5侧躺在破碎的混凝土地面上，圆顶头部带小天线，生锈金属机身呈温暖棕褐色，圆形复古眼睛，履带式底座，身体微微倾斜，一只手轻轻护着身旁的白色小花，周围是碎石和野草。金色夕阳光线从侧面照入，形成长长的影子，电影宽屏比例，写实渲染，温暖色调，末世浪漫主义美学。",
                     "referenceImages": [
-                      "robo_no5_three_views_combined.png (完整三视图合成图)"
+                      "robo_no5_three_views_combined.png (三视图/角色参考)",
+                      "robo_no5_v3_ai_generated.jpg (风格参考)"
                     ],
-                    "thumbnail": "shot03_firstframe_v3_jimeng_thumb.jpg",
-                    "note": "V4版本：使用完整三视图合成图作为参考，角色一致性更佳，4K超高清",
-                    "resolution": "3840x2160 (4K)"
+                    "thumbnail": "shot03_firstframe_v3_seedream_thumb.jpg",
+                    "note": "V5版本：Seedream 5.0多图融合生成，测试多图一致性和风格迁移能力",
+                    "resolution": "1920x1920"
                   },
                   "mood": "悲伤但希望，生命延续的感动",
                   "keyElements": [
                     "机器人侧躺姿势",
-                    "手护着白色小花",
+                    "手捧白色小花",
                     "夕阳金色光线",
                     "废墟地面细节",
-                    "警示灯微弱闪烁"
+                    "多图融合效果"
                   ]
                 }
               ]
