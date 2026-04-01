@@ -726,6 +726,78 @@
         
         .video-actions a:hover { background: var(--accent-blue); color: #fff; }
         
+        /* Video Blueprint */
+        .video-blueprint-toggle {
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: rgba(155, 89, 182, 0.15);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--accent-purple);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+        }
+        .video-blueprint-toggle:hover { background: var(--accent-purple); color: #fff; }
+        .video-blueprint { 
+            display: none; 
+            margin-top: 12px; 
+            padding: 12px; 
+            background: rgba(0,0,0,0.3); 
+            border-radius: 8px;
+            border: 1px solid var(--border-secondary);
+        }
+        .video-blueprint.expanded { display: block; }
+        .blueprint-section { margin-bottom: 10px; }
+        .blueprint-section:last-child { margin-bottom: 0; }
+        .blueprint-label { 
+            font-size: 10px; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .blueprint-value { 
+            font-size: 12px; 
+            color: var(--text-secondary);
+            word-break: break-word;
+        }
+        .blueprint-value code {
+            background: rgba(52, 152, 219, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+        .blueprint-prompt {
+            background: var(--bg-primary);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+            max-height: 100px;
+            overflow-y: auto;
+            font-family: monospace;
+            line-height: 1.5;
+        }
+        .blueprint-images {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .blueprint-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border-secondary);
+        }
+        
         /* Empty State */
         .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
         .loading { text-align: center; padding: 60px 20px; }
@@ -1441,6 +1513,61 @@
                     // Use thumbnail for lazy loading if available
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     const thumbPath = clip.thumbnail ? thumbBasePath + clip.thumbnail : null;
+                    
+                    // Generate blueprint HTML if clip has blueprint data
+                    const hasBlueprint = clip.model || clip.param || clip.prompt || clip.referenceImage || clip.taskId;
+                    let blueprintHtml = '';
+                    if (hasBlueprint) {
+                        blueprintHtml = `
+                            <div class="video-blueprint-toggle" onclick="toggleBlueprint('${videoId}')">
+                                <span>📋</span> <span>查看蓝图</span>
+                            </div>
+                            <div class="video-blueprint" id="blueprint-${videoId}">
+                                ${clip.model ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">🎯 AI 模型</div>
+                                        <div class="blueprint-value"><code>${clip.model}</code></div>
+                                    </div>
+                                ` : ''}
+                                ${clip.param ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">⚙️ 参数模式</div>
+                                        <div class="blueprint-value">${clip.param}</div>
+                                    </div>
+                                ` : ''}
+                                ${clip.resolution ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">📐 分辨率</div>
+                                        <div class="blueprint-value">${clip.resolution} · ${clip.duration || '10秒'}</div>
+                                    </div>
+                                ` : ''}
+                                ${clip.taskId ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">🆔 任务 ID</div>
+                                        <div class="blueprint-value"><code>${clip.taskId}</code></div>
+                                    </div>
+                                ` : ''}
+                                ${clip.referenceImage ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">🖼️ 参考图</div>
+                                        <div class="blueprint-value">${clip.referenceImage}</div>
+                                    </div>
+                                ` : ''}
+                                ${clip.prompt ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">📝 Prompt</div>
+                                        <div class="blueprint-prompt">${clip.prompt}</div>
+                                    </div>
+                                ` : ''}
+                                ${clip.note ? `
+                                    <div class="blueprint-section">
+                                        <div class="blueprint-label">💡 备注</div>
+                                        <div class="blueprint-value" style="font-size: 11px; color: var(--accent-orange);">${clip.note}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    }
 
                     html += `
                         <div class="video-card" id="video-card-${videoId}">
@@ -1461,6 +1588,7 @@
                                     <a href="${videoPath}" target="_blank">▶️ 新窗口播放</a>
                                     <a href="${videoPath}" download="${clip.filename || 'video.mp4'}">⬇️ 下载视频</a>
                                 </div>
+                                ${blueprintHtml}
                             </div>
                         </div>
                     `;
@@ -1540,6 +1668,21 @@
                 list.classList.toggle('collapsed');
                 if (icon) {
                     icon.textContent = list.classList.contains('collapsed') ? '▶' : '▼';
+                }
+            }
+        }
+        
+        // Toggle video blueprint display
+        function toggleBlueprint(videoId) {
+            const blueprint = document.getElementById(`blueprint-${videoId}`);
+            const toggle = document.querySelector(`#video-card-${videoId} .video-blueprint-toggle`);
+            if (blueprint) {
+                blueprint.classList.toggle('expanded');
+                if (toggle) {
+                    const span = toggle.querySelector('span:last-child');
+                    if (span) {
+                        span.textContent = blueprint.classList.contains('expanded') ? '收起蓝图' : '查看蓝图';
+                    }
                 }
             }
         }
