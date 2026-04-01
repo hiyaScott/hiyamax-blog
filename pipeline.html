@@ -1140,7 +1140,9 @@
         
         async function loadProjectDetail(projectId, container) {
             try {
-                const response = await fetch(`./pipeline/data/${projectId}.json?t=${Date.now()}`);
+                // Add cache-busting timestamp to avoid cached data
+                const cacheBuster = `?t=${Date.now()}`;
+                const response = await fetch(`./pipeline/data/${projectId}.json${cacheBuster}`);
                 if (!response.ok) throw new Error('Project not found');
                 const data = await response.json();
                 renderProjectDetail(data, container);
