@@ -1438,11 +1438,14 @@
                     const videoPath = clip.src || `./assets/the_147th_day/${clip.filename}`;
                     // Use thumbnail as poster if available, or generate from video path
                     const posterPath = clip.poster || videoPath.replace(/\.mp4$/, '_poster.jpg');
-                    
+                    // Use thumbnail for lazy loading if available
+                    const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
+                    const thumbPath = clip.thumbnail ? thumbBasePath + clip.thumbnail : null;
+
                     html += `
                         <div class="video-card" id="video-card-${videoId}">
                             <div class="video-thumbnail" id="video-container-${videoId}" onclick="initVideoPlayer('${videoId}', '${videoPath}', '${posterPath}')">
-                                ${createPictureElement(posterPath, null, clip.title)}
+                                ${createPictureElement(posterPath, thumbPath, clip.title)}
                                 <div class="video-play-overlay">
                                     <div class="video-play-btn"></div>
                                 </div>
