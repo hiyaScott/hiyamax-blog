@@ -1509,7 +1509,8 @@
                     const videoId = `clip-${stepNum}-${index}`;
                     const videoPath = clip.src || `./assets/the_147th_day/${clip.filename}`;
                     // Use thumbnail as poster if available, or generate from video path
-                    const posterPath = clip.poster || videoPath.replace(/\.mp4$/, '_poster.jpg');
+                    // Posters are stored in the posters/ subdirectory
+                    const posterPath = clip.poster || videoPath.replace(/\.mp4$/, '_poster.jpg').replace('/the_147th_day/', '/the_147th_day/posters/');
                     // Use thumbnail for lazy loading if available
                     const thumbBasePath = 'https://hiyascott.github.io/hiyamax-blog/assets/the_147th_day/thumbnails/';
                     const thumbPath = clip.thumbnail ? thumbBasePath + clip.thumbnail : null;
