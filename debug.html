@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>调试页面</title>
+<style>
+body { background: #1a1a2e; color: white; font-family: sans-serif; padding: 20px; }
+.test-img { width: 200px; height: 300px; margin: 10px; border: 2px solid #c9a86c; }
+.log { background: rgba(0,0,0,0.5); padding: 10px; margin: 10px 0; border-radius: 8px; font-size: 12px; }
+.error { color: #e63946; }
+.success { color: #4ade80; }
+</style>
+</head>
+<body>
+<h2>🔍 图片加载诊断</h2>
+<div id="logs"></div>
+<div id="images"></div>
+
+<script>
+const logs = document.getElementById('logs');
+const imagesDiv = document.getElementById('images');
+
+function log(msg, isError = false) {
+    const div = document.createElement('div');
+    div.className = 'log ' + (isError ? 'error' : 'success');
+    div.textContent = new Date().toLocaleTimeString() + ' - ' + msg;
+    logs.appendChild(div);
+}
+
+// 测试图片
+const testUrls = [
+    'https://hiyascott.github.io/hiyamax-blog/assets/card-designs/style1-front.jpg',
+    'https://hiyascott.github.io/hiyamax-blog/assets/card-designs/style1-front.jpg?v=4',
+    './assets/card-designs/style1-front.jpg',
+    './assets/card-designs/style1-front.jpg?v=4'
+];
+
+log('开始测试 ' + testUrls.length + ' 个图片URL');
+
+testUrls.forEach((url, i) => {
+    const container = document.createElement('div');
+    container.innerHTML = '<p>URL ' + (i+1) + ': ' + url + '</p>';
+    
+    const img = document.createElement('img');
+    img.className = 'test-img';
+    img.alt = '测试 ' + (i+1);
+    
+    img.onload = () => {
+        log('✅ URL ' + (i+1) + ' 加载成功: ' + url);
+        img.style.borderColor = '#4ade80';
+    };
+    
+    img.onerror = (e) => {
+        log('❌ URL ' + (i+1) + ' 加载失败: ' + url, true);
+        img.style.borderColor = '#e63946';
+        img.alt = '加载失败';
+    };
+    
+    img.src = url;
+    container.appendChild(img);
+    imagesDiv.appendChild(container);
+});
+
+// 显示浏览器信息
+log('浏览器: ' + navigator.userAgent);
+log('在线状态: ' + (navigator.onLine ? '在线' : '离线'));
+</script>
+</body>
+</html>
