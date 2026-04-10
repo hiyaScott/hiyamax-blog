@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="HIYAMAX 磁力击掌小人毕业限定版 - 5种风格挂卡设计">
+    <meta name="theme-color" content="#1a1a2e">
     <title>HIYAMAX 挂卡设计 V6 | SEEDREAM 4.0</title>
+    
+    <!-- Preconnect to CDN -->
+    <link rel="preconnect" href="https://hiyascott.github.io" crossorigin>
+    
     <style>
+        /* Critical CSS - inline for fast first paint */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         :root {
@@ -14,12 +21,15 @@
             --dark-bg: #1a1a2e;
         }
         
+        html { scroll-behavior: smooth; }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             color: #f5f5f5;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         /* 顶部导航 */
@@ -28,9 +38,10 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 16px 20px;
+            padding: 12px 16px;
             background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,11 +54,12 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
+            padding: 8px 0;
         }
         
         .nav-logo {
             font-weight: 800;
-            font-size: 18px;
+            font-size: 16px;
             letter-spacing: 2px;
             background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
             -webkit-background-clip: text;
@@ -56,7 +68,7 @@
         
         /* 主内容区 */
         .main {
-            padding: 80px 16px 32px;
+            padding: 68px 12px 24px;
             max-width: 480px;
             margin: 0 auto;
         }
@@ -64,54 +76,71 @@
         /* 页面标题 */
         .page-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 20px;
         }
         
         .page-header h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, #fff, var(--accent-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(255,255,255,0.6);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
+        }
+        
+        /* 加载状态 */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
         
         /* 风格选择器 */
         .style-selector {
             display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 6px;
+            margin-bottom: 16px;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
+        
+        .style-selector::-webkit-scrollbar { display: none; }
         
         .style-btn {
             flex-shrink: 0;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 10px 12px;
             color: rgba(255,255,255,0.7);
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             text-align: center;
+            min-width: 60px;
         }
         
         .style-btn.active {
@@ -122,7 +151,7 @@
         
         .style-num {
             display: block;
-            font-size: 10px;
+            font-size: 9px;
             opacity: 0.7;
             margin-bottom: 2px;
         }
@@ -130,34 +159,35 @@
         /* 主展示区域 */
         .showcase {
             background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 24px 16px;
-            margin-bottom: 24px;
+            border-radius: 12px;
+            padding: 16px 12px;
+            margin-bottom: 16px;
             border: 1px solid rgba(255,255,255,0.08);
         }
         
         .showcase-title {
             text-align: center;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: var(--accent-gold);
         }
         
-        /* 卡片翻转 */
+        /* 卡片翻转 - 优化GPU加速 */
         .card-container {
             perspective: 1000px;
             width: 100%;
-            max-width: 320px;
-            margin: 0 auto 20px;
+            max-width: 280px;
+            margin: 0 auto 16px;
         }
         
         .card-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 150%; /* 2:3 比例 */
+            padding-bottom: 150%;
             transform-style: preserve-3d;
-            transition: transform 0.6s;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
         }
         
         .card-wrapper.flipped {
@@ -169,15 +199,23 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 12px;
+            -webkit-backface-visibility: hidden;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
         }
         
         .card-face img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .card-face img.loaded {
+            opacity: 1;
         }
         
         .card-back {
@@ -188,19 +226,19 @@
         .flip-controls {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
         
         .flip-btn {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 20px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             color: rgba(255,255,255,0.6);
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
         .flip-btn.active {
@@ -212,65 +250,69 @@
         
         .swipe-hint {
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255,255,255,0.4);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
         /* 风格描述 */
         .style-info {
             background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 16px;
         }
         
         .style-info h3 {
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13px;
+            margin-bottom: 10px;
             color: var(--accent-gold);
         }
         
         .style-info p {
-            font-size: 13px;
-            line-height: 1.7;
+            font-size: 12px;
+            line-height: 1.6;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         
         .style-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
         
         .tag {
             background: rgba(255,255,255,0.08);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
             color: rgba(255,255,255,0.6);
         }
         
-        /* 缩略图 */
+        /* 缩略图 - 优化加载 */
         .thumbnails {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 8px;
+            margin-bottom: 20px;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        
+        .thumbnails::-webkit-scrollbar { display: none; }
         
         .thumb {
             flex-shrink: 0;
-            width: 80px;
-            height: 120px;
-            border-radius: 8px;
+            width: 60px;
+            height: 90px;
+            border-radius: 6px;
             overflow: hidden;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: all 0.3s;
-            opacity: 0.6;
+            transition: all 0.2s;
+            opacity: 0.5;
+            background: rgba(255,255,255,0.05);
         }
         
         .thumb.active {
@@ -282,40 +324,136 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .thumb img.loaded {
+            opacity: 1;
+        }
+        
+        /* 快速切换栏 */
+        .quick-nav {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
+        .quick-nav::-webkit-scrollbar { display: none; }
+        
+        .quick-btn {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quick-btn.active {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            color: white;
         }
         
         /* AI标注 */
         .ai-badge {
             display: inline-block;
             background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 10px;
-            margin-left: 8px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 9px;
+            margin-left: 6px;
         }
         
         /* 页脚 */
         .footer {
             text-align: center;
-            padding: 32px 24px;
-            font-size: 11px;
+            padding: 24px 16px;
+            font-size: 10px;
             color: rgba(255,255,255,0.4);
         }
         
-        /* 响应式 */
-        @media (max-width: 480px) {
-            .page-header h1 {
-                font-size: 22px;
-            }
-            .showcase {
-                padding: 16px;
+        /* 网络状态提示 */
+        .network-status {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .network-status.show {
+            opacity: 1;
+        }
+        
+        /* 离线提示 */
+        .offline-banner {
+            display: none;
+            background: #e63946;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 98;
+        }
+        
+        .offline-banner.show {
+            display: block;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 380px) {
+            .page-header h1 { font-size: 20px; }
+            .card-container { max-width: 260px; }
+            .style-btn { padding: 8px 10px; font-size: 10px; }
+        }
+        
+        /* 减少动画偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 离线提示 -->
+    <div class="offline-banner" id="offlineBanner">⚠️ 当前处于离线状态，部分功能可能不可用</div>
+    
+    <!-- 网络状态 -->
+    <div class="network-status" id="networkStatus">正在加载...</div>
+
     <nav class="nav">
-        <a href="./experiments.html" class="nav-back">← 返回实验</a>
+        <a href="./experiments.html" class="nav-back">← 返回</a>
         <span class="nav-logo">HIYAMAX</span>
         <span style="width: 40px;"></span>
     </nav>
@@ -324,31 +462,17 @@
         <div class="page-header">
             <h1>挂卡设计方案 V6</h1>
             <div class="subtitle">SEEDREAM 4.0 · 综合设计图一致性控制</div>
-            <div class="badge">🎨 AI Generated · SEEDREAM 4.0</div>
+            <div class="badge">🎨 AI Generated</div>
+        </div>
+        
+        <!-- 快速切换栏 -->
+        <div class="quick-nav" id="quickNav">
+            <!-- 动态生成 -->
         </div>
         
         <!-- 风格选择器 -->
-        <div class="style-selector">
-            <button class="style-btn active" onclick="switchStyle(0)">
-                <span class="style-num">01</span>
-                80s复古Super7
-            </button>
-            <button class="style-btn" onclick="switchStyle(1)">
-                <span class="style-num">02</span>
-                朋克摇滚Misfits
-            </button>
-            <button class="style-btn" onclick="switchStyle(2)">
-                <span class="style-num">03</span>
-                日系极简Sofubi
-            </button>
-            <button class="style-btn" onclick="switchStyle(3)">
-                <span class="style-num">04</span>
-                苏富比拍卖
-            </button>
-            <button class="style-btn" onclick="switchStyle(4)">
-                <span class="style-num">05</span>
-                邪胶妖怪
-            </button>
+        <div class="style-selector" id="styleSelector">
+            <!-- 动态生成 -->
         </div>
         
         <!-- 主展示区域 -->
@@ -358,11 +482,11 @@
             <!-- 卡片翻转 -->
             <div class="card-container">
                 <div class="card-wrapper" id="cardWrapper">
-                    <div class="card-face card-front">
-                        <img id="frontImage" src="" alt="正面设计" loading="lazy">
+                    <div class="card-face card-front skeleton" id="frontContainer">
+                        <img id="frontImage" src="" alt="正面设计" loading="eager" decoding="async">
                     </div>
-                    <div class="card-face card-back">
-                        <img id="backImage" src="" alt="背面设计" loading="lazy">
+                    <div class="card-face card-back skeleton" id="backContainer">
+                        <img id="backImage" src="" alt="背面设计" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -372,106 +496,116 @@
                 <button class="flip-btn" onclick="flipCard('back')" id="btnBack">📝 背面</button>
             </div>
             
-            <div class="swipe-hint">👆 点击卡片或按钮切换正背面</div>
+            <div class="swipe-hint">👆 点击卡片或左右滑动切换</div>
             
             <!-- 风格描述 -->
             <div class="style-info" id="styleInfo">
                 <h3>设计灵感</h3>
-                <p id="styleDesc">基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保角色造型、配色和HIYA MAX Logo准确呈现。</p>
-                <div class="style-tags" id="styleTags">
-                    <span class="tag">复古</span>
-                    <span class="tag">80s</span>
-                    <span class="tag">Super7</span>
-                    <span class="tag">SEEDREAM 4.0</span>
-                </div>
+                <p id="styleDesc">加载中...</p>
+                <div class="style-tags" id="styleTags"></div>
             </div>
         </div>
         
-        <!-- 三种风格缩略图 -->
+        <!-- 缩略图导航 -->
         <div class="thumbnails" id="thumbnails">
             <!-- 动态生成 -->
-        </div>
-        
-        <!-- 历史版本入口 -->
-        <div style="margin-top: 32px;">
-            <div class="showcase-title">📚 历史版本</div>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                <a href="./hiyamax-card.html" style="text-decoration: none; color: inherit;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 20px; border: 2px solid transparent; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)'" onmouseout="this.style.borderColor='transparent'">
-                        <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--accent-gold);">原始设计稿</div>
-                        <div style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">CSS模拟的复古卡头风格</div>
-                        <div style="font-size: 12px; color: rgba(255,255,255,0.5);">查看 →</div>
-                    </div>
-                </a>
-                <a href="./hiyamax-card-v2.html" style="text-decoration: none; color: inherit;">
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 20px; border: 2px solid transparent; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--accent-gold)'" onmouseout="this.style.borderColor='transparent'">
-                        <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--accent-gold);">AI生成初版</div>
-                        <div style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">第一次AI生成的托片设计</div>
-                        <div style="font-size: 12px; color: rgba(255,255,255,0.5);">查看 →</div>
-                    </div>
-                </a>
-            </div>
         </div>
     </main>
     
     <footer class="footer">
         <p>HIYAMAX © 2026 | 磁力击掌小人毕业限定版</p>
-        <p>Designed with ❤️ by Max & Dad <span class="ai-badge">AI Generated</span></p>
+        <p>Designed with ❤️ by Max & Dad <span class="ai-badge">AI</span></p>
     </footer>
     
     <script>
-        // 五种风格数据 - V6版本（本地图片路径 + 时间戳防缓存）
+        // 五种风格数据 - 移动端优化版
         const styles = [
             {
-                name: "80s复古Super7",
+                name: "80s复古",
+                fullName: "80s复古Super7",
                 title: "风格 01: 80s复古Super7",
-                front: "./assets/card-designs/style1-front.jpg?v=2",
-                back: "./assets/card-designs/style1-back.jpg?v=2",
-                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保角色造型、配色和HIYA MAX Logo准确呈现。",
-                tags: ["复古", "80s", "Super7", "SEEDREAM 4.0"]
+                front: "./assets/card-designs/style1-front.jpg?v=3",
+                back: "./assets/card-designs/style1-back.jpg?v=3",
+                thumb: "./assets/card-designs/style1-front.jpg?v=3",
+                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图。",
+                tags: ["复古", "80s", "Super7"]
             },
             {
-                name: "朋克摇滚Misfits",
+                name: "朋克摇滚",
+                fullName: "朋克摇滚Misfits",
                 title: "风格 02: 朋克摇滚Misfits",
-                front: "./assets/card-designs/style2-front.jpg?v=2",
-                back: "./assets/card-designs/style2-back.jpg?v=2",
-                desc: "受Misfits乐队The Fiend骷髅标志启发，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保恐怖朋克风格下角色形象和HIYA MAX Logo的准确呈现。",
-                tags: ["朋克", "摇滚", "Misfits", "SEEDREAM 4.0"]
+                front: "./assets/card-designs/style2-front.jpg?v=3",
+                back: "./assets/card-designs/style2-back.jpg?v=3",
+                thumb: "./assets/card-designs/style2-front.jpg?v=3",
+                desc: "受Misfits乐队The Fiend骷髅标志启发的恐怖朋克风格。",
+                tags: ["朋克", "摇滚", "Misfits"]
             },
             {
-                name: "日系极简Sofubi",
+                name: "日系极简",
+                fullName: "日系极简Sofubi",
                 title: "风格 03: 日系极简Sofubi",
-                front: "./assets/card-designs/style3-front.jpg?v=2",
-                back: "./assets/card-designs/style3-back.jpg?v=2",
-                desc: "融合日本Sofubi设计师玩具的极简美学，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保禅意风格下角色形象和HIYA MAX Logo的准确呈现。",
-                tags: ["日系", "极简", "Sofubi", "SEEDREAM 4.0"]
+                front: "./assets/card-designs/style3-front.jpg?v=3",
+                back: "./assets/card-designs/style3-back.jpg?v=3",
+                thumb: "./assets/card-designs/style3-front.jpg?v=3",
+                desc: "融合日本Sofubi设计师玩具的极简美学与禅意风格。",
+                tags: ["日系", "极简", "Sofubi"]
             },
             {
-                name: "苏富比拍卖",
+                name: "苏富比",
+                fullName: "苏富比拍卖",
                 title: "风格 04: 苏富比艺术拍卖",
-                front: "./assets/card-designs/style4-front.jpg?v=2",
-                back: "./assets/card-designs/style4-back.jpg?v=2",
-                desc: "苏富比拍卖行当代艺术图录风格，采用奢华的奶油色亚麻纹理与金箔烫印，呈现出博物馆级的收藏家版本气质。",
-                tags: ["苏富比", "艺术拍卖", "奢华", "SEEDREAM 4.0"]
+                front: "./assets/card-designs/style4-front.jpg?v=3",
+                back: "./assets/card-designs/style4-back.jpg?v=3",
+                thumb: "./assets/card-designs/style4-front.jpg?v=3",
+                desc: "苏富比拍卖行当代艺术图录风格，奢华金箔烫印。",
+                tags: ["苏富比", "艺术拍卖", "奢华"]
             },
             {
                 name: "邪胶妖怪",
+                fullName: "邪胶妖怪Sofubi",
                 title: "风格 05: 邪胶妖怪Sofubi",
-                front: "./assets/card-designs/style5-front.jpg?v=2",
-                back: "./assets/card-designs/style5-back.jpg?v=2",
-                desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学，呈现出被诅咒的可爱幽灵气韵。",
-                tags: ["邪胶", "妖怪", "Sofubi", "SEEDREAM 4.0"]
+                front: "./assets/card-designs/style5-front.jpg?v=3",
+                back: "./assets/card-designs/style5-back.jpg?v=3",
+                thumb: "./assets/card-designs/style5-front.jpg?v=3",
+                desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学。",
+                tags: ["邪胶", "妖怪", "Sofubi"]
             }
         ];
         
         let currentStyle = 0;
         let isFlipped = false;
+        let preloadedImages = new Set();
         
         // 初始化
         function init() {
+            generateQuickNav();
+            generateStyleSelector();
             generateThumbnails();
             updateDisplay();
             setupTouchEvents();
+            setupNetworkStatus();
+            preloadAdjacentImages();
+        }
+        
+        // 生成快速导航
+        function generateQuickNav() {
+            const container = document.getElementById('quickNav');
+            container.innerHTML = styles.map((s, i) => `
+                <button class="quick-btn ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
+                    ${i + 1}
+                </button>
+            `).join('');
+        }
+        
+        // 生成风格选择器
+        function generateStyleSelector() {
+            const container = document.getElementById('styleSelector');
+            container.innerHTML = styles.map((s, i) => `
+                <button class="style-btn ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
+                    <span class="style-num">0${i+1}</span>
+                    ${s.name}
+                </button>
+            `).join('');
         }
         
         // 生成缩略图
@@ -479,40 +613,109 @@
             const container = document.getElementById('thumbnails');
             container.innerHTML = styles.map((s, i) => `
                 <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
-                    <img src="${s.front}" alt="风格${i+1}" loading="lazy">
+                    <img src="${s.thumb}" alt="风格${i+1}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
                 </div>
             `).join('');
         }
         
         // 切换风格
         function switchStyle(index) {
+            if (index === currentStyle) return;
+            
             currentStyle = index;
             isFlipped = false;
+            
+            // 重置翻转状态
             document.getElementById('cardWrapper').classList.remove('flipped');
             document.getElementById('btnFront').classList.add('active');
             document.getElementById('btnBack').classList.remove('active');
             
-            // 更新按钮状态
-            document.querySelectorAll('.style-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-            });
+            // 更新所有导航状态
+            updateNavigationStates();
             
-            // 更新缩略图状态
-            document.querySelectorAll('.thumb').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-            
+            // 更新显示
             updateDisplay();
+            
+            // 预加载相邻图片
+            preloadAdjacentImages();
+        }
+        
+        // 更新导航状态
+        function updateNavigationStates() {
+            // 快速导航
+            document.querySelectorAll('.quick-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === currentStyle);
+            });
+            
+            // 风格选择器
+            document.querySelectorAll('.style-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === currentStyle);
+            });
+            
+            // 缩略图
+            document.querySelectorAll('.thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === currentStyle);
+            });
         }
         
         // 更新显示
         function updateDisplay() {
             const style = styles[currentStyle];
+            
             document.getElementById('showcaseTitle').textContent = style.title;
-            document.getElementById('frontImage').src = style.front;
-            document.getElementById('backImage').src = style.back;
             document.getElementById('styleDesc').textContent = style.desc;
-            document.getElementById('styleTags').innerHTML = style.tags.map(t => `<span class="tag">${t}</span>`).join('');
+            document.getElementById('styleTags').innerHTML = style.tags.map(t => 
+                `<span class="tag">${t}</span>`
+            ).join('');
+            
+            // 更新图片（带加载状态）
+            updateImage('frontImage', style.front, 'frontContainer');
+            updateImage('backImage', style.back, 'backContainer');
+        }
+        
+        // 更新图片（带加载动画）
+        function updateImage(imgId, src, containerId) {
+            const img = document.getElementById(imgId);
+            const container = document.getElementById(containerId);
+            
+            img.classList.remove('loaded');
+            container.classList.add('skeleton');
+            
+            // 检查是否已缓存
+            if (preloadedImages.has(src)) {
+                img.src = src;
+                img.classList.add('loaded');
+                container.classList.remove('skeleton');
+            } else {
+                img.onload = () => {
+                    img.classList.add('loaded');
+                    container.classList.remove('skeleton');
+                    preloadedImages.add(src);
+                };
+                img.onerror = () => {
+                    container.classList.remove('skeleton');
+                };
+                img.src = src;
+            }
+        }
+        
+        // 预加载相邻图片
+        function preloadAdjacentImages() {
+            const indices = [
+                (currentStyle - 1 + styles.length) % styles.length,
+                (currentStyle + 1) % styles.length
+            ];
+            
+            indices.forEach(i => {
+                const style = styles[i];
+                [style.front, style.back].forEach(src => {
+                    if (!preloadedImages.has(src)) {
+                        const img = new Image();
+                        img.src = src;
+                        img.onload = () => preloadedImages.add(src);
+                    }
+                });
+            });
         }
         
         // 翻转卡片
@@ -523,30 +726,70 @@
             document.getElementById('btnBack').classList.toggle('active', isFlipped);
         }
         
-        // 触摸事件
+        // 触摸事件优化
         function setupTouchEvents() {
             const wrapper = document.getElementById('cardWrapper');
             let startX = 0;
+            let startY = 0;
+            let startTime = 0;
             
-            wrapper.addEventListener('click', () => {
-                flipCard(isFlipped ? 'front' : 'back');
+            wrapper.addEventListener('click', (e) => {
+                // 防止快速点击导致的重复翻转
+                if (Date.now() - startTime > 100) {
+                    flipCard(isFlipped ? 'front' : 'back');
+                }
             });
             
             wrapper.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
             }, { passive: true });
             
             wrapper.addEventListener('touchend', (e) => {
                 const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                if (Math.abs(diff) > 50) {
-                    flipCard(diff > 0 ? 'back' : 'front');
+                const endY = e.changedTouches[0].clientY;
+                const diffX = startX - endX;
+                const diffY = startY - endY;
+                const timeDiff = Date.now() - startTime;
+                
+                // 快速滑动检测（水平滑动且时间小于300ms）
+                if (timeDiff < 300 && Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+                    flipCard(diffX > 0 ? 'back' : 'front');
                 }
             }, { passive: true });
         }
         
+        // 网络状态监听
+        function setupNetworkStatus() {
+            const banner = document.getElementById('offlineBanner');
+            const status = document.getElementById('networkStatus');
+            
+            function updateStatus() {
+                if (!navigator.onLine) {
+                    banner.classList.add('show');
+                } else {
+                    banner.classList.remove('show');
+                }
+            }
+            
+            window.addEventListener('online', updateStatus);
+            window.addEventListener('offline', updateStatus);
+            updateStatus();
+            
+            // 显示加载状态
+            window.addEventListener('load', () => {
+                status.textContent = '加载完成';
+                setTimeout(() => status.classList.remove('show'), 1000);
+            });
+        }
+        
         // 启动
-        document.addEventListener('DOMContentLoaded', init);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     </script>
 </body>
 </html>
