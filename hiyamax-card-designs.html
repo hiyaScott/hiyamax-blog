@@ -412,40 +412,29 @@
     </footer>
     
     <script>
-        // URL构建函数（完全拆分避免GitHub检测）
-        function buildImageUrl(id, date, signature) {
-            const p1 = "https://ark-content-generation-v2-cn-beijing.tos-cn-beijing.volces.com/doubao-seedream-4-0/";
-            const p2 = "?X-Tos-Algorithm=TOS4-HMAC-SHA256";
-            const p3a = "&X-Tos-Credential=A";
-            const p3b = "KLTYWJkZTExNjA1Z";
-            const p3c = "DUyNDc3YzhjNTM5OG";
-            const p3d = "IyNjBhNDcyOTQ%2F20260410%2Fcn-beijing%2Ftos%2Frequest";
-            return p1 + id + ".jpeg" + p2 + p3a + p3b + p3c + p3d + "&X-Tos-Date=" + date + "&X-Tos-Signature=" + signature + "&X-Tos-SignedHeaders=host";
-        }
-        
-        // 三种风格数据 - V6版本
+        // 三种风格数据 - V6版本（本地图片路径）
         const styles = [
             {
                 name: "80s复古Super7",
                 title: "风格 01: 80s复古Super7",
-                front: { id: "021775817902514d72149264581351fe280677b9f79ce0861db63_0", date: "20260410T104459Z", sig: "ddc603997bc17ea11e9e30f618a3e998306d2dc711492eab18943f28c47abec9" },
-                back: { id: "021775817936068b7e5a3f6b5b58609f3aa6cd08780a67ac47d60_0", date: "20260410T104527Z", sig: "49d801dd67b11a45467b62a3564a5f36e2885b3e59d054e3b5e6224eafdd44bd" },
+                front: "./assets/card-designs/style1-front.jpg",
+                back: "./assets/card-designs/style1-back.jpg",
                 desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保角色造型、配色和HIYA MAX Logo准确呈现。",
                 tags: ["复古", "80s", "Super7", "SEEDREAM 4.0"]
             },
             {
                 name: "朋克摇滚Misfits",
                 title: "风格 02: 朋克摇滚Misfits",
-                front: { id: "0217758179914298e13156721812cf3aa873c08415dc3f420459c_0", date: "20260410T104659Z", sig: "680ab01b5d098974a6983548670d05f25806dbf1e943cab36898acb9475a5a48" },
-                back: { id: "021775818023400c63a6ac480f44318ff02bbee696f6110bc0b7f_0", date: "20260410T104727Z", sig: "742ce162117b6e20689a1688a28da4e354e9d94e057dddabccd726def3b243b9" },
+                front: "./assets/card-designs/style2-front.jpg",
+                back: "./assets/card-designs/style2-back.jpg",
                 desc: "受Misfits乐队The Fiend骷髅标志启发，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保恐怖朋克风格下角色形象和HIYA MAX Logo的准确呈现。",
                 tags: ["朋克", "摇滚", "Misfits", "SEEDREAM 4.0"]
             },
             {
                 name: "日系极简Sofubi",
                 title: "风格 03: 日系极简Sofubi",
-                front: { id: "0217758180519468a2cc6176b4dc89676d1081d755bfbd15f2a62_0", date: "20260410T104801Z", sig: "cdf924a0c24d1ecefd3dbbd1f3be8bb73d0c962cc3450e905bdfc5ec55e2b34d" },
-                back: { id: "021775818085286f9065cef9012c43073e2d0226029aed4ec4e8e_0", date: "20260410T104829Z", sig: "d4c2d61e251f68cf5201f2b0693d3354df7ed37aecf4d7eb1684ecc81779ffa1" },
+                front: "./assets/card-designs/style3-front.jpg",
+                back: "./assets/card-designs/style3-back.jpg",
                 desc: "融合日本Sofubi设计师玩具的极简美学，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保禅意风格下角色形象和HIYA MAX Logo的准确呈现。",
                 tags: ["日系", "极简", "Sofubi", "SEEDREAM 4.0"]
             }
@@ -466,7 +455,7 @@
             const container = document.getElementById('thumbnails');
             container.innerHTML = styles.map((s, i) => `
                 <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
-                    <img src="${buildImageUrl(s.front.id, s.front.date, s.front.sig)}" alt="风格${i+1}" loading="lazy">
+                    <img src="${s.front}" alt="风格${i+1}" loading="lazy">
                 </div>
             `).join('');
         }
@@ -496,8 +485,8 @@
         function updateDisplay() {
             const style = styles[currentStyle];
             document.getElementById('showcaseTitle').textContent = style.title;
-            document.getElementById('frontImage').src = buildImageUrl(style.front.id, style.front.date, style.front.sig);
-            document.getElementById('backImage').src = buildImageUrl(style.back.id, style.back.date, style.back.sig);
+            document.getElementById('frontImage').src = style.front;
+            document.getElementById('backImage').src = style.back;
             document.getElementById('styleDesc').textContent = style.desc;
             document.getElementById('styleTags').innerHTML = style.tags.map(t => `<span class="tag">${t}</span>`).join('');
         }
