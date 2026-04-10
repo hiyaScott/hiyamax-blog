@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HIYAMAX 挂卡设计 | 3种风格对比</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        :root {
+            --accent-red: #e63946;
+            --accent-blue: #0077b6;
+            --accent-gold: #c9a86c;
+            --dark-bg: #1a1a2e;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        /* 顶部导航 */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-back {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 主内容区 */
+        .main {
+            padding: 80px 16px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .page-header h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .page-header .subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .page-header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* 风格选择器 */
+        .style-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .style-btn {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid transparent;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .style-btn.active {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .style-btn .style-num {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        
+        /* 展示区域 */
+        .showcase {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .showcase-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        /* 卡片翻转 */
+        .card-container {
+            perspective: 1200px;
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+        
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-wrapper.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            background: #2a2520;
+        }
+        
+        .card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* 翻转控制 */
+        .flip-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .flip-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .flip-btn.active {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            border-color: transparent;
+        }
+        
+        .swipe-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 24px;
+        }
+        
+        /* 风格描述 */
+        .style-info {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .style-info h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: var(--accent-gold);
+        }
+        
+        .style-info p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 12px;
+        }
+        
+        .style-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* 三种缩略图预览 */
+        .thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 32px;
+        }
+        
+        .thumb {
+            aspect-ratio: 3/4;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+            opacity: 0.6;
+        }
+        
+        .thumb:hover, .thumb.active {
+            border-color: var(--accent-gold);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* AI标注 */
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 22px;
+            }
+            .showcase {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="./experiments.html" class="nav-back">← 返回实验</a>
+        <span class="nav-logo">HIYAMAX</span>
+        <span style="width: 40px;"></span>
+    </nav>
+    
+    <main class="main">
+        <div class="page-header">
+            <h1>挂卡设计方案</h1>
+            <div class="subtitle">3种风格对比展示</div>
+            <div class="badge">🎨 AI Generated</div>
+        </div>
+        
+        <!-- 风格选择器 -->
+        <div class="style-selector">
+            <button class="style-btn active" onclick="switchStyle(0)">
+                <span class="style-num">01</span>
+                80s复古Super7
+            </button>
+            <button class="style-btn" onclick="switchStyle(1)">
+                <span class="style-num">02</span>
+                朋克摇滚Misfits
+            </button>
+            <button class="style-btn" onclick="switchStyle(2)">
+                <span class="style-num">03</span>
+                日系极简Sofubi
+            </button>
+        </div>
+        
+        <!-- 主展示区域 -->
+        <div class="showcase">
+            <div class="showcase-title" id="showcaseTitle">风格 01: 80s复古Super7</div>
+            
+            <!-- 卡片翻转 -->
+            <div class="card-container">
+                <div class="card-wrapper" id="cardWrapper">
+                    <div class="card-face card-front">
+                        <img id="frontImage" src="" alt="正面设计">
+                    </div>
+                    <div class="card-face card-back">
+                        <img id="backImage" src="" alt="背面设计">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-controls">
+                <button class="flip-btn active" onclick="flipCard('front')" id="btnFront">📇 正面</button>
+                <button class="flip-btn" onclick="flipCard('back')" id="btnBack">📝 背面</button>
+            </div>
+            
+            <div class="swipe-hint">👆 点击卡片或按钮切换正背面</div>
+            
+            <!-- 风格描述 -->
+            <div class="style-info" id="styleInfo">
+                <h3>设计灵感</h3>
+                <p id="styleDesc">基于Super7 ReAction Figures的经典80年代玩具挂卡风格，采用大胆的红黑配色、复古漫画字体和 tombstone元素，致敬Kenner Star Wars时代的怀旧美学。</p>
+                <div class="style-tags" id="styleTags">
+                    <span class="tag">复古</span>
+                    <span class="tag">80s</span>
+                    <span class="tag">Super7</span>
+                    <span class="tag">怀旧</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 三种风格缩略图 -->
+        <div class="thumbnails">
+            <div class="thumb active" onclick="switchStyle(0)" data-index="0">
+                <img src="https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101538196D37909414986F46D1F2-9001-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893100&x-signature=yYtsFopoIyrEQB6yTXsCgsuqJyI%3D" alt="风格1">
+            </div>
+            <div class="thumb" onclick="switchStyle(1)" data-index="1">
+                <img src="https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410153822EF1ED922E1CF70487A6E-1273-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893103&x-signature=2jVL6tpHxP3b7fw54Dsk%2FefJKQo%3D" alt="风格2">
+            </div>
+            <div class="thumb" onclick="switchStyle(2)" data-index="2">
+                <img src="https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101539266797A3CF43394C32A369-9164-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893166&x-signature=HWf%2B3cQzIFNFg3Z5JF8lnv1iZs8%3D" alt="风格3">
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>HIYAMAX © 2026 | 磁力击掌小人毕业限定版</p>
+        <p>Designed with ❤️ by Max & Dad <span class="ai-badge">AI Generated</span></p>
+    </footer>
+    
+    <script>
+        // 三种风格数据
+        const styles = [
+            {
+                name: "80s复古Super7",
+                title: "风格 01: 80s复古Super7",
+                front: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101538196D37909414986F46D1F2-9001-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893100&x-signature=yYtsFopoIyrEQB6yTXsCgsuqJyI%3D",
+                back: "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410155104FC00918E82629032B0B4-4160-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893865&x-signature=A%2F1nApudsoiRIcUppi2UakO8zz8%3D",
+                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，采用大胆的红黑配色、复古漫画字体和墓碑元素，致敬Kenner Star Wars时代的怀旧美学。",
+                tags: ["复古", "80s", "Super7", "怀旧", "漫画风"]
+            },
+            {
+                name: "朋克摇滚Misfits",
+                title: "风格 02: 朋克摇滚Misfits",
+                front: "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410153822EF1ED922E1CF70487A6E-1273-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893103&x-signature=2jVL6tpHxP3b7fw54Dsk%2FefJKQo%3D",
+                back: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101551071A2789E4351B664ABEEB-3417-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893867&x-signature=s7zCcxUFC0KUgx%2FB0H4GQnpv010%3D",
+                desc: "受Misfits乐队The Fiend骷髅标志启发，采用高对比度的黑白配色搭配血红点缀， dripping horror字体和朋克摇滚美学，充满叛逆与个性。",
+                tags: ["朋克", "摇滚", "Misfits", "恐怖", "黑白"]
+            },
+            {
+                name: "日系极简Sofubi",
+                title: "风格 03: 日系极简Sofubi",
+                front: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101539266797A3CF43394C32A369-9164-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893166&x-signature=HWf%2B3cQzIFNFg3Z5JF8lnv1iZs8%3D",
+                back: "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410154303275C6786C391C149578D-4350-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893384&x-signature=a8zn3RgkSGEQkBeE5rfeOB7Bimk%3D",
+                desc: "融合日本Sofubi设计师玩具的极简美学，采用和纸纹理、樱花粉与靛蓝配色，留白构图与禅意排版，呈现Medicom Toy式的精致与克制。",
+                tags: ["日系", "极简", "Sofubi", "禅意", "精致"]
+            }
+        ];
+        
+        let currentStyle = 0;
+        let isFlipped = false;
+        
+        // 初始化
+        function init() {
+            updateDisplay();
+            setupTouchEvents();
+        }
+        
+        // 切换风格
+        function switchStyle(index) {
+            currentStyle = index;
+            isFlipped = false;
+            document.getElementById('cardWrapper').classList.remove('flipped');
+            document.getElementById('btnFront').classList.add('active');
+            document.getElementById('btnBack').classList.remove('active');
+            
+            // 更新按钮状态
+            document.querySelectorAll('.style-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            
+            // 更新缩略图状态
+            document.querySelectorAll('.thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+            
+            updateDisplay();
+        }
+        
+        // 更新显示内容
+        function updateDisplay() {
+            const style = styles[currentStyle];
+            document.getElementById('showcaseTitle').textContent = style.title;
+            document.getElementById('frontImage').src = style.front;
+            document.getElementById('backImage').src = style.back;
+            document.getElementById('styleDesc').textContent = style.desc;
+            
+            // 更新标签
+            const tagsHtml = style.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            document.getElementById('styleTags').innerHTML = tagsHtml;
+        }
+        
+        // 翻转卡片
+        function flipCard(side) {
+            const wrapper = document.getElementById('cardWrapper');
+            const btnFront = document.getElementById('btnFront');
+            const btnBack = document.getElementById('btnBack');
+            
+            if (side === 'back') {
+                wrapper.classList.add('flipped');
+                btnFront.classList.remove('active');
+                btnBack.classList.add('active');
+                isFlipped = true;
+            } else {
+                wrapper.classList.remove('flipped');
+                btnBack.classList.remove('active');
+                btnFront.classList.add('active');
+                isFlipped = false;
+            }
+        }
+        
+        // 触摸滑动支持
+        function setupTouchEvents() {
+            const wrapper = document.getElementById('cardWrapper');
+            let touchStartX = 0;
+            let touchStartY = 0;
+            
+            wrapper.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, {passive: true});
+            
+            wrapper.addEventListener('touchend', e => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
+                
+                // 水平滑动翻转卡片
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        flipCard('back');
+                    } else {
+                        flipCard('front');
+                    }
+                }
+            }, {passive: true});
+            
+            // 点击翻转
+            wrapper.addEventListener('click', () => {
+                flipCard(isFlipped ? 'front' : 'back');
+            });
+        }
+        
+        // 页面加载时初始化
+        init();
+    </script>
+</body>
+</html>
