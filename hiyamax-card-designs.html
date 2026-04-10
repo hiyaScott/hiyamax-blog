@@ -518,15 +518,16 @@
     </footer>
     
     <script>
-        // 五种风格数据 - 移动端优化版
+        // 五种风格数据 - 移动端优化版 (使用绝对路径)
+        const BASE_URL = "https://hiyascott.github.io/hiyamax-blog";
         const styles = [
             {
                 name: "80s复古",
                 fullName: "80s复古Super7",
                 title: "风格 01: 80s复古Super7",
-                front: "./assets/card-designs/style1-front.jpg?v=3",
-                back: "./assets/card-designs/style1-back.jpg?v=3",
-                thumb: "./assets/card-designs/style1-front.jpg?v=3",
+                front: `${BASE_URL}/assets/card-designs/style1-front.jpg?v=4`,
+                back: `${BASE_URL}/assets/card-designs/style1-back.jpg?v=4`,
+                thumb: `${BASE_URL}/assets/card-designs/style1-front.jpg?v=4`,
                 desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图。",
                 tags: ["复古", "80s", "Super7"]
             },
@@ -534,9 +535,9 @@
                 name: "朋克摇滚",
                 fullName: "朋克摇滚Misfits",
                 title: "风格 02: 朋克摇滚Misfits",
-                front: "./assets/card-designs/style2-front.jpg?v=3",
-                back: "./assets/card-designs/style2-back.jpg?v=3",
-                thumb: "./assets/card-designs/style2-front.jpg?v=3",
+                front: `${BASE_URL}/assets/card-designs/style2-front.jpg?v=4`,
+                back: `${BASE_URL}/assets/card-designs/style2-back.jpg?v=4`,
+                thumb: `${BASE_URL}/assets/card-designs/style2-front.jpg?v=4`,
                 desc: "受Misfits乐队The Fiend骷髅标志启发的恐怖朋克风格。",
                 tags: ["朋克", "摇滚", "Misfits"]
             },
@@ -544,9 +545,9 @@
                 name: "日系极简",
                 fullName: "日系极简Sofubi",
                 title: "风格 03: 日系极简Sofubi",
-                front: "./assets/card-designs/style3-front.jpg?v=3",
-                back: "./assets/card-designs/style3-back.jpg?v=3",
-                thumb: "./assets/card-designs/style3-front.jpg?v=3",
+                front: `${BASE_URL}/assets/card-designs/style3-front.jpg?v=4`,
+                back: `${BASE_URL}/assets/card-designs/style3-back.jpg?v=4`,
+                thumb: `${BASE_URL}/assets/card-designs/style3-front.jpg?v=4`,
                 desc: "融合日本Sofubi设计师玩具的极简美学与禅意风格。",
                 tags: ["日系", "极简", "Sofubi"]
             },
@@ -554,9 +555,9 @@
                 name: "苏富比",
                 fullName: "苏富比拍卖",
                 title: "风格 04: 苏富比艺术拍卖",
-                front: "./assets/card-designs/style4-front.jpg?v=3",
-                back: "./assets/card-designs/style4-back.jpg?v=3",
-                thumb: "./assets/card-designs/style4-front.jpg?v=3",
+                front: `${BASE_URL}/assets/card-designs/style4-front.jpg?v=4`,
+                back: `${BASE_URL}/assets/card-designs/style4-back.jpg?v=4`,
+                thumb: `${BASE_URL}/assets/card-designs/style4-front.jpg?v=4`,
                 desc: "苏富比拍卖行当代艺术图录风格，奢华金箔烫印。",
                 tags: ["苏富比", "艺术拍卖", "奢华"]
             },
@@ -564,9 +565,9 @@
                 name: "邪胶妖怪",
                 fullName: "邪胶妖怪Sofubi",
                 title: "风格 05: 邪胶妖怪Sofubi",
-                front: "./assets/card-designs/style5-front.jpg?v=3",
-                back: "./assets/card-designs/style5-back.jpg?v=3",
-                thumb: "./assets/card-designs/style5-front.jpg?v=3",
+                front: `${BASE_URL}/assets/card-designs/style5-front.jpg?v=4`,
+                back: `${BASE_URL}/assets/card-designs/style5-back.jpg?v=4`,
+                thumb: `${BASE_URL}/assets/card-designs/style5-front.jpg?v=4`,
                 desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学。",
                 tags: ["邪胶", "妖怪", "Sofubi"]
             }
