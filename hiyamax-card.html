@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HIYAMAX 磁力击掌小人 | 毕业季限定</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        :root {
+            --card-bg: #f5e6c8;
+            --card-dark: #2a2520;
+            --accent-red: #e63946;
+            --accent-blue: #0077b6;
+            --accent-gold: #c9a86c;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        /* 顶部导航 */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-back {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 主内容区 */
+        .main {
+            padding: 60px 16px 100px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .page-header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .page-header .subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+        
+        .page-header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+        
+        /* 卡片翻转容器 */
+        .card-container {
+            perspective: 1200px;
+            margin-bottom: 24px;
+        }
+        
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-wrapper.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* 正面设计 - 复古卡头风格 */
+        .card-front-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* 挂孔 */
+        .hanger-hole {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            z-index: 10;
+        }
+        
+        .hanger-hole::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+        }
+        
+        /* 头卡区域 */
+        .header-card {
+            background: linear-gradient(180deg, #2a2520 0%, #3d3530 100%);
+            padding: 48px 16px 16px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-gold);
+            position: relative;
+        }
+        
+        .header-card::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 8px solid var(--accent-gold);
+        }
+        
+        .brand-logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        
+        .brand-logo .hi {
+            color: var(--accent-red);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+        
+        .brand-logo .ya {
+            color: var(--accent-blue);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+        
+        .brand-logo .max {
+            color: #fff;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+        
+        .brand-sub {
+            font-size: 12px;
+            color: var(--accent-gold);
+            letter-spacing: 6px;
+            font-weight: 500;
+        }
+        
+        .brand-tagline {
+            font-size: 10px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        
+        /* 吸塑窗口区域 */
+        .blister-area {
+            flex: 1;
+            background: linear-gradient(135deg, #e8dcc0 0%, #d4c4a8 50%, #c9b896 100%);
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .blister-frame {
+            background: rgba(255,255,255,0.4);
+            border: 2px dashed var(--accent-gold);
+            border-radius: 12px;
+            padding: 16px;
+            width: 100%;
+            max-width: 240px;
+            text-align: center;
+        }
+        
+        .blister-label {
+            font-size: 9px;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        
+        .toy-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0;
+        }
+        
+        .toy-figure {
+            width: 60px;
+            height: 90px;
+            border-radius: 30px 30px 15px 15px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .toy-figure.red {
+            background: linear-gradient(135deg, #ff6b6b, #e63946);
+        }
+        
+        .toy-figure.blue {
+            background: linear-gradient(135deg, #48cae4, #0077b6);
+        }
+        
+        .toy-figure::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .toy-figure::after {
+            content: '◡';
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .magnet-effect {
+            font-size: 24px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        .toy-names {
+            display: flex;
+            justify-content: space-around;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .toy-names .name-red { color: var(--accent-red); }
+        .toy-names .name-blue { color: var(--accent-blue); }
+        
+        /* Slogan */
+        .slogan-box {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            margin: 16px -16px -20px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .slogan-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .slogan-sub {
+            font-size: 10px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+        
+        /* 底部信息 */
+        .card-footer {
+            background: var(--card-dark);
+            padding: 12px 16px;
+            text-align: center;
+        }
+        
+        .edition-badge {
+            display: inline-block;
+            border: 1px solid var(--accent-gold);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+        
+        .size-info {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 6px;
+        }
+        
+        /* 背面设计 - File Card风格 */
+        .card-back-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+        }
+        
+        .back-header {
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent-gold);
+            margin-bottom: 16px;
+        }
+        
+        .back-logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 4px;
+        }
+        
+        .back-logo .hi { color: var(--accent-red); }
+        .back-logo .ya { color: var(--accent-blue); }
+        .back-logo .max { color: var(--card-dark); }
+        
+        .back-sub {
+            font-size: 10px;
+            color: #8b7355;
+            letter-spacing: 4px;
+        }
+        
+        /* File Card 样式 */
+        .file-card {
+            background: #fff;
+            border: 2px solid var(--card-dark);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .file-card-header {
+            background: var(--card-dark);
+            color: #fff;
+            padding: 8px 12px;
+            margin: -12px -12px 12px;
+            border-radius: 6px 6px 0 0;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-card-header .code {
+            font-size: 9px;
+            color: var(--accent-gold);
+            font-family: monospace;
+        }
+        
+        .message-area {
+            background: linear-gradient(135deg, #f8f4e8, #f0e8d8);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .message-label {
+            font-size: 10px;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .message-lines {
+            font-size: 13px;
+            line-height: 2;
+            color: var(--card-dark);
+        }
+        
+        .message-lines .line {
+            border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+            min-height: 26px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .message-lines .line.prefill {
+            border-bottom: none;
+            font-weight: 600;
+        }
+        
+        .message-signature {
+            text-align: right;
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+        
+        /* 产品规格 */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 10px;
+        }
+        
+        .spec-item {
+            background: rgba(0,0,0,0.05);
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .spec-label {
+            color: #8b7355;
+            font-size: 9px;
+            margin-bottom: 2px;
+        }
+        
+        .spec-value {
+            color: var(--card-dark);
+            font-weight: 600;
+        }
+        
+        /* 故事区 */
+        .story-box {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(0, 119, 182, 0.1));
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+        
+        .story-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--card-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .story-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #5a4a3a;
+        }
+        
+        .back-footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--accent-gold);
+        }
+        
+        .back-footer .website {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--card-dark);
+            letter-spacing: 2px;
+        }
+        
+        .back-footer .copyright {
+            font-size: 8px;
+            color: #8b7355;
+            margin-top: 4px;
+        }
+        
+        /* 翻转控制 */
+        .flip-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .flip-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .flip-btn.active {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            border-color: transparent;
+        }
+        
+        /* 详情区 */
+        .details-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .details-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .detail-value {
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* 提示 */
+        .swipe-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            animation: fadeInOut 2s infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="./experiments.html" class="nav-back">← 返回</a>
+        <span class="nav-logo">HIYAMAX</span>
+        <span style="width: 40px;"></span>
+    </nav>
+    
+    <main class="main">
+        <div class="page-header">
+            <h1>磁力击掌小人</h1>
+            <div class="subtitle">Magnetic High-Five Figures</div>
+            <div class="badge">🎓 2026 毕业季限定版</div>
+        </div>
+        
+        <div class="card-container">
+            <div class="card-wrapper" id="cardWrapper">
+                <!-- 正面 -->
+                <div class="card-face card-front">
+                    <div class="card-front-inner">
+                        <div class="hanger-hole"></div>
+                        
+                        <div class="header-card">
+                            <div class="brand-logo">
+                                <span class="hi">HI</span><span class="ya">YA</span><span class="max">MAX</span>
+                            </div>
+                            <div class="brand-sub">嗨呀 · Max</div>
+                            <div class="brand-tagline">相遇，从这一刻开始</div>
+                        </div>
+                        
+                        <div class="blister-area">
+                            <div class="blister-frame">
+                                <div class="blister-label">▼ 吸塑展示窗 ▼</div>
+                                
+                                <div class="toy-display">
+                                    <div class="toy-figure red"></div>
+                                    <div class="magnet-effect">🧲</div>
+                                    <div class="toy-figure blue"></div>
+                                </div>
+                                
+                                <div class="toy-names">
+                                    <span class="name-red">● Hiya (红)</span>
+                                    <span class="name-blue">Max (蓝) ●</span>
+                                </div>
+                            </div>
+                            
+                            <div class="slogan-box">
+                                <div class="slogan-text">"啪，又吸住了"</div>
+                                <div class="slogan-sub">Snap! We're Connected Again</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="edition-badge">毕业季限定 · 两个装</div>
+                            <div class="size-info">8CM × 2 | 磁吸设计 | 2026.6</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 背面 -->
+                <div class="card-face card-back">
+                    <div class="card-back-inner">
+                        <div class="back-header">
+                            <div class="back-logo">
+                                <span class="hi">HI</span><span class="ya">YA</span><span class="max">MAX</span>
+                            </div>
+                            <div class="back-sub">FILE CARD · 角色档案</div>
+                        </div>
+                        
+                        <div class="file-card">
+                            <div class="file-card-header">
+                                <span>寄语留言板</span>
+                                <span class="code">HM-2026-GRAD</span>
+                            </div>
+                            
+                            <div class="message-area">
+                                <div class="message-label">[ 给同学的毕业礼物 ]</div>
+                                <div class="message-lines">
+                                    <div class="line">送给：<span style="color:#ccc;">________________</span></div>
+                                    <div class="line prefill">我们初中见！</div>
+                                    <div class="line prefill">这两个小人会像我们一样，</div>
+                                    <div class="line prefill">分开时会想念，靠近时会吸住。</div>
+                                </div>
+                                <div class="message-signature">
+                                    —— Max 🎓 2026.6
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">材质</div>
+                                <div class="spec-value">ABS + 强磁</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">尺寸</div>
+                                <div class="spec-value">8cm × 2</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">配色</div>
+                                <div class="spec-value">红(Hiya) / 蓝(Max)</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">限量</div>
+                                <div class="spec-value">2026毕业版</div>
+                            </div>
+                        </div>
+                        
+                        <div class="story-box">
+                            <div class="story-title">
+                                <span>📖</span> 品牌故事
+                            </div>
+                            <div class="story-text">
+                                Hiya Max = "嗨呀，Max"<br>
+                                像远远看见朋友时的那一声招呼。<br>
+                                代表久别重逢，代表再次相遇。<br>
+                                美好的相遇，就从这一刻开始。
+                            </div>
+                        </div>
+                        
+                        <div class="back-footer">
+                            <div class="website">hiyamax.io</div>
+                            <div class="copyright">Designed by Max & Dad · 2026 Limited Edition</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flip-controls">
+            <button class="flip-btn active" onclick="flipCard('front')" id="btnFront">
+                <span>正面</span>
+            </button>
+            <button class="flip-btn" onclick="flipCard('back')" id="btnBack">
+                <span>背面</span>
+            </button>
+        </div>
+        
+        <div class="swipe-hint">👆 点击按钮或左右滑动切换正背面</div>
+        
+        <div class="details-section">
+            <div class="details-title">
+                <span>📋</span> 产品规格
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">包装尺寸</span>
+                <span class="detail-value">15cm × 18cm</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">卡纸材质</span>
+                <span class="detail-value">350g铜版纸 · 哑光覆膜</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">印刷工艺</span>
+                <span class="detail-value">四色印刷 · 局部UV</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">玩具材质</span>
+                <span class="detail-value">ABS塑料 + 钕铁硼强磁</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">设计理念</span>
+                <span class="detail-value">复古80s玩具卡头风格</span>
+            </div>
+        </div>
+        
+        <div class="details-section">
+            <div class="details-title">
+                <span>🎓</span> 毕业礼物故事
+            </div>
+            <div style="font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.8);">
+                <p style="margin-bottom: 12px;">
+                    Max是上海的一名五年级小学生。上海的小学只有五年，毕业后同学们将各奔东西，进入不同的初中。
+                </p>
+                <p style="margin-bottom: 12px;">
+                    这是Max和爸爸一起设计的原创潮玩。红色的Hiya代表热情，蓝色的Max代表沉静，当它们靠近时会因为磁力而"击掌"吸在一起。
+                </p>
+                <p>
+                    就像即将分开的同学们——<br>
+                    <strong style="color: var(--accent-red);">暂时分开，但总会再遇见。</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>HIYAMAX © 2026</p>
+        <p>Designed with ❤️ by Max & Dad</p>
+    </footer>
+    
+    <script>
+        // 卡片翻转控制
+        function flipCard(side) {
+            const wrapper = document.getElementById('cardWrapper');
+            const btnFront = document.getElementById('btnFront');
+            const btnBack = document.getElementById('btnBack');
+            
+            if (side === 'back') {
+                wrapper.classList.add('flipped');
+                btnFront.classList.remove('active');
+                btnBack.classList.add('active');
+            } else {
+                wrapper.classList.remove('flipped');
+                btnBack.classList.remove('active');
+                btnFront.classList.add('active');
+            }
+        }
+        
+        // 触摸滑动支持
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const wrapper = document.getElementById('cardWrapper');
+        
+        wrapper.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        wrapper.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+        
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    flipCard('back');
+                } else {
+                    flipCard('front');
+                }
+            }
+        }
+        
+        // 鼠标点击翻转
+        wrapper.addEventListener('click', () => {
+            const isFlipped = wrapper.classList.contains('flipped');
+            flipCard(isFlipped ? 'front' : 'back');
+        });
+    </script>
+</body>
+</html>
