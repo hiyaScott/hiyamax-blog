@@ -678,14 +678,22 @@
             const img = document.getElementById(imgId);
             const container = document.getElementById(containerId);
             
+            // 如果src相同，不需要重新加载
+            if (img.src && img.src.includes(src.replace('./', ''))) {
+                return;
+            }
+            
             img.classList.remove('loaded');
             container.classList.add('skeleton');
             
-            // 检查是否已缓存
-            if (preloadedImages.has(src)) {
-                img.src = src;
+            // 强制立即设置src
+            img.src = src;
+            
+            // 如果图片已缓存（complete且naturalWidth > 0）
+            if (img.complete && img.naturalWidth > 0) {
                 img.classList.add('loaded');
                 container.classList.remove('skeleton');
+                preloadedImages.add(src);
             } else {
                 img.onload = () => {
                     img.classList.add('loaded');
@@ -694,8 +702,8 @@
                 };
                 img.onerror = () => {
                     container.classList.remove('skeleton');
+                    console.error('图片加载失败:', src);
                 };
-                img.src = src;
             }
         }
         
