@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIYAMAX 挂卡设计 V6</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #f5f5f5;
+        }
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: 12px 16px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-back { color: #c9a86c; text-decoration: none; font-size: 14px; }
+        .nav-logo { font-weight: 800; font-size: 16px; letter-spacing: 2px; color: white; }
+        
+        .main { padding: 70px 12px 24px; max-width: 480px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { font-size: 22px; margin-bottom: 8px; color: white; }
+        .header p { font-size: 12px; color: rgba(255,255,255,0.6); }
+        
+        /* 风格标签 */
+        .tabs {
+            display: flex; gap: 8px; overflow-x: auto;
+            padding-bottom: 8px; margin-bottom: 16px;
+        }
+        .tab {
+            flex-shrink: 0; padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px; font-size: 12px;
+            cursor: pointer; white-space: nowrap;
+        }
+        .tab.active { background: #e63946; }
+        
+        /* 图片展示 */
+        .showcase {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px; padding: 16px;
+            margin-bottom: 16px;
+        }
+        .showcase h3 {
+            text-align: center; font-size: 14px;
+            color: #c9a86c; margin-bottom: 12px;
+        }
+        .image-container {
+            position: relative;
+            width: 100%; max-width: 280px;
+            margin: 0 auto 12px;
+            border-radius: 8px; overflow: hidden;
+        }
+        .image-container img {
+            width: 100%; height: auto; display: block;
+        }
+        
+        /* 切换按钮 */
+        .buttons {
+            display: flex; justify-content: center; gap: 12px;
+        }
+        .btn {
+            padding: 8px 20px; border-radius: 20px;
+            border: none; font-size: 13px; cursor: pointer;
+        }
+        .btn-primary { background: #c9a86c; color: #1a1a2e; }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: white; }
+        
+        .desc {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px; padding: 16px;
+        }
+        .desc h4 { font-size: 13px; color: #c9a86c; margin-bottom: 8px; }
+        .desc p { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+        .tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px; border-radius: 10px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="./experiments.html" class="nav-back">← 返回</a>
+        <span class="nav-logo">HIYAMAX</span>
+        <span></span>
+    </nav>
+    
+    <main class="main">
+        <div class="header">
+            <h1>挂卡设计方案 V6</h1>
+            <p>SEEDREAM 4.0 · 5种风格 · 正背面设计</p>
+        </div>
+        
+        <!-- 风格选择 -->
+        <div class="tabs" id="tabs"></div>
+        
+        <!-- 图片展示 -->
+        <div class="showcase">
+            <h3 id="styleTitle">风格 01: 80s复古Super7</h3>
+            
+            <div class="image-container">
+                <img id="mainImage" src="" alt="挂卡设计">
+            </div>
+            
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="showSide('front')">📇 正面</button>
+                <button class="btn btn-secondary" onclick="showSide('back')">📝 背面</button>
+            </div>
+        </div>
+        
+        <!-- 描述 -->
+        <div class="desc">
+            <h4>设计灵感</h4>
+            <p id="styleDesc">加载中...</p>
+            <div class="tags" id="styleTags"></div>
+        </div>
+    </main>
+    
+    <script>
+        // 图片数据 - 直接使用 GitHub raw URL 避免 CDN 问题
+        const styles = [
+            {
+                name: "80s复古",
+                title: "风格 01: 80s复古Super7",
+                front: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style1-front.jpg",
+                back: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style1-back.jpg",
+                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图。",
+                tags: ["复古", "80s", "Super7"]
+            },
+            {
+                name: "朋克摇滚",
+                title: "风格 02: 朋克摇滚Misfits",
+                front: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style2-front.jpg",
+                back: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style2-back.jpg",
+                desc: "受Misfits乐队The Fiend骷髅标志启发的恐怖朋克风格。",
+                tags: ["朋克", "摇滚", "Misfits"]
+            },
+            {
+                name: "日系极简",
+                title: "风格 03: 日系极简Sofubi",
+                front: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style3-front.jpg",
+                back: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style3-back.jpg",
+                desc: "融合日本Sofubi设计师玩具的极简美学与禅意风格。",
+                tags: ["日系", "极简", "Sofubi"]
+            },
+            {
+                name: "苏富比",
+                title: "风格 04: 苏富比艺术拍卖",
+                front: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style4-front.jpg",
+                back: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style4-back.jpg",
+                desc: "苏富比拍卖行当代艺术图录风格，奢华金箔烫印。",
+                tags: ["苏富比", "艺术拍卖", "奢华"]
+            },
+            {
+                name: "邪胶妖怪",
+                title: "风格 05: 邪胶妖怪Sofubi",
+                front: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style5-front.jpg",
+                back: "https://raw.githubusercontent.com/hiyaScott/hiyamax-blog/main/assets/card-designs/style5-back.jpg",
+                desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学。",
+                tags: ["邪胶", "妖怪", "Sofubi"]
+            }
+        ];
+        
+        let currentStyle = 0;
+        let currentSide = 'front';
+        
+        // 初始化
+        function init() {
+            // 生成标签
+            const tabsContainer = document.getElementById('tabs');
+            tabsContainer.innerHTML = styles.map((s, i) => 
+                `<div class="tab ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})">${s.name}</div>`
+            ).join('');
+            
+            updateDisplay();
+        }
+        
+        // 切换风格
+        function switchStyle(index) {
+            currentStyle = index;
+            currentSide = 'front';
+            
+            // 更新标签样式
+            document.querySelectorAll('.tab').forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            
+            updateDisplay();
+        }
+        
+        // 切换正背面
+        function showSide(side) {
+            currentSide = side;
+            
+            // 更新按钮样式
+            const buttons = document.querySelectorAll('.btn');
+            buttons[0].className = side === 'front' ? 'btn btn-primary' : 'btn btn-secondary';
+            buttons[1].className = side === 'back' ? 'btn btn-primary' : 'btn btn-secondary';
+            
+            updateImage();
+        }
+        
+        // 更新显示
+        function updateDisplay() {
+            const style = styles[currentStyle];
+            document.getElementById('styleTitle').textContent = style.title;
+            document.getElementById('styleDesc').textContent = style.desc;
+            document.getElementById('styleTags').innerHTML = style.tags.map(t => 
+                `<span class="tag">${t}</span>`
+            ).join('');
+            
+            updateImage();
+        }
+        
+        // 更新图片 - 最简单的方式
+        function updateImage() {
+            const style = styles[currentStyle];
+            const imgUrl = currentSide === 'front' ? style.front : style.back;
+            const img = document.getElementById('mainImage');
+            
+            // 添加时间戳避免缓存
+            img.src = imgUrl + '?t=' + Date.now();
+        }
+        
+        // 启动
+        init();
+    </script>
+</body>
+</html>
