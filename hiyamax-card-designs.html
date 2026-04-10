@@ -341,6 +341,14 @@
                 <span class="style-num">03</span>
                 日系极简Sofubi
             </button>
+            <button class="style-btn" onclick="switchStyle(3)">
+                <span class="style-num">04</span>
+                苏富比拍卖
+            </button>
+            <button class="style-btn" onclick="switchStyle(4)">
+                <span class="style-num">05</span>
+                邪胶妖怪
+            </button>
         </div>
         
         <!-- 主展示区域 -->
@@ -412,7 +420,7 @@
     </footer>
     
     <script>
-        // 三种风格数据 - V6版本（本地图片路径 + 时间戳防缓存）
+        // 五种风格数据 - V6版本（本地图片路径 + 时间戳防缓存）
         const styles = [
             {
                 name: "80s复古Super7",
@@ -437,6 +445,22 @@
                 back: "./assets/card-designs/style3-back.jpg?v=2",
                 desc: "融合日本Sofubi设计师玩具的极简美学，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保禅意风格下角色形象和HIYA MAX Logo的准确呈现。",
                 tags: ["日系", "极简", "Sofubi", "SEEDREAM 4.0"]
+            },
+            {
+                name: "苏富比拍卖",
+                title: "风格 04: 苏富比艺术拍卖",
+                front: "./assets/card-designs/style4-front.jpg?v=2",
+                back: "./assets/card-designs/style4-back.jpg?v=2",
+                desc: "苏富比拍卖行当代艺术图录风格，采用奢华的奶油色亚麻纹理与金箔烫印，呈现出博物馆级的收藏家版本气质。",
+                tags: ["苏富比", "艺术拍卖", "奢华", "SEEDREAM 4.0"]
+            },
+            {
+                name: "邪胶妖怪",
+                title: "风格 05: 邪胶妖怪Sofubi",
+                front: "./assets/card-designs/style5-front.jpg?v=2",
+                back: "./assets/card-designs/style5-back.jpg?v=2",
+                desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学，呈现出被诅咒的可爱幽灵气韵。",
+                tags: ["邪胶", "妖怪", "Sofubi", "SEEDREAM 4.0"]
             }
         ];
         
