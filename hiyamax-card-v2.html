@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HIYAMAX 磁力击掌小人 | 毕业季限定</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        :root {
+            --accent-red: #e63946;
+            --accent-blue: #0077b6;
+            --accent-gold: #c9a86c;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        /* 顶部导航 */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-back {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 主内容区 */
+        .main {
+            padding: 60px 16px 100px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .page-header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .page-header .subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+        
+        .page-header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+        
+        /* 卡片翻转容器 */
+        .card-container {
+            perspective: 1200px;
+            margin-bottom: 24px;
+        }
+        
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-wrapper.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            background: #2a2520;
+        }
+        
+        .card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* 翻转控制 */
+        .flip-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .flip-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .flip-btn.active {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            border-color: transparent;
+        }
+        
+        /* 提示 */
+        .swipe-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            animation: fadeInOut 2s infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* 详情区 */
+        .details-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .details-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .detail-value {
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        /* AI图片标注 */
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="./experiments.html" class="nav-back">← 返回</a>
+        <span class="nav-logo">HIYAMAX</span>
+        <span style="width: 40px;"></span>
+    </nav>
+    
+    <main class="main">
+        <div class="page-header">
+            <h1>磁力击掌小人</h1>
+            <div class="subtitle">Magnetic High-Five Figures</div>
+            <div class="badge">🎓 2026 毕业季限定版</div>
+        </div>
+        
+        <!-- 卡片翻转容器 - AI生成托片 -->
+        <div class="card-container">
+            <div class="card-wrapper" id="cardWrapper">
+                <!-- 正面 - AI生成托片 -->
+                <div class="card-face card-front">
+                    <img src="https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410152139605BA213440A9C45C8AB-6696-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775892099&x-signature=5t1Ip53EkukxHUh69Ego3KaPtcg%3D" 
+                         alt="Hiyamax正面托片"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22%3E%3Crect fill=%22%23f5e6c8%22 width=%22400%22 height=%22533%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23333%22%3E正面托片加载中...%3C/text%3E%3C/svg%3E'">
+                </div>
+                
+                <!-- 背面 - AI生成托片 -->
+                <div class="card-face card-back">
+                    <img src="https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101521419B50DA7F88BCB13146C6-6489-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775892102&x-signature=uzyJavWU%2B%2BiagMlZsHXEVKJuxds%3D" 
+                         alt="Hiyamax背面托片"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22%3E%3Crect fill=%22%23f5e6c8%22 width=%22400%22 height=%22533%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23333%22%3E背面托片加载中...%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+        
+        <div class="flip-controls">
+            <button class="flip-btn active" onclick="flipCard('front')" id="btnFront">
+                <span>📇 正面</span>
+            </button>
+            <button class="flip-btn" onclick="flipCard('back')" id="btnBack">
+                <span>📝 背面</span>
+            </button>
+        </div>
+        
+        <div class="swipe-hint">👆 点击按钮或左右滑动切换正背面</div>
+        
+        <div class="details-section">
+            <div class="details-title">
+                <span>🎨</span> 托片设计
+                <span class="ai-badge">AI Generated</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">设计风格</span>
+                <span class="detail-value">1980s复古Sofubi头卡</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">正面元素</span>
+                <span class="detail-value">品牌Logo+吸塑窗口+slogan</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">背面元素</span>
+                <span class="detail-value">File Card档案卡+寄语区</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">生成工具</span>
+                <span class="detail-value">火山引擎即梦AI</span>
+            </div>
+        </div>
+        
+        <div class="details-section">
+            <div class="details-title">
+                <span>📋</span> 产品规格
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">包装尺寸</span>
+                <span class="detail-value">15cm × 18cm</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">卡纸材质</span>
+                <span class="detail-value">350g铜版纸 · 哑光覆膜</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">印刷工艺</span>
+                <span class="detail-value">四色印刷 · 局部UV</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">玩具材质</span>
+                <span class="detail-value">ABS塑料 + 钕铁硼强磁</span>
+            </div>
+        </div>
+        
+        <div class="details-section">
+            <div class="details-title">
+                <span>🎓</span> 毕业礼物故事
+            </div>
+            <div style="font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.8);">
+                <p style="margin-bottom: 12px;">
+                    Max是上海的一名五年级小学生。上海的小学只有五年，毕业后同学们将各奔东西，进入不同的初中。
+                </p>
+                <p style="margin-bottom: 12px;">
+                    这是Max和爸爸一起设计的原创潮玩。红色的Hiya代表热情，蓝色的Max代表沉静，当它们靠近时会因为磁力而"击掌"吸在一起。
+                </p>
+                <p>
+                    就像即将分开的同学们——<br>
+                    <strong style="color: var(--accent-red);">暂时分开，但总会再遇见。</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>HIYAMAX © 2026</p>
+        <p>Designed with ❤️ by Max & Dad</p>
+    </footer>
+    
+    <script>
+        // 卡片翻转控制
+        function flipCard(side) {
+            const wrapper = document.getElementById('cardWrapper');
+            const btnFront = document.getElementById('btnFront');
+            const btnBack = document.getElementById('btnBack');
+            
+            if (side === 'back') {
+                wrapper.classList.add('flipped');
+                btnFront.classList.remove('active');
+                btnBack.classList.add('active');
+            } else {
+                wrapper.classList.remove('flipped');
+                btnBack.classList.remove('active');
+                btnFront.classList.add('active');
+            }
+        }
+        
+        // 触摸滑动支持
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const wrapper = document.getElementById('cardWrapper');
+        
+        wrapper.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        wrapper.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+        
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    flipCard('back');
+                } else {
+                    flipCard('front');
+                }
+            }
+        }
+        
+        // 鼠标点击翻转
+        wrapper.addEventListener('click', () => {
+            const isFlipped = wrapper.classList.contains('flipped');
+            flipCard(isFlipped ? 'front' : 'back');
+        });
+    </script>
+</body>
+</html>
