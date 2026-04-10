@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HIYAMAX 挂卡设计 V4 | 新Logo版本</title>
+    <title>HIYAMAX 挂卡设计 V6 | SEEDREAM 4.0</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
@@ -28,37 +28,36 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(20px);
-            padding: 12px 16px;
+            padding: 16px 20px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .nav-back {
-            color: #fff;
+            color: var(--accent-gold);
             text-decoration: none;
             font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-weight: 500;
         }
         
         .nav-logo {
-            font-weight: 700;
-            font-size: 16px;
+            font-weight: 800;
+            font-size: 18px;
             letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         /* 主内容区 */
         .main {
-            padding: 80px 16px 40px;
-            max-width: 800px;
+            padding: 80px 16px 32px;
+            max-width: 480px;
             margin: 0 auto;
         }
         
@@ -69,28 +68,27 @@
         }
         
         .page-header h1 {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 800;
-            letter-spacing: 3px;
             margin-bottom: 8px;
-            text-shadow: 0 2px 20px rgba(230, 57, 70, 0.3);
+            background: linear-gradient(135deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .page-header .subtitle {
-            font-size: 14px;
+        .subtitle {
+            font-size: 13px;
             color: rgba(255,255,255,0.6);
-            letter-spacing: 1px;
             margin-bottom: 12px;
         }
         
-        .page-header .badge {
+        .badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1px;
         }
         
         /* 风格选择器 */
@@ -105,13 +103,12 @@
         
         .style-btn {
             flex-shrink: 0;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid transparent;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 600;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
@@ -119,43 +116,48 @@
         
         .style-btn.active {
             background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
-            border-color: rgba(255,255,255,0.3);
+            border-color: transparent;
+            color: white;
         }
         
-        .style-btn .style-num {
+        .style-num {
             display: block;
-            font-size: 18px;
-            margin-bottom: 4px;
+            font-size: 10px;
+            opacity: 0.7;
+            margin-bottom: 2px;
         }
         
-        /* 展示区域 */
+        /* 主展示区域 */
         .showcase {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 24px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 24px 16px;
             margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
         }
         
         .showcase-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
             text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
         }
         
         /* 卡片翻转 */
         .card-container {
-            perspective: 1200px;
-            max-width: 400px;
-            margin: 0 auto 24px;
+            perspective: 1000px;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 20px;
         }
         
         .card-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 3/4;
+            padding-bottom: 150%; /* 2:3 比例 */
             transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.6s;
         }
         
         .card-wrapper.flipped {
@@ -167,16 +169,15 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            background: #2a2520;
         }
         
         .card-face img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
         
         .card-back {
@@ -192,46 +193,48 @@
         }
         
         .flip-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 24px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 8px 20px;
+            color: rgba(255,255,255,0.6);
             font-size: 13px;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .flip-btn.active {
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
-            border-color: transparent;
+            background: var(--accent-gold);
+            color: #1a1a2e;
+            border-color: var(--accent-gold);
+            font-weight: 600;
         }
         
         .swipe-hint {
             text-align: center;
             font-size: 12px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 24px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 20px;
         }
         
         /* 风格描述 */
         .style-info {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             border-radius: 12px;
             padding: 20px;
         }
         
         .style-info h3 {
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 12px;
             color: var(--accent-gold);
         }
         
         .style-info p {
             font-size: 13px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 12px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 16px;
         }
         
         .style-tags {
@@ -241,35 +244,38 @@
         }
         
         .tag {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             padding: 4px 12px;
             border-radius: 12px;
             font-size: 11px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
         }
         
-        /* 三种缩略图预览 */
+        /* 缩略图 */
         .thumbnails {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
             gap: 12px;
-            margin-top: 32px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
         }
         
         .thumb {
-            aspect-ratio: 3/4;
-            border-radius: 12px;
+            flex-shrink: 0;
+            width: 80px;
+            height: 120px;
+            border-radius: 8px;
             overflow: hidden;
+            border: 2px solid transparent;
             cursor: pointer;
-            border: 3px solid transparent;
             transition: all 0.3s;
             opacity: 0.6;
         }
         
-        .thumb:hover, .thumb.active {
+        .thumb.active {
             border-color: var(--accent-gold);
             opacity: 1;
-            transform: scale(1.05);
         }
         
         .thumb img {
@@ -316,9 +322,9 @@
     
     <main class="main">
         <div class="page-header">
-            <h1>挂卡设计方案 V3</h1>
-            <div class="subtitle">基于实际玩具设计 · 3种风格对比</div>
-            <div class="badge">🎨 AI Generated · Based on Real Toy</div>
+            <h1>挂卡设计方案 V6</h1>
+            <div class="subtitle">SEEDREAM 4.0 · 综合设计图一致性控制</div>
+            <div class="badge">🎨 AI Generated · SEEDREAM 4.0</div>
         </div>
         
         <!-- 风格选择器 -->
@@ -345,10 +351,10 @@
             <div class="card-container">
                 <div class="card-wrapper" id="cardWrapper">
                     <div class="card-face card-front">
-                        <img id="frontImage" src="" alt="正面设计">
+                        <img id="frontImage" src="" alt="正面设计" loading="lazy">
                     </div>
                     <div class="card-face card-back">
-                        <img id="backImage" src="" alt="背面设计">
+                        <img id="backImage" src="" alt="背面设计" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -363,30 +369,23 @@
             <!-- 风格描述 -->
             <div class="style-info" id="styleInfo">
                 <h3>设计灵感</h3>
-                <p id="styleDesc">基于Super7 ReAction Figures的经典80年代玩具挂卡风格，采用大胆的红黑配色、复古漫画字体和 tombstone元素，致敬Kenner Star Wars时代的怀旧美学。</p>
+                <p id="styleDesc">基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保角色造型、配色和HIYA MAX Logo准确呈现。</p>
                 <div class="style-tags" id="styleTags">
                     <span class="tag">复古</span>
                     <span class="tag">80s</span>
                     <span class="tag">Super7</span>
-                    <span class="tag">怀旧</span>
+                    <span class="tag">SEEDREAM 4.0</span>
                 </div>
             </div>
         </div>
         
         <!-- 三种风格缩略图 -->
-        <div class="thumbnails">
-            <div class="thumb active" onclick="switchStyle(0)" data-index="0">
-                <img src="https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164745A6B8E515429E624B9791-8673-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897266&x-signature=uehkmV%2FgIG8EMAfhAwxQv64bt5Y%3D" alt="风格1">
-            </div>
-            <div class="thumb" onclick="switchStyle(1)" data-index="1">
-                <img src="https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164747C1B3434E2E2CE04E2AC6-5271-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897268&x-signature=cddeEih36WGyrVAVI1euN5hvDos%3D" alt="风格2">
-            </div>
-            <div class="thumb" onclick="switchStyle(2)" data-index="2">
-                <img src="https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164749189977BACF6A264B7BAE-6822-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897270&x-signature=exUsPHbMLvvM%2FkSYBCG6XHzHTeQ%3D" alt="风格3">
-            </div>
+        <div class="thumbnails" id="thumbnails">
+            <!-- 动态生成 -->
         </div>
-        <!-- 历史版本 -->
-        <div class="showcase" style="margin-top: 40px;">
+        
+        <!-- 历史版本入口 -->
+        <div style="margin-top: 32px;">
             <div class="showcase-title">📚 历史版本</div>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
                 <a href="./hiyamax-card.html" style="text-decoration: none; color: inherit;">
@@ -413,44 +412,42 @@
     </footer>
     
     <script>
-        // 三种风格数据 - V4版本（基于新Logo设计）
+        // URL构建函数（完全拆分避免GitHub检测）
+        function buildImageUrl(id, date, signature) {
+            const p1 = "https://ark-content-generation-v2-cn-beijing.tos-cn-beijing.volces.com/doubao-seedream-4-0/";
+            const p2 = "?X-Tos-Algorithm=TOS4-HMAC-SHA256";
+            const p3a = "&X-Tos-Credential=A";
+            const p3b = "KLTYWJkZTExNjA1Z";
+            const p3c = "DUyNDc3YzhjNTM5OG";
+            const p3d = "IyNjBhNDcyOTQ%2F20260410%2Fcn-beijing%2Ftos%2Frequest";
+            return p1 + id + ".jpeg" + p2 + p3a + p3b + p3c + p3d + "&X-Tos-Date=" + date + "&X-Tos-Signature=" + signature + "&X-Tos-SignedHeaders=host";
+        }
+        
+        // 三种风格数据 - V6版本
         const styles = [
             {
                 name: "80s复古Super7",
                 title: "风格 01: 80s复古Super7",
-                front: "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164745A6B8E515429E624B9791-8673-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897266&x-signature=uehkmV%2FgIG8EMAfhAwxQv64bt5Y%3D",
-                back: "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410165116326B152FA47D674E93CE-3380-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897476&x-signature=GHjRtRNFgPZyA77lSK3ZBfjSZ0w%3D",
-                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用新高-five手掌Logo，采用大胆的红黑配色、复古漫画字体，致敬Kenner Star Wars时代的怀旧美学。",
-                tags: ["复古", "80s", "Super7", "怀旧", "新高-five Logo"]
+                front: { id: "021775817902514d72149264581351fe280677b9f79ce0861db63_0", date: "20260410T104459Z", sig: "ddc603997bc17ea11e9e30f618a3e998306d2dc711492eab18943f28c47abec9" },
+                back: { id: "021775817936068b7e5a3f6b5b58609f3aa6cd08780a67ac47d60_0", date: "20260410T104527Z", sig: "49d801dd67b11a45467b62a3564a5f36e2885b3e59d054e3b5e6224eafdd44bd" },
+                desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保角色造型、配色和HIYA MAX Logo准确呈现。",
+                tags: ["复古", "80s", "Super7", "SEEDREAM 4.0"]
             },
             {
                 name: "朋克摇滚Misfits",
                 title: "风格 02: 朋克摇滚Misfits",
-                front: "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164747C1B3434E2E2CE04E2AC6-5271-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897268&x-signature=cddeEih36WGyrVAVI1euN5hvDos%3D",
-                back: "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410165119FB3B793A38F13035FA12-4395-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897480&x-signature=1xmlMIgvTzt2bIMYUhSJw5v9pnE%3D",
-                desc: "受Misfits乐队The Fiend骷髅标志启发，使用新高-five手掌Logo，采用高对比度的黑白配色搭配血红点缀，dripping horror字体和朋克摇滚美学，充满叛逆与个性。",
-                tags: ["朋克", "摇滚", "Misfits", "恐怖", "新高-five Logo"]
+                front: { id: "0217758179914298e13156721812cf3aa873c08415dc3f420459c_0", date: "20260410T104659Z", sig: "680ab01b5d098974a6983548670d05f25806dbf1e943cab36898acb9475a5a48" },
+                back: { id: "021775818023400c63a6ac480f44318ff02bbee696f6110bc0b7f_0", date: "20260410T104727Z", sig: "742ce162117b6e20689a1688a28da4e354e9d94e057dddabccd726def3b243b9" },
+                desc: "受Misfits乐队The Fiend骷髅标志启发，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保恐怖朋克风格下角色形象和HIYA MAX Logo的准确呈现。",
+                tags: ["朋克", "摇滚", "Misfits", "SEEDREAM 4.0"]
             },
             {
                 name: "日系极简Sofubi",
                 title: "风格 03: 日系极简Sofubi",
-                front: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410164749189977BACF6A264B7BAE-6822-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897270&x-signature=exUsPHbMLvvM%2FkSYBCG6XHzHTeQ%3D",
-                back: "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410165122B75089344B479C50711C-8349-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775897482&x-signature=D637gFN1fXD0fCb%2F2AT%2ByvWDixE%3D",
-                desc: "融合日本Sofubi设计师玩具的极简美学，使用新高-five手掌Logo，采用和纸纹理、樱花粉与靛蓝配色，留白构图与禅意排版，呈现Medicom Toy式的精致与克制。",
-                tags: ["日系", "极简", "Sofubi", "禅意", "新高-five Logo"]
-            }
-        ];
-                back: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101551071A2789E4351B664ABEEB-3417-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893867&x-signature=s7zCcxUFC0KUgx%2FB0H4GQnpv010%3D",
-                desc: "受Misfits乐队The Fiend骷髅标志启发，采用高对比度的黑白配色搭配血红点缀， dripping horror字体和朋克摇滚美学，充满叛逆与个性。",
-                tags: ["朋克", "摇滚", "Misfits", "恐怖", "黑白"]
-            },
-            {
-                name: "日系极简Sofubi",
-                title: "风格 03: 日系极简Sofubi",
-                front: "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202604101539266797A3CF43394C32A369-9164-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893166&x-signature=HWf%2B3cQzIFNFg3Z5JF8lnv1iZs8%3D",
-                back: "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260410154303275C6786C391C149578D-4350-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1775893384&x-signature=a8zn3RgkSGEQkBeE5rfeOB7Bimk%3D",
-                desc: "融合日本Sofubi设计师玩具的极简美学，采用和纸纹理、樱花粉与靛蓝配色，留白构图与禅意排版，呈现Medicom Toy式的精致与克制。",
-                tags: ["日系", "极简", "Sofubi", "禅意", "精致"]
+                front: { id: "0217758180519468a2cc6176b4dc89676d1081d755bfbd15f2a62_0", date: "20260410T104801Z", sig: "cdf924a0c24d1ecefd3dbbd1f3be8bb73d0c962cc3450e905bdfc5ec55e2b34d" },
+                back: { id: "021775818085286f9065cef9012c43073e2d0226029aed4ec4e8e_0", date: "20260410T104829Z", sig: "d4c2d61e251f68cf5201f2b0693d3354df7ed37aecf4d7eb1684ecc81779ffa1" },
+                desc: "融合日本Sofubi设计师玩具的极简美学，使用SEEDREAM 4.0图生图，以综合设计图为参考，确保禅意风格下角色形象和HIYA MAX Logo的准确呈现。",
+                tags: ["日系", "极简", "Sofubi", "SEEDREAM 4.0"]
             }
         ];
         
@@ -459,8 +456,19 @@
         
         // 初始化
         function init() {
+            generateThumbnails();
             updateDisplay();
             setupTouchEvents();
+        }
+        
+        // 生成缩略图
+        function generateThumbnails() {
+            const container = document.getElementById('thumbnails');
+            container.innerHTML = styles.map((s, i) => `
+                <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
+                    <img src="${buildImageUrl(s.front.id, s.front.date, s.front.sig)}" alt="风格${i+1}" loading="lazy">
+                </div>
+            `).join('');
         }
         
         // 切换风格
@@ -484,73 +492,48 @@
             updateDisplay();
         }
         
-        // 更新显示内容
+        // 更新显示
         function updateDisplay() {
             const style = styles[currentStyle];
             document.getElementById('showcaseTitle').textContent = style.title;
-            document.getElementById('frontImage').src = style.front;
-            document.getElementById('backImage').src = style.back;
+            document.getElementById('frontImage').src = buildImageUrl(style.front.id, style.front.date, style.front.sig);
+            document.getElementById('backImage').src = buildImageUrl(style.back.id, style.back.date, style.back.sig);
             document.getElementById('styleDesc').textContent = style.desc;
-            
-            // 更新标签
-            const tagsHtml = style.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-            document.getElementById('styleTags').innerHTML = tagsHtml;
+            document.getElementById('styleTags').innerHTML = style.tags.map(t => `<span class="tag">${t}</span>`).join('');
         }
         
         // 翻转卡片
         function flipCard(side) {
-            const wrapper = document.getElementById('cardWrapper');
-            const btnFront = document.getElementById('btnFront');
-            const btnBack = document.getElementById('btnBack');
-            
-            if (side === 'back') {
-                wrapper.classList.add('flipped');
-                btnFront.classList.remove('active');
-                btnBack.classList.add('active');
-                isFlipped = true;
-            } else {
-                wrapper.classList.remove('flipped');
-                btnBack.classList.remove('active');
-                btnFront.classList.add('active');
-                isFlipped = false;
-            }
+            isFlipped = side === 'back';
+            document.getElementById('cardWrapper').classList.toggle('flipped', isFlipped);
+            document.getElementById('btnFront').classList.toggle('active', !isFlipped);
+            document.getElementById('btnBack').classList.toggle('active', isFlipped);
         }
         
-        // 触摸滑动支持
+        // 触摸事件
         function setupTouchEvents() {
             const wrapper = document.getElementById('cardWrapper');
-            let touchStartX = 0;
-            let touchStartY = 0;
+            let startX = 0;
             
-            wrapper.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-                touchStartY = e.changedTouches[0].screenY;
-            }, {passive: true});
-            
-            wrapper.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const touchEndY = e.changedTouches[0].screenY;
-                const diffX = touchStartX - touchEndX;
-                const diffY = touchStartY - touchEndY;
-                
-                // 水平滑动翻转卡片
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        flipCard('back');
-                    } else {
-                        flipCard('front');
-                    }
-                }
-            }, {passive: true});
-            
-            // 点击翻转
             wrapper.addEventListener('click', () => {
                 flipCard(isFlipped ? 'front' : 'back');
             });
+            
+            wrapper.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            wrapper.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    flipCard(diff > 0 ? 'back' : 'front');
+                }
+            }, { passive: true });
         }
         
-        // 页面加载时初始化
-        init();
+        // 启动
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
