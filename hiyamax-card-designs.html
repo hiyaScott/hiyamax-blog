@@ -428,6 +428,157 @@
             display: block;
         }
         
+        /* Lightbox 灯箱 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .lightbox-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            color: #fff;
+        }
+        
+        .lightbox-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .lightbox-close {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .lightbox-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: auto;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 16px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
+        
+        .lightbox-footer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 20px;
+        }
+        
+        .lightbox-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        
+        .lightbox-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .lightbox-btn.primary {
+            background: var(--accent-gold);
+            color: #1a1a2e;
+            border-color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        /* 缩略图网格 */
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .thumbnail-item {
+            aspect-ratio: 2/3;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: zoom-in;
+            transition: all 0.2s;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .thumbnail-item:hover {
+            border-color: rgba(255,255,255,0.3);
+            transform: scale(1.02);
+        }
+        
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .thumbnail-item img.loaded {
+            opacity: 1;
+        }
+        
         /* 响应式优化 */
         @media (max-width: 380px) {
             .page-header h1 { font-size: 20px; }
@@ -479,24 +630,29 @@
         <div class="showcase">
             <div class="showcase-title" id="showcaseTitle">风格 01: 80s复古Super7</div>
             
-            <!-- 卡片翻转 -->
-            <div class="card-container">
-                <div class="card-wrapper" id="cardWrapper">
-                    <div class="card-face card-front skeleton" id="frontContainer">
-                        <img id="frontImage" src="" alt="正面设计" loading="eager" decoding="async">
-                    </div>
-                    <div class="card-face card-back skeleton" id="backContainer">
-                        <img id="backImage" src="" alt="背面设计" loading="lazy" decoding="async">
-                    </div>
+            <!-- 缩略图网格展示 -->
+            <div class="thumbnail-grid" id="thumbnailGrid">
+                <!-- 动态生成: 正面缩略图 -->
+                <div class="thumbnail-item" onclick="openLightbox('front')" title="点击查看正面大图">
+                    <img id="thumbFront" src="" alt="正面" loading="eager" decoding="async" onload="this.classList.add('loaded')">
+                </div>
+                <!-- 动态生成: 背面缩略图 -->
+                <div class="thumbnail-item" onclick="openLightbox('back')" title="点击查看背面大图">
+                    <img id="thumbBack" src="" alt="背面" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
+                </div>
+                <!-- 组合占位 -->
+                <div class="thumbnail-item" style="opacity:0.3; display:flex; align-items:center; justify-content:center; font-size:12px; color:rgba(255,255,255,0.5);">
+                    👆 点击放大
                 </div>
             </div>
             
-            <div class="flip-controls">
-                <button class="flip-btn active" onclick="flipCard('front')" id="btnFront">📇 正面</button>
-                <button class="flip-btn" onclick="flipCard('back')" id="btnBack">📝 背面</button>
+            <!-- 翻面控制按钮 -->
+            <div class="flip-controls" style="margin-bottom:8px;">
+                <button class="flip-btn active" onclick="switchSide('front')" id="btnFront">📇 正面</button>
+                <button class="flip-btn" onclick="switchSide('back')" id="btnBack">📝 背面</button>
             </div>
             
-            <div class="swipe-hint">👆 点击卡片或左右滑动切换</div>
+            <div class="swipe-hint">👆 点击上方小图查看原图尺寸</div>
             
             <!-- 风格描述 -->
             <div class="style-info" id="styleInfo">
@@ -517,17 +673,35 @@
         <p>Designed with ❤️ by Max & Dad <span class="ai-badge">AI</span></p>
     </footer>
     
+    <!-- Lightbox 灯箱 -->
+    <div id="lightbox" class="lightbox" onclick="closeLightboxOnBackground(event)">
+        <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">‹</button>
+        <div class="lightbox-header">
+            <span class="lightbox-title" id="lightboxTitle">正面设计</span>
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        </div>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+        </div>
+        <button class="lightbox-nav next" onclick="navigateLightbox(1)">›</button>
+        <div class="lightbox-footer">
+            <a id="lightboxDownload" href="" download class="lightbox-btn primary">⬇️ 下载原图</a>
+            <button class="lightbox-btn" onclick="closeLightbox()">关闭</button>
+        </div>
+    </div>
+    
     <script>
-        // 五种风格数据 - 移动端优化版 (使用绝对路径)
+        // 五种风格数据 - 缩略图优化版
         const BASE_URL = "https://hiyascott.github.io/hiyamax-blog";
         const styles = [
             {
                 name: "80s复古",
                 fullName: "80s复古Super7",
                 title: "风格 01: 80s复古Super7",
-                front: `${BASE_URL}/assets/card-designs/style1-front.jpg?v=4`,
-                back: `${BASE_URL}/assets/card-designs/style1-back.jpg?v=4`,
-                thumb: `${BASE_URL}/assets/card-designs/style1-front.jpg?v=4`,
+                front: `${BASE_URL}/assets/card-designs/style1-front.jpg?v=5`,
+                back: `${BASE_URL}/assets/card-designs/style1-back.jpg?v=5`,
+                frontThumb: `${BASE_URL}/assets/card-designs/style1-front-thumb.jpg?v=5`,
+                backThumb: `${BASE_URL}/assets/card-designs/style1-back-thumb.jpg?v=5`,
                 desc: "基于Super7 ReAction Figures的经典80年代玩具挂卡风格，使用SEEDREAM 4.0图生图。",
                 tags: ["复古", "80s", "Super7"]
             },
@@ -535,9 +709,10 @@
                 name: "朋克摇滚",
                 fullName: "朋克摇滚Misfits",
                 title: "风格 02: 朋克摇滚Misfits",
-                front: `${BASE_URL}/assets/card-designs/style2-front.jpg?v=4`,
-                back: `${BASE_URL}/assets/card-designs/style2-back.jpg?v=4`,
-                thumb: `${BASE_URL}/assets/card-designs/style2-front.jpg?v=4`,
+                front: `${BASE_URL}/assets/card-designs/style2-front.jpg?v=5`,
+                back: `${BASE_URL}/assets/card-designs/style2-back.jpg?v=5`,
+                frontThumb: `${BASE_URL}/assets/card-designs/style2-front-thumb.jpg?v=5`,
+                backThumb: `${BASE_URL}/assets/card-designs/style2-back-thumb.jpg?v=5`,
                 desc: "受Misfits乐队The Fiend骷髅标志启发的恐怖朋克风格。",
                 tags: ["朋克", "摇滚", "Misfits"]
             },
@@ -545,9 +720,10 @@
                 name: "日系极简",
                 fullName: "日系极简Sofubi",
                 title: "风格 03: 日系极简Sofubi",
-                front: `${BASE_URL}/assets/card-designs/style3-front.jpg?v=4`,
-                back: `${BASE_URL}/assets/card-designs/style3-back.jpg?v=4`,
-                thumb: `${BASE_URL}/assets/card-designs/style3-front.jpg?v=4`,
+                front: `${BASE_URL}/assets/card-designs/style3-front.jpg?v=5`,
+                back: `${BASE_URL}/assets/card-designs/style3-back.jpg?v=5`,
+                frontThumb: `${BASE_URL}/assets/card-designs/style3-front-thumb.jpg?v=5`,
+                backThumb: `${BASE_URL}/assets/card-designs/style3-back-thumb.jpg?v=5`,
                 desc: "融合日本Sofubi设计师玩具的极简美学与禅意风格。",
                 tags: ["日系", "极简", "Sofubi"]
             },
@@ -555,9 +731,10 @@
                 name: "苏富比",
                 fullName: "苏富比拍卖",
                 title: "风格 04: 苏富比艺术拍卖",
-                front: `${BASE_URL}/assets/card-designs/style4-front.jpg?v=4`,
-                back: `${BASE_URL}/assets/card-designs/style4-back.jpg?v=4`,
-                thumb: `${BASE_URL}/assets/card-designs/style4-front.jpg?v=4`,
+                front: `${BASE_URL}/assets/card-designs/style4-front.jpg?v=5`,
+                back: `${BASE_URL}/assets/card-designs/style4-back.jpg?v=5`,
+                frontThumb: `${BASE_URL}/assets/card-designs/style4-front-thumb.jpg?v=5`,
+                backThumb: `${BASE_URL}/assets/card-designs/style4-back-thumb.jpg?v=5`,
                 desc: "苏富比拍卖行当代艺术图录风格，奢华金箔烫印。",
                 tags: ["苏富比", "艺术拍卖", "奢华"]
             },
@@ -565,16 +742,17 @@
                 name: "邪胶妖怪",
                 fullName: "邪胶妖怪Sofubi",
                 title: "风格 05: 邪胶妖怪Sofubi",
-                front: `${BASE_URL}/assets/card-designs/style5-front.jpg?v=4`,
-                back: `${BASE_URL}/assets/card-designs/style5-back.jpg?v=4`,
-                thumb: `${BASE_URL}/assets/card-designs/style5-front.jpg?v=4`,
+                front: `${BASE_URL}/assets/card-designs/style5-front.jpg?v=5`,
+                back: `${BASE_URL}/assets/card-designs/style5-back.jpg?v=5`,
+                frontThumb: `${BASE_URL}/assets/card-designs/style5-front-thumb.jpg?v=5`,
+                backThumb: `${BASE_URL}/assets/card-designs/style5-back-thumb.jpg?v=5`,
                 desc: "日本邪胶Sofubi风格，融合妖怪文化与黑暗美学。",
                 tags: ["邪胶", "妖怪", "Sofubi"]
             }
         ];
         
         let currentStyle = 0;
-        let isFlipped = false;
+        let currentSide = 'front';
         let preloadedImages = new Set();
         
         // 初始化
@@ -583,7 +761,6 @@
             generateStyleSelector();
             generateThumbnails();
             updateDisplay();
-            setupTouchEvents();
             setupNetworkStatus();
             preloadAdjacentImages();
         }
@@ -609,12 +786,12 @@
             `).join('');
         }
         
-        // 生成缩略图
+        // 生成缩略图导航
         function generateThumbnails() {
             const container = document.getElementById('thumbnails');
             container.innerHTML = styles.map((s, i) => `
                 <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchStyle(${i})" data-index="${i}">
-                    <img src="${s.thumb}" alt="风格${i+1}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
+                    <img src="${s.frontThumb}" alt="风格${i+1}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
                 </div>
             `).join('');
         }
@@ -624,10 +801,9 @@
             if (index === currentStyle) return;
             
             currentStyle = index;
-            isFlipped = false;
+            currentSide = 'front';
             
-            // 重置翻转状态
-            document.getElementById('cardWrapper').classList.remove('flipped');
+            // 重置按钮状态
             document.getElementById('btnFront').classList.add('active');
             document.getElementById('btnBack').classList.remove('active');
             
@@ -669,55 +845,80 @@
                 `<span class="tag">${t}</span>`
             ).join('');
             
-            // 更新图片（带加载状态）
-            updateImage('frontImage', style.front, 'frontContainer');
-            updateImage('backImage', style.back, 'backContainer');
+            // 更新缩略图（使用小图）
+            const thumbFront = document.getElementById('thumbFront');
+            const thumbBack = document.getElementById('thumbBack');
+            
+            thumbFront.classList.remove('loaded');
+            thumbBack.classList.remove('loaded');
+            
+            thumbFront.src = style.frontThumb;
+            thumbBack.src = style.backThumb;
+            
+            // 如果已缓存则立即显示
+            if (thumbFront.complete) thumbFront.classList.add('loaded');
+            if (thumbBack.complete) thumbBack.classList.add('loaded');
+            
+            thumbFront.onload = () => thumbFront.classList.add('loaded');
+            thumbBack.onload = () => thumbBack.classList.add('loaded');
         }
         
-        // 更新图片（带加载动画）
-        function updateImage(imgId, src, containerId) {
-            const img = document.getElementById(imgId);
-            const container = document.getElementById(containerId);
+        // 切换正背面按钮状态
+        function switchSide(side) {
+            currentSide = side;
+            document.getElementById('btnFront').classList.toggle('active', side === 'front');
+            document.getElementById('btnBack').classList.toggle('active', side === 'back');
+        }
+        
+        // 灯箱功能
+        let currentLightboxSide = 'front';
+        
+        function openLightbox(side) {
+            currentLightboxSide = side;
+            const style = styles[currentStyle];
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const title = document.getElementById('lightboxTitle');
+            const download = document.getElementById('lightboxDownload');
             
-            // 如果src相同，不需要重新加载
-            if (img.src && img.src.includes(src.replace('./', ''))) {
-                return;
-            }
+            // 显示原图
+            img.src = side === 'front' ? style.front : style.back;
+            title.textContent = `${style.name} - ${side === 'front' ? '正面' : '背面'}设计`;
+            download.href = side === 'front' ? style.front : style.back;
+            download.download = `hiyamax-card-${currentStyle + 1}-${side}.jpg`;
             
-            img.classList.remove('loaded');
-            container.classList.add('skeleton');
-            
-            // 强制立即设置src
-            img.src = src;
-            
-            // 如果图片已缓存（complete且naturalWidth > 0）
-            if (img.complete && img.naturalWidth > 0) {
-                img.classList.add('loaded');
-                container.classList.remove('skeleton');
-                preloadedImages.add(src);
-            } else {
-                img.onload = () => {
-                    img.classList.add('loaded');
-                    container.classList.remove('skeleton');
-                    preloadedImages.add(src);
-                };
-                img.onerror = () => {
-                    container.classList.remove('skeleton');
-                    console.error('图片加载失败:', src);
-                };
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function closeLightboxOnBackground(event) {
+            if (event.target === event.currentTarget) {
+                closeLightbox();
             }
         }
         
-        // 预加载相邻图片
+        function navigateLightbox(direction) {
+            // 在同一风格内切换正背面
+            currentLightboxSide = currentLightboxSide === 'front' ? 'back' : 'front';
+            openLightbox(currentLightboxSide);
+        }
+        
+        // 预加载相邻图片（原图，用于灯箱）
         function preloadAdjacentImages() {
             const indices = [
                 (currentStyle - 1 + styles.length) % styles.length,
                 (currentStyle + 1) % styles.length
             ];
-            
+
             indices.forEach(i => {
                 const style = styles[i];
-                [style.front, style.back].forEach(src => {
+                // 预加载缩略图和原图
+                [style.frontThumb, style.backThumb, style.front, style.back].forEach(src => {
                     if (!preloadedImages.has(src)) {
                         const img = new Image();
                         img.src = src;
@@ -726,48 +927,23 @@
                 });
             });
         }
-        
-        // 翻转卡片
+
+        // 翻转卡片（兼容旧函数，实际使用switchSide）
         function flipCard(side) {
-            isFlipped = side === 'back';
-            document.getElementById('cardWrapper').classList.toggle('flipped', isFlipped);
-            document.getElementById('btnFront').classList.toggle('active', !isFlipped);
-            document.getElementById('btnBack').classList.toggle('active', isFlipped);
+            switchSide(side);
         }
-        
-        // 触摸事件优化
-        function setupTouchEvents() {
-            const wrapper = document.getElementById('cardWrapper');
-            let startX = 0;
-            let startY = 0;
-            let startTime = 0;
-            
-            wrapper.addEventListener('click', (e) => {
-                // 防止快速点击导致的重复翻转
-                if (Date.now() - startTime > 100) {
-                    flipCard(isFlipped ? 'front' : 'back');
+
+        // 键盘支持
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    navigateLightbox();
                 }
-            });
-            
-            wrapper.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                startTime = Date.now();
-            }, { passive: true });
-            
-            wrapper.addEventListener('touchend', (e) => {
-                const endX = e.changedTouches[0].clientX;
-                const endY = e.changedTouches[0].clientY;
-                const diffX = startX - endX;
-                const diffY = startY - endY;
-                const timeDiff = Date.now() - startTime;
-                
-                // 快速滑动检测（水平滑动且时间小于300ms）
-                if (timeDiff < 300 && Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
-                    flipCard(diffX > 0 ? 'back' : 'front');
-                }
-            }, { passive: true });
-        }
+            }
+        });
         
         // 网络状态监听
         function setupNetworkStatus() {
